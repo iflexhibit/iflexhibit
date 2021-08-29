@@ -2,6 +2,12 @@
 
 **Development**: [https://iflexhibit-dev.vercel.app](https://iflexhibit-dev.vercel.app)
 
+## Developers
+
+- Lyndon Ellison Tomas
+- John Paul Ong
+- Mary Nicole Yabut
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
@@ -25,7 +31,6 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ## Todos
 
 - [ ] Add todos
-- [ ] testing -y
 
 ## Learn More
 
