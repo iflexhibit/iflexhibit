@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import Button from "./Button";
 import SearchBar from "./SearchBar";
@@ -12,13 +13,16 @@ const Navbar = () => {
     <nav>
       <div className="nav-left">
         <div className="logo">
-          <a href="/">
-            <Image
-              src="/img/iflexhibit_dark.png"
-              layout="fill"
-              objectFit="contain"
-            />
-          </a>
+          <Link href="/">
+            <a>
+              <Image
+                src="/img/iflexhibit_dark.png"
+                layout="fill"
+                objectFit="contain"
+                alt="iFLEXHIBIT Logo"
+              />
+            </a>
+          </Link>
         </div>
         <div className="divider"></div>
         <div className="links">
