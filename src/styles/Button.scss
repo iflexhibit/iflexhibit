@@ -23,6 +23,10 @@ a.btn {
 
   transition: 125ms ease-in-out;
 
+  &.fill {
+    width: 100%;
+  }
+
   &.text {
     color: var(--black);
 
