@@ -1,5 +1,5 @@
 :root {
-  --blue: hsl(227, 56%, 53%);
+  --blue: #4461ca;
   --blue-dark: hsl(227, 56%, 45%);
   --blue-fade: hsla(227, 56%, 53%, 0.125);
   --black: #222730;
@@ -42,9 +42,10 @@ a {
 
 main {
   margin: 2rem 2.5rem;
-  background-color: red;
 }
 
+@import "FilterPanel.scss";
+@import "CheckList.scss";
 @import "TextField.scss";
 @import "Button.scss";
 @import "NavBar.scss";
