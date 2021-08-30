@@ -13,7 +13,7 @@
   --lime: #98f43c;
   --cyan: #3cf4f4;
   --sans: "Roboto", sans-serif;
-  --mono: "Roboto Mono", monospace;
+  --serif: "Roboto Slab", serif;
 }
 
 *,
@@ -31,7 +31,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--sans);
   background-color: var(--white);
   color: var(--black);
 }
@@ -51,6 +51,7 @@ main {
 
 @import "containers.scss";
 @import "SortControls.scss";
+@import "PostGallery.scss";
 @import "FilterPanel.scss";
 @import "CheckList.scss";
 @import "TextField.scss";

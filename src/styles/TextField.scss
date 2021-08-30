@@ -24,7 +24,7 @@ div.textfield {
 
     background: none;
     border: none;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--sans);
     font-size: 1rem;
 
     &:focus {
