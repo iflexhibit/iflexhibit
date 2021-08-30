@@ -31,6 +31,7 @@ const PostGallery = () => {
                       src={post?.author?.avatar}
                       objectFit="cover"
                       layout="fill"
+                      alt={post?.author?.username}
                     />
                   </div>
                   <span>{post?.author?.username}</span>
