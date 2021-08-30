@@ -1,6 +1,7 @@
 import Head from "next/head";
 import NavBar from "../components/NavBar";
 import FilterPanel from "../components/FilterPanel";
+import PostGallery from "../components/PostGallery";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <div className="home-container">
           <FilterPanel />
+          <PostGallery />
         </div>
       </main>
     </>

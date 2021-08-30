@@ -33,6 +33,7 @@ body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   background-color: var(--white);
+  color: var(--black);
 }
 
 a {
@@ -40,10 +41,16 @@ a {
   text-decoration: none;
 }
 
-main {
-  margin: 2rem 2.5rem;
+button {
+  cursor: pointer;
 }
 
+main {
+  margin: 2rem 4rem;
+}
+
+@import "containers.scss";
+@import "SortControls.scss";
 @import "FilterPanel.scss";
 @import "CheckList.scss";
 @import "TextField.scss";

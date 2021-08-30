@@ -1,0 +1,8 @@
+div.home-container {
+  padding: 1rem;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  gap: 5rem;
+}
