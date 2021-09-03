@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Button from "./Button";
-import SearchBar from "./SearchBar";
+import TextField from "./TextField";
 
 const Navbar = () => {
   const [title, setTitle] = useState("");
@@ -31,7 +31,7 @@ const Navbar = () => {
       </div>
       <div className="nav-right">
         <div className="search">
-          <SearchBar
+          <TextField
             id="title"
             name="title"
             value={title}

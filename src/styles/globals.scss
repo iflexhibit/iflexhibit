@@ -1,5 +1,5 @@
 :root {
-  --blue: hsl(227, 56%, 53%);
+  --blue: #4461ca;
   --blue-dark: hsl(227, 56%, 45%);
   --blue-fade: hsla(227, 56%, 53%, 0.125);
   --black: #222730;
@@ -13,7 +13,7 @@
   --lime: #98f43c;
   --cyan: #3cf4f4;
   --sans: "Roboto", sans-serif;
-  --mono: "Roboto Mono", monospace;
+  --serif: "Roboto Slab", serif;
 }
 
 *,
@@ -31,8 +31,9 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--sans);
   background-color: var(--white);
+  color: var(--black);
 }
 
 a {
@@ -40,154 +41,20 @@ a {
   text-decoration: none;
 }
 
-button.btn,
-a.btn {
-  width: fit-content;
-  height: 2.625rem;
-  padding: 0.5rem 1rem;
-
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-
-  font-family: "Roboto";
-  font-weight: 700;
-  font-size: 1rem;
-  white-space: nowrap;
-
-  border-radius: 5px;
-
-  border: none;
-  background: none;
+button {
   cursor: pointer;
-
-  transition: 125ms ease-in-out;
-
-  &.text {
-    color: var(--black);
-
-    &:hover {
-      background: var(--gray);
-    }
-  }
-
-  &.outlined {
-    color: var(--blue);
-    border: solid 1px var(--blue);
-
-    &:hover {
-      background: var(--blue-fade);
-    }
-  }
-
-  &.contained {
-    background: var(--blue);
-    color: var(--white);
-
-    &:hover {
-      background: var(--blue-dark);
-    }
-  }
 }
 
-div.textfield {
-  width: 100%;
-  height: 2.625rem;
-  padding: 0 1rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  gap: 1rem;
-
-  border-radius: 5px 5px 0 0;
-  border-bottom: solid 2px var(--black-25);
-  background-color: var(--gray);
-
-  i {
-    color: var(--black-75);
-  }
-
-  input[type="text"] {
-    display: block;
-    width: 100%;
-    height: 100%;
-
-    background: none;
-    border: none;
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-
-    &:focus {
-      outline: none;
-    }
-  }
+main {
+  margin: 2rem 4rem;
 }
 
-nav {
-  width: 100%;
-  height: 5.25rem;
-
-  padding: 1rem 2rem;
-
-  display: grid;
-  grid-template-columns: 0.5fr 0.5fr;
-
-  box-shadow: 0 1px 1px var(--black-25);
-
-  & > div.nav-left {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: flex-start;
-
-    gap: 1rem;
-
-    & > div.logo {
-      width: 8rem;
-      height: 100%;
-
-      & > a {
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: relative;
-      }
-    }
-
-    & > div.divider {
-      width: 1px;
-      height: 75%;
-      background-color: var(--black-50);
-    }
-  }
-
-  & > div.nav-right {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-
-    gap: 1rem;
-
-    & > div.search {
-      width: 100%;
-
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      justify-content: center;
-
-      gap: 0.5rem;
-    }
-  }
-}
+@import "containers.scss";
+@import "SortControls.scss";
+@import "PostGallery.scss";
+@import "FilterPanel.scss";
+@import "CheckList.scss";
+@import "TextField.scss";
+@import "Button.scss";
+@import "NavBar.scss";
+@import "SiteFooter.scss";

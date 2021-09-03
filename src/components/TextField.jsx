@@ -1,7 +1,7 @@
-const SearchBar = ({ id, name, value, handleInput, placeholder, icon }) => {
+const TextField = ({ id, name, value, handleInput, placeholder, icon }) => {
   return (
     <div className="textfield">
-      <i className={icon}></i>
+      <i className={icon} aria-hidden></i>
       <input
         type="text"
         name={name}
@@ -14,4 +14,4 @@ const SearchBar = ({ id, name, value, handleInput, placeholder, icon }) => {
   );
 };
 
-export default SearchBar;
+export default TextField;

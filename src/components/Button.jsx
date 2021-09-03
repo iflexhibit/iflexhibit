@@ -6,12 +6,12 @@ const Button = ({
 }) => {
   return href === "" ? (
     <button className={"btn " + variant}>
-      {icon !== "none" && <i className={icon}></i>}
+      {icon !== "none" && <i className={icon} aria-hidden></i>}
       {label}
     </button>
   ) : (
     <a href={href} className={"btn " + variant}>
-      {icon !== "none" && <i className={icon}></i>}
+      {icon !== "none" && <i className={icon} aria-hidden></i>}
       {label}
     </a>
   );
