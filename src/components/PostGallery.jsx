@@ -19,6 +19,8 @@ const PostGallery = () => {
               layout="fill"
               objectFit="cover"
               alt={post?.title}
+              placeholder="blur"
+              blurDataURL="/img/blur.jpg"
             />
             <div className="card-info">
               <div className="card-info-group">
