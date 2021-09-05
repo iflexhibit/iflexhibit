@@ -37,8 +37,8 @@ const Navbar = () => {
             value={title}
             handleInput={handleInput}
             placeholder="Search by title..."
-            //add `fas fa-search`
-            icon=""
+            icon="fas fa-search"
+            label="search"
           />
         </div>
         <div className="upload">
