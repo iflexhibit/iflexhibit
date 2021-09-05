@@ -30,7 +30,8 @@ const FilterPanel = () => {
       <TextField
         handleInput={handleInput}
         placeholder="Search tags..."
-        icon="fas fa-search"
+        //add 'fas fa-search' icon
+        icon=""
         id="tag"
         name="tag"
         value={text}
