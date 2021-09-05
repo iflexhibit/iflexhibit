@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Button = ({
   icon = "none",
   variant = "text",

@@ -42,6 +42,7 @@ const NavbarDesktop = () => {
           />
         </div>
         <div className="upload">
+          <Button />
           <Button icon="fas fa-plus" label="UPLOAD" variant="outlined" />
         </div>
         <div className="account">
