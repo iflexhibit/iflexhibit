@@ -1,4 +1,4 @@
-import "../styles/globals.scss";
+import "styles/globals.scss";
 import { createTheme, ThemeProvider, CssBaseline } from "@material-ui/core";
 
 const theme = createTheme({
