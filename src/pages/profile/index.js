@@ -1,6 +1,6 @@
 import Head from "next/head";
 import NavBar from "components/NavBar";
-import FilterPanel from "components/FilterPanel";
+import ProfileBanner from "components/ProfileBanner";
 import PostGallery from "components/PostGallery";
 import SiteFooter from "components/SiteFooter";
 
@@ -16,8 +16,8 @@ export default function Home() {
       </Head>
       <NavBar />
       <main>
-        <div className="home-container">
-          <FilterPanel />
+        <div className="profile-container">
+          <ProfileBanner />
           <PostGallery />
         </div>
       </main>

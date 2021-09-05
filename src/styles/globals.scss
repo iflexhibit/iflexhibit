@@ -46,7 +46,7 @@ button {
 }
 
 main {
-  margin: 2rem 4rem;
+  width: 100%;
 }
 
 @import "containers.scss";
@@ -58,3 +58,4 @@ main {
 @import "Button.scss";
 @import "NavBar.scss";
 @import "SiteFooter.scss";
+@import "ProfileBanner.scss";

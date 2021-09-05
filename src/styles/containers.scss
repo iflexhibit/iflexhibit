@@ -1,4 +1,15 @@
 div.home-container {
+  width: 100%;
+  padding: 4rem 5rem;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  gap: 2rem;
+}
+
+div.profile-container {
+  width: 100%;
   padding: 1rem;
 
   display: grid;

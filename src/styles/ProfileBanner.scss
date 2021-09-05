@@ -1,0 +1,10 @@
+div.profile-banner {
+  position: relative;
+  width: 100%;
+  height: 30rem;
+  background-color: red;
+  & > div.profile-background {
+    position: absolute;
+    inset: 0;
+  }
+}
