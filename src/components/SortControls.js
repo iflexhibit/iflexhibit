@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const SortControls = ({ items, sortBy, handleSort }) => {
   return (
     <div className="sort">
@@ -13,6 +15,17 @@ const SortControls = ({ items, sortBy, handleSort }) => {
       ))}
     </div>
   );
+};
+
+SortControls.propTypes = {
+  items: PropTypes.array.isRequired,
+  sortBy: PropTypes.string.isRequired,
+  handleSort: PropTypes.func.isRequired,
+};
+
+SortControls.defaultProps = {
+  items: [],
+  sortBy: "",
 };
 
 export default SortControls;

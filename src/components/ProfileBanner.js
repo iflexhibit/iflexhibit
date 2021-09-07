@@ -5,19 +5,20 @@ const ProfileBanner = () => {
   const [profile, setProfile] = useState(null);
   useEffect(() => {
     setProfile(userProfile);
+    console.log(profile);
   }, []);
   return (
     profile && (
       <div className="profile-banner">
         <div className="profile-background">
-          {/* <Image
+          <Image
             src={profile.profileBackground}
             alt="Profile Background"
             layout="fill"
             objectFit="cover"
             placeholder="blur"
             blurDataURL="/img/blur.jpg"
-          /> */}
+          />
         </div>
       </div>
     )

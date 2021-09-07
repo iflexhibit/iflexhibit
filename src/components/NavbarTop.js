@@ -4,13 +4,13 @@ import { useState } from "react";
 import Button from "./Button";
 import TextField from "./TextField";
 
-const Navbar = () => {
+const NavbarDesktop = () => {
   const [title, setTitle] = useState("");
   const handleInput = (e) => {
     setTitle(e.target.value);
   };
   return (
-    <nav>
+    <nav className="top">
       <div className="nav-left">
         <div className="logo">
           <Link href="/">
@@ -38,6 +38,7 @@ const Navbar = () => {
             handleInput={handleInput}
             placeholder="Search by title..."
             icon="fas fa-search"
+            label="search"
           />
         </div>
         <div className="upload">
@@ -51,4 +52,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarDesktop;

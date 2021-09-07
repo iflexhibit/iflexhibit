@@ -1,7 +1,8 @@
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import PropTypes from "prop-types";
 
-const CheckList = ({ list = [], items = {}, handleChange }) => {
+const CheckList = ({ list, items, handleChange }) => {
   return (
     <div className="checklist">
       {list?.map((item, index) => (
@@ -24,6 +25,17 @@ const CheckList = ({ list = [], items = {}, handleChange }) => {
       ))}
     </div>
   );
+};
+
+CheckList.propTypes = {
+  list: PropTypes.array.isRequired,
+  items: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
+
+CheckList.defaultProps = {
+  list: [],
+  items: {},
 };
 
 export default CheckList;
