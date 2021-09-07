@@ -13,15 +13,12 @@ div.posts {
 
       border-radius: 5px;
       background-color: var(--black);
+      overflow: hidden;
 
       &:hover {
         & > div.card-info {
           opacity: 1;
         }
-      }
-
-      & img {
-        border-radius: 5px;
       }
 
       & > div.card-info {
@@ -73,10 +70,11 @@ div.posts {
             & > div.card-info-group-item {
               justify-content: flex-start;
               & > div.avatar {
+                position: relative;
                 width: 1.5rem;
                 height: 1.5rem;
                 border-radius: 5px;
-                position: relative;
+                overflow: hidden;
               }
               & > span {
                 white-space: nowrap;

@@ -10,10 +10,9 @@ div.home-container {
 
 div.profile-container {
   width: 100%;
-  padding: 1rem;
+}
 
+div.profile-body-container {
   display: grid;
-  grid-template-columns: auto 1fr;
-
-  gap: 2rem;
+  grid-template-columns: 0.25fr auto;
 }
