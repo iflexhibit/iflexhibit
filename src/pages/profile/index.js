@@ -1,6 +1,7 @@
 import Layout from "components/Layout";
 import ProfileBanner from "components/ProfileBanner";
 import ProfileDetails from "components/ProfileDetails";
+import ProfileGallery from "components/ProfileGallery";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
             <ProfileBanner profile={profile} />
             <div className="profile-body-container">
               <ProfileDetails profile={profile} />
+              <ProfileGallery />
             </div>
           </>
         )}
