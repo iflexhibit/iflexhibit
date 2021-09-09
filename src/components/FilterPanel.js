@@ -23,9 +23,10 @@ const FilterPanel = () => {
   return (
     <div className="filters">
       <Button
-        variant="contained fill"
+        variant="contained"
         icon="fas fa-check"
         label="APPLY FILTERS"
+        fullWidth
       />
       <TextField
         handleInput={handleInput}
