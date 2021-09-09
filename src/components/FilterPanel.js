@@ -14,9 +14,11 @@ const FilterPanel = () => {
       }, {})
     );
   }, []);
+
   const handleChange = (e) => {
     setTags({ ...tags, [e.target.name]: e.target.checked });
   };
+
   const handleInput = (e) => {
     setText(e.target.value);
   };
@@ -36,7 +38,7 @@ const FilterPanel = () => {
         name="tag"
         value={text}
       />
-      <CheckList list={list} items={tags} handleChange={handleChange} />
+      {tags && <CheckList items={tags} handleChange={handleChange} />}
     </div>
   );
 };
