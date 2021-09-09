@@ -1,1 +1,11 @@
 // media contents here
+$table: 1024px;
+$mobile: 768px;
+
+@media (max-width: $table) {
+    nav {
+        &.bottom {
+            display: block;
+        }
+    }
+}

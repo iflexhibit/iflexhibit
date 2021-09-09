@@ -45,17 +45,24 @@ button {
   cursor: pointer;
 }
 
+hr {
+  opacity: 0.5;
+}
+
 main {
-  margin: 2rem 4rem;
+  width: 100%;
+  min-height: 95vh;
 }
 
 @import "containers.scss";
 @import "SortControls.scss";
-@import "PostGallery.scss";
+@import "Gallery.scss";
 @import "FilterPanel.scss";
 @import "CheckList.scss";
 @import "TextField.scss";
 @import "Button.scss";
 @import "Navbar.scss";
 @import "SiteFooter.scss";
+@import "ProfileBanner.scss";
+@import "ProfileBio.scss";
 @import "media.scss";
