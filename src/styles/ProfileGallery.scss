@@ -1,18 +1,25 @@
-div.posts {
-  & > div.gallery {
-    margin: 1rem 0;
+div.profile-gallery {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+
+  & > &-header {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: auto 0.5fr;
+    align-items: flex-end;
+  }
+
+  & > div.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.25rem;
 
     & > div.card {
       position: relative;
-
       width: 100%;
-      height: 15rem;
-
+      height: 20rem;
       border-radius: 5px;
-      background-color: var(--black);
       overflow: hidden;
 
       &:hover {
@@ -47,7 +54,7 @@ div.posts {
 
         & > div.card-info-group {
           height: 30%;
-          padding: 0.5rem;
+          padding: 1rem;
 
           display: flex;
           flex-flow: column nowrap;

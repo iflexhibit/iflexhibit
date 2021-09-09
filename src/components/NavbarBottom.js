@@ -7,21 +7,21 @@ const NavbarBottom = () => {
         <div className="link">
           <Link href="/">
             <a>
-              <i className="fas fa-home"></i>
+              <i className="fas fa-home" aria-hidden></i>
             </a>
           </Link>
         </div>
         <div className="link">
           <Link href="/">
             <a>
-              <i className="fas fa-user-alt"></i>
+              <i className="fas fa-user-alt" aria-hidden></i>
             </a>
           </Link>
         </div>
         <div className="link">
           <Link href="/">
             <a>
-              <i className="fas fa-cog"></i>
+              <i className="fas fa-cog" aria-hidden></i>
             </a>
           </Link>
         </div>

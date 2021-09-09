@@ -45,8 +45,13 @@ button {
   cursor: pointer;
 }
 
+hr {
+  opacity: 0.5;
+}
+
 main {
-  margin: 2rem 4rem;
+  width: 100%;
+  min-height: 95vh;
 }
 
 @import "containers.scss";
@@ -58,4 +63,7 @@ main {
 @import "Button.scss";
 @import "Navbar.scss";
 @import "SiteFooter.scss";
+@import "ProfileBanner.scss";
+@import "ProfileDetails.scss";
+@import "ProfileGallery.scss";
 @import "media.scss";

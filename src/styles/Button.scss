@@ -52,4 +52,13 @@ a.btn {
       background: var(--blue-dark);
     }
   }
+
+  &.light {
+    color: var(--white);
+
+    &:hover {
+      background: var(--gray);
+      color: var(--black);
+    }
+  }
 }

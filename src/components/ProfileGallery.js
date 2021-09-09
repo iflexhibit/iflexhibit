@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SortControls from "./SortControls";
 import Image from "next/image";
 import Pagination from "@material-ui/lab/Pagination";
 
-const PostGallery = () => {
+const ProfileGallery = () => {
+  const [posts, setPosts] = useState([]);
   const [sort, setSort] = useState(items[0]);
+  useEffect(() => {
+    setPosts(newPosts);
+  }, []);
   const handleSort = (e) => {
     setSort(e.target.name);
   };
   return (
-    <div className="posts">
-      <SortControls items={items} sortBy={sort} handleSort={handleSort} />
+    <div className="profile-gallery">
+      <div className="profile-gallery-header">
+        <h2>My Gallery</h2>
+        <SortControls items={items} handleSort={handleSort} sortBy={sort} />
+      </div>
+      <hr />
       <div className="gallery">
         {posts.map((post, index) => (
           <div className="card" key={index}>
@@ -66,16 +74,11 @@ const PostGallery = () => {
   );
 };
 
-export default PostGallery;
+export default ProfileGallery;
 
-const items = [
-  "NEW TODAY",
-  "NEW THIS WEEK",
-  "POPULAR (14 DAYS)",
-  "POPULAR (ALL TIME)",
-];
+const items = ["MOST RECENT", "MOST VIEWED", "MOST LIKED"];
 
-const posts = [
+const newPosts = [
   {
     author: {
       avatar: "/img/boi.jpg",
