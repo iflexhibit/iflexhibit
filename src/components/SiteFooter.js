@@ -1,44 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const SiteFooter = () => {
+const SiteFooter = ({ links }) => {
   return (
     <footer>
       <div className="row">
-        <div className="links">
-          <div className="group">
-            <div className="header">
-              <b>iFLEXHIBIT</b>
-            </div>
-            <div className="list">
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-              <Link href="/">
-                <a>About us</a>
-              </Link>
-            </div>
-          </div>
-          <div className="group">
-            <div className="header">
-              <b>SUPPORT</b>
-            </div>
-            <div className="list">
-              <Link href="/">
-                <a>Help</a>
-              </Link>
-              <Link href="/">
-                <a>Contact us</a>
-              </Link>
-              <Link href="/">
-                <a>Report a bug</a>
-              </Link>
-              <Link href="/">
-                <a>Submit feedback</a>
-              </Link>
-            </div>
-          </div>
-        </div>
+        <FooterLinks links={links} />
       </div>
       <div className="row">
         <div className="logo">
@@ -66,6 +33,27 @@ const SiteFooter = () => {
         </small>
       </div>
     </footer>
+  );
+};
+
+const FooterLinks = ({ links }) => {
+  return (
+    <div className="links">
+      {Object.entries(links)?.map((link, index) => (
+        <div className="group" key={index}>
+          <div className="header">
+            <b>{link[0]}</b>
+          </div>
+          <div className="list">
+            {link[1].map(({ href, label }, index) => (
+              <Link href={href} key={index}>
+                <a>{label}</a>
+              </Link>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 

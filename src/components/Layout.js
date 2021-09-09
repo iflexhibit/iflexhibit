@@ -14,7 +14,7 @@ const Layout = ({ title, description, children }) => {
       <NavbarTop />
       <NavbarBottom />
       <main>{children}</main>
-      <SiteFooter />
+      <SiteFooter links={links} />
     </>
   );
 };
@@ -22,6 +22,37 @@ const Layout = ({ title, description, children }) => {
 Layout.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+};
+
+const links = {
+  iFLEXHIBIT: [
+    {
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "About us",
+      href: "/about",
+    },
+  ],
+  SUPPORT: [
+    {
+      label: "Help",
+      href: "/help",
+    },
+    {
+      label: "Contact us",
+      href: "/contacts",
+    },
+    {
+      label: "Report a bug",
+      href: "/bug",
+    },
+    {
+      label: "Submit feedback",
+      href: "/feedback",
+    },
+  ],
 };
 
 export default Layout;
