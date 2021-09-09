@@ -1,22 +1,22 @@
 import Button from "./Button";
 import TextField from "./TextField";
 import CheckList from "./CheckList";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-const FilterPanel = () => {
+const FilterPanel = ({ tags }) => {
   const [text, setText] = useState("");
-  const [tags, setTags] = useState({});
+  const [checklistItems, setChecklistItems] = useState({});
   useEffect(() => {
-    setTags(
-      list.reduce((obj, cur, i) => {
+    setChecklistItems(
+      tags.reduce((obj, cur, i) => {
         return { ...obj, [cur]: false };
       }, {})
     );
   }, []);
 
   const handleChange = (e) => {
-    setTags({ ...tags, [e.target.name]: e.target.checked });
+    setChecklistItems({ ...checklistItems, [e.target.name]: e.target.checked });
   };
 
   const handleInput = (e) => {
@@ -38,29 +38,15 @@ const FilterPanel = () => {
         name="tag"
         value={text}
       />
-      {tags && <CheckList items={tags} handleChange={handleChange} />}
+      {checklistItems && (
+        <CheckList items={checklistItems} handleChange={handleChange} />
+      )}
     </div>
   );
 };
 
-export default FilterPanel;
+FilterPanel.propTypes = {
+  tags: PropTypes.array.isRequired,
+};
 
-const list = [
-  "Anime and Manga",
-  "Comics",
-  "Cosplay",
-  "Digital Art",
-  "Drawings",
-  "Fan Art",
-  "Fantasy",
-  "Game Art",
-  "Horror",
-  "Literature",
-  "Photo Manipulation",
-  "Pixel Art",
-  "Street Art",
-  "Street Photography",
-  "Traditional Art",
-  "Wallpaper",
-  "Video",
-];
+export default FilterPanel;

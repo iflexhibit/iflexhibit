@@ -9,9 +9,29 @@ export default function Home() {
       description="A content sharing platform for iACADEMY students"
     >
       <div className="home-container">
-        <FilterPanel />
+        <FilterPanel tags={tags} />
         <PostGallery />
       </div>
     </Layout>
   );
 }
+
+const tags = [
+  "Anime and Manga",
+  "Comics",
+  "Cosplay",
+  "Digital Art",
+  "Drawings",
+  "Fan Art",
+  "Fantasy",
+  "Game Art",
+  "Horror",
+  "Literature",
+  "Photo Manipulation",
+  "Pixel Art",
+  "Street Art",
+  "Street Photography",
+  "Traditional Art",
+  "Wallpaper",
+  "Video",
+];
