@@ -1,6 +1,6 @@
-const ProfileDetails = ({ profile }) => {
+const ProfileBio = ({ profile }) => {
   return (
-    <div className="profile-details">
+    <div className="profile-bio">
       <h2>About {profile.username}</h2>
       <hr />
       <div className="group">
@@ -25,4 +25,4 @@ const ProfileDetails = ({ profile }) => {
   );
 };
 
-export default ProfileDetails;
+export default ProfileBio;

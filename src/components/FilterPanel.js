@@ -6,14 +6,14 @@ import PropTypes from "prop-types";
 
 const FilterPanel = ({ tags }) => {
   const [text, setText] = useState("");
-  const [checklistItems, setChecklistItems] = useState({});
+  const [checklistItems, setChecklistItems] = useState(null);
   useEffect(() => {
     setChecklistItems(
       tags.reduce((obj, cur, i) => {
         return { ...obj, [cur]: false };
       }, {})
     );
-  }, []);
+  }, [tags]);
 
   const handleChange = (e) => {
     setChecklistItems({ ...checklistItems, [e.target.name]: e.target.checked });
