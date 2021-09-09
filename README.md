@@ -2,7 +2,7 @@
 
 **Development**: [https://iflexhibit-dev.vercel.app](https://iflexhibit-dev.vercel.app)
 
-## Developers
+## Developer Members
 
 - Lyndon Ellison Tomas
 - John Paul Ong
