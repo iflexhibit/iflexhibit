@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const Button = ({ color, fullWidth, href, icon, label, variant }) => {
   const classes = () => `btn ${variant} ${color} ${fullWidth ? "fill" : null}`;
   return href ? (
-    <a href={href} className={classes}>
+    <a href={href} className={classes()}>
       {icon && <i className={icon} aria-hidden></i>}
       {label}
     </a>
