@@ -1,5 +1,5 @@
 import "styles/globals.scss";
-import { createTheme, ThemeProvider, CssBaseline } from "@material-ui/core";
+import { createTheme, ThemeProvider } from "@material-ui/core";
 
 const theme = createTheme({
   palette: {
