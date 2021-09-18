@@ -1,3 +1,38 @@
 // media contents here
 $table: 1024px;
 $mobile: 768px;
+
+@media (max-width: $table) {
+    nav {
+
+        &.bottom {
+            display: block;
+        }
+
+        &.top {
+
+            & > div.nav-left {
+
+                & > div.divider {
+                    display: none;
+                }
+
+                & > div.links {
+                    display: none;
+                }
+            
+            }
+        }
+        
+}
+
+}
+
+@media (max-width: $mobile) {
+    nav {
+        
+        &.bottom {
+            display: block;
+        }
+    }
+}
