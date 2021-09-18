@@ -14,9 +14,9 @@ const IconButton = ({
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
     (fullHeight ? ` ${styles["fullHeight"]}` : "");
   return href ? (
-    <a className={classes} href={href}>
-      {icon}
-    </a>
+    <Link href={href}>
+      <a className={classes}>{icon}</a>
+    </Link>
   ) : (
     <button className={classes} onClick={onClick}>
       {icon}
