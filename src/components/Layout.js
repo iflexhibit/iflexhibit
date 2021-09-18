@@ -1,20 +1,21 @@
 import Head from "next/head";
-import SiteFooter from "components/SiteFooter";
-import NavbarTop from "components/NavbarTop";
-import NavbarBottom from "components/NavbarBottom";
 import PropTypes from "prop-types";
+import NavBottom from "./NavBottom";
+import NavTop from "./NavTop";
 
-const Layout = ({ title, description, children }) => {
+const Layout = ({ title, description, canonical, children }) => {
   return (
     <>
       <Head>
         <title>{title}</title>
+        <meta name="keywords" content="iflexhibit" />
         <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={canonical} />
       </Head>
-      <NavbarTop />
-      <NavbarBottom />
+      <NavTop />
       <main>{children}</main>
-      <SiteFooter links={links} />
+      <NavBottom />
     </>
   );
 };
@@ -22,37 +23,7 @@ const Layout = ({ title, description, children }) => {
 Layout.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-};
-
-const links = {
-  iFLEXHIBIT: [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "About us",
-      href: "/about",
-    },
-  ],
-  SUPPORT: [
-    {
-      label: "Help",
-      href: "/help",
-    },
-    {
-      label: "Contact us",
-      href: "/contacts",
-    },
-    {
-      label: "Report a bug",
-      href: "/bug",
-    },
-    {
-      label: "Submit feedback",
-      href: "/feedback",
-    },
-  ],
+  canonical: PropTypes.string.isRequired,
 };
 
 export default Layout;

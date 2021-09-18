@@ -1,10 +1,8 @@
-import styles from "styles/Button.module.scss";
+import styles from "styles/IconButton.module.scss";
 import PropTypes from "prop-types";
 
-const Button = ({
-  startIcon,
-  endIcon,
-  label,
+const IconButton = ({
+  icon,
   variant,
   href,
   onClick,
@@ -17,34 +15,28 @@ const Button = ({
     (fullHeight ? ` ${styles["fullHeight"]}` : "");
   return href ? (
     <a className={classes} href={href}>
-      {startIcon}
-      {label && <span>{label}</span>}
-      {endIcon}
+      {icon}
     </a>
   ) : (
     <button className={classes} onClick={onClick}>
-      {startIcon}
-      {label && <span>{label}</span>}
-      {endIcon}
+      {icon}
     </button>
   );
 };
 
-Button.propTypes = {
-  startIcon: PropTypes.element,
-  endIcon: PropTypes.element,
-  label: PropTypes.string,
-  variant: PropTypes.oneOf(["contained", "outlined", "text"]),
+IconButton.propTypes = {
+  icon: PropTypes.element,
+  variant: PropTypes.oneOf(["contained", "outlined", "text", "round"]),
   href: PropTypes.string,
   onClick: PropTypes.func,
   fullWidth: PropTypes.bool,
   fullHeight: PropTypes.bool,
 };
 
-Button.defaultProps = {
+IconButton.defaultProps = {
   variant: "text",
   fullWidth: false,
   fullHeight: false,
 };
 
-export default Button;
+export default IconButton;

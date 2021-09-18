@@ -1,20 +1,4 @@
-:root {
-  --blue: #4461ca;
-  --blue-dark: hsl(227, 56%, 45%);
-  --blue-fade: hsla(227, 56%, 53%, 0.125);
-  --black: #222730;
-  --black-25: hsla(219, 17%, 16%, 0.25);
-  --black-50: hsla(219, 17%, 16%, 0.5);
-  --black-75: hsla(219, 17%, 16%, 0.75);
-  --white: #f8f9f9;
-  --gray: #e4e7e7;
-  --green: #26d94f;
-  --red: #f43c3c;
-  --lime: #98f43c;
-  --cyan: #3cf4f4;
-  --sans: "Roboto", sans-serif;
-  --serif: "Roboto Slab", serif;
-}
+@import "_config.scss";
 
 *,
 *::before,
@@ -25,44 +9,24 @@
 }
 
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  font-family: var(--sans);
-  background-color: var(--white);
-  color: var(--black);
+  @include light;
+
+  &.dark {
+    @include dark;
+  }
+
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: $regular;
+  font-family: $body;
 }
 
 a {
-  color: var(--black);
   text-decoration: none;
 }
-
-button {
-  cursor: pointer;
-}
-
-hr {
-  opacity: 0.5;
-}
-
-main {
-  width: 100%;
-  min-height: 95vh;
-}
-
-@import "containers.scss";
-@import "SortControls.scss";
-@import "Gallery.scss";
-@import "FilterPanel.scss";
-@import "CheckList.scss";
-@import "TextField.scss";
-@import "Button.scss";
-@import "Navbar.scss";
-@import "SiteFooter.scss";
-@import "ProfileBanner.scss";
-@import "ProfileBio.scss";
-@import "media.scss";

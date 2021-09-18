@@ -1,13 +1,9 @@
-**Production**: [https://iflexhibit-main.vercel.app](https://iflexhibit-main.vercel.app)
+**Production**: [https://iflexhibit.com](https://iflexhibit.com)
 
 **Development**: [https://iflexhibit-dev.vercel.app](https://iflexhibit-dev.vercel.app)
 
-## Developer Members
+## Developers
 
 - Lyndon Ellison Tomas
 - John Paul Ong
 - Mary Nicole Yabut
-
-## To Do List
-
-- [ ] Mobile SCSS for Home Page
