@@ -1,6 +1,6 @@
 **Production**: [https://iflexhibit.com](https://iflexhibit.com)
 
-**Development**: [https://iflexhibit-dev.vercel.app](https://iflexhibit-dev.vercel.app)
+**Development**: [https://iflexhibit.vercel.app](https://iflexhibit.vercel.app)
 
 ## Developers
 
