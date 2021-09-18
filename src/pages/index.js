@@ -5,6 +5,7 @@ export default function Home() {
     <Layout
       title="iFLEXHIBIT"
       description="A content sharing platform for iACADEMY students"
+      canonical="https://iflexhibit.com/"
     ></Layout>
   );
 }
