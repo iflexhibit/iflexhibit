@@ -1,17 +1,11 @@
-import Head from "next/head";
-import NavBar from "../components/NavBar";
+import Layout from "components/Layout";
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>iFLEXHIBIT</title>
-        <meta
-          name="description"
-          content="iFLEXHIBIT is a content-sharing platform for iACADEMY students."
-        />
-      </Head>
-      <NavBar />
-    </>
+    <Layout
+      title="iFLEXHIBIT"
+      description="A content sharing platform for iACADEMY students"
+      canonical="https://iflexhibit.com/"
+    ></Layout>
   );
 }

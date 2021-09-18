@@ -1,0 +1,26 @@
+// font families
+$heading: "Rubik", sans-serif;
+$body: "Inter", sans-serif;
+
+// font weights
+$light: 300;
+$regular: 400;
+$bold: 700;
+
+// breakpoints
+$tablet: 768px;
+$desktop: 1024px;
+
+// light theme color scheme
+@mixin light {
+  --text: #fffded;
+  --background: #0c1029;
+  --primary: #3c7095;
+}
+
+// dark theme color scheme
+@mixin dark {
+  --text: #0c1029;
+  --background: #fffded;
+  --accent: #3c7095;
+}

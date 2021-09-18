@@ -19,19 +19,10 @@ class MyDocument extends Document {
             crossOrigin="true"
           />
           <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Rubik:wght@300;400;700&display=swap"
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
           <link rel="icon" href="/favicon.ico" />
-          <script
-            src="https://kit.fontawesome.com/b20e5faf37.js"
-            crossOrigin="anonymous"
-            defer
-          ></script>
         </Head>
         <body>
           <Main />
