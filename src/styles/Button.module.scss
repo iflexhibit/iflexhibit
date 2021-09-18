@@ -1,0 +1,49 @@
+@import "_config.scss";
+
+a.btn,
+button.btn {
+  min-width: fit-content;
+  min-height: 2.625rem;
+  padding: 0 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  font-family: $body;
+  font-size: 1rem;
+  font-weight: $bold;
+
+  color: var(--text);
+  background: none;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  & > span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &.contained {
+    background: var(--primary);
+  }
+
+  &.outlined {
+    border: solid 1px var(--text);
+  }
+
+  &.text {
+    color: var(--text);
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.fullHeight {
+    height: 100%;
+  }
+}
