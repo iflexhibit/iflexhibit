@@ -17,8 +17,15 @@ const Icon = ({ icon, variant }) => {
 };
 
 Icon.propTypes = {
-  icon: PropTypes.oneOf(["bars", "filters", "home", "plus", "search", "user"])
-    .isRequired,
+  icon: PropTypes.oneOf([
+    "bars",
+    "filter",
+    "home",
+    "plus",
+    "search",
+    "user",
+    "chevron-down",
+  ]),
 };
 
 export default Icon;
