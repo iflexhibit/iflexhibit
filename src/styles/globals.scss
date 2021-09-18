@@ -1,3 +1,5 @@
+@import "_config.scss";
+
 *,
 *::before,
 *::after {
@@ -12,5 +14,19 @@ html {
 }
 
 body {
+  @include light;
+
+  &.dark {
+    @include dark;
+  }
+
+  background-color: var(--background);
+  color: var(--text);
   font-size: 1rem;
+  font-weight: $regular;
+  font-family: $body;
+}
+
+a {
+  text-decoration: none;
 }
