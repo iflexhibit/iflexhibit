@@ -1,5 +1,6 @@
 import styles from "styles/IconButton.module.scss";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 const IconButton = ({
   icon,
