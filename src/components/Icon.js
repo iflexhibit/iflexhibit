@@ -10,6 +10,7 @@ const Icon = ({ icon, variant }) => {
         layout="fill"
         objectFit="contain"
         quality="100"
+        alt=""
       />
     </div>
   );
