@@ -1,0 +1,45 @@
+@import "_config.scss";
+
+a.btn,
+button.btn {
+  min-width: 2.625rem;
+  min-height: 2.625rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition: 125ms;
+
+  &.contained {
+    background: var(--primary);
+  }
+
+  &.round {
+    border: solid 1px var(--text);
+    border-radius: 50%;
+    &:hover {
+      background: var(--primary);
+    }
+  }
+
+  &.text {
+    background: none;
+    &:hover {
+      background: var(--primary);
+    }
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.fullHeight {
+    height: 100%;
+  }
+}
