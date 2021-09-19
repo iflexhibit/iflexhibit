@@ -14,6 +14,7 @@ const Posts = ({ posts }) => {
           objectFit="cover"
           className={styles["post"]}
           key={index}
+          alt={`Image title ${index}`}
         />
       ))}
     </div>
