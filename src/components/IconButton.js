@@ -1,5 +1,6 @@
 import styles from "styles/IconButton.module.scss";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 const IconButton = ({
   icon,
@@ -14,9 +15,9 @@ const IconButton = ({
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
     (fullHeight ? ` ${styles["fullHeight"]}` : "");
   return href ? (
-    <a className={classes} href={href}>
-      {icon}
-    </a>
+    <Link href={href}>
+      <a className={classes}>{icon}</a>
+    </Link>
   ) : (
     <button className={classes} onClick={onClick}>
       {icon}

@@ -1,5 +1,6 @@
 import styles from "styles/Button.module.scss";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 const Button = ({
   startIcon,
@@ -16,11 +17,13 @@ const Button = ({
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
     (fullHeight ? ` ${styles["fullHeight"]}` : "");
   return href ? (
-    <a className={classes} href={href}>
-      {startIcon}
-      {label && <span>{label}</span>}
-      {endIcon}
-    </a>
+    <Link href={href}>
+      <a className={classes}>
+        {startIcon}
+        {label && <span>{label}</span>}
+        {endIcon}
+      </a>
+    </Link>
   ) : (
     <button className={classes} onClick={onClick}>
       {startIcon}
