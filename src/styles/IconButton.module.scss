@@ -14,6 +14,7 @@ button.btn {
   border-radius: 5px;
 
   cursor: pointer;
+  user-select: none;
   transition: 125ms;
 
   &.contained {
@@ -23,14 +24,14 @@ button.btn {
   &.round {
     border: solid 1px var(--text);
     border-radius: 50%;
-    &:hover {
+    &:active {
       background: var(--primary);
     }
   }
 
   &.text {
     background: none;
-    &:hover {
+    &:active {
       background: var(--primary);
     }
   }
