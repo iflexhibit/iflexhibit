@@ -14,6 +14,7 @@ const IconButton = ({
     `${styles["btn"]} ${styles[variant]}` +
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
     (fullHeight ? ` ${styles["fullHeight"]}` : "");
+
   return href ? (
     <Link href={href}>
       <a className={classes}>{icon}</a>
@@ -38,6 +39,7 @@ IconButton.defaultProps = {
   variant: "text",
   fullWidth: false,
   fullHeight: false,
+  onClick: () => {},
 };
 
 export default IconButton;

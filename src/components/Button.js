@@ -48,6 +48,7 @@ Button.defaultProps = {
   variant: "text",
   fullWidth: false,
   fullHeight: false,
+  onClick: () => {},
 };
 
 export default Button;
