@@ -19,13 +19,19 @@ const Icon = ({ icon, variant }) => {
 Icon.propTypes = {
   icon: PropTypes.oneOf([
     "bars",
+    "chevron-down",
+    "comment",
+    "ellipsis-h",
+    "ellipsis-v",
+    "eye",
     "filter",
+    "flag",
     "home",
     "plus",
     "search",
+    "star-outline",
+    "star",
     "user",
-    "chevron-down",
-  ]),
+  ]).isRequired,
 };
-
 export default Icon;
