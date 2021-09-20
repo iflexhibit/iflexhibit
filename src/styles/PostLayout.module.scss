@@ -1,0 +1,133 @@
+@import "_config.scss";
+
+div.post {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.5rem;
+
+  & > div.image-container {
+    width: 100%;
+
+    > div {
+      position: unset !important;
+    }
+
+    .image {
+      object-fit: contain;
+      width: 100% !important;
+      position: relative !important;
+      height: unset !important;
+    }
+  }
+
+  & > div.row {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1rem;
+
+    &.tags {
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    &.stats {
+      justify-content: space-between;
+    }
+
+    &.user {
+      gap: 0.5rem;
+    }
+
+    &.tabs {
+      justify-content: center;
+    }
+
+    &.description {
+      flex-flow: column nowrap;
+    }
+
+    &.comments {
+      flex-flow: column nowrap;
+    }
+
+    & > p {
+      line-height: 1.5rem;
+      letter-spacing: 0.125px;
+    }
+
+    & > div.avatar {
+      position: relative;
+      width: 3rem;
+      height: 3rem;
+      min-width: 3rem;
+      min-height: 3rem;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    & > div.creator {
+      width: 100%;
+
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 0.125rem;
+
+      & > div.display-name {
+        font-size: 1.125rem;
+        font-weight: bold;
+        font-family: $heading;
+      }
+
+      & > div.real-name {
+        font-size: 0.75rem;
+      }
+    }
+
+    & > div.comment {
+      width: 100%;
+
+      & > div.header {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 0.5rem;
+
+        & > div.avatar {
+          position: relative;
+          width: 2rem;
+          height: 2rem;
+          min-width: 2rem;
+          min-height: 2rem;
+
+          border-radius: 50%;
+          overflow: hidden;
+        }
+
+        & > div.info {
+          width: 100%;
+          display: flex;
+          flex-flow: column nowrap;
+
+          & > span {
+            font-size: 0.75rem;
+
+            &.date {
+              opacity: 0.75;
+            }
+          }
+        }
+      }
+      & > div.body {
+        padding: 1rem;
+        margin: 0 1rem 1rem;
+        border-radius: 0 1rem 1rem 1rem;
+        background-color: darkslategrey;
+
+        & > p {
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+        }
+      }
+    }
+  }
+}
