@@ -1,0 +1,10 @@
+@import "_config.scss";
+
+span.tag {
+  padding: 0.125rem 0.5rem;
+  border-radius: 5px;
+  border: solid 1px var(--primary);
+  border-right: solid 2px orange;
+  border-bottom: solid 2px orange;
+  font-size: 0.75rem;
+}
