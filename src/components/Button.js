@@ -11,11 +11,13 @@ const Button = ({
   onClick,
   fullWidth,
   fullHeight,
+  rounded,
 }) => {
   const classes =
     `${styles["btn"]} ${styles[variant]}` +
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
-    (fullHeight ? ` ${styles["fullHeight"]}` : "");
+    (fullHeight ? ` ${styles["fullHeight"]}` : "") +
+    (rounded ? ` ${styles["rounded"]}` : "");
   return href ? (
     <Link href={href}>
       <a className={classes}>
@@ -42,12 +44,15 @@ Button.propTypes = {
   onClick: PropTypes.func,
   fullWidth: PropTypes.bool,
   fullHeight: PropTypes.bool,
+  rounded: PropTypes.bool,
 };
 
 Button.defaultProps = {
   variant: "text",
   fullWidth: false,
   fullHeight: false,
+  rounded: false,
+  onClick: () => {},
 };
 
 export default Button;

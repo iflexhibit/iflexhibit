@@ -9,11 +9,14 @@ const IconButton = ({
   onClick,
   fullWidth,
   fullHeight,
+  rounded,
 }) => {
   const classes =
     `${styles["btn"]} ${styles[variant]}` +
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
-    (fullHeight ? ` ${styles["fullHeight"]}` : "");
+    (fullHeight ? ` ${styles["fullHeight"]}` : "") +
+    (rounded ? ` ${styles["rounded"]}` : "");
+
   return href ? (
     <Link href={href}>
       <a className={classes}>{icon}</a>
@@ -27,17 +30,20 @@ const IconButton = ({
 
 IconButton.propTypes = {
   icon: PropTypes.element,
-  variant: PropTypes.oneOf(["contained", "outlined", "text", "round"]),
+  variant: PropTypes.oneOf(["contained", "outlined", "text"]),
   href: PropTypes.string,
   onClick: PropTypes.func,
   fullWidth: PropTypes.bool,
   fullHeight: PropTypes.bool,
+  rounded: PropTypes.bool,
 };
 
 IconButton.defaultProps = {
   variant: "text",
   fullWidth: false,
   fullHeight: false,
+  rounded: false,
+  onClick: () => {},
 };
 
 export default IconButton;

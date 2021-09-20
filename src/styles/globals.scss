@@ -42,3 +42,18 @@ a {
 main {
   padding: 4.75rem 1rem;
 }
+
+h1,
+h2,
+h3 {
+  font-family: $heading;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+hr {
+  background: var(--primary);
+  border: solid 1px var(--primary);
+}

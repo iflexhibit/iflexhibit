@@ -4,6 +4,8 @@ a.btn,
 button.btn {
   min-width: 2.625rem;
   min-height: 2.625rem;
+  width: 2.625rem;
+  height: 2.625rem;
 
   display: flex;
   align-items: center;
@@ -14,25 +16,24 @@ button.btn {
   border-radius: 5px;
 
   cursor: pointer;
+  user-select: none;
   transition: 125ms;
 
   &.contained {
     background: var(--primary);
   }
 
-  &.round {
+  &.outlined {
     border: solid 1px var(--text);
+    border-radius: 5px;
+  }
+
+  &.rounded {
     border-radius: 50%;
-    &:hover {
-      background: var(--primary);
-    }
   }
 
   &.text {
     background: none;
-    &:hover {
-      background: var(--primary);
-    }
   }
 
   &.fullWidth {
@@ -41,5 +42,9 @@ button.btn {
 
   &.fullHeight {
     height: 100%;
+  }
+
+  &:active {
+    background: var(--primary);
   }
 }
