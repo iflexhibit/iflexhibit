@@ -67,6 +67,7 @@ const PostLayout = () => {
             src="/assets/temp/posts/2.jpg"
             layout="fill"
             className={styles["image"]}
+            alt=""
           />
         </div>
         <div className={`${styles["row"]} ${styles["stats"]}`}>
@@ -85,7 +86,12 @@ const PostLayout = () => {
         </div>
         <div className={`${styles["row"]} ${styles["user"]}`}>
           <div className={styles["avatar"]}>
-            <Image src="/assets/temp/boi.jpg" layout="fill" objectFit="cover" />
+            <Image
+              src="/assets/temp/boi.jpg"
+              layout="fill"
+              objectFit="cover"
+              alt=""
+            />
           </div>
           <div className={styles["creator"]}>
             <div className={styles["display-name"]}>
@@ -142,6 +148,7 @@ const PostLayout = () => {
                         src="/assets/temp/boi.jpg"
                         layout="fill"
                         objectFit="cover"
+                        alt=""
                       />
                     </div>
                     <div className={styles["info"]}>

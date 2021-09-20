@@ -12,6 +12,7 @@ const NavTop = () => {
         layout="intrinsic"
         width="30"
         height="30"
+        alt=""
       />
       <IconButton icon={<Icon icon="search" />} />
     </nav>
