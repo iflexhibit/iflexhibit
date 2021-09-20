@@ -4,6 +4,8 @@ a.btn,
 button.btn {
   min-width: fit-content;
   min-height: 2.625rem;
+  width: fit-content;
+  height: 2.625rem;
   padding: 0 1.5rem;
 
   display: flex;
@@ -12,8 +14,7 @@ button.btn {
   gap: 1rem;
 
   font-family: $body;
-  font-size: 1rem;
-  font-weight: $bold;
+  font-size: 0.875rem;
 
   color: var(--text);
   background: none;
@@ -22,22 +23,30 @@ button.btn {
 
   white-space: nowrap;
   cursor: pointer;
+  transition: 125ms;
 
   & > span {
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-transform: capitalize;
+    font-weight: bold;
   }
 
   &.contained {
     background: var(--primary);
+    border: solid 1px var(--primary);
   }
 
   &.outlined {
+    background: var(--background);
     border: solid 1px var(--text);
   }
 
   &.text {
-    color: var(--text);
+    background: var(--background);
+    border: solid 1px var(--background);
+  }
+
+  &.rounded {
+    border-radius: 50rem;
   }
 
   &.fullWidth {
@@ -46,5 +55,9 @@ button.btn {
 
   &.fullHeight {
     height: 100%;
+  }
+
+  &:active {
+    background-color: var(--primary);
   }
 }
