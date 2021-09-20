@@ -6,7 +6,7 @@ const NavBottom = () => {
   return (
     <nav className={`${styles["nav"]} ${styles["bottom"]}`}>
       <IconButton icon={<Icon icon="home" />} fullWidth fullHeight />
-      <IconButton icon={<Icon icon="plus" />} variant="round" />
+      <IconButton icon={<Icon icon="plus" />} variant="outlined" rounded />
       <IconButton icon={<Icon icon="user" />} fullWidth fullHeight />
     </nav>
   );
