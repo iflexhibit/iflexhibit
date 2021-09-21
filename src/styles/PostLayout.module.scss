@@ -31,7 +31,8 @@ div.post {
       justify-content: flex-start;
     }
 
-    &.stats {
+    &.stats,
+    &.title {
       justify-content: space-between;
     }
 
@@ -43,10 +44,7 @@ div.post {
       justify-content: center;
     }
 
-    &.description {
-      flex-flow: column nowrap;
-    }
-
+    &.description,
     &.comments {
       flex-flow: column nowrap;
     }
@@ -119,7 +117,7 @@ div.post {
       }
       & > div.body {
         padding: 1rem;
-        margin: 0 1rem 1rem;
+        margin: 0.5rem 1rem 1rem;
         border-radius: 0 1rem 1rem 1rem;
         background-color: darkslategrey;
 

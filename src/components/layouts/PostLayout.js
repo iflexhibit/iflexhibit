@@ -76,7 +76,7 @@ const PostLayout = () => {
           <Stat icon={"comment"} value={post.comments_count.toLocaleString()} />
           <Stat icon={"eye"} value={post.views_count.toLocaleString()} />
         </div>
-        <div className={styles["row"]}>
+        <div className={`${styles["row"]} ${styles["title"]}`}>
           <h1>{post.title}</h1>
           <IconButton icon={<Icon icon="star-outline" />} variant="outlined" />
         </div>
