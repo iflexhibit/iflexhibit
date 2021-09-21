@@ -29,8 +29,10 @@ Icon.propTypes = {
     "home",
     "plus",
     "search",
+    "send",
     "star-outline",
     "star",
+    "times",
     "user",
   ]).isRequired,
 };
