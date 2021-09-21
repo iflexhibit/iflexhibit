@@ -21,6 +21,9 @@ button.btn {
 
   &.contained {
     background: var(--primary);
+    &:active {
+      border: solid 1px var(--text);
+    }
   }
 
   &.outlined {

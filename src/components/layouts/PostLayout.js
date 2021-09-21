@@ -10,6 +10,7 @@ import Stat from "components/Stat";
 import Button from "components/Button";
 
 const PostLayout = () => {
+  const [isCommentFieldOpen, setCommentFieldOpen] = useState(false);
   const [post] = useState({
     title: "The quick brown fox is over the lazy dog jumping!",
     likes_count: 123,
@@ -132,43 +133,82 @@ const PostLayout = () => {
               ))}
             </motion.div>
           ) : (
-            <motion.div
-              className={`${styles["row"]} ${styles["comments"]}`}
-              key={tab}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.125 }}
-            >
-              {comments.map((comment, index) => (
-                <div className={styles["comment"]} key={index}>
-                  <div className={styles["header"]}>
-                    <div className={styles["avatar"]}>
-                      <Image
-                        src="/assets/temp/boi.jpg"
-                        layout="fill"
-                        objectFit="cover"
-                        alt=""
-                      />
+            <>
+              <motion.div
+                className={`${styles["row"]} ${styles["comments"]}`}
+                key={tab}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.125 }}
+              >
+                {comments.map((comment, index) => (
+                  <div className={styles["comment"]} key={index}>
+                    <div className={styles["header"]}>
+                      <div className={styles["avatar"]}>
+                        <Image
+                          src="/assets/temp/boi.jpg"
+                          layout="fill"
+                          objectFit="cover"
+                          alt=""
+                        />
+                      </div>
+                      <div className={styles["info"]}>
+                        <span className={styles["author"]}>
+                          <b>{comment.author}</b>
+                        </span>
+                        <span className={styles["date"]}>
+                          {new Date(comment.date).toUTCString()}
+                        </span>
+                      </div>
+                      <div className={styles["controls"]}>
+                        <IconButton icon={<Icon icon="ellipsis-h" />} />
+                      </div>
                     </div>
-                    <div className={styles["info"]}>
-                      <span className={styles["author"]}>
-                        <b>{comment.author}</b>
-                      </span>
-                      <span className={styles["date"]}>
-                        {new Date(comment.date).toUTCString()}
-                      </span>
-                    </div>
-                    <div className={styles["controls"]}>
-                      <IconButton icon={<Icon icon="ellipsis-h" />} />
+                    <div className={styles["body"]}>
+                      <p>{comment.body}</p>
                     </div>
                   </div>
-                  <div className={styles["body"]}>
-                    <p>{comment.body}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+                ))}
+              </motion.div>
+              {!isCommentFieldOpen ? (
+                <motion.div
+                  key={isCommentFieldOpen}
+                  className={`${styles["new-comment"]} ${styles["control"]}`}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1.25 }}
+                  exit={{ scale: 0 }}
+                  transition={{ duration: 0.125 }}
+                >
+                  <IconButton
+                    icon={<Icon icon="comment" />}
+                    variant="contained"
+                    rounded
+                    onClick={() => setCommentFieldOpen(true)}
+                  />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={isCommentFieldOpen}
+                  className={`${styles["new-comment"]} ${styles["field"]}`}
+                  initial={{ y: 75 }}
+                  animate={{ y: 0 }}
+                  exit={{ y: 75 }}
+                  transition={{ duration: 0.125 }}
+                >
+                  <IconButton
+                    icon={<Icon icon="times" />}
+                    onClick={() => setCommentFieldOpen(false)}
+                  />
+                  <input type="text" name="new_comment" id="new_comment" />
+                  <IconButton
+                    icon={<Icon icon="send" />}
+                    variant="contained"
+                    rounded
+                  />
+                </motion.div>
+              )}
+            </>
           )}
         </AnimatePresence>
       </div>
