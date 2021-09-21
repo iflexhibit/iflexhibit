@@ -7,7 +7,7 @@ const Posts = ({ posts }) => {
   return (
     <div className={styles["posts"]}>
       {posts.map((post, index) => (
-        <Link href="/post">
+        <Link href="/post" key={index}>
           <a>
             <Image
               src={post.imgSrc}
@@ -16,7 +16,6 @@ const Posts = ({ posts }) => {
               height="100"
               objectFit="cover"
               className={styles["post"]}
-              key={index}
               alt={`Image title ${index}`}
             />
           </a>
