@@ -26,7 +26,7 @@ button.btn {
 
   & > span {
     text-transform: uppercase;
-    font-family: var(--heading);
+    font-family: $heading;
     font-size: 0.875rem;
     font-weight: bold;
   }

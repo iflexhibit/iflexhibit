@@ -6,7 +6,6 @@ import IconButton from "components/IconButton";
 import Layout from "components/Layout";
 import Tag from "components/Tag";
 import Stat from "components/Stat";
-import Button from "components/Button";
 import StarOutlineIcon from "components/icons/StarOutlineIcon";
 import EllipsisHIcon from "components/icons/EllipsisHIcon";
 import CommentIcon from "components/icons/CommentIcon";
@@ -15,7 +14,7 @@ import SendIcon from "components/icons/SendIcon";
 import EllipsisVIcon from "components/icons/EllipsisVIcon";
 import StarIcon from "components/icons/StarIcon";
 import EyeIcon from "components/icons/EyeIcon";
-import PlusIcon from "components/icons/PlusIcon";
+import ButtonGroup from "components/ButtonGroup";
 
 const PostLayout = () => {
   const [isCommentFieldOpen, setCommentFieldOpen] = useState(false);
@@ -29,7 +28,8 @@ const PostLayout = () => {
       I kept trying to come up with excuses I could say to mom that would keep her calm when she found out what happened, but the more I tried, the more I could see none of them would work.
       He was going to get her wrath and there was nothing I could say to prevent it.`,
   });
-  const [tab, setTab] = useState(true);
+  const [tabs] = useState(["Description", "Comments"]);
+  const [activeTab, setActiveTab] = useState(tabs[0]);
   const [tags] = useState([
     "3D",
     "Artistic",
@@ -114,25 +114,16 @@ const PostLayout = () => {
           <IconButton icon={<EllipsisVIcon />} />
         </div>
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
-          <Button
-            label="Description"
-            variant={!tab ? "contained" : "text"}
-            fullWidth
-            rounded
-            onClick={() => setTab(false)}
-          />
-          <Button
-            label="Comments"
-            variant={tab ? "contained" : "text"}
-            fullWidth
-            rounded
-            onClick={() => setTab(true)}
+          <ButtonGroup
+            tabs={tabs}
+            active={activeTab}
+            setActiveTab={setActiveTab}
           />
         </div>
         <AnimatePresence>
-          {!tab ? (
+          {activeTab === tabs[0] ? (
             <motion.div
-              key={tab}
+              key={activeTab}
               className={`${styles["row"]} ${styles["description"]}`}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -147,7 +138,7 @@ const PostLayout = () => {
             <>
               <motion.div
                 className={`${styles["row"]} ${styles["comments"]}`}
-                key={tab}
+                key={activeTab}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
