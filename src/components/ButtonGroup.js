@@ -1,4 +1,4 @@
-import styles from "styles/ButtonGroup.module.scss";
+import styles from "styles/Button.module.scss";
 import PropTypes from "prop-types";
 
 const ButtonGroup = ({ tabs, active, setActiveTab }) => {
@@ -8,7 +8,7 @@ const ButtonGroup = ({ tabs, active, setActiveTab }) => {
         <button
           key={tab}
           className={`${styles["btn"]} ${
-            tab === active ? styles["active"] : ""
+            styles[tab === active ? "active" : "inactive"]
           }`}
           onClick={() => setActiveTab(tab)}
         >
