@@ -2,12 +2,20 @@ import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "styles/PostLayout.module.scss";
-import Icon from "components/Icon";
 import IconButton from "components/IconButton";
 import Layout from "components/Layout";
 import Tag from "components/Tag";
 import Stat from "components/Stat";
 import Button from "components/Button";
+import StarOutlineIcon from "components/icons/StarOutlineIcon";
+import EllipsisHIcon from "components/icons/EllipsisHIcon";
+import CommentIcon from "components/icons/CommentIcon";
+import TimesIcon from "components/icons/TimesIcon";
+import SendIcon from "components/icons/SendIcon";
+import EllipsisVIcon from "components/icons/EllipsisVIcon";
+import StarIcon from "components/icons/StarIcon";
+import EyeIcon from "components/icons/EyeIcon";
+import PlusIcon from "components/icons/PlusIcon";
 
 const PostLayout = () => {
   const [isCommentFieldOpen, setCommentFieldOpen] = useState(false);
@@ -72,13 +80,16 @@ const PostLayout = () => {
           />
         </div>
         <div className={`${styles["row"]} ${styles["stats"]}`}>
-          <Stat icon={"star"} value={post.likes_count.toLocaleString()} />
-          <Stat icon={"comment"} value={post.comments_count.toLocaleString()} />
-          <Stat icon={"eye"} value={post.views_count.toLocaleString()} />
+          <Stat icon={<StarIcon />} value={post.likes_count.toLocaleString()} />
+          <Stat
+            icon={<CommentIcon />}
+            value={post.comments_count.toLocaleString()}
+          />
+          <Stat icon={<EyeIcon />} value={post.views_count.toLocaleString()} />
         </div>
         <div className={`${styles["row"]} ${styles["title"]}`}>
           <h1>{post.title}</h1>
-          <IconButton icon={<Icon icon="star-outline" />} variant="outlined" />
+          <IconButton icon={<StarOutlineIcon />} variant="outlined" />
         </div>
         <div className={`${styles["row"]} ${styles["tags"]}`}>
           {tags.map((tag) => (
@@ -100,7 +111,7 @@ const PostLayout = () => {
             </div>
             <div className={styles["real-name"]}>{post.user.realName}</div>
           </div>
-          <IconButton icon={<Icon icon="ellipsis-v" />} />
+          <IconButton icon={<EllipsisVIcon />} />
         </div>
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
           <Button
@@ -162,7 +173,7 @@ const PostLayout = () => {
                         </span>
                       </div>
                       <div className={styles["controls"]}>
-                        <IconButton icon={<Icon icon="ellipsis-h" />} />
+                        <IconButton icon={<EllipsisHIcon />} />
                       </div>
                     </div>
                     <div className={styles["body"]}>
@@ -181,7 +192,7 @@ const PostLayout = () => {
                   transition={{ duration: 0.125 }}
                 >
                   <IconButton
-                    icon={<Icon icon="comment" />}
+                    icon={<CommentIcon />}
                     variant="contained"
                     rounded
                     onClick={() => setCommentFieldOpen(true)}
@@ -197,15 +208,11 @@ const PostLayout = () => {
                   transition={{ duration: 0.125 }}
                 >
                   <IconButton
-                    icon={<Icon icon="times" />}
+                    icon={<TimesIcon />}
                     onClick={() => setCommentFieldOpen(false)}
                   />
                   <input type="text" name="new_comment" id="new_comment" />
-                  <IconButton
-                    icon={<Icon icon="send" />}
-                    variant="contained"
-                    rounded
-                  />
+                  <IconButton icon={<SendIcon />} variant="contained" rounded />
                 </motion.div>
               )}
             </>

@@ -1,13 +1,15 @@
 import styles from "styles/Nav.module.scss";
-import Icon from "./Icon";
 import IconButton from "./IconButton";
+import HomeIcon from "./icons/HomeIcon";
+import PlusIcon from "./icons/PlusIcon";
+import UserIcon from "./icons/UserIcon";
 
 const NavBottom = () => {
   return (
     <nav className={`${styles["nav"]} ${styles["bottom"]}`}>
-      <IconButton icon={<Icon icon="home" />} fullWidth fullHeight href="/" />
-      <IconButton icon={<Icon icon="plus" />} variant="outlined" rounded />
-      <IconButton icon={<Icon icon="user" />} fullWidth fullHeight />
+      <IconButton icon={<HomeIcon />} fullWidth fullHeight href="/" />
+      <IconButton icon={<PlusIcon />} variant="outlined" rounded />
+      <IconButton icon={<UserIcon />} fullWidth fullHeight />
     </nav>
   );
 };

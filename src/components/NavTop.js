@@ -1,12 +1,13 @@
 import styles from "styles/Nav.module.scss";
-import Icon from "./Icon";
 import IconButton from "./IconButton";
 import Image from "next/image";
+import BarsIcon from "./icons/BarsIcon";
+import SearchIcon from "./icons/SearchIcon";
 
 const NavTop = () => {
   return (
     <nav className={`${styles["nav"]} ${styles["top"]}`}>
-      <IconButton icon={<Icon icon="bars" />} />
+      <IconButton icon={<BarsIcon />} />
       <Image
         src="/assets/logos/brandmark.png"
         layout="intrinsic"
@@ -14,7 +15,7 @@ const NavTop = () => {
         height="30"
         alt=""
       />
-      <IconButton icon={<Icon icon="search" />} />
+      <IconButton icon={<SearchIcon />} />
     </nav>
   );
 };

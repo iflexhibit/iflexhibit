@@ -1,6 +1,6 @@
 import styles from "styles/Select.module.scss";
-import Icon from "./Icon";
 import PropTypes from "prop-types";
+import ChevronDownIcon from "./icons/ChevronDownIcon";
 
 const Select = ({ options, onChange, value }) => {
   return (
@@ -13,7 +13,7 @@ const Select = ({ options, onChange, value }) => {
         ))}
       </select>
       <div className={styles["arrow"]}>
-        <Icon icon="chevron-down" />
+        <ChevronDownIcon />
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import styles from "styles/HomePage.module.scss";
-import Icon from "components/Icon";
 import Posts from "components/Posts";
 import IconButton from "components/IconButton";
 import Layout from "components/Layout";
 import Select from "components/Select";
 import { useState, useEffect } from "react";
+import FilterIcon from "components/icons/FilterIcon";
 
 export default function Home() {
   const sortOptions = ["most viewed", "newest", "most popular"];
@@ -32,7 +32,7 @@ export default function Home() {
       canonical="https://iflexhibit.com/"
     >
       <div className={`${styles["controls"]}`}>
-        <IconButton icon={<Icon icon="filter" />} />
+        <IconButton icon={<FilterIcon />} />
         <Select
           options={sortOptions}
           value={activeSort}

@@ -13,14 +13,20 @@ $desktop: 1024px;
 
 // light theme color scheme
 @mixin light {
-  --text: #fffded;
-  --background: #0c1029;
-  --primary: #3c7095;
+  --text: hsl(53, 100%, 96%);
+  --background: hsl(240, 60%, 15%);
+  --dark: hsl(240, 60%, 12%);
+  --fade: hsl(200, 100%, 25%);
+  --primary: hsl(200, 100%, 75%);
+  --secondary: hsl(360, 100%, 65%);
 }
 
 // dark theme color scheme
 @mixin dark {
-  --text: #0c1029;
-  --background: #fffded;
-  --accent: #3c7095;
+  --text: hsl(240, 60%, 15%);
+  --background: hsl(53, 100%, 96%);
+  --dark: hsl(240, 60%, 12%);
+  --fade: hsl(200, 100%, 25%);
+  --primary: hsl(200, 100%, 75%);
+  --secondary: hsl(360, 100%, 65%);
 }

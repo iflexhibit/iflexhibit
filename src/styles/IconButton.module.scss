@@ -21,14 +21,23 @@ button.btn {
 
   &.contained {
     background: var(--primary);
+    border: solid 1px var(--primary);
+    box-shadow: 2px 2px 0 0 var(--dark);
+    path {
+      fill: var(--dark);
+    }
     &:active {
       border: solid 1px var(--text);
     }
   }
 
   &.outlined {
-    border: solid 1px var(--text);
-    border-radius: 5px;
+    background: var(--dark);
+    border: solid 1px var(--fade);
+    box-shadow: 2px 2px 0 0 var(--dark);
+    path {
+      fill: var(--primary);
+    }
   }
 
   &.rounded {
