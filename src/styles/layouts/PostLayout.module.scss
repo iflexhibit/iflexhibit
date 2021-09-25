@@ -117,12 +117,13 @@ div.post {
         }
       }
       & > div.body {
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         margin: 0.5rem 1rem 1rem;
         border-radius: 0 1rem 1rem 1rem;
         background-color: var(--dark);
 
         & > p {
+          margin: 0.5rem 0;
           font-size: 0.875rem;
           line-height: 1.25rem;
         }

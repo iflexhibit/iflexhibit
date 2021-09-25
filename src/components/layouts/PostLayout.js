@@ -42,15 +42,7 @@ const PostLayout = () => {
         id: 1,
         author: "japlong",
         date: new Date(),
-        body: `johnpaul5202 is a very creative student. He loves
-      participating when he knows the answer. It's always great to
-      see him determined to do well in his studies. I can see him
-      use new words he has learned in class constantly. I love when
-      he practices his speaking during my lessons. He seems to enjoy
-      the stories that we read in the classroom. His writing grammar
-      is more careful than his grammar when speaking. I think
-      johnpaul5202 only needs to study a little harder to achieve
-      his full potential as an excellent student.`,
+        body: `johnpaul5202 is a very creative student. He loves participating when he knows the answer. It's always great to see him determined to do well in his studies. I can see him use new words he has learned in class constantly. I love when he practices his speaking during my lessons. He seems to enjoy the stories that we read in the classroom. His writing grammar is more careful than his grammar when speaking. I think johnpaul5202 only needs to study a little harder to achieve his full potential as an excellent student.`,
         avatar: "/assets/temp/boi.jpg",
       },
       {
@@ -260,7 +252,9 @@ const CommentsSection = ({
                 </div>
               </div>
               <div className={styles["body"]}>
-                <p>{comment?.body}</p>
+                {comment?.body.split("\n").map((c, i) => (
+                  <p key={i}>{c}</p>
+                ))}
               </div>
             </motion.div>
           ))}
