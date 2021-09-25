@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import styles from "styles/PostLayout.module.scss";
+import styles from "styles/layouts/PostLayout.module.scss";
 import IconButton from "components/IconButton";
 import Layout from "components/Layout";
 import Tag from "components/Tag";

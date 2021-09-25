@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "styles/HomeLayout.module.scss";
+import styles from "styles/layouts/HomeLayout.module.scss";
 import Posts from "components/Posts";
 import IconButton from "components/IconButton";
 import Layout from "components/Layout";
