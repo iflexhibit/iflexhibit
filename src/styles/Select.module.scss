@@ -18,6 +18,8 @@ div.select {
 
     text-transform: capitalize;
     font-size: 1rem;
+    font-family: $heading;
+    font-weight: bold;
 
     & > option {
       background: var(--background);
