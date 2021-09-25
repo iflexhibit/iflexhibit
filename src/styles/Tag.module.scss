@@ -4,7 +4,7 @@ span.tag {
   padding: 0.125rem 0.5rem;
   border-radius: 5px;
   border: solid 1px var(--primary);
-  border-right: solid 2px orange;
-  border-bottom: solid 2px orange;
+  border-right: solid 2px var(--secondary);
+  border-bottom: solid 2px var(--secondary);
   font-size: 0.75rem;
 }
