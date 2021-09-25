@@ -59,4 +59,9 @@ button.btn {
   &.fullHeight {
     height: 100%;
   }
+
+  &.disabled {
+    opacity: 0.25;
+    pointer-events: none;
+  }
 }

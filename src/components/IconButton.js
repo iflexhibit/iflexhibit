@@ -10,19 +10,22 @@ const IconButton = ({
   fullWidth,
   fullHeight,
   rounded,
+  type,
+  disabled,
 }) => {
   const classes =
     `${styles["btn"]} ${styles[variant]}` +
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
     (fullHeight ? ` ${styles["fullHeight"]}` : "") +
-    (rounded ? ` ${styles["rounded"]}` : "");
+    (rounded ? ` ${styles["rounded"]}` : "") +
+    (disabled ? ` ${styles["disabled"]}` : "");
 
   return href ? (
     <Link href={href}>
       <a className={classes}>{icon}</a>
     </Link>
   ) : (
-    <button className={classes} onClick={onClick}>
+    <button className={classes} onClick={onClick} type={type}>
       {icon}
     </button>
   );
@@ -36,6 +39,8 @@ IconButton.propTypes = {
   fullWidth: PropTypes.bool,
   fullHeight: PropTypes.bool,
   rounded: PropTypes.bool,
+  type: PropTypes.oneOf(["submit", "button", "reset"]),
+  disabled: PropTypes.bool,
 };
 
 IconButton.defaultProps = {
@@ -44,6 +49,8 @@ IconButton.defaultProps = {
   fullHeight: false,
   rounded: false,
   onClick: () => {},
+  type: "button",
+  disabled: false,
 };
 
 export default IconButton;
