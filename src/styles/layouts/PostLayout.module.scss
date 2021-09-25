@@ -120,7 +120,7 @@ div.post {
         padding: 1rem;
         margin: 0.5rem 1rem 1rem;
         border-radius: 0 1rem 1rem 1rem;
-        background-color: darkslategrey;
+        background-color: var(--dark);
 
         & > p {
           font-size: 0.875rem;
