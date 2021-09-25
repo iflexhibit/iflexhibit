@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "styles/layouts/PostLayout.module.scss";
 import IconButton from "components/IconButton";
@@ -19,7 +19,7 @@ import TextArea from "components/TextArea";
 
 const PostLayout = () => {
   const [isCommentFieldOpen, setCommentFieldOpen] = useState(false);
-  const [post] = useState({
+  const [post, setPost] = useState({
     title: "The quick brown fox is over the lazy dog jumping!",
     likes_count: 123,
     comments_count: 3,
@@ -39,6 +39,7 @@ const PostLayout = () => {
     ],
     comments: [
       {
+        id: 1,
         author: "japlong",
         date: new Date(),
         body: `johnpaul5202 is a very creative student. He loves
@@ -50,22 +51,47 @@ const PostLayout = () => {
       is more careful than his grammar when speaking. I think
       johnpaul5202 only needs to study a little harder to achieve
       his full potential as an excellent student.`,
+        avatar: "/assets/temp/boi.jpg",
       },
       {
+        id: 2,
         author: "grnd",
         date: new Date(),
         body: `MyFamilyPies numbah 1!!`,
+        avatar: "/assets/temp/boi.jpg",
       },
       {
+        id: 3,
         author: "gordonramsi",
         date: new Date(),
         body: `xD`,
+        avatar: "/assets/temp/boi.jpg",
       },
     ],
     avatar: "/assets/temp/boi.jpg",
   });
   const [tabs] = useState(["Description", "Comments"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [newComment, setNewComment] = useState("");
+  const handleNewCommentChange = (e) => setNewComment(e.target.value);
+  const handleNewCommentSubmit = (e) => {
+    e.preventDefault();
+    setPost((prev) => ({
+      ...prev,
+      comments: [
+        ...prev.comments,
+        {
+          id: prev.comments.length + 1,
+          author: "Duterte",
+          date: new Date(),
+          body: newComment,
+          avatar: "/assets/temp/hmm.jpg",
+        },
+      ],
+    }));
+    setNewComment("");
+    setCommentFieldOpen(false);
+  };
   return (
     <Layout
       title="iFLEXHIBIT"
@@ -73,7 +99,6 @@ const PostLayout = () => {
       canonical="https://iflexhibit.com/post"
     >
       <div className={styles["post"]}>
-        <TextArea />
         <PostImage imgSrc="/assets/temp/posts/2.jpg" />
         <PostStats
           likes_count={post?.likes_count}
@@ -103,9 +128,12 @@ const PostLayout = () => {
           ) : (
             <CommentsSection
               activeTab={activeTab}
-              comments={post?.comments}
+              comments={[...post?.comments].reverse().map((c) => c)}
               isCommentFieldOpen={isCommentFieldOpen}
               setCommentFieldOpen={setCommentFieldOpen}
+              newComment={newComment}
+              handleNewCommentSubmit={handleNewCommentSubmit}
+              handleNewCommentChange={handleNewCommentChange}
             />
           )}
         </AnimatePresence>
@@ -188,6 +216,9 @@ const CommentsSection = ({
   comments,
   isCommentFieldOpen,
   setCommentFieldOpen,
+  newComment,
+  handleNewCommentSubmit,
+  handleNewCommentChange,
 }) => {
   return (
     <>
@@ -199,34 +230,41 @@ const CommentsSection = ({
         exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.125 }}
       >
-        {comments.map((comment, index) => (
-          <div className={styles["comment"]} key={index}>
-            <div className={styles["header"]}>
-              <div className={styles["avatar"]}>
-                <Image
-                  src="/assets/temp/boi.jpg"
-                  layout="fill"
-                  objectFit="cover"
-                  alt=""
-                />
+        <AnimatePresence>
+          {comments?.map((comment) => (
+            <motion.div
+              key={comment.id}
+              className={styles["comment"]}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <div className={styles["header"]}>
+                <div className={styles["avatar"]}>
+                  <Image
+                    src={comment?.avatar}
+                    layout="fill"
+                    objectFit="cover"
+                    alt=""
+                  />
+                </div>
+                <div className={styles["info"]}>
+                  <span className={styles["author"]}>
+                    <b>{comment?.author}</b>
+                  </span>
+                  <span className={styles["date"]}>
+                    {new Date(comment?.date).toUTCString()}
+                  </span>
+                </div>
+                <div className={styles["controls"]}>
+                  <IconButton icon={<EllipsisHIcon />} />
+                </div>
               </div>
-              <div className={styles["info"]}>
-                <span className={styles["author"]}>
-                  <b>{comment.author}</b>
-                </span>
-                <span className={styles["date"]}>
-                  {new Date(comment.date).toUTCString()}
-                </span>
+              <div className={styles["body"]}>
+                <p>{comment?.body}</p>
               </div>
-              <div className={styles["controls"]}>
-                <IconButton icon={<EllipsisHIcon />} />
-              </div>
-            </div>
-            <div className={styles["body"]}>
-              <p>{comment.body}</p>
-            </div>
-          </div>
-        ))}
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </motion.div>
       {!isCommentFieldOpen ? (
         <motion.div
@@ -245,21 +283,33 @@ const CommentsSection = ({
           />
         </motion.div>
       ) : (
-        <motion.div
+        <motion.form
           key={isCommentFieldOpen}
           className={`${styles["new-comment"]} ${styles["field"]}`}
           initial={{ y: 75 }}
           animate={{ y: 0 }}
           exit={{ y: 75 }}
           transition={{ duration: 0.125 }}
+          onSubmit={handleNewCommentSubmit}
         >
           <IconButton
             icon={<TimesIcon />}
             onClick={() => setCommentFieldOpen(false)}
           />
-          <input type="text" name="new_comment" id="new_comment" />
-          <IconButton icon={<SendIcon />} variant="contained" rounded />
-        </motion.div>
+          <TextArea
+            id="new_comment"
+            value={newComment}
+            onChange={handleNewCommentChange}
+            placeholder="Write a comment..."
+          />
+          <IconButton
+            icon={<SendIcon />}
+            variant="contained"
+            rounded
+            type="submit"
+            disabled={newComment === ""}
+          />
+        </motion.form>
       )}
     </>
   );
