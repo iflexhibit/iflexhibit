@@ -10,10 +10,11 @@ div.select {
     height: 100%;
     padding: 0 2rem 0 1.5rem;
 
-    background: var(--background);
+    background: var(--dark);
     color: var(--text);
-    border: solid 1px var(--text);
+    border: solid 1px var(--fade);
     border-radius: 5px;
+    box-shadow: 2px 2px 0 0 var(--dark);
 
     text-transform: capitalize;
     font-size: 1rem;
@@ -40,7 +41,7 @@ div.select {
     align-items: center;
     justify-content: center;
 
-    background: var(--background);
+    background: var(--dark);
     border-radius: 5px;
     pointer-events: none;
   }
