@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "styles/layouts/PostLayout.module.scss";
 import IconButton from "components/IconButton";
