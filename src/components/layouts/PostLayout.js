@@ -295,6 +295,7 @@ const CommentsSection = ({
             value={newComment}
             onChange={handleNewCommentChange}
             placeholder="Write a comment..."
+            autoFocus
           />
           <IconButton
             icon={<SendIcon />}

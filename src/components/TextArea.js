@@ -1,6 +1,6 @@
 import styles from "styles/TextArea.module.scss";
 
-const TextArea = ({ id, value, onChange, placeholder }) => {
+const TextArea = ({ id, value, onChange, placeholder, autoFocus }) => {
   const handleResize = (e) => {
     if (e.target.scrollHeight >= 136) return;
     e.target.style.height = "";
@@ -15,6 +15,7 @@ const TextArea = ({ id, value, onChange, placeholder }) => {
       value={value}
       onChange={onChange}
       placeholder={placeholder}
+      autoFocus={autoFocus}
     />
   );
 };
