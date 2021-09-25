@@ -19,33 +19,40 @@ button.btn {
   user-select: none;
   transition: 125ms;
 
-  &.contained {
+  &.contained,
+  &.outlined:active {
     background: var(--primary);
     border: solid 1px var(--primary);
     box-shadow: 2px 2px 0 0 var(--dark);
     path {
       fill: var(--dark);
-    }
-    &:active {
-      border: solid 1px var(--text);
+      stroke: var(--dark);
     }
   }
 
-  &.outlined {
+  &.outlined,
+  &.contained:active,
+  &.text:active {
     background: var(--dark);
     border: solid 1px var(--fade);
     box-shadow: 2px 2px 0 0 var(--dark);
     path {
       fill: var(--primary);
+      stroke: var(--primary);
+    }
+  }
+
+  &.text {
+    background: var(--background);
+    border: solid 1px var(--background);
+    path {
+      fill: var(--text);
+      stroke: var(--text);
     }
   }
 
   &.rounded {
     border-radius: 50%;
-  }
-
-  &.text {
-    background: none;
   }
 
   &.fullWidth {
@@ -54,9 +61,5 @@ button.btn {
 
   &.fullHeight {
     height: 100%;
-  }
-
-  &:active {
-    background: var(--primary);
   }
 }

@@ -13,7 +13,6 @@ button.btn {
   justify-content: center;
   gap: 1rem;
 
-  color: var(--text);
   background: none;
   border: none;
   border-radius: 5px;
@@ -29,23 +28,27 @@ button.btn {
     font-weight: bold;
   }
 
-  &.contained {
+  &.contained &.outlined:active {
     background: var(--primary);
     color: var(--dark);
     border: solid 1px var(--primary);
     box-shadow: 2px 2px 0 0 var(--dark);
     path {
       fill: var(--dark);
+      stroke: var(--dark);
     }
   }
 
-  &.outlined {
+  &.outlined,
+  &.contained:active,
+  &.text:active {
     background: var(--dark);
     color: var(--primary);
     border: solid 1px var(--fade);
     box-shadow: 2px 2px 0 0 var(--dark);
     path {
       fill: var(--primary);
+      stroke: var(--primary);
     }
   }
 
@@ -53,6 +56,10 @@ button.btn {
     background: var(--background);
     color: var(--text);
     border: solid 1px var(--background);
+    path {
+      fill: var(--text);
+      stroke: var(--text);
+    }
   }
 
   &.rounded {
@@ -65,10 +72,6 @@ button.btn {
 
   &.fullHeight {
     height: 100%;
-  }
-
-  &:active {
-    background-color: var(--primary);
   }
 }
 
@@ -95,6 +98,7 @@ div.btn-group {
       color: var(--dark);
       path {
         fill: var(--dark);
+        stroke: var(--dark);
       }
     }
 
@@ -103,6 +107,7 @@ div.btn-group {
       color: var(--primary);
       path {
         fill: var(--primary);
+        stroke: var(--primary);
       }
     }
   }
