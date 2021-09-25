@@ -1,9 +1,9 @@
-import styles from "styles/HomePage.module.scss";
+import { useState, useEffect } from "react";
+import styles from "styles/HomeLayout.module.scss";
 import Posts from "components/Posts";
 import IconButton from "components/IconButton";
 import Layout from "components/Layout";
 import Select from "components/Select";
-import { useState, useEffect } from "react";
 import FilterIcon from "components/icons/FilterIcon";
 
 const HomeLayout = () => {
@@ -32,7 +32,7 @@ const HomeLayout = () => {
       canonical="https://iflexhibit.com/"
     >
       <div className={`${styles["controls"]}`}>
-        <IconButton icon={<FilterIcon />} />
+        <IconButton icon={<FilterIcon />} variant="outlined" />
         <Select
           options={sortOptions}
           value={activeSort}
