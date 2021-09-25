@@ -1,7 +1,7 @@
 @import "_config.scss";
 
 nav.nav {
-  position: fixed;
+  position: sticky;
 
   width: 100%;
   height: 3.75rem;
@@ -17,7 +17,7 @@ nav.nav {
     top: 0;
 
     padding: 0 1rem;
-    border-bottom: solid 1px var(--primary);
+    border-bottom: solid 1px var(--fade);
     justify-content: space-between;
   }
 
@@ -27,6 +27,6 @@ nav.nav {
     justify-content: space-between;
     gap: 1rem;
 
-    border-top: solid 1px var(--primary);
+    border-top: solid 1px var(--fade);
   }
 }
