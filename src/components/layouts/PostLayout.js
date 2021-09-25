@@ -27,43 +27,44 @@ const PostLayout = () => {
     description: `It's not his fault. I know you're going to want to, but you can't blame him. He really has no idea how it happened.
       I kept trying to come up with excuses I could say to mom that would keep her calm when she found out what happened, but the more I tried, the more I could see none of them would work.
       He was going to get her wrath and there was nothing I could say to prevent it.`,
+    tags: [
+      "3D",
+      "Artistic",
+      "Game",
+      "Photography",
+      "Typography",
+      "Video",
+      "Vintage",
+    ],
+    comments: [
+      {
+        author: "japlong",
+        date: new Date(),
+        body: `johnpaul5202 is a very creative student. He loves
+      participating when he knows the answer. It's always great to
+      see him determined to do well in his studies. I can see him
+      use new words he has learned in class constantly. I love when
+      he practices his speaking during my lessons. He seems to enjoy
+      the stories that we read in the classroom. His writing grammar
+      is more careful than his grammar when speaking. I think
+      johnpaul5202 only needs to study a little harder to achieve
+      his full potential as an excellent student.`,
+      },
+      {
+        author: "grnd",
+        date: new Date(),
+        body: `MyFamilyPies numbah 1!!`,
+      },
+      {
+        author: "gordonramsi",
+        date: new Date(),
+        body: `xD`,
+      },
+    ],
+    avatar: "/assets/temp/boi.jpg",
   });
   const [tabs] = useState(["Description", "Comments"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const [tags] = useState([
-    "3D",
-    "Artistic",
-    "Game",
-    "Photography",
-    "Typography",
-    "Video",
-    "Vintage",
-  ]);
-  const [comments] = useState([
-    {
-      author: "japlong",
-      date: new Date(),
-      body: `johnpaul5202 is a very creative student. He loves
-    participating when he knows the answer. It's always great to
-    see him determined to do well in his studies. I can see him
-    use new words he has learned in class constantly. I love when
-    he practices his speaking during my lessons. He seems to enjoy
-    the stories that we read in the classroom. His writing grammar
-    is more careful than his grammar when speaking. I think
-    johnpaul5202 only needs to study a little harder to achieve
-    his full potential as an excellent student.`,
-    },
-    {
-      author: "grnd",
-      date: new Date(),
-      body: `MyFamilyPies numbah 1!!`,
-    },
-    {
-      author: "gordonramsi",
-      date: new Date(),
-      body: `xD`,
-    },
-  ]);
   return (
     <Layout
       title="iFLEXHIBIT"
@@ -71,48 +72,19 @@ const PostLayout = () => {
       canonical="https://iflexhibit.com/post"
     >
       <div className={styles["post"]}>
-        <div className={styles["image-container"]}>
-          <Image
-            src="/assets/temp/posts/2.jpg"
-            layout="fill"
-            className={styles["image"]}
-            alt=""
-          />
-        </div>
-        <div className={`${styles["row"]} ${styles["stats"]}`}>
-          <Stat icon={<StarIcon />} value={post.likes_count.toLocaleString()} />
-          <Stat
-            icon={<CommentIcon />}
-            value={post.comments_count.toLocaleString()}
-          />
-          <Stat icon={<EyeIcon />} value={post.views_count.toLocaleString()} />
-        </div>
-        <div className={`${styles["row"]} ${styles["title"]}`}>
-          <h1>{post.title}</h1>
-          <IconButton icon={<StarOutlineIcon />} variant="outlined" />
-        </div>
-        <div className={`${styles["row"]} ${styles["tags"]}`}>
-          {tags.map((tag) => (
-            <Tag key={tag} tag={tag} />
-          ))}
-        </div>
-        <div className={`${styles["row"]} ${styles["user"]}`}>
-          <div className={styles["avatar"]}>
-            <Image
-              src="/assets/temp/boi.jpg"
-              layout="fill"
-              objectFit="cover"
-              alt=""
-            />
-          </div>
-          <div className={styles["creator"]}>
-            <div className={styles["display-name"]}>
-              {post.user.displayName}
-            </div>
-            <div className={styles["real-name"]}>{post.user.realName}</div>
-          </div>
-          <IconButton icon={<EllipsisVIcon />} />
-        </div>
+        <PostImage imgSrc="/assets/temp/posts/2.jpg" />
+        <PostStats
+          likes_count={post?.likes_count}
+          comments_count={post?.comments_count}
+          views_count={post?.views_count}
+        />
+        <PostTitle title={post?.title} />
+        <PostTags tags={post?.tags} />
+        <PostAuthor
+          avatar={post?.avatar}
+          displayName={post?.user?.displayName}
+          realName={post?.user?.realName}
+        />
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
           <ButtonGroup
             tabs={tabs}
@@ -122,95 +94,172 @@ const PostLayout = () => {
         </div>
         <AnimatePresence>
           {activeTab === tabs[0] ? (
-            <motion.div
-              key={activeTab}
-              className={`${styles["row"]} ${styles["description"]}`}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.125 }}
-            >
-              {post.description.split("\n").map((p, index) => (
-                <p key={index}>{p}</p>
-              ))}
-            </motion.div>
+            <DescriptionSection
+              activeTab={activeTab}
+              description={post?.description}
+            />
           ) : (
-            <>
-              <motion.div
-                className={`${styles["row"]} ${styles["comments"]}`}
-                key={activeTab}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.125 }}
-              >
-                {comments.map((comment, index) => (
-                  <div className={styles["comment"]} key={index}>
-                    <div className={styles["header"]}>
-                      <div className={styles["avatar"]}>
-                        <Image
-                          src="/assets/temp/boi.jpg"
-                          layout="fill"
-                          objectFit="cover"
-                          alt=""
-                        />
-                      </div>
-                      <div className={styles["info"]}>
-                        <span className={styles["author"]}>
-                          <b>{comment.author}</b>
-                        </span>
-                        <span className={styles["date"]}>
-                          {new Date(comment.date).toUTCString()}
-                        </span>
-                      </div>
-                      <div className={styles["controls"]}>
-                        <IconButton icon={<EllipsisHIcon />} />
-                      </div>
-                    </div>
-                    <div className={styles["body"]}>
-                      <p>{comment.body}</p>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-              {!isCommentFieldOpen ? (
-                <motion.div
-                  key={isCommentFieldOpen}
-                  className={`${styles["new-comment"]} ${styles["control"]}`}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1.25 }}
-                  exit={{ scale: 0 }}
-                  transition={{ duration: 0.125 }}
-                >
-                  <IconButton
-                    icon={<CommentIcon />}
-                    variant="contained"
-                    rounded
-                    onClick={() => setCommentFieldOpen(true)}
-                  />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key={isCommentFieldOpen}
-                  className={`${styles["new-comment"]} ${styles["field"]}`}
-                  initial={{ y: 75 }}
-                  animate={{ y: 0 }}
-                  exit={{ y: 75 }}
-                  transition={{ duration: 0.125 }}
-                >
-                  <IconButton
-                    icon={<TimesIcon />}
-                    onClick={() => setCommentFieldOpen(false)}
-                  />
-                  <input type="text" name="new_comment" id="new_comment" />
-                  <IconButton icon={<SendIcon />} variant="contained" rounded />
-                </motion.div>
-              )}
-            </>
+            <CommentsSection
+              activeTab={activeTab}
+              comments={post?.comments}
+              isCommentFieldOpen={isCommentFieldOpen}
+              setCommentFieldOpen={setCommentFieldOpen}
+            />
           )}
         </AnimatePresence>
       </div>
     </Layout>
+  );
+};
+
+const PostImage = ({ imgSrc }) => {
+  return (
+    <div className={styles["image-container"]}>
+      <Image src={imgSrc} layout="fill" className={styles["image"]} alt="" />
+    </div>
+  );
+};
+
+const PostStats = ({ likes_count, comments_count, views_count }) => {
+  return (
+    <div className={`${styles["row"]} ${styles["stats"]}`}>
+      <Stat icon={<StarIcon />} value={likes_count.toLocaleString()} />
+      <Stat icon={<CommentIcon />} value={comments_count.toLocaleString()} />
+      <Stat icon={<EyeIcon />} value={views_count.toLocaleString()} />
+    </div>
+  );
+};
+
+const PostTitle = ({ title }) => {
+  return (
+    <div className={`${styles["row"]} ${styles["title"]}`}>
+      <h1>{title}</h1>
+      <IconButton icon={<StarOutlineIcon />} variant="outlined" />
+    </div>
+  );
+};
+
+const PostTags = ({ tags }) => {
+  return (
+    <div className={`${styles["row"]} ${styles["tags"]}`}>
+      {tags.map((tag) => (
+        <Tag key={tag} tag={tag} />
+      ))}
+    </div>
+  );
+};
+
+const PostAuthor = ({ avatar, displayName, realName }) => {
+  return (
+    <div className={`${styles["row"]} ${styles["user"]}`}>
+      <div className={styles["avatar"]}>
+        <Image src={avatar} layout="fill" objectFit="cover" alt="" />
+      </div>
+      <div className={styles["creator"]}>
+        <div className={styles["display-name"]}>{displayName}</div>
+        <div className={styles["real-name"]}>{realName}</div>
+      </div>
+      <IconButton icon={<EllipsisVIcon />} />
+    </div>
+  );
+};
+
+const DescriptionSection = ({ activeTab, description }) => {
+  return (
+    <motion.div
+      key={activeTab}
+      className={`${styles["row"]} ${styles["description"]}`}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.125 }}
+    >
+      {description.split("\n").map((p, index) => (
+        <p key={index}>{p}</p>
+      ))}
+    </motion.div>
+  );
+};
+
+const CommentsSection = ({
+  activeTab,
+  comments,
+  isCommentFieldOpen,
+  setCommentFieldOpen,
+}) => {
+  return (
+    <>
+      <motion.div
+        className={`${styles["row"]} ${styles["comments"]}`}
+        key={activeTab}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.125 }}
+      >
+        {comments.map((comment, index) => (
+          <div className={styles["comment"]} key={index}>
+            <div className={styles["header"]}>
+              <div className={styles["avatar"]}>
+                <Image
+                  src="/assets/temp/boi.jpg"
+                  layout="fill"
+                  objectFit="cover"
+                  alt=""
+                />
+              </div>
+              <div className={styles["info"]}>
+                <span className={styles["author"]}>
+                  <b>{comment.author}</b>
+                </span>
+                <span className={styles["date"]}>
+                  {new Date(comment.date).toUTCString()}
+                </span>
+              </div>
+              <div className={styles["controls"]}>
+                <IconButton icon={<EllipsisHIcon />} />
+              </div>
+            </div>
+            <div className={styles["body"]}>
+              <p>{comment.body}</p>
+            </div>
+          </div>
+        ))}
+      </motion.div>
+      {!isCommentFieldOpen ? (
+        <motion.div
+          key={isCommentFieldOpen}
+          className={`${styles["new-comment"]} ${styles["control"]}`}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1.25 }}
+          exit={{ scale: 0 }}
+          transition={{ duration: 0.125 }}
+        >
+          <IconButton
+            icon={<CommentIcon />}
+            variant="contained"
+            rounded
+            onClick={() => setCommentFieldOpen(true)}
+          />
+        </motion.div>
+      ) : (
+        <motion.div
+          key={isCommentFieldOpen}
+          className={`${styles["new-comment"]} ${styles["field"]}`}
+          initial={{ y: 75 }}
+          animate={{ y: 0 }}
+          exit={{ y: 75 }}
+          transition={{ duration: 0.125 }}
+        >
+          <IconButton
+            icon={<TimesIcon />}
+            onClick={() => setCommentFieldOpen(false)}
+          />
+          <input type="text" name="new_comment" id="new_comment" />
+          <IconButton icon={<SendIcon />} variant="contained" rounded />
+        </motion.div>
+      )}
+    </>
   );
 };
 
