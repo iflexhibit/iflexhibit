@@ -15,6 +15,7 @@ import EllipsisVIcon from "components/icons/EllipsisVIcon";
 import StarIcon from "components/icons/StarIcon";
 import EyeIcon from "components/icons/EyeIcon";
 import ButtonGroup from "components/ButtonGroup";
+import TextArea from "components/TextArea";
 
 const PostLayout = () => {
   const [isCommentFieldOpen, setCommentFieldOpen] = useState(false);
@@ -72,6 +73,7 @@ const PostLayout = () => {
       canonical="https://iflexhibit.com/post"
     >
       <div className={styles["post"]}>
+        <TextArea />
         <PostImage imgSrc="/assets/temp/posts/2.jpg" />
         <PostStats
           likes_count={post?.likes_count}
