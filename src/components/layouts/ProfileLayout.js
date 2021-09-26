@@ -5,7 +5,7 @@ import styles from "styles/layouts/ProfileLayout.module.scss";
 import Stat from "components/Stat";
 import StarIcon from "components/icons/StarIcon";
 import EyeIcon from "components/icons/EyeIcon";
-import Calendar from "components/icons/Calendar";
+import CalendarIcon from "components/icons/CalendarIcon";
 import ButtonGroup from "components/ButtonGroup";
 import Posts from "components/Posts";
 import Select from "components/Select";
@@ -120,7 +120,7 @@ const ProfileStats = ({ likes_count, views_count, date_joined }) => {
       <Stat icon={<StarIcon />} value={likes_count?.toLocaleString()} />
       <Stat icon={<EyeIcon />} value={views_count?.toLocaleString()} />
       <Stat
-        icon={<Calendar />}
+        icon={<CalendarIcon />}
         value={new Date(date_joined).toJSON().split("T")[0]}
       />
     </div>
