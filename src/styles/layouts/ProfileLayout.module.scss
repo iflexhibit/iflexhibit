@@ -47,6 +47,9 @@ div.profile {
 
     &.tabs {
       margin: 1rem 0;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding: 0.125rem;
     }
 
     &.about {
