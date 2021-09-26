@@ -66,3 +66,9 @@ hr {
 small {
   font-size: 0.75rem;
 }
+
+label {
+  color: var(--primary);
+  font-weight: $bold;
+  font-size: 0.875rem;
+}
