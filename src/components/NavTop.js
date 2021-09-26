@@ -9,7 +9,7 @@ const NavTop = () => {
     <nav className={`${styles["nav"]} ${styles["top"]}`}>
       <IconButton icon={<BarsIcon />} />
       <Image
-        src="/assets/logos/brandmark.png"
+        src="/assets/logos/brandmark.svg"
         layout="intrinsic"
         width="30"
         height="30"
