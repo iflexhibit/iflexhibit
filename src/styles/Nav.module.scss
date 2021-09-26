@@ -1,8 +1,6 @@
 @import "./config";
 
 nav.nav {
-  position: sticky;
-
   width: 100%;
   height: 3.75rem;
 
@@ -14,6 +12,7 @@ nav.nav {
   z-index: 90;
 
   &.top {
+    position: sticky;
     top: 0;
 
     padding: 0 1rem;
@@ -22,6 +21,7 @@ nav.nav {
   }
 
   &.bottom {
+    position: fixed;
     bottom: 0;
 
     justify-content: space-between;
