@@ -20,12 +20,15 @@ const ButtonGroup = ({ tabs, active, setActiveTab }) => {
 };
 
 ButtonGroup.propTypes = {
-  items: PropTypes.array,
+  tabs: PropTypes.array,
   active: PropTypes.oneOfType([PropTypes.string]),
+  setActiveTab: PropTypes.func,
 };
 
 ButtonGroup.defaultProps = {
-  items: [],
+  tabs: [],
+  active: "",
+  setActiveTab: () => {},
 };
 
 export default ButtonGroup;
