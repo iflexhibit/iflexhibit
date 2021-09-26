@@ -38,6 +38,7 @@ div.post {
 
     &.user {
       gap: 0.5rem;
+      justify-content: space-between;
     }
 
     &.tabs {
@@ -55,31 +56,37 @@ div.post {
       letter-spacing: 0.125px;
     }
 
-    & > div.avatar {
-      position: relative;
-      width: 3rem;
-      height: 3rem;
-      min-width: 3rem;
-      min-height: 3rem;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    & > div.creator {
-      width: 100%;
-
+    & > a.profile {
       display: flex;
-      flex-flow: column nowrap;
-      gap: 0.125rem;
+      flex-flow: row nowrap;
+      gap: 0.5rem;
 
-      & > div.display-name {
-        font-size: 1.125rem;
-        font-weight: bold;
-        font-family: $heading;
+      & > div.avatar {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        min-width: 3rem;
+        min-height: 3rem;
+        border-radius: 5px;
+        overflow: hidden;
       }
 
-      & > div.real-name {
-        font-size: 0.75rem;
+      & > div.creator {
+        width: 100%;
+
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 0.125rem;
+
+        & > div.display-name {
+          font-size: 1.125rem;
+          font-weight: bold;
+          font-family: $heading;
+        }
+
+        & > div.real-name {
+          font-size: 0.75rem;
+        }
       }
     }
 

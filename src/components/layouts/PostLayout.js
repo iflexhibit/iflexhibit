@@ -175,17 +175,17 @@ const PostTags = ({ tags }) => {
 const PostAuthor = ({ avatar, displayName, realName }) => {
   return (
     <div className={`${styles["row"]} ${styles["user"]}`}>
-      <div className={styles["avatar"]}>
-        <Image src={avatar} layout="fill" objectFit="cover" alt="" />
-      </div>
-      <div className={styles["creator"]}>
-        <div className={styles["display-name"]}>
-          <Link href="/profile">
-            <a>{displayName}</a>
-          </Link>
-        </div>
-        <div className={styles["real-name"]}>{realName}</div>
-      </div>
+      <Link href="/profile">
+        <a className={styles["profile"]}>
+          <div className={styles["avatar"]}>
+            <Image src={avatar} layout="fill" objectFit="cover" alt="" />
+          </div>
+          <div className={styles["creator"]}>
+            <div className={styles["display-name"]}>{displayName}</div>
+            <div className={styles["real-name"]}>{realName}</div>
+          </div>
+        </a>
+      </Link>
       <IconButton icon={<EllipsisVIcon />} />
     </div>
   );
