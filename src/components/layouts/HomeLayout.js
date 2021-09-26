@@ -10,21 +10,18 @@ const HomeLayout = () => {
   const sortOptions = ["most viewed", "newest", "most popular"];
   const [activeSort, setActiveSort] = useState(sortOptions[0]);
   const handleSortChange = (e) => setActiveSort(e.target.value);
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    setPosts([
-      { imgSrc: "/assets/temp/posts/1.jpg" },
-      { imgSrc: "/assets/temp/posts/2.jpg" },
-      { imgSrc: "/assets/temp/posts/3.jpg" },
-      { imgSrc: "/assets/temp/posts/4.jpg" },
-      { imgSrc: "/assets/temp/posts/5.jpg" },
-      { imgSrc: "/assets/temp/posts/6.jpg" },
-      { imgSrc: "/assets/temp/posts/7.jpg" },
-      { imgSrc: "/assets/temp/posts/8.jpg" },
-      { imgSrc: "/assets/temp/posts/9.jpg" },
-      { imgSrc: "/assets/temp/posts/10.jpg" },
-    ]);
-  }, []);
+  const [posts] = useState([
+    { imgSrc: "/assets/temp/posts/1.jpg" },
+    { imgSrc: "/assets/temp/posts/2.jpg" },
+    { imgSrc: "/assets/temp/posts/3.jpg" },
+    { imgSrc: "/assets/temp/posts/4.jpg" },
+    { imgSrc: "/assets/temp/posts/5.jpg" },
+    { imgSrc: "/assets/temp/posts/6.jpg" },
+    { imgSrc: "/assets/temp/posts/7.jpg" },
+    { imgSrc: "/assets/temp/posts/8.jpg" },
+    { imgSrc: "/assets/temp/posts/9.jpg" },
+    { imgSrc: "/assets/temp/posts/10.jpg" },
+  ]);
   return (
     <Layout
       title="iFLEXHIBIT"

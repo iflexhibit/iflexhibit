@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "styles/layouts/PostLayout.module.scss";
@@ -178,7 +179,11 @@ const PostAuthor = ({ avatar, displayName, realName }) => {
         <Image src={avatar} layout="fill" objectFit="cover" alt="" />
       </div>
       <div className={styles["creator"]}>
-        <div className={styles["display-name"]}>{displayName}</div>
+        <div className={styles["display-name"]}>
+          <Link href="/profile">
+            <a>{displayName}</a>
+          </Link>
+        </div>
         <div className={styles["real-name"]}>{realName}</div>
       </div>
       <IconButton icon={<EllipsisVIcon />} />
@@ -241,7 +246,11 @@ const CommentsSection = ({
                 </div>
                 <div className={styles["info"]}>
                   <span className={styles["author"]}>
-                    <b>{comment?.author}</b>
+                    <Link href="/profile">
+                      <a>
+                        <b>{comment?.author}</b>
+                      </a>
+                    </Link>
                   </span>
                   <span className={styles["date"]}>
                     {new Date(comment?.date).toUTCString()}
