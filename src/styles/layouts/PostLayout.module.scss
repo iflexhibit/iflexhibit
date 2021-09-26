@@ -96,29 +96,36 @@ div.post {
       & > div.header {
         display: flex;
         flex-flow: row nowrap;
+        justify-content: space-between;
         gap: 0.5rem;
-
-        & > div.avatar {
-          position: relative;
-          width: 2rem;
-          height: 2rem;
-          min-width: 2rem;
-          min-height: 2rem;
-
-          border-radius: 50%;
-          overflow: hidden;
-        }
-
-        & > div.info {
-          width: 100%;
+        & > a.commenter {
           display: flex;
-          flex-flow: column nowrap;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          gap: 0.5rem;
 
-          & > span {
-            font-size: 0.75rem;
+          & > div.avatar {
+            position: relative;
+            width: 2rem;
+            height: 2rem;
+            min-width: 2rem;
+            min-height: 2rem;
 
-            &.date {
-              opacity: 0.75;
+            border-radius: 50%;
+            overflow: hidden;
+          }
+
+          & > div.info {
+            width: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+
+            & > span {
+              font-size: 0.75rem;
+
+              &.date {
+                opacity: 0.75;
+              }
             }
           }
         }

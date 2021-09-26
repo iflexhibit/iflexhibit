@@ -236,26 +236,26 @@ const CommentsSection = ({
               animate={{ opacity: 1 }}
             >
               <div className={styles["header"]}>
-                <div className={styles["avatar"]}>
-                  <Image
-                    src={comment?.avatar}
-                    layout="fill"
-                    objectFit="cover"
-                    alt=""
-                  />
-                </div>
-                <div className={styles["info"]}>
-                  <span className={styles["author"]}>
-                    <Link href="/profile">
-                      <a>
+                <Link href="/profile">
+                  <a className={styles["commenter"]}>
+                    <div className={styles["avatar"]}>
+                      <Image
+                        src={comment?.avatar}
+                        layout="fill"
+                        objectFit="cover"
+                        alt=""
+                      />
+                    </div>
+                    <div className={styles["info"]}>
+                      <span className={styles["author"]}>
                         <b>{comment?.author}</b>
-                      </a>
-                    </Link>
-                  </span>
-                  <span className={styles["date"]}>
-                    {new Date(comment?.date).toUTCString()}
-                  </span>
-                </div>
+                      </span>
+                      <span className={styles["date"]}>
+                        {new Date(comment?.date).toUTCString()}
+                      </span>
+                    </div>
+                  </a>
+                </Link>
                 <div className={styles["controls"]}>
                   <IconButton icon={<EllipsisHIcon />} />
                 </div>
