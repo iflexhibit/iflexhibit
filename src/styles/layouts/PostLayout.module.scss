@@ -52,6 +52,12 @@ div.post {
       flex-flow: column nowrap;
     }
 
+    &.description {
+      padding: 1rem;
+      background: var(--dark);
+      border-radius: 1rem;
+    }
+
     & > p {
       line-height: 1.5rem;
       letter-spacing: 0.125px;
