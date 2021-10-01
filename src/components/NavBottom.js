@@ -9,7 +9,7 @@ const NavBottom = () => {
     <nav className={`${styles["nav"]} ${styles["bottom"]}`}>
       <IconButton icon={<HomeIcon />} fullWidth fullHeight href="/" />
       <IconButton icon={<PlusIcon />} variant="outlined" rounded />
-      <IconButton icon={<UserIcon />} fullWidth fullHeight href="/settings" />
+      <IconButton icon={<UserIcon />} fullWidth fullHeight href="/account" />
     </nav>
   );
 };

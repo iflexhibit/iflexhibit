@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import styles from "styles/layouts/SettingsLayout.module.scss";
+import styles from "styles/layouts/AccountLayout.module.scss";
 import ButtonGroup from "components/ButtonGroup";
 import Layout from "components/Layout.js";
 import Button from "components/Button";
@@ -10,7 +10,7 @@ import TextInput from "components/TextInput";
 import TextArea from "components/TextArea";
 import RedoIcon from "components/icons/RedoIcon";
 
-const SettingsLayout = () => {
+const AccountLayout = () => {
   const [tabs] = useState(["Profile", "Preferences"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [user] = useState({
@@ -61,11 +61,11 @@ const SettingsLayout = () => {
 
   return (
     <Layout
-      title="Settings | iFLEXHIBIT"
+      title="Account | iFLEXHIBIT"
       description="A content sharing platform for iACADEMY students"
-      canonical="https://iflexhibit.com/settings"
+      canonical="https://iflexhibit.com/account"
     >
-      <div className={styles["settings"]}>
+      <div className={styles["account"]}>
         <div className={`${styles["row"]} ${styles["header"]}`}>
           <h1>Account Settings</h1>
           <small>
@@ -178,4 +178,4 @@ const SettingsLayout = () => {
   );
 };
 
-export default SettingsLayout;
+export default AccountLayout;
