@@ -10,6 +10,7 @@ import TextArea from "components/TextArea";
 import TrashIcon from "components/icons/TrashIcon";
 import RedoIcon from "components/icons/RedoIcon";
 import Toggle from "components/Toggle";
+import { motion } from "framer-motion";
 
 const AccountLayout = () => {
   const [tabs] = useState(["Profile", "Preferences"]);
@@ -124,59 +125,6 @@ const AccountLayout = () => {
   );
 };
 
-const PreferencesSection = ({
-  currentPreferences,
-  newPreferences,
-  handlePreferencesChange,
-  handlePreferencesSubmit,
-}) => {
-  return (
-    <div className={styles["preferences"]}>
-      <h2>Choose which profile information you want others to see.</h2>
-      <div className={`${styles["row"]} ${styles["options"]}`}>
-        <Toggle
-          right="Full Name"
-          id="show_fullname"
-          checked={
-            newPreferences?.show_fullname !== null
-              ? newPreferences?.show_fullname
-              : currentPreferences?.show_fullname
-          }
-          onChange={handlePreferencesChange}
-        />
-        <Toggle
-          right="Email"
-          id="show_email"
-          checked={
-            newPreferences?.show_email !== null
-              ? newPreferences?.show_email
-              : currentPreferences?.show_email
-          }
-          onChange={handlePreferencesChange}
-        />
-        <Toggle
-          right="Contact Number"
-          id="show_contact"
-          checked={
-            newPreferences?.show_contact !== null
-              ? newPreferences?.show_contact
-              : currentPreferences?.show_contact
-          }
-          onChange={handlePreferencesChange}
-        />
-      </div>
-      <Button
-        type="submit"
-        label="save changes"
-        variant="contained"
-        rounded
-        fullWidth
-        onClick={handlePreferencesSubmit}
-      />
-    </div>
-  );
-};
-
 const ProfileSection = ({
   user,
   handleFormReset,
@@ -185,7 +133,12 @@ const ProfileSection = ({
   handleProfileChange,
 }) => {
   return (
-    <div className={styles["profile"]}>
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.125 }}
+      className={styles["profile"]}
+    >
       <div className={`${styles["row"]} ${styles["avatar"]}`}>
         <label>Profile Photo</label>
         <div className={`${styles["image"]}`}>
@@ -267,7 +220,65 @@ const ProfileSection = ({
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
+  );
+};
+
+const PreferencesSection = ({
+  currentPreferences,
+  newPreferences,
+  handlePreferencesChange,
+  handlePreferencesSubmit,
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.125 }}
+      className={styles["preferences"]}
+    >
+      <h2>Choose which profile information you want others to see.</h2>
+      <div className={`${styles["row"]} ${styles["options"]}`}>
+        <Toggle
+          right="Full Name"
+          id="show_fullname"
+          checked={
+            newPreferences?.show_fullname !== null
+              ? newPreferences?.show_fullname
+              : currentPreferences?.show_fullname
+          }
+          onChange={handlePreferencesChange}
+        />
+        <Toggle
+          right="Email"
+          id="show_email"
+          checked={
+            newPreferences?.show_email !== null
+              ? newPreferences?.show_email
+              : currentPreferences?.show_email
+          }
+          onChange={handlePreferencesChange}
+        />
+        <Toggle
+          right="Contact Number"
+          id="show_contact"
+          checked={
+            newPreferences?.show_contact !== null
+              ? newPreferences?.show_contact
+              : currentPreferences?.show_contact
+          }
+          onChange={handlePreferencesChange}
+        />
+      </div>
+      <Button
+        type="submit"
+        label="save changes"
+        variant="contained"
+        rounded
+        fullWidth
+        onClick={handlePreferencesSubmit}
+      />
+    </motion.div>
   );
 };
 
