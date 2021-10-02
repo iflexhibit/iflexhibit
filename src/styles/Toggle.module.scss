@@ -1,0 +1,59 @@
+@import "./config";
+
+div.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  & > label {
+    font-size: 0.875rem;
+    color: var(--text);
+
+    &.track {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 14px;
+
+      & > input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      & > span.slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--primary-fade);
+        transition: 0.4s;
+        border-radius: 18px;
+
+        &:before {
+          position: absolute;
+          content: "";
+          height: 20px;
+          width: 20px;
+          left: 0;
+          bottom: 0;
+          background-color: var(--text);
+          transition: 0.4s;
+          border-radius: 50%;
+          transform: translateY(3px);
+        }
+      }
+
+      & > input:focus + span.slider {
+        box-shadow: 0 0 1px var(--primary-fade);
+      }
+
+      & > input:checked + span.slider:before {
+        background-color: var(--primary);
+        transform: translate(16px, 2.5px);
+      }
+    }
+  }
+}
