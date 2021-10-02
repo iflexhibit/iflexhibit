@@ -112,24 +112,18 @@ const PostLayout = () => {
             setActiveTab={setActiveTab}
           />
         </div>
-        <AnimatePresence>
-          {activeTab === tabs[0] ? (
-            <DescriptionSection
-              activeTab={activeTab}
-              description={post?.description}
-            />
-          ) : (
-            <CommentsSection
-              activeTab={activeTab}
-              comments={[...post?.comments].reverse().map((c) => c)}
-              isCommentFieldOpen={isCommentFieldOpen}
-              setCommentFieldOpen={setCommentFieldOpen}
-              newComment={newComment}
-              handleNewCommentSubmit={handleNewCommentSubmit}
-              handleNewCommentChange={handleNewCommentChange}
-            />
-          )}
-        </AnimatePresence>
+        {activeTab === tabs[0] ? (
+          <DescriptionSection description={post?.description} />
+        ) : (
+          <CommentsSection
+            comments={[...post?.comments].reverse().map((c) => c)}
+            isCommentFieldOpen={isCommentFieldOpen}
+            setCommentFieldOpen={setCommentFieldOpen}
+            newComment={newComment}
+            handleNewCommentSubmit={handleNewCommentSubmit}
+            handleNewCommentChange={handleNewCommentChange}
+          />
+        )}
       </div>
     </Layout>
   );
@@ -191,14 +185,12 @@ const PostAuthor = ({ avatar, displayName, realName }) => {
   );
 };
 
-const DescriptionSection = ({ activeTab, description }) => {
+const DescriptionSection = ({ description }) => {
   return (
     <motion.div
-      key={activeTab}
       className={`${styles["row"]} ${styles["description"]}`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.125 }}
     >
       {description.split("\n").map((p, index) => (
@@ -209,7 +201,6 @@ const DescriptionSection = ({ activeTab, description }) => {
 };
 
 const CommentsSection = ({
-  activeTab,
   comments,
   isCommentFieldOpen,
   setCommentFieldOpen,
@@ -221,10 +212,8 @@ const CommentsSection = ({
     <>
       <motion.div
         className={`${styles["row"]} ${styles["comments"]}`}
-        key={activeTab}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.125 }}
       >
         <AnimatePresence>

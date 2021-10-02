@@ -69,7 +69,6 @@ const ProfileLayout = () => {
         <AnimatePresence>
           {activeTab === tabs[0] ? (
             <AboutSection
-              activeTab={activeTab}
               realName={user?.realName}
               email={user?.email}
               contact={user?.contact}
@@ -77,7 +76,6 @@ const ProfileLayout = () => {
             />
           ) : (
             <WorksSection
-              activeTab={activeTab}
               posts={user?.posts}
               activeSort={activeSort}
               sortOptions={sortOptions}
@@ -127,14 +125,12 @@ const ProfileStats = ({ likes_count, views_count, date_joined }) => {
   );
 };
 
-const AboutSection = ({ activeTab, realName, email, contact, bio }) => {
+const AboutSection = ({ realName, email, contact, bio }) => {
   return (
     <motion.div
-      key={activeTab}
       className={`${styles["row"]} ${styles["about"]}`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.125 }}
     >
       <div className={styles["info"]}>
@@ -161,20 +157,12 @@ const AboutSection = ({ activeTab, realName, email, contact, bio }) => {
   );
 };
 
-const WorksSection = ({
-  activeTab,
-  posts,
-  sortOptions,
-  activeSort,
-  handleSortChange,
-}) => {
+const WorksSection = ({ posts, sortOptions, activeSort, handleSortChange }) => {
   return (
     <motion.div
-      key={activeTab}
       className={`${styles["row"]} ${styles["works"]}`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.125 }}
     >
       <Select
