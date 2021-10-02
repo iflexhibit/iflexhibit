@@ -30,6 +30,8 @@ div.account {
         width: 12rem;
         height: 12rem;
 
+        align-self: center;
+
         border-radius: 100%;
         overflow: hidden;
       }
@@ -62,6 +64,9 @@ div.account {
       display: flex;
       flex-flow: column nowrap;
       gap: 1rem;
+      background: var(--dark);
+      border-radius: 1rem;
+      padding: 1rem;
 
       & > div.group {
         display: flex;
@@ -89,6 +94,17 @@ div.account {
           gap: 1rem;
         }
       }
+    }
+  }
+
+  & > div.preferences {
+    & > div.options {
+      gap: 1.5rem;
+      padding: 1rem;
+      margin: 1rem 0;
+
+      background: var(--dark);
+      border-radius: 1rem;
     }
   }
 }

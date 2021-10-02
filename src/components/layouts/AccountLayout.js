@@ -9,6 +9,7 @@ import TextInput from "components/TextInput";
 import TextArea from "components/TextArea";
 import TrashIcon from "components/icons/TrashIcon";
 import RedoIcon from "components/icons/RedoIcon";
+import Toggle from "components/Toggle";
 
 const AccountLayout = () => {
   const [tabs] = useState(["Profile", "Preferences"]);
@@ -27,6 +28,11 @@ const AccountLayout = () => {
     He usually seems to be quite cheerful in class. He loves when he can use new words he learned in class.
     I always try to encourage him to practice his speaking in class, so he can continue to improve his speaking skills. I am quite happy with the effort he puts into reading in the classroom. He applies the grammar he knows well when he is writing in English.
     I am cheering johnpaul5202 on to do well in his English studies.`,
+    preferences: {
+      show_fullname: true,
+      show_email: true,
+      show_contact: true,
+    },
   });
 
   const [newProfile, setNewProfile] = useState({
@@ -34,6 +40,21 @@ const AccountLayout = () => {
     contact: "",
     bio: "",
   });
+
+  const [newPreferences, setNewPreferences] = useState({
+    show_fullname: null,
+    show_email: false,
+    show_contact: null,
+  });
+
+  const handlePreferencesChange = (e) => {
+    setNewPreferences((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.checked,
+    }));
+  };
+
+  const handlePreferencesSubmit = () => {};
 
   const handleProfileChange = (e) => {
     setNewProfile((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -82,15 +103,77 @@ const AccountLayout = () => {
             setActiveTab={setActiveTab}
           />
         </div>
-        <ProfileSection
-          user={user}
-          handleFormReset={handleFormReset}
-          handleFormSubmit={handleFormSubmit}
-          newProfile={newProfile}
-          handleProfileChange={handleProfileChange}
-        />
+        {activeTab === tabs[0] ? (
+          <ProfileSection
+            user={user}
+            handleFormReset={handleFormReset}
+            handleFormSubmit={handleFormSubmit}
+            newProfile={newProfile}
+            handleProfileChange={handleProfileChange}
+          />
+        ) : (
+          <PreferencesSection
+            currentPreferences={user?.preferences}
+            newPreferences={newPreferences}
+            handlePreferencesChange={handlePreferencesChange}
+            handlePreferencesSubmit={handlePreferencesSubmit}
+          />
+        )}
       </div>
     </Layout>
+  );
+};
+
+const PreferencesSection = ({
+  currentPreferences,
+  newPreferences,
+  handlePreferencesChange,
+  handlePreferencesSubmit,
+}) => {
+  return (
+    <div className={styles["preferences"]}>
+      <h2>Choose which profile information you want others to see.</h2>
+      <div className={`${styles["row"]} ${styles["options"]}`}>
+        <Toggle
+          right="Full Name"
+          id="show_fullname"
+          checked={
+            newPreferences?.show_fullname !== null
+              ? newPreferences?.show_fullname
+              : currentPreferences?.show_fullname
+          }
+          onChange={handlePreferencesChange}
+        />
+        <Toggle
+          right="Email"
+          id="show_email"
+          checked={
+            newPreferences?.show_email !== null
+              ? newPreferences?.show_email
+              : currentPreferences?.show_email
+          }
+          onChange={handlePreferencesChange}
+        />
+        <Toggle
+          right="Contact Number"
+          id="show_contact"
+          checked={
+            newPreferences?.show_contact !== null
+              ? newPreferences?.show_contact
+              : currentPreferences?.show_contact
+          }
+          onChange={handlePreferencesChange}
+        />
+      </div>
+      <Button
+        type="submit"
+        label="save changes"
+        variant="contained"
+        rounded
+        fullWidth
+        onClick={handlePreferencesSubmit}
+      />
+    </div>
   );
 };
 
