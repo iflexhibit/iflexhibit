@@ -28,14 +28,30 @@ button.btn {
     font-weight: bold;
   }
 
-  &.contained &.outlined:active {
+  &.contained,
+  &.outlined:active {
     background: var(--primary);
     color: var(--dark);
     border: solid 1px var(--primary);
     box-shadow: 2px 2px 0 0 var(--dark);
     path {
       fill: var(--dark);
-      stroke: var(--dark);
+    }
+  }
+
+  &.warning {
+    background: var(--dark);
+    color: var(--secondary);
+    border: solid 1px var(--secondary-fade);
+    box-shadow: 2px 2px 0 0 var(--dark);
+    path {
+      fill: var(--secondary);
+    }
+    &:active {
+      background: var(--secondary);
+      path {
+        fill: var(--text);
+      }
     }
   }
 
@@ -44,11 +60,10 @@ button.btn {
   &.text:active {
     background: var(--dark);
     color: var(--primary);
-    border: solid 1px var(--fade);
+    border: solid 1px var(--primary-fade);
     box-shadow: 2px 2px 0 0 var(--dark);
     path {
       fill: var(--primary);
-      stroke: var(--primary);
     }
   }
 
@@ -58,7 +73,6 @@ button.btn {
     border: solid 1px var(--background);
     path {
       fill: var(--text);
-      stroke: var(--text);
     }
   }
 
@@ -87,7 +101,7 @@ div.btn-group {
   height: fit-content;
 
   border-radius: 30px;
-  border: solid 1px var(--fade);
+  border: solid 1px var(--primary-fade);
   box-shadow: 2px 2px 0 0 var(--dark);
 
   display: flex;

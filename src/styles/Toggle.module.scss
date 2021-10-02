@@ -1,0 +1,64 @@
+@import "./config";
+
+div.toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  & > label {
+    font-size: 0.875rem;
+    color: var(--text);
+
+    &.track {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 14px;
+
+      & > input {
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+
+      & > span.slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        background-color: var(--primary-fade);
+        border-radius: 18px;
+
+        transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
+        cursor: pointer;
+
+        &:before {
+          position: absolute;
+          content: "";
+          left: 0;
+          bottom: 0;
+
+          width: 20px;
+          height: 20px;
+
+          background-color: var(--text);
+          border-radius: 50%;
+
+          transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
+          transform: translateY(3px);
+        }
+      }
+
+      & > input:focus + span.slider {
+        box-shadow: 0 0 1px var(--primary-fade);
+      }
+
+      & > input:checked + span.slider:before {
+        background-color: var(--primary);
+        transform: translate(16px, 2.5px);
+      }
+    }
+  }
+}

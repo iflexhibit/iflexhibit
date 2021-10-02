@@ -29,11 +29,26 @@ button.btn {
     }
   }
 
+  &.warning {
+    background: var(--dark);
+    border: solid 1px var(--secondary-fade);
+    box-shadow: 2px 2px 0 0 var(--dark);
+    path {
+      fill: var(--secondary);
+    }
+    &:active {
+      background: var(--secondary);
+      path {
+        fill: var(--text);
+      }
+    }
+  }
+
   &.outlined,
   &.contained:active,
   &.text:active {
     background: var(--dark);
-    border: solid 1px var(--fade);
+    border: solid 1px var(--primary-fade);
     box-shadow: 2px 2px 0 0 var(--dark);
     path {
       fill: var(--primary);

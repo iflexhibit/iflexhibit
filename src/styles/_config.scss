@@ -16,9 +16,10 @@ $desktop: 1024px;
   --text: hsl(53, 100%, 96%);
   --background: hsl(240, 60%, 15%);
   --dark: hsl(240, 60%, 12%);
-  --fade: hsl(200, 100%, 25%);
   --primary: hsl(200, 100%, 75%);
+  --primary-fade: hsl(200, 100%, 25%);
   --secondary: hsl(360, 100%, 65%);
+  --secondary-fade: hsl(360, 100%, 25%);
 }
 
 // dark theme color scheme
@@ -28,5 +29,7 @@ $desktop: 1024px;
   --dark: hsl(240, 60%, 12%);
   --fade: hsl(200, 100%, 25%);
   --primary: hsl(200, 100%, 75%);
+  --primary-fade: hsl(200, 100%, 25%);
   --secondary: hsl(360, 100%, 65%);
+  --secondary-fade: hsl(360, 100%, 25%);
 }

@@ -33,7 +33,7 @@ const IconButton = ({
 
 IconButton.propTypes = {
   icon: PropTypes.element,
-  variant: PropTypes.oneOf(["contained", "outlined", "text"]),
+  variant: PropTypes.oneOf(["contained", "outlined", "text", "warning"]),
   href: PropTypes.string,
   onClick: PropTypes.func,
   fullWidth: PropTypes.bool,

@@ -42,7 +42,7 @@ Button.propTypes = {
   startIcon: PropTypes.element,
   endIcon: PropTypes.element,
   label: PropTypes.string,
-  variant: PropTypes.oneOf(["contained", "outlined", "text"]),
+  variant: PropTypes.oneOf(["contained", "outlined", "text", "warning"]),
   href: PropTypes.string,
   onClick: PropTypes.func,
   fullWidth: PropTypes.bool,

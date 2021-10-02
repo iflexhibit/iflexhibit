@@ -1,0 +1,111 @@
+@import "../config";
+
+div.account {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.5rem;
+  overflow-x: hidden;
+
+  div.row {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.75rem;
+
+    &.header {
+      gap: 0.125rem;
+    }
+  }
+
+  & > div.profile {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+
+    & > div.avatar {
+      align-items: flex-start;
+
+      & > div.image {
+        position: relative;
+        min-width: 12rem;
+        min-height: 12rem;
+        width: 12rem;
+        height: 12rem;
+
+        align-self: center;
+
+        border-radius: 100%;
+        overflow: hidden;
+      }
+
+      & > div.avatar-controls {
+        width: 100%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1rem;
+      }
+    }
+
+    & > div.banner {
+      & > div.image {
+        position: relative;
+        width: 100%;
+        height: 10rem;
+      }
+      & > div.banner-controls {
+        width: 100%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1rem;
+      }
+    }
+
+    & > div.default {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 1rem;
+      background: var(--dark);
+      border-radius: 1rem;
+      padding: 1rem;
+
+      & > div.group {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 0.125rem;
+      }
+    }
+
+    & > div.form {
+      & > form {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1rem;
+
+        & > div.group {
+          height: fit-content;
+          display: flex;
+          flex-flow: column nowrap;
+          gap: 0.25rem;
+        }
+
+        & > div.form-controls {
+          display: flex;
+          flex-flow: row nowrap;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+
+  & > div.preferences {
+    & > div.options {
+      gap: 1.5rem;
+      padding: 1rem;
+      margin: 1rem 0;
+
+      background: var(--dark);
+      border-radius: 1rem;
+    }
+  }
+}
