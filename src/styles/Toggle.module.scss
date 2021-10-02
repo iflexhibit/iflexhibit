@@ -8,12 +8,14 @@ div.toggle {
   & > label {
     font-size: 0.875rem;
     color: var(--text);
+    flex-grow: 1;
 
     &.track {
       position: relative;
       display: inline-block;
       width: 36px;
       height: 14px;
+      flex-grow: 0;
 
       & > input {
         width: 0;
