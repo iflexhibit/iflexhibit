@@ -20,7 +20,7 @@ const LegalLayout = () => {
             alt="iflexhibit brandmark"
           />
           <Image
-            src="/assets/logos/lettermark.png"
+            src="/assets/logos/lettermark.svg"
             width="200"
             height="50"
             objectFit="contain"
