@@ -11,6 +11,20 @@ const LegalLayout = () => {
       canonical="https://iflexhibit.com/legal"
     >
       <div className={styles["legal"]}>
+        <div className={styles["logos"]}>
+          <Image
+            src="/assets/logos/brandmark.svg"
+            width="50"
+            height="50"
+            objectFit="contain"
+          />
+          <Image
+            src="/assets/logos/lettermark.png"
+            width="200"
+            height="50"
+            objectFit="contain"
+          />
+        </div>
         <TermsSection />
         <PrivacySection />
         <Button href="/" label="i agree" variant="contained" />

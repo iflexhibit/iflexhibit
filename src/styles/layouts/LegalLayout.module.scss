@@ -3,7 +3,16 @@
 div.legal {
   display: flex;
   flex-flow: column nowrap;
-  gap: 2rem;
+  gap: 1.5rem;
+
+  & > div.logos {
+    margin-top: 1rem;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
 
   & > section.terms,
   & > section.privacy {
