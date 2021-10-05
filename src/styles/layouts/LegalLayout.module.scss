@@ -3,15 +3,21 @@
 div.legal {
   display: flex;
   flex-flow: column nowrap;
-  gap: 1.5rem;
+  gap: 2rem;
 
   & > div.logos {
-    margin-top: 1rem;
+    margin-top: 2rem;
     align-self: center;
+
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+  }
+
+  & > div.controls {
+    width: 100%;
+    align-self: flex-end;
   }
 
   & > section.terms,

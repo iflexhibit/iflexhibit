@@ -27,7 +27,14 @@ const LegalLayout = () => {
         </div>
         <TermsSection />
         <PrivacySection />
-        <Button href="/" label="i agree" variant="contained" />
+        <div className={styles["controls"]}>
+          <Button
+            href="/"
+            label="go back to home page"
+            variant="contained"
+            fullWidth
+          />
+        </div>
       </div>
     </Layout>
   );
