@@ -2,8 +2,6 @@ import Head from "next/head";
 import PropTypes from "prop-types";
 import NavBottom from "./NavBottom";
 import NavTop from "./NavTop";
-import MainMenu from "./MainMenu";
-
 const Layout = ({ title, description, canonical, children }) => {
   return (
     <>
@@ -15,7 +13,6 @@ const Layout = ({ title, description, canonical, children }) => {
         <link rel="canonical" href={canonical} />
       </Head>
       <NavTop />
-      <MainMenu />
       <main>{children}</main>
       <NavBottom />
     </>

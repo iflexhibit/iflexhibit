@@ -4,6 +4,7 @@ import styles from "styles/Nav.module.scss";
 import IconButton from "./IconButton";
 import BarsIcon from "./icons/BarsIcon";
 import SearchIcon from "./icons/SearchIcon";
+import MainMenu from "./MainMenu";
 
 const NavTop = () => {
   return (
@@ -21,6 +22,7 @@ const NavTop = () => {
         </a>
       </Link>
       <IconButton icon={<SearchIcon />} />
+      <MainMenu />
     </nav>
   );
 };
