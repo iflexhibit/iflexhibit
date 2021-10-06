@@ -12,6 +12,12 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <link rel="manifest" href="/manifest.json" />
+          <link
+            rel="apple-touch-icon"
+            href="/assets/logos/brandmark192.png"
+          ></link>
+          <meta name="theme-color" content="#FFFDEB" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"

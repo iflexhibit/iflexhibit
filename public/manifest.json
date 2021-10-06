@@ -1,0 +1,22 @@
+{
+  "name": "iFlexhibit",
+  "short_name": "iFlexhibit",
+  "icons": [
+    {
+      "src": "/assets/logos/brandmark192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+
+    {
+      "src": "/assets/logos/brandmark512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#FFFDEB",
+  "background_color": "#FFFDEB",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
