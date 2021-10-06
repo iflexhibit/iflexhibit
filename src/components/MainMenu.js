@@ -41,7 +41,12 @@ const MainMenu = () => {
       >
         <div className={styles["top"]}>
           <div className={styles["avatar"]}>
-            <Image src="/assets/temp/hmm.jpg" layout="fill" objectFit="cover" />
+            <Image
+              src="/assets/temp/hmm.jpg"
+              layout="fill"
+              objectFit="cover"
+              alt="avatar"
+            />
           </div>
           <div className={styles["info"]}>
             <div className={styles["user"]}>{username}</div>
