@@ -1,59 +1,111 @@
 @import "./config";
 
 div.mainmenu {
-  position: fixed;
+  position: absolute;
+  top: 100%;
   left: 0;
-  top: 0;
   right: 0;
   bottom: 0;
-  background: var(--black-fade);
-  z-index: 99;
+  margin: 1px auto 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
 
   & > div.menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-
-    width: 75vw;
+    position: relative;
+    width: 90%;
+    height: min-content;
 
     display: flex;
     flex-flow: column nowrap;
+    justify-content: space-between;
 
     background: var(--background);
+    border-radius: 0 0 1rem 1rem;
+    border: solid 1px var(--primary-fade);
+    border-top: solid 1px var(--background);
+    z-index: 99;
+
+    overflow: hidden;
 
     & > div.top {
-      width: 100%;
-      height: 3.75rem;
-      padding: 1.25rem 2rem;
+      padding: 1rem;
 
-      a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+
+      & > div.avatar {
         position: relative;
-        display: block;
+        width: 5rem;
+        height: 5rem;
+
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      & > div.info {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+
+        & > div.user {
+          font-weight: $bold;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    & > div.links {
+      padding: 0 1rem;
+
+      border-top: solid 1px var(--primary-fade);
+      border-bottom: solid 1px var(--primary-fade);
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+
+      & > div.link {
         width: 100%;
-        height: 100%;
+        border-bottom: solid 1px var(--primary-fade);
+        &:last-of-type {
+          border-bottom: none;
+        }
+        a {
+          padding: 1rem;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 1.5rem;
+          & > span {
+            font-weight: $bold;
+            font-size: 0.875rem;
+          }
+          &:active {
+            background: var(--primary-fade);
+          }
+        }
       }
     }
 
     & > div.bottom {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-
-      height: 3.75rem;
-      padding: 0 1.25rem;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 1rem;
     }
-
-    & > div.exit {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      margin: 0.5rem;
-    }
+  }
+  & > div.underlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--black-fade);
+    z-index: 80;
   }
 }
