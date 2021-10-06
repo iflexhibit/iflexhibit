@@ -5,6 +5,12 @@
 /.pnp
 .pnp.js
 
+# pwa
+public/sw.js
+public/sw.js.map
+public/worker-*.js
+public/worker-*.js.map
+
 # testing
 /coverage
 
