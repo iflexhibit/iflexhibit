@@ -142,7 +142,12 @@ const ProfileSection = ({
       <div className={`${styles["row"]} ${styles["avatar"]}`}>
         <label>Profile Photo</label>
         <div className={`${styles["image"]}`}>
-          <Image src={user?.avatarImg} layout="fill" objectFit="cover" />
+          <Image
+            src={user?.avatarImg}
+            layout="fill"
+            objectFit="cover"
+            alt="avatar image"
+          />
         </div>
         <div className={`${styles["avatar-controls"]}`}>
           <IconButton icon={<TrashIcon />} variant="warning" rounded />
@@ -152,7 +157,12 @@ const ProfileSection = ({
       <div className={`${styles["row"]} ${styles["banner"]}`}>
         <label>Profile Banner</label>
         <div className={`${styles["image"]}`}>
-          <Image src={user?.bannerImg} layout="fill" objectFit="cover" />
+          <Image
+            src={user?.bannerImg}
+            layout="fill"
+            objectFit="cover"
+            alt="profile background"
+          />
         </div>
         <div className={`${styles["banner-controls"]}`}>
           <IconButton icon={<TrashIcon />} variant="warning" rounded />

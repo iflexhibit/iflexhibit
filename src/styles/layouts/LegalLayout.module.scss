@@ -1,0 +1,58 @@
+@import "../config";
+
+div.legal {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+
+  & > div.logos {
+    margin-top: 2rem;
+    align-self: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  & > div.controls {
+    width: 100%;
+    align-self: flex-end;
+  }
+
+  & > section.terms,
+  & > section.privacy {
+    & > div.body {
+      max-height: 25rem;
+      padding: 0.5rem;
+      padding-left: 2rem;
+      margin: 0.5rem 0;
+
+      border-radius: 1rem;
+      background: var(--dark);
+      border: solid 1rem var(--dark);
+      box-shadow: 0 0 0 1px var(--primary-fade);
+
+      overflow-y: auto;
+      h2 {
+        margin: 0.75rem 0;
+      }
+      h3 {
+        margin: 0.5rem 0 0.25rem;
+      }
+      & > ol {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1.5rem;
+        ol {
+          margin: 0.5rem 0 0.5rem 1rem;
+        }
+      }
+      p,
+      li {
+        line-height: 1.5rem;
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
