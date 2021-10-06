@@ -17,7 +17,7 @@ class MyDocument extends Document {
             rel="apple-touch-icon"
             href="/assets/logos/brandmark192.png"
           ></link>
-          <meta name="theme-color" content="#FFFDEB" />
+          <meta name="theme-color" content="#0F0F3D" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
