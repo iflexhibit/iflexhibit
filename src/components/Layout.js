@@ -2,7 +2,6 @@ import Head from "next/head";
 import PropTypes from "prop-types";
 import NavBottom from "./NavBottom";
 import NavTop from "./NavTop";
-
 const Layout = ({ title, description, canonical, children }) => {
   return (
     <>
