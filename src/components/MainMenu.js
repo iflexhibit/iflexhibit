@@ -10,7 +10,7 @@ import BlocksIcon from "./icons/BlocksIcon";
 import FlagIcon from "./icons/FlagIcon";
 import { motion } from "framer-motion";
 
-const MainMenu = () => {
+const MainMenu = ({ closeMenu }) => {
   const [{ username, usertype }] = useState({
     username: "nikkieyabs",
     usertype: "administrator",
@@ -23,14 +23,15 @@ const MainMenu = () => {
   ]);
   return (
     <div className={styles["mainmenu"]}>
-      <motion.div
+      <motion.button
         key="underlay"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
         className={styles["underlay"]}
-      ></motion.div>
+        onClick={closeMenu}
+      ></motion.button>
       <motion.div
         key="menu"
         initial={{ height: "0%" }}

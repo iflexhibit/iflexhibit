@@ -28,9 +28,10 @@ const NavTop = () => {
         </a>
       </Link>
       <IconButton icon={<SearchIcon />} />
-
       <AnimatePresence>
-        {isMenuOpen && <MainMenu key={isMenuOpen} isOpen={isMenuOpen} />}
+        {isMenuOpen && (
+          <MainMenu key={isMenuOpen} closeMenu={() => setMenuOpen(false)} />
+        )}
       </AnimatePresence>
     </nav>
   );
