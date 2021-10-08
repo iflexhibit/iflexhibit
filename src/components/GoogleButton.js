@@ -17,7 +17,7 @@ const GoogleButton = ({ fullWidth }) => {
           src={"/assets/google/" + image}
           layout="fill"
           objectFit="contain"
-          alt=""
+          alt="Continue with Google"
         />
       </a>
     </Link>

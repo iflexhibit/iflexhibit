@@ -14,6 +14,7 @@ const LoginLayout = () => {
               src="/assets/logos/brandmark.svg"
               layout="fill"
               objectFit="contain"
+              alt=""
             />
           </div>
           <div className={styles["lettermark"]}>
@@ -21,6 +22,7 @@ const LoginLayout = () => {
               src="/assets/logos/lettermark.svg"
               layout="fill"
               objectFit="contain"
+              alt=""
             />
           </div>
         </a>
