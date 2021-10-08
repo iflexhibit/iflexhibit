@@ -28,6 +28,11 @@ button.btn {
     font-weight: bold;
   }
 
+  & > svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
   &.contained,
   &.outlined:active {
     background: var(--primary);
