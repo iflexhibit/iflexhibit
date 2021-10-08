@@ -35,6 +35,7 @@ const LegalLayout = () => {
             label="go back to home page"
             variant="contained"
             fullWidth
+            text="uppercase"
           />
         </div>
       </div>

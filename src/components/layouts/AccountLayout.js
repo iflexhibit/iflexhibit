@@ -151,7 +151,13 @@ const ProfileSection = ({
         </div>
         <div className={`${styles["avatar-controls"]}`}>
           <IconButton icon={<TrashIcon />} variant="warning" rounded />
-          <Button label="Upload a photo" fullWidth variant="outlined" rounded />
+          <Button
+            label="Upload a photo"
+            fullWidth
+            variant="outlined"
+            rounded
+            text="uppercase"
+          />
         </div>
       </div>
       <div className={`${styles["row"]} ${styles["banner"]}`}>
@@ -166,7 +172,13 @@ const ProfileSection = ({
         </div>
         <div className={`${styles["banner-controls"]}`}>
           <IconButton icon={<TrashIcon />} variant="warning" rounded />
-          <Button label="Upload a photo" fullWidth variant="outlined" rounded />
+          <Button
+            label="Upload a photo"
+            fullWidth
+            variant="outlined"
+            rounded
+            text="uppercase"
+          />
         </div>
       </div>
       <div className={`${styles["row"]} ${styles["default"]}`}>
@@ -226,6 +238,7 @@ const ProfileSection = ({
               variant="contained"
               rounded
               fullWidth
+              text="uppercase"
             />
           </div>
         </form>
@@ -287,6 +300,7 @@ const PreferencesSection = ({
         rounded
         fullWidth
         onClick={handlePreferencesSubmit}
+        text="uppercase"
       />
     </motion.div>
   );
