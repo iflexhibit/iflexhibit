@@ -67,7 +67,13 @@ const MainMenu = ({ closeMenu }) => {
           ))}
         </div>
         <div className={styles["bottom"]}>
-          <Button label="sign out" variant="contained" fullWidth />
+          <Button
+            label="sign out"
+            variant="contained"
+            fullWidth
+            href="/login"
+            text="uppercase"
+          />
         </div>
       </motion.div>
     </div>
