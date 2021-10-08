@@ -80,3 +80,11 @@ label {
   font-weight: $bold;
   font-size: 0.875rem;
 }
+
+svg {
+  width: 1rem;
+  height: 1rem;
+  path {
+    fill: var(--text);
+  }
+}
