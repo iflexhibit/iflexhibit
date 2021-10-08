@@ -22,7 +22,7 @@ button.btn {
   transition: 125ms;
 
   & > span {
-    text-transform: uppercase;
+    text-transform: none;
     font-family: $heading;
     font-size: 0.875rem;
     font-weight: bold;
@@ -96,6 +96,24 @@ button.btn {
   &.disabled {
     opacity: 0.25;
     pointer-events: none;
+  }
+
+  &.uppercase {
+    & > span {
+      text-transform: uppercase;
+    }
+  }
+
+  &.lowercase {
+    & > span {
+      text-transform: lowercase;
+    }
+  }
+
+  &.capitalize {
+    & > span {
+      text-transform: capitalize;
+    }
   }
 }
 
