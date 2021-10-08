@@ -42,13 +42,13 @@ const LoginLayout = () => {
           />
         </div>
         <div className={styles["notice"]}>
-          By continuing, you agree to iFlexhibit's{" "}
+          By continuing, you agree to iFlexhibit&apos;s{" "}
           <Link href="/legal#terms">
             <a>
               <b>Terms and Conditions</b>
             </a>
           </Link>{" "}
-          and acknowledge you've read our{" "}
+          and acknowledge you&apos;ve read our{" "}
           <Link href="/legal#privacy">
             <a>
               <b>Privacy Policy</b>
