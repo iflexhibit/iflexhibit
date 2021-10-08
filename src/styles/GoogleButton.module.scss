@@ -1,0 +1,18 @@
+@import "./config";
+
+a.google {
+  position: relative;
+  width: 15rem;
+  height: 2.625rem;
+
+  background: white;
+  box-shadow: 2px 2px 0 0 var(--dark);
+
+  display: flex;
+  border-radius: 2.5rem;
+  overflow: hidden;
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
