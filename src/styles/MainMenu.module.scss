@@ -13,7 +13,7 @@ div.mainmenu {
 
   & > div.menu {
     position: relative;
-    width: 90%;
+    width: 100%;
     height: min-content;
 
     display: flex;
@@ -21,9 +21,7 @@ div.mainmenu {
     justify-content: space-between;
 
     background: var(--background);
-    border-radius: 0 0 1rem 1rem;
-    border: solid 1px var(--primary-fade);
-    border-top: solid 1px var(--background);
+    border-bottom: solid 1px var(--primary-fade);
     z-index: 99;
 
     overflow: hidden;
