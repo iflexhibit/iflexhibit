@@ -42,6 +42,7 @@ div.login {
     display: flex;
     flex-flow: column nowrap;
     gap: 2rem;
+
     & > div.controls {
       width: 100%;
       padding: 0 3rem;
@@ -50,7 +51,33 @@ div.login {
       flex-flow: column nowrap;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
+      gap: 0.25rem;
+
+      & > div.cta {
+        text-align: center;
+        font-size: 0.875rem;
+        & > b {
+          color: var(--primary);
+        }
+      }
+
+      & > div.choice {
+        width: 100%;
+        & > span {
+          line-height: 2rem;
+          font-size: 0.75rem;
+          display: grid;
+          align-items: center;
+          grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+          gap: 1rem;
+          color: var(--primary);
+          &::before,
+          &::after {
+            content: "";
+            border-top: solid 1px var(--primary-fade);
+          }
+        }
+      }
     }
 
     & > div.notice {
@@ -58,6 +85,7 @@ div.login {
       font-size: 0.75rem;
       text-align: center;
     }
+
     & > h1.tagline {
       padding: 0 1rem;
       text-transform: uppercase;
@@ -74,6 +102,7 @@ div.login {
       }
     }
   }
+
   & > div.background {
     position: absolute;
     top: 0;

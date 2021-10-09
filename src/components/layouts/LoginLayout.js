@@ -32,7 +32,13 @@ const LoginLayout = () => {
           A content-sharing platform made for <span>game changers</span>
         </h1>
         <div className={styles["controls"]}>
+          <div className={styles["cta"]}>
+            Join us using your <b>iACADEMY</b> email!
+          </div>
           <GoogleButton fullWidth />
+          <div className={styles["choice"]}>
+            <span>or skip and</span>
+          </div>
           <Button
             href="/"
             label="Continue as Guest"
