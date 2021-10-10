@@ -46,6 +46,9 @@ a {
 
 main {
   padding: 1rem 1rem 4.75rem;
+  &.fullscreen {
+    padding: 0;
+  }
 }
 
 h1,
