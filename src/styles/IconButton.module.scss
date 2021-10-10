@@ -18,10 +18,17 @@ button.btn {
   cursor: pointer;
   user-select: none;
   transition: 125ms;
-
-  & > svg {
-    width: 1rem;
+  svg {
+    min-width: 1rem;
+    min-height: 1rem;
+    width: auto;
     height: 1rem;
+    path {
+      min-width: 1rem;
+      min-height: 1rem;
+      width: auto;
+      height: 1rem;
+    }
   }
 
   &.contained,
