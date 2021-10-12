@@ -1,0 +1,72 @@
+@import "./config";
+
+label.container {
+  position: relative;
+
+  padding: 0.5rem 1rem;
+
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+
+  font-size: 1rem;
+  font-weight: $regular;
+
+  cursor: pointer;
+  user-select: none;
+
+  & > div.underlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--background);
+    border-radius: 1rem;
+    z-index: -1;
+  }
+
+  & > input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked ~ span.checkmark {
+      background: var(--primary-fade);
+      border: solid 1px var(--primary);
+      &:after {
+        display: block;
+      }
+    }
+
+    &:checked ~ div.underlay {
+      background: var(--dark);
+    }
+  }
+
+  & > span.checkmark {
+    height: 1.5rem;
+    width: 1.5rem;
+    background: var(--dark);
+    border: solid 1px var(--primary-fade);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:after {
+      content: "";
+      display: none;
+      width: 6px;
+      height: 10px;
+      border: solid var(--text);
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+  }
+}
