@@ -42,7 +42,7 @@ const HomeLayout = () => {
     video: false,
   });
   const handleFilterChange = (e) => {
-    setTags((prev) => ({ ...prev, [e.target.name]: e.checked }));
+    setTags((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
   };
   const handleFilterReset = () => {
     setTags((prev) => ({
