@@ -6,6 +6,7 @@ import Layout from "components/Layout";
 import Select from "components/Select";
 import FilterIcon from "components/icons/FilterIcon";
 import FilterMenu from "components/FilterMenu";
+import { AnimatePresence } from "framer-motion";
 
 const HomeLayout = () => {
   const sortOptions = ["most viewed", "newest", "most popular"];
@@ -70,14 +71,17 @@ const HomeLayout = () => {
           onChange={handleSortChange}
         />
       </div>
-      {isFilterMenuOpen && (
-        <FilterMenu
-          tags={tags}
-          closeMenu={() => setFilterMenuOpen(false)}
-          handleFilterChange={handleFilterChange}
-          handleFilterReset={handleFilterReset}
-        />
-      )}
+      <AnimatePresence>
+        {isFilterMenuOpen && (
+          <FilterMenu
+            key={isFilterMenuOpen}
+            tags={tags}
+            closeMenu={() => setFilterMenuOpen(false)}
+            handleFilterChange={handleFilterChange}
+            handleFilterReset={handleFilterReset}
+          />
+        )}
+      </AnimatePresence>
       <Posts posts={posts} />
     </Layout>
   );

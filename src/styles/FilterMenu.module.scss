@@ -26,6 +26,7 @@ div.filters {
     display: flex;
     flex-flow: column nowrap;
 
+    overflow: hidden;
     z-index: 85;
 
     & > div.top {

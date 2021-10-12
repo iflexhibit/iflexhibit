@@ -3,6 +3,7 @@ import Button from "./Button";
 import Checkbox from "./Checkbox";
 import IconButton from "./IconButton";
 import TimesIcon from "./icons/TimesIcon";
+import { motion } from "framer-motion";
 
 const FilterMenu = ({
   tags,
@@ -12,8 +13,22 @@ const FilterMenu = ({
 }) => {
   return (
     <div className={styles["filters"]}>
-      <button className={styles["underlay"]} onClick={closeMenu}></button>
-      <div className={styles["menu"]}>
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+        className={styles["underlay"]}
+        onClick={closeMenu}
+      ></motion.button>
+      <motion.div
+        className={styles["menu"]}
+        initial={{ height: "0%" }}
+        animate={{ height: "100%" }}
+        exit={{ height: "0%", opacity: [1, 1, 0] }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className={styles["menu"]}
+      >
         <div className={styles["top"]}>
           <Button
             label="Reset filters"
@@ -45,7 +60,7 @@ const FilterMenu = ({
             rounded
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
