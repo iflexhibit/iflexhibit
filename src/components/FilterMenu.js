@@ -22,7 +22,6 @@ const FilterMenu = ({
         onClick={closeMenu}
       ></motion.button>
       <motion.div
-        className={styles["menu"]}
         initial={{ height: "0%" }}
         animate={{ height: "100%" }}
         exit={{ height: "0%", opacity: [1, 1, 0] }}
