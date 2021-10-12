@@ -24,7 +24,7 @@ const HomeLayout = () => {
     { imgSrc: "/assets/temp/posts/9.jpg" },
     { imgSrc: "/assets/temp/posts/10.jpg" },
   ]);
-  const [isFilterMenuOpen, setFilterMenuOpen] = useState(true);
+  const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
   const [tags, setTags] = useState({
     "2d art": false,
     "3d art": false,
