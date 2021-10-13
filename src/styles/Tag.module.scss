@@ -1,6 +1,6 @@
 @import "./config";
 
-span.tag {
+div.tag {
   padding: 0.125rem 0.5rem;
 
   background: var(--dark);
@@ -10,4 +10,5 @@ span.tag {
   border-bottom: solid 2px var(--secondary);
 
   font-size: 0.75rem;
+  text-transform: capitalize;
 }
