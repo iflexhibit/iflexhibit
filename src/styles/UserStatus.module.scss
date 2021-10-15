@@ -17,8 +17,20 @@ div.status {
   text-transform: uppercase;
   white-space: nowrap;
 
-  &.green {
+  &.member {
+    border-color: var(--purple-fade);
+    color: var(--purple);
+  }
+  &.moderator {
+    border-color: var(--orange-fade);
+    color: var(--orange);
+  }
+  &.administrator {
     border-color: var(--green-fade);
     color: var(--green);
+  }
+  &.banned {
+    border-color: var(--secondary-fade);
+    color: var(--secondary);
   }
 }
