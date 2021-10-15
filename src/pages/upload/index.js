@@ -1,5 +1,5 @@
-import UploadLayout from "components/layouts/UploadLayout";
+import UploadLayout from "components/layouts/UploadLayout/UploadLayout";
 
-export default function Home() {
+export default function UploadPage() {
   return <UploadLayout />;
 }
