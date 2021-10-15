@@ -2,18 +2,15 @@ import ButtonGroup from "components/ButtonGroup";
 import Layout from "components/Layout";
 import styles from "styles/layouts/UploadLayout.module.scss";
 import { useEffect, useState } from "react";
-import Button from "components/Button";
-import FileInput from "components/FileInput";
-import TextInput from "components/TextInput";
-import TextArea from "components/TextArea";
-import PlusIcon from "components/icons/PlusIcon";
 import { AnimatePresence } from "framer-motion";
 import FilterMenu from "components/FilterMenu";
-import Tag from "components/Tag";
+import { UploadForm } from "./UploadForm";
 
 const UploadLayout = () => {
   const [tabs] = useState(["Image", "Video"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
+
   const [newUpload, setNewUpload] = useState({
     image: "",
     video: "",
@@ -22,7 +19,7 @@ const UploadLayout = () => {
     description: "",
     tags: [],
   });
-  const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
+
   const [tags, setTags] = useState({
     "2d art": false,
     "3d art": false,
@@ -39,15 +36,18 @@ const UploadLayout = () => {
     typography: false,
     video: false,
   });
+
   const handleUploadChange = (e, isFile) => {
     setNewUpload((prev) => ({
       ...prev,
       [e.target.name]: isFile ? e.target.files[0] : e.target.value,
     }));
   };
+
   const handleFilterChange = (e) => {
     setTags((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
   };
+
   const handleFilterReset = () => {
     setTags((prev) => ({
       ...prev,
@@ -57,6 +57,7 @@ const UploadLayout = () => {
       ),
     }));
   };
+
   const handleFormReset = (e) => {
     e.preventDefault();
     setNewUpload((prev) => ({
@@ -69,6 +70,7 @@ const UploadLayout = () => {
     }));
     handleFilterReset();
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setNewUpload((prev) => ({
@@ -81,6 +83,7 @@ const UploadLayout = () => {
     }));
     handleFilterReset();
   };
+
   useEffect(() => {
     setNewUpload((prev) => {
       return {
@@ -93,6 +96,7 @@ const UploadLayout = () => {
       };
     });
   }, [tags]);
+
   return (
     <Layout
       title="Upload | iFlexhibit"
@@ -110,86 +114,14 @@ const UploadLayout = () => {
             setActiveTab={setActiveTab}
           />
         </div>
-        <div className={`${styles["row"]} ${styles["form"]}`}>
-          <form onSubmit={handleFormSubmit} onReset={handleFormReset}>
-            {activeTab === "Image" ? (
-              <div className={styles["group"]}>
-                <FileInput
-                  id="image"
-                  inputFile={newUpload.image}
-                  accept="image/png"
-                  onChange={(e) => handleUploadChange(e, true)}
-                  label="Upload Image"
-                />
-              </div>
-            ) : (
-              <>
-                <div className={styles["group"]}>
-                  <FileInput
-                    id="video"
-                    inputFile={newUpload.video}
-                    accept="video/mp4"
-                    onChange={(e) => handleUploadChange(e, true)}
-                    label="Upload Video"
-                  />
-                </div>
-                <div className={styles["group"]}>
-                  <FileInput
-                    id="thumbnail"
-                    inputFile={newUpload.thumbnail}
-                    accept="image/png"
-                    onChange={(e) => handleUploadChange(e, true)}
-                    label="Upload Video Thumbnail"
-                  />
-                </div>
-              </>
-            )}
-
-            <div className={styles["group"]}>
-              <label htmlFor="title">Title</label>
-              <TextInput
-                onChange={handleUploadChange}
-                placeholder="Title"
-                value={newUpload.title}
-                id="title"
-              />
-            </div>
-            <div className={styles["group"]}>
-              <label htmlFor="description">Description</label>
-              <TextArea
-                onChange={handleUploadChange}
-                placeholder="Description (Optional)"
-                value={newUpload.description}
-                id="description"
-              />
-            </div>
-            <div className={styles["group"]}>
-              <label htmlFor="tags">Tags</label>
-              <div className={styles["tags"]}>
-                {newUpload.tags.map((tag) => (
-                  <Tag key={tag} tag={tag} />
-                ))}
-              </div>
-              <Button
-                fullWidth
-                rounded
-                label="add tags"
-                startIcon={<PlusIcon />}
-                text="uppercase"
-                variant="outlined"
-                onClick={() => setFilterMenuOpen(true)}
-              />
-            </div>
-            <Button
-              label="submit post"
-              variant="contained"
-              text="uppercase"
-              fullWidth
-              rounded
-              type="submit"
-            />
-          </form>
-        </div>
+        <UploadForm
+          handleFormSubmit={handleFormSubmit}
+          handleFormReset={handleFormReset}
+          handleUploadChange={handleUploadChange}
+          activeTab={activeTab}
+          newUpload={newUpload}
+          setFilterMenuOpen={setFilterMenuOpen}
+        />
       </div>
       <AnimatePresence>
         {isFilterMenuOpen && (
