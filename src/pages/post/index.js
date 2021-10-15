@@ -1,5 +1,5 @@
 import PostLayout from "components/layouts/PostLayout";
 
-export default function Post() {
+export default function PostPage() {
   return <PostLayout />;
 }
