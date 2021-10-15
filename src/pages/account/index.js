@@ -1,5 +1,5 @@
-import AccountLayout from "components/layouts/AccountLayout";
+import AccountLayout from "components/layouts/AccountLayout/AccountLayout";
 
-export default function Home() {
+export default function AccountPage() {
   return <AccountLayout />;
 }
