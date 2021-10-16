@@ -12,7 +12,7 @@ function setLoading() {
 }
 
 export const setToken = (token) => (dispatch) => {
-  const currentToken = local.getItem("token");
+  const currentToken = localStorage.getItem("token");
   localStorage.setItem("token", token || currentToken);
   dispatch({ type: SET_TOKEN, payload: { token } });
   dispatch(authUser());
