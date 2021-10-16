@@ -23,6 +23,10 @@ $desktop: 1024px;
   --black-fade: hsla(0, 0%, 0%, 0.75);
   --green: hsl(160, 100%, 50%);
   --green-fade: hsl(160, 100%, 50%, 0.5);
+  --orange: hsl(30, 100%, 60%);
+  --orange-fade: hsl(30, 100%, 60%, 0.5);
+  --purple: hsl(240, 100%, 75%);
+  --purple-fade: hsl(240, 100%, 75%, 0.5);
 }
 
 // dark theme color scheme
@@ -37,4 +41,8 @@ $desktop: 1024px;
   --black-fade: hsla(0, 0%, 0%, 0.75);
   --green: hsl(160, 100%, 50%);
   --green-fade: hsl(160, 100%, 50%, 0.5);
+  --orange: hsl(30, 100%, 60%);
+  --orange-fade: hsl(30, 100%, 60%, 0.5);
+  --purple: hsl(240, 100%, 75%);
+  --purple-fade: hsl(240, 100%, 75%, 0.5);
 }

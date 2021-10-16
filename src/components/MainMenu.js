@@ -7,20 +7,26 @@ import UserStatus from "./UserStatus";
 import UserIcon from "./icons/UserIcon";
 import CogIcon from "./icons/CogIcon";
 import BlocksIcon from "./icons/BlocksIcon";
-import FlagIcon from "./icons/FlagIcon";
+import BookIcon from "./icons/BookIcon";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
-const MainMenu = ({ closeMenu }) => {
-  const [{ username, usertype }] = useState({
-    username: "nikkieyabs",
-    usertype: "administrator",
-  });
-  const [links] = useState([
+const fetchLinks = (user) => {
+  const links = [
     { href: "/profile", label: "My Profile", icon: <UserIcon /> },
     { href: "/account", label: "Account Settings", icon: <CogIcon /> },
+    { href: "/", label: "Legal Agreement", icon: <BookIcon /> },
     { href: "/", label: "System Dashboard", icon: <BlocksIcon /> },
-    { href: "/", label: "Report", icon: <FlagIcon /> },
-  ]);
+  ];
+  if (!user) return null;
+  if (user?.usertype === "member" || user?.usertype === "banned")
+    return links.slice(0, 2);
+  return links;
+};
+
+const MainMenu = ({ closeMenu }) => {
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const links = fetchLinks(user);
   return (
     <div className={styles["mainmenu"]}>
       <motion.button
@@ -40,42 +46,56 @@ const MainMenu = ({ closeMenu }) => {
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className={styles["menu"]}
       >
-        <div className={styles["top"]}>
-          <div className={styles["avatar"]}>
-            <Image
-              src="/assets/temp/hmm.jpg"
-              layout="fill"
-              objectFit="cover"
-              alt="avatar"
-            />
-          </div>
-          <div className={styles["info"]}>
-            <div className={styles["user"]}>{username}</div>
-            <UserStatus status={usertype} color="green" />
-          </div>
-        </div>
-        <div className={styles["links"]}>
-          {links.map((link, index) => (
-            <div key={index} className={styles["link"]}>
-              <Link href={link.href}>
-                <a>
-                  {link.icon}
-                  <span>{link.label}</span>
-                </a>
-              </Link>
-            </div>
-          ))}
-        </div>
+        <UserInfo user={user} />
+        {links && <MenuLinks links={links} />}
         <div className={styles["bottom"]}>
           <Button
-            label="sign out"
+            label={isAuthenticated ? "sign out" : "sign in"}
             variant="contained"
             fullWidth
-            href="/login"
+            href={isAuthenticated ? "/api/auth/logout" : "/login"}
             text="uppercase"
           />
         </div>
       </motion.div>
+    </div>
+  );
+};
+
+const UserInfo = ({ user }) => {
+  return (
+    <div className={styles["top"]}>
+      <div className={styles["avatar"]}>
+        <Image
+          src={user?.avatarImage || "/assets/noavatar.jpg"}
+          layout="fill"
+          objectFit="cover"
+          alt="avatar"
+        />
+      </div>
+      <div className={styles["info"]}>
+        <div className={styles["user"]}>
+          {user?.username || "Not Logged In"}
+        </div>
+        <UserStatus status={user?.usertype || "guest"} />
+      </div>
+    </div>
+  );
+};
+
+const MenuLinks = ({ links }) => {
+  return (
+    <div className={styles["links"]}>
+      {links.map((link, index) => (
+        <div key={index} className={styles["link"]}>
+          <Link href={link.href}>
+            <a>
+              {link.icon}
+              <span>{link.label}</span>
+            </a>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };
