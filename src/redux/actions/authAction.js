@@ -8,7 +8,7 @@ function setLoading() {
 export const authUser = () => (dispatch) => {
   dispatch(setLoading());
   axios
-    .get("/api/users/user")
+    .get("/api/users/user", { withCredentials: true })
     .then((response) => {
       return dispatch({
         type: AUTH_SUCCESS,
