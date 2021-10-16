@@ -1,3 +1,5 @@
 export default async function handler(req, res) {
-  res.redirect(process.env.API_URL + "/api/auth/google");
+  res
+    .writeHead(302, { Location: process.env.API_URL + "/api/auth/google" })
+    .end();
 }
