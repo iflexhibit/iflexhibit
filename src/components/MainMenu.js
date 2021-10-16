@@ -1,5 +1,4 @@
 import styles from "styles/MainMenu.module.scss";
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
@@ -9,7 +8,8 @@ import CogIcon from "./icons/CogIcon";
 import BlocksIcon from "./icons/BlocksIcon";
 import BookIcon from "./icons/BookIcon";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "redux/actions/authAction";
 
 const fetchLinks = (user) => {
   const links = [
@@ -26,6 +26,7 @@ const fetchLinks = (user) => {
 
 const MainMenu = ({ closeMenu }) => {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const links = fetchLinks(user);
   return (
     <div className={styles["mainmenu"]}>
@@ -49,13 +50,23 @@ const MainMenu = ({ closeMenu }) => {
         <UserInfo user={user} />
         {links && <MenuLinks links={links} />}
         <div className={styles["bottom"]}>
-          <Button
-            label={isAuthenticated ? "sign out" : "sign in"}
-            variant="contained"
-            fullWidth
-            href={isAuthenticated ? "/api/auth/logout" : "/login"}
-            text="uppercase"
-          />
+          {isAuthenticated ? (
+            <Button
+              label="sign out"
+              variant="contained"
+              fullWidth
+              onClick={() => dispatch(logout())}
+              text="uppercase"
+            />
+          ) : (
+            <Button
+              label="sign in"
+              variant="contained"
+              fullWidth
+              href="/login"
+              text="uppercase"
+            />
+          )}
         </div>
       </motion.div>
     </div>

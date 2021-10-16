@@ -1,14 +1,27 @@
 import axios from "axios";
-import { AUTH_LOADING, AUTH_SUCCESS, AUTH_ERROR } from "redux/types/authTypes";
+import {
+  AUTH_LOADING,
+  AUTH_SUCCESS,
+  AUTH_ERROR,
+  SET_TOKEN,
+  LOGOUT_SUCCESS,
+} from "redux/types/authTypes";
 
 function setLoading() {
   return { type: AUTH_LOADING };
 }
 
+export const setToken = (token) => (dispatch) => {
+  localStorage.setItem("token", token);
+  dispatch({ type: SET_TOKEN, payload: { token } });
+  dispatch(authUser());
+};
+
 export const authUser = () => (dispatch) => {
   dispatch(setLoading());
+  const token = localStorage.getItem("token");
   axios
-    .get("/api/users/user", { withCredentials: true })
+    .get("/api/users/user", { headers: { "x-auth-token": token } })
     .then((response) => {
       return dispatch({
         type: AUTH_SUCCESS,
@@ -18,4 +31,11 @@ export const authUser = () => (dispatch) => {
     .catch(() => {
       return dispatch({ type: AUTH_ERROR });
     });
+};
+
+export const logout = () => (dispatch) => {
+  dispatch(setLoading());
+  localStorage.clear("token");
+  dispatch({ type: LOGOUT_SUCCESS });
+  window.location.replace("/api/auth/logout");
 };
