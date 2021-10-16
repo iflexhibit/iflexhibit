@@ -1,8 +1,16 @@
 import Head from "next/head";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import NavBottom from "./NavBottom";
 import NavTop from "./NavTop";
+import { useDispatch } from "react-redux";
+import { authUser } from "redux/actions/authAction";
+
 const Layout = ({ title, description, canonical, children, fullscreen }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(authUser());
+  }, []);
   return (
     <>
       <Head>

@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 const GoogleButton = ({ fullWidth }) => {
   const [image, setImage] = useState("google_default.png");
   return (
-    <Link href="https://iflexhibit-api.herokuapp.com/api/auth/google">
+    <Link href="/api/auth/login">
       <a
         className={`${styles["google"]} ${
           fullWidth ? styles["fullWidth"] : ""
