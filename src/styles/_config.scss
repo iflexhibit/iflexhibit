@@ -13,11 +13,11 @@ $desktop: 1024px;
 
 // light theme color scheme
 @mixin light {
-  --text: hsl(53, 100%, 96%);
-  --background: hsl(240, 60%, 15%);
-  --dark: hsl(240, 60%, 12%);
-  --primary: hsl(200, 100%, 75%);
-  --primary-fade: hsl(200, 100%, 25%);
+  --text: hsl(53, 100%, 100%);
+  --background: hsl(210, 80%, 13%);
+  --dark: hsl(210, 80%, 10%);
+  --primary: hsl(185, 100%, 75%);
+  --primary-fade: hsl(185, 100%, 15%);
   --secondary: hsl(360, 100%, 65%);
   --secondary-fade: hsl(360, 100%, 25%);
   --black-fade: hsla(0, 0%, 0%, 0.75);
