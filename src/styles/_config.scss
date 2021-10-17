@@ -14,8 +14,8 @@ $desktop: 1024px;
 // light theme color scheme
 @mixin light {
   --text: hsl(53, 100%, 100%);
-  --background: hsl(210, 80%, 13%);
-  --dark: hsl(210, 80%, 10%);
+  --background: hsl(220, 60%, 13%);
+  --dark: hsl(220, 60%, 10%);
   --primary: hsl(190, 100%, 75%);
   --primary-fade: hsl(190, 100%, 15%);
   --secondary: hsl(360, 100%, 65%);
