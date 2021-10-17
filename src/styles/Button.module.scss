@@ -133,9 +133,9 @@ div.btn-group {
     border-radius: 0;
 
     &.active {
-      background: var(--primary-fade);
+      background: var(--dark);
       color: var(--primary);
-      border-bottom: solid 1px var(--primary);
+      border-bottom: solid 2px var(--primary);
 
       path {
         fill: var(--primary);
@@ -143,7 +143,7 @@ div.btn-group {
     }
 
     &.inactive {
-      background: var(--dark);
+      background: var(--background);
       color: var(--primary);
       border-bottom: solid 1px var(--primary-fade);
 
