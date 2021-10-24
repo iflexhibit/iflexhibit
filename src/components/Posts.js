@@ -6,17 +6,17 @@ import styles from "styles/Posts.module.scss";
 const Posts = ({ posts }) => {
   return (
     <div className={styles["posts"]}>
-      {posts.map((post, index) => (
-        <Link href="/post" key={index}>
+      {posts.map((post) => (
+        <Link href={`/post/`} key={post.id}>
           <a>
             <Image
-              src={post.imgSrc}
+              src={post.image}
               layout="responsive"
               width="150"
               height="100"
               objectFit="cover"
               className={styles["post"]}
-              alt={`Image title ${index}`}
+              alt={post.title}
             />
           </a>
         </Link>
