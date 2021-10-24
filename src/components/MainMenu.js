@@ -78,7 +78,7 @@ const UserInfo = ({ user }) => {
     <div className={styles["top"]}>
       <div className={styles["avatar"]}>
         <Image
-          src={user?.avatarImage || "/assets/noavatar.jpg"}
+          src={user?.avatar || "/assets/noavatar.jpg"}
           layout="fill"
           objectFit="cover"
           alt="avatar"
