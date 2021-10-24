@@ -11,7 +11,6 @@ import { DescriptionSection } from "./DescriptionSection";
 import { CommentsSection } from "./CommentsSection";
 
 const PostLayout = ({ post }) => {
-  console.log(post);
   const [isCommentFieldOpen, setCommentFieldOpen] = useState(false);
   const [tabs] = useState(["Description", "Comments"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
