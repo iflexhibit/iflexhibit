@@ -7,7 +7,7 @@ const Posts = ({ posts }) => {
   return (
     <div className={styles["posts"]}>
       {posts.map((post) => (
-        <Link href={`/post/`} key={post.id}>
+        <Link href={`/post/${post.id}`} key={post.id}>
           <a>
             <Image
               src={post.image}
