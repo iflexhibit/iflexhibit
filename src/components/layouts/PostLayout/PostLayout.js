@@ -26,7 +26,7 @@ const PostLayout = ({ post }) => {
       canonical="https://iflexhibit.com/post"
     >
       <div className={styles["post"]}>
-        <PostImage imgSrc={post?.image} />
+        <PostImage imgSrc={post?.image} alt={post?.title} />
         <PostStats
           likes_count={post?.statistics.likes}
           comments_count={post?.statistics.comments}
