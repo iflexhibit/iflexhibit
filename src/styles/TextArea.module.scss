@@ -6,9 +6,9 @@ textarea.textarea {
   height: 2.625rem;
   padding: 0.75rem 1rem;
 
-  background: var(--dark);
-  border: solid 1px var(--primary-fade);
-  color: var(--text);
+  background: var(--color-dark);
+  border: solid 1px var(--color-primary-fade);
+  color: var(--color-text);
   border-radius: 5px;
 
   font-size: 0.875rem;
@@ -23,6 +23,6 @@ textarea.textarea {
 
   &:focus {
     outline: none;
-    border: solid 1px var(--primary);
+    border: solid 1px var(--color-primary);
   }
 }

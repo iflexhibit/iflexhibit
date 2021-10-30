@@ -33,25 +33,25 @@ button.btn {
 
   &.contained,
   &.outlined:active {
-    background: var(--primary);
-    border: solid 1px var(--primary);
-    box-shadow: 2px 2px 0 0 var(--dark);
+    background: var(--color-primary);
+    border: solid 1px var(--color-primary);
+    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
-      fill: var(--dark);
+      fill: var(--color-dark);
     }
   }
 
   &.warning {
-    background: var(--dark);
-    border: solid 1px var(--secondary-fade);
-    box-shadow: 2px 2px 0 0 var(--dark);
+    background: var(--color-dark);
+    border: solid 1px var(--color-secondary-fade);
+    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
-      fill: var(--secondary);
+      fill: var(--color-secondary);
     }
     &:active {
-      background: var(--secondary);
+      background: var(--color-secondary);
       path {
-        fill: var(--text);
+        fill: var(--color-text);
       }
     }
   }
@@ -59,19 +59,19 @@ button.btn {
   &.outlined,
   &.contained:active,
   &.text:active {
-    background: var(--dark);
-    border: solid 1px var(--primary-fade);
-    box-shadow: 2px 2px 0 0 var(--dark);
+    background: var(--color-dark);
+    border: solid 1px var(--color-primary-fade);
+    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
-      fill: var(--primary);
+      fill: var(--color-primary);
     }
   }
 
   &.text {
-    background: var(--background);
-    border: solid 1px var(--background);
+    background: var(--color-background);
+    border: solid 1px var(--color-background);
     path {
-      fill: var(--text);
+      fill: var(--color-text);
     }
   }
 

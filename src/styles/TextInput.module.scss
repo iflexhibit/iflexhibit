@@ -5,9 +5,9 @@ input.textinput {
   height: 2.625rem;
   padding: 0 1rem;
 
-  background: var(--dark);
-  color: var(--text);
-  border: solid 1px var(--primary-fade);
+  background: var(--color-dark);
+  color: var(--color-text);
+  border: solid 1px var(--color-primary-fade);
   border-radius: 5px;
 
   font-size: 0.875rem;
@@ -15,6 +15,6 @@ input.textinput {
 
   &:focus {
     outline: none;
-    border: solid 1px var(--primary);
+    border: solid 1px var(--color-primary);
   }
 }

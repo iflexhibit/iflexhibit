@@ -3,11 +3,11 @@
 div.tag {
   padding: 0.125rem 0.5rem;
 
-  background: var(--dark);
+  background: var(--color-dark);
   border-radius: 5px;
-  border: solid 1px var(--primary);
-  border-right: solid 2px var(--secondary);
-  border-bottom: solid 2px var(--secondary);
+  border: solid 1px var(--color-primary);
+  border-right: solid 2px var(--color-secondary);
+  border-bottom: solid 2px var(--color-secondary);
 
   font-size: 0.75rem;
   text-transform: capitalize;

@@ -7,7 +7,7 @@ div.toggle {
 
   & > label {
     font-size: 0.875rem;
-    color: var(--text);
+    color: var(--color-text);
     flex-grow: 1;
 
     &.track {
@@ -30,7 +30,7 @@ div.toggle {
         right: 0;
         bottom: 0;
 
-        background-color: var(--primary-fade);
+        background-color: var(--color-primary-fade);
         border-radius: 18px;
 
         transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
@@ -45,7 +45,7 @@ div.toggle {
           width: 20px;
           height: 20px;
 
-          background-color: var(--text);
+          background-color: var(--color-text);
           border-radius: 50%;
 
           transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
@@ -54,11 +54,11 @@ div.toggle {
       }
 
       & > input:focus + span.slider {
-        box-shadow: 0 0 1px var(--primary-fade);
+        box-shadow: 0 0 1px var(--color-primary-fade);
       }
 
       & > input:checked + span.slider:before {
-        background-color: var(--primary);
+        background-color: var(--color-primary);
         transform: translate(16px, 2.5px);
       }
     }

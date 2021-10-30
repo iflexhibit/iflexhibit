@@ -9,8 +9,8 @@ div.status {
   justify-content: center;
 
   border-radius: 1.5rem;
-  border: solid 1px var(--primary-fade);
-  color: var(--primary);
+  border: solid 1px var(--color-primary-fade);
+  color: var(--color-primary);
 
   font-size: 0.75rem;
   font-weight: $bold;
@@ -18,19 +18,19 @@ div.status {
   white-space: nowrap;
 
   &.member {
-    border-color: var(--purple-fade);
-    color: var(--purple);
+    border-color: var(--color-purple-fade);
+    color: var(--color-purple);
   }
   &.moderator {
-    border-color: var(--orange-fade);
-    color: var(--orange);
+    border-color: var(--color-orange-fade);
+    color: var(--color-orange);
   }
   &.administrator {
-    border-color: var(--green-fade);
-    color: var(--green);
+    border-color: var(--color-green-fade);
+    color: var(--color-green);
   }
   &.banned {
-    border-color: var(--secondary-fade);
-    color: var(--secondary);
+    border-color: var(--color-secondary-fade);
+    color: var(--color-secondary);
   }
 }

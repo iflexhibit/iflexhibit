@@ -8,7 +8,7 @@ export const LogoSection = () => {
       <a className={styles["header"]}>
         <div className={styles["brandmark"]}>
           <Image
-            src="/assets/logos/brandmark.svg"
+            src="/assets/logos/brandmark_alt.svg"
             layout="fill"
             objectFit="contain"
             alt=""

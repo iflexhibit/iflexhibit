@@ -28,8 +28,8 @@ body {
     @include dark;
   }
 
-  background-color: var(--background);
-  color: var(--text);
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-size: 1rem;
   font-weight: $regular;
   font-family: $body;
@@ -37,10 +37,10 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--text);
+  color: var(--color-text);
   &:hover,
   &:focus {
-    color: var(--primary);
+    color: var(--color-primary);
   }
 }
 
@@ -70,8 +70,8 @@ h3 {
 }
 
 hr {
-  background: var(--primary-fade);
-  border: solid 0.5px var(--primary-fade);
+  background: var(--color-primary-fade);
+  border: solid 0.5px var(--color-primary-fade);
 }
 
 small {
@@ -79,7 +79,7 @@ small {
 }
 
 label {
-  color: var(--primary);
+  color: var(--color-primary);
   font-weight: $bold;
   font-size: 0.875rem;
 }
@@ -88,6 +88,6 @@ svg {
   width: 1rem;
   height: 1rem;
   path {
-    fill: var(--text);
+    fill: var(--color-text);
   }
 }

@@ -20,8 +20,8 @@ div.mainmenu {
     flex-flow: column nowrap;
     justify-content: space-between;
 
-    background: var(--background);
-    border-bottom: solid 1px var(--primary-fade);
+    background: var(--color-background);
+    border-bottom: solid 1px var(--color-primary-fade);
     z-index: 99;
 
     overflow: hidden;
@@ -61,8 +61,8 @@ div.mainmenu {
     & > div.links {
       padding: 0 1rem;
 
-      border-top: solid 1px var(--primary-fade);
-      border-bottom: solid 1px var(--primary-fade);
+      border-top: solid 1px var(--color-primary-fade);
+      border-bottom: solid 1px var(--color-primary-fade);
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
@@ -70,7 +70,7 @@ div.mainmenu {
 
       & > div.link {
         width: 100%;
-        border-bottom: solid 1px var(--primary-fade);
+        border-bottom: solid 1px var(--color-primary-fade);
         &:last-of-type {
           border-bottom: none;
         }
@@ -86,7 +86,7 @@ div.mainmenu {
             font-size: 0.875rem;
           }
           &:active {
-            background: var(--primary-fade);
+            background: var(--color-primary-fade);
           }
         }
       }
@@ -105,7 +105,7 @@ div.mainmenu {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: var(--black-fade);
+    background: var(--color-black-fade);
     display: block;
     z-index: 80;
     border: none;
