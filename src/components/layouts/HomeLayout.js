@@ -43,7 +43,7 @@ const HomeLayout = ({ posts }) => {
   };
   return (
     <Layout
-      title="iFLEXHIBIT"
+      title="iFlexhibit"
       description="A content sharing platform for iACADEMY students"
       canonical="https://iflexhibit.com/"
     >

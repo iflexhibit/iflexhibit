@@ -6,7 +6,7 @@ import Image from "next/image";
 const LegalLayout = () => {
   return (
     <Layout
-      title="Legal Agreement | iFLEXHIBIT"
+      title="Legal Agreement | iFlexhibit"
       description="A content sharing platform for iACADEMY students"
       canonical="https://iflexhibit.com/legal"
     >

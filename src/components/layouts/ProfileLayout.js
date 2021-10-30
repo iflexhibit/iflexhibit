@@ -46,7 +46,7 @@ const ProfileLayout = () => {
   const handleSortChange = (e) => setActiveSort(e.target.value);
   return (
     <Layout
-      title="User | iFLEXHIBIT"
+      title="User | iFlexhibit"
       description="A content sharing platform for iACADEMY students"
       canonical="https://iflexhibit.com/profile"
     >

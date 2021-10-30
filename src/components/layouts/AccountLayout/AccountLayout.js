@@ -76,7 +76,7 @@ const AccountLayout = () => {
 
   return (
     <Layout
-      title="Account | iFLEXHIBIT"
+      title="Account | iFlexhibit"
       description="A content sharing platform for iACADEMY students"
       canonical="https://iflexhibit.com/account"
     >
