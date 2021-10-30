@@ -14,6 +14,7 @@ $desktop: 1024px;
 // light theme color scheme
 @mixin light {
   --color-text: #ffffff;
+  --color-text-fade: #848484;
   --color-background: #0a1238;
   --color-dark: #0a102e;
   --color-primary: #80eaff;
@@ -32,6 +33,7 @@ $desktop: 1024px;
 // dark theme color scheme
 @mixin dark {
   --color-text: #ffffff;
+  --color-text-fade: #b3b3b3;
   --color-background: #0a1238;
   --color-dark: #0a102e;
   --color-primary: #80eaff;
