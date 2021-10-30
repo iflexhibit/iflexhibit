@@ -53,7 +53,7 @@ const MainMenu = ({ closeMenu }) => {
           {isAuthenticated ? (
             <Button
               label="sign out"
-              variant="contained"
+              variant="outlined"
               fullWidth
               onClick={() => dispatch(logout())}
               text="uppercase"
