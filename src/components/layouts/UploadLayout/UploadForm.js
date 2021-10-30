@@ -53,22 +53,24 @@ export const UploadForm = ({
           <label htmlFor="title">Title</label>
           <TextInput
             onChange={handleUploadChange}
-            placeholder="Title"
             value={newUpload.title}
             id="title"
           />
         </div>
         <div className={styles["group"]}>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">
+            Description <small>(Optional)</small>
+          </label>
           <TextArea
             onChange={handleUploadChange}
-            placeholder="Description (Optional)"
             value={newUpload.description}
             id="description"
           />
         </div>
         <div className={styles["group"]}>
-          <label htmlFor="tags">Tags</label>
+          <label htmlFor="tags">
+            Tags <small>(Optional)</small>
+          </label>
           <div className={styles["tags"]}>
             {newUpload.tags.map((tag) => (
               <Tag key={tag} tag={tag} />

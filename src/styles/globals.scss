@@ -76,11 +76,12 @@ hr {
 
 small {
   font-size: 0.75rem;
+  font-weight: $light;
 }
 
 label {
   color: var(--color-text-fade);
-  font-weight: $regular;
+  font-weight: $bold;
   font-size: 0.875rem;
 }
 
