@@ -18,7 +18,7 @@ const FileInput = ({
       {label}
       {inputFile && (
         <div className={styles["preview"]}>
-          <img src={URL.createObjectURL(inputFile)} />
+          <img src={URL.createObjectURL(inputFile)} alt="image preview" />
         </div>
       )}
       <input

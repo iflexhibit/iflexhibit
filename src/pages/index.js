@@ -9,7 +9,7 @@ export default function HomePage(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setToken(props.token));
-  }, []);
+  });
   return <HomeLayout posts={props.posts} />;
 }
 
