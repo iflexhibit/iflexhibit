@@ -13,36 +13,36 @@ $desktop: 1024px;
 
 // light theme color scheme
 @mixin light {
-  --text: hsl(53, 100%, 100%);
-  --background: hsl(220, 60%, 13%);
-  --dark: hsl(220, 60%, 10%);
-  --primary: hsl(190, 100%, 75%);
-  --primary-fade: hsl(190, 100%, 15%);
-  --secondary: hsl(360, 100%, 65%);
-  --secondary-fade: hsl(360, 100%, 25%);
-  --black-fade: hsla(0, 0%, 0%, 0.75);
-  --green: hsl(160, 100%, 50%);
-  --green-fade: hsl(160, 100%, 50%, 0.5);
-  --orange: hsl(30, 100%, 60%);
-  --orange-fade: hsl(30, 100%, 60%, 0.5);
-  --purple: hsl(240, 100%, 75%);
-  --purple-fade: hsl(240, 100%, 75%, 0.5);
+  --color-text: #ffffff;
+  --color-background: #0a1238;
+  --color-dark: #0a102e;
+  --color-primary: #80eaff;
+  --color-primary-fade: #1f4147;
+  --color-secondary: #ff4d4d;
+  --color-secondary-fade: #8f3d3d;
+  --color-black-fade: #000000bf;
+  --color-green: #00ffaa;
+  --color-green-fade: #3d8f74;
+  --color-orange: #ffbf80;
+  --color-orange-fade: #8f663d;
+  --color-purple: #8080ff;
+  --color-purple-fade: #3d3d8f;
 }
 
 // dark theme color scheme
 @mixin dark {
-  --text: hsl(240, 60%, 15%);
-  --background: hsl(53, 100%, 96%);
-  --dark: hsl(240, 60%, 12%);
-  --primary: hsl(200, 100%, 75%);
-  --primary-fade: hsl(200, 100%, 25%);
-  --secondary: hsl(360, 100%, 65%);
-  --secondary-fade: hsl(360, 100%, 25%);
-  --black-fade: hsla(0, 0%, 0%, 0.75);
-  --green: hsl(160, 100%, 50%);
-  --green-fade: hsl(160, 100%, 50%, 0.5);
-  --orange: hsl(30, 100%, 60%);
-  --orange-fade: hsl(30, 100%, 60%, 0.5);
-  --purple: hsl(240, 100%, 75%);
-  --purple-fade: hsl(240, 100%, 75%, 0.5);
+  --color-text: #ffffff;
+  --color-background: #0d1b35;
+  --color-dark: #0a1429;
+  --color-primary: #80eaff;
+  --color-primary-fade: #00404d;
+  --color-secondary: #ff4d4d;
+  --color-secondary-fade: #8f3d3d;
+  --color-black-fade: #000000bf;
+  --color-green: #00ffaa;
+  --color-green-fade: #3d8f74;
+  --color-orange: #ffbf80;
+  --color-orange-fade: #8f663d;
+  --color-purple: #8080ff;
+  --color-purple-fade: #3d3d8f;
 }

@@ -20,7 +20,7 @@ div.filters {
     position: relative;
     width: 100%;
 
-    background: var(--background);
+    background: var(--color-background);
     border-radius: 5px;
 
     display: flex;
@@ -65,7 +65,7 @@ div.filters {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: var(--black-fade);
+    background: var(--color-black-fade);
     display: block;
     z-index: 80;
     border: none;

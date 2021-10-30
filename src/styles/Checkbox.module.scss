@@ -5,7 +5,7 @@ label.container {
 
   padding: 0.5rem 1rem;
 
-  color: var(--text);
+  color: var(--color-text);
 
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ label.container {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--background);
+    background: var(--color-background);
     border-radius: 1rem;
     z-index: -1;
   }
@@ -37,23 +37,23 @@ label.container {
     width: 0;
 
     &:checked ~ span.checkmark {
-      background: var(--primary-fade);
-      border: solid 1px var(--primary);
+      background: var(--color-primary-fade);
+      border: solid 1px var(--color-primary);
       &:after {
         display: block;
       }
     }
 
     &:checked ~ div.underlay {
-      background: var(--dark);
+      background: var(--color-dark);
     }
   }
 
   & > span.checkmark {
     height: 1.5rem;
     width: 1.5rem;
-    background: var(--dark);
-    border: solid 1px var(--primary-fade);
+    background: var(--color-dark);
+    border: solid 1px var(--color-primary-fade);
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -64,7 +64,7 @@ label.container {
       display: none;
       width: 6px;
       height: 10px;
-      border: solid var(--text);
+      border: solid var(--color-text);
       border-width: 0 3px 3px 0;
       transform: rotate(45deg);
     }
