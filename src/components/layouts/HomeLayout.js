@@ -8,22 +8,10 @@ import FilterIcon from "components/icons/FilterIcon";
 import FilterMenu from "components/FilterMenu";
 import { AnimatePresence } from "framer-motion";
 
-const HomeLayout = () => {
+const HomeLayout = ({ posts }) => {
   const sortOptions = ["most viewed", "newest", "most popular"];
   const [activeSort, setActiveSort] = useState(sortOptions[0]);
   const handleSortChange = (e) => setActiveSort(e.target.value);
-  const [posts] = useState([
-    { imgSrc: "/assets/temp/posts/1.jpg" },
-    { imgSrc: "/assets/temp/posts/2.jpg" },
-    { imgSrc: "/assets/temp/posts/3.jpg" },
-    { imgSrc: "/assets/temp/posts/4.jpg" },
-    { imgSrc: "/assets/temp/posts/5.jpg" },
-    { imgSrc: "/assets/temp/posts/6.jpg" },
-    { imgSrc: "/assets/temp/posts/7.jpg" },
-    { imgSrc: "/assets/temp/posts/8.jpg" },
-    { imgSrc: "/assets/temp/posts/9.jpg" },
-    { imgSrc: "/assets/temp/posts/10.jpg" },
-  ]);
   const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
   const [tags, setTags] = useState({
     "2d art": false,
