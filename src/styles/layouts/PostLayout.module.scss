@@ -54,7 +54,7 @@ div.post {
 
     &.description {
       padding: 1rem;
-      background: var(--dark);
+      background: var(--color-dark);
       border-radius: 1rem;
     }
 
@@ -142,7 +142,7 @@ div.post {
         padding: 0.5rem 1rem;
         margin: 0.5rem 1rem 1rem;
         border-radius: 0 1rem 1rem 1rem;
-        background-color: var(--dark);
+        background-color: var(--color-dark);
 
         & > p {
           margin: 0.5rem 0;
@@ -177,8 +177,8 @@ div.post {
       bottom: 0;
       padding: 0.5rem;
 
-      background: var(--background);
-      border-top: solid 1px var(--primary-fade);
+      background: var(--color-background);
+      border-top: solid 1px var(--color-primary-fade);
     }
   }
 }

@@ -57,7 +57,7 @@ div.login {
         text-align: center;
         font-size: 0.875rem;
         & > b {
-          color: var(--primary);
+          color: var(--color-primary);
         }
       }
 
@@ -70,11 +70,11 @@ div.login {
           align-items: center;
           grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
           gap: 1rem;
-          color: var(--primary);
+          color: var(--color-primary);
           &::before,
           &::after {
             content: "";
-            border-top: solid 1px var(--primary-fade);
+            border-top: solid 1px var(--color-primary-fade);
           }
         }
       }
@@ -96,8 +96,8 @@ div.login {
       & > span {
         font-weight: $bold;
         text-transform: uppercase;
-        color: var(--primary);
-        border-right: solid 2px var(--primary);
+        color: var(--color-primary);
+        border-right: solid 2px var(--color-primary);
         animation: blinking infinite 1s;
       }
     }
@@ -168,7 +168,7 @@ div.login {
 @keyframes blinking {
   0%,
   50% {
-    border-right: solid 2px var(--primary);
+    border-right: solid 2px var(--color-primary);
   }
   51%,
   100% {
