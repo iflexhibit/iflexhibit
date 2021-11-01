@@ -5,7 +5,6 @@ import styles from "styles/layouts/ProfileLayout.module.scss";
 import Stat from "components/Stat";
 import StarIcon from "components/icons/StarIcon";
 import EyeIcon from "components/icons/EyeIcon";
-import CalendarIcon from "components/icons/CalendarIcon";
 import ButtonGroup from "components/ButtonGroup";
 import Posts from "components/Posts";
 import Select from "components/Select";
@@ -57,7 +56,6 @@ const ProfileLayout = () => {
         <ProfileStats
           likes_count={user?.likes_count}
           views_count={user?.views_count}
-          date_joined={user?.date_joined}
         />
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
           <ButtonGroup
@@ -73,6 +71,7 @@ const ProfileLayout = () => {
               email={user?.email}
               contact={user?.contact}
               bio={user?.bio}
+              date={user?.date_joined}
             />
           ) : (
             <WorksSection
@@ -112,20 +111,16 @@ const ProfileDisplayName = ({ displayName }) => {
   );
 };
 
-const ProfileStats = ({ likes_count, views_count, date_joined }) => {
+const ProfileStats = ({ likes_count, views_count }) => {
   return (
     <div className={`${styles["row"]} ${styles["stats"]}`}>
       <Stat icon={<StarIcon />} value={likes_count?.toLocaleString()} />
       <Stat icon={<EyeIcon />} value={views_count?.toLocaleString()} />
-      <Stat
-        icon={<CalendarIcon />}
-        value={new Date(date_joined).toJSON().split("T")[0]}
-      />
     </div>
   );
 };
 
-const AboutSection = ({ realName, email, contact, bio }) => {
+const AboutSection = ({ realName, email, contact, bio, date }) => {
   return (
     <motion.div
       className={`${styles["row"]} ${styles["about"]}`}
@@ -134,19 +129,23 @@ const AboutSection = ({ realName, email, contact, bio }) => {
       transition={{ duration: 0.125 }}
     >
       <div className={styles["info"]}>
-        <small className={styles["label"]}>NAME</small>
+        <small className={styles["label"]}>Date Joined</small>
+        <span>{new Date(date).toJSON().split("T")[0]}</span>
+      </div>
+      <div className={styles["info"]}>
+        <small className={styles["label"]}>Name</small>
         <span>{realName}</span>
       </div>
       <div className={styles["info"]}>
-        <small className={styles["label"]}>EMAIL</small>
+        <small className={styles["label"]}>Email</small>
         <span>{email}</span>
       </div>
       <div className={styles["info"]}>
-        <small className={styles["label"]}>CONTACT</small>
+        <small className={styles["label"]}>Contact</small>
         <span>{contact}</span>
       </div>
       <div className={styles["info"]}>
-        <small className={styles["label"]}>BIO</small>
+        <small className={styles["label"]}>Bio</small>
         <div className={styles["bio"]}>
           {bio.split("\n").map((b, i) => (
             <p key={i}>{b}</p>
