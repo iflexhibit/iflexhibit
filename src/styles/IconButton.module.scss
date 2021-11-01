@@ -20,8 +20,8 @@ button.btn {
   transition: 125ms;
 
   &.contained {
-    background: var(--color-primary);
-    border: solid 1px var(--color-primary);
+    background: var(--color-primary-alt);
+    border: solid 1px var(--color-primary-alt);
     color: var(--color-background);
     &:active {
       background: var(--color-background);

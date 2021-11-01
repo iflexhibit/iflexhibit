@@ -28,9 +28,9 @@ button.btn {
   }
 
   &.contained {
-    background: var(--color-primary);
-    border: solid 1px var(--color-primary);
-    color: var(--color-background);
+    background: var(--color-primary-alt);
+    border: solid 1px var(--color-primary-alt);
+    color: var(--color-text);
     &:active {
       background: var(--color-background);
       color: var(--color-primary);
