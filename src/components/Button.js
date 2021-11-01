@@ -14,10 +14,9 @@ const Button = ({
   rounded,
   type,
   disabled,
-  text,
 }) => {
   const classes =
-    `${styles["btn"]} ${styles[variant]} ${styles[text]}` +
+    `${styles["btn"]} ${styles[variant]}` +
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
     (fullHeight ? ` ${styles["fullHeight"]}` : "") +
     (rounded ? ` ${styles["rounded"]}` : "") +
@@ -51,7 +50,6 @@ Button.propTypes = {
   rounded: PropTypes.bool,
   type: PropTypes.oneOf(["submit", "button", "reset"]),
   disabled: PropTypes.bool,
-  text: PropTypes.oneOf(["uppercase", "capitalize", "lowercase", ""]),
 };
 
 Button.defaultProps = {
@@ -62,7 +60,6 @@ Button.defaultProps = {
   onClick: () => {},
   type: "button",
   disabled: false,
-  text: "",
 };
 
 export default Button;

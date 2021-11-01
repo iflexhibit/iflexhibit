@@ -53,19 +53,17 @@ const MainMenu = ({ closeMenu }) => {
         <div className={styles["bottom"]}>
           {isAuthenticated ? (
             <Button
-              label="sign out"
+              label="Sign Out"
               variant="outlined"
               fullWidth
               onClick={() => dispatch(logout())}
-              text="uppercase"
             />
           ) : (
             <Button
-              label="sign in"
+              label="Sign In to iFlexhibit"
               variant="contained"
               fullWidth
               href="/login"
-              text="uppercase"
             />
           )}
         </div>

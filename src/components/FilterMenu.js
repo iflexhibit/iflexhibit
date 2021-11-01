@@ -30,8 +30,7 @@ const FilterMenu = ({
       >
         <div className={styles["top"]}>
           <Button
-            label="Reset filters"
-            text="uppercase"
+            label="Reset Filters"
             variant="outlined"
             fullWidth
             onClick={handleFilterReset}
@@ -50,12 +49,7 @@ const FilterMenu = ({
           ))}
         </div>
         <div className={styles["bottom"]}>
-          <Button
-            label="apply filter"
-            text="uppercase"
-            variant="contained"
-            fullWidth
-          />
+          <Button label="Apply Filter" variant="contained" fullWidth />
         </div>
       </motion.div>
     </div>

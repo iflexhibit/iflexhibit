@@ -22,15 +22,9 @@ button.btn {
   transition: 125ms;
 
   & > span {
-    text-transform: none;
-    font-family: $heading;
+    font-family: $body;
     font-size: 0.875rem;
-    font-weight: bold;
-  }
-
-  & > svg {
-    width: 1rem;
-    height: 1rem;
+    font-weight: $bold;
   }
 
   &.contained {
@@ -89,24 +83,6 @@ button.btn {
     border: solid 1px var(--color-primary-fade);
     color: var(--color-background);
     pointer-events: none;
-  }
-
-  &.uppercase {
-    & > span {
-      text-transform: uppercase;
-    }
-  }
-
-  &.lowercase {
-    & > span {
-      text-transform: lowercase;
-    }
-  }
-
-  &.capitalize {
-    & > span {
-      text-transform: capitalize;
-    }
   }
 }
 

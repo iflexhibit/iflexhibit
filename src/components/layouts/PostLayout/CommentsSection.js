@@ -32,8 +32,7 @@ export const CommentsSection = ({
           {!isAuthenticated && (
             <Button
               variant="contained"
-              label="sign in to comment"
-              text="uppercase"
+              label="Sign In to Comment"
               fullWidth
               href="/login"
             />

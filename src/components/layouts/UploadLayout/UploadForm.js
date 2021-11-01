@@ -3,8 +3,8 @@ import Button from "components/Button";
 import FileInput from "components/FileInput";
 import TextInput from "components/TextInput";
 import TextArea from "components/TextArea";
-import PlusIcon from "components/icons/PlusIcon";
 import Tag from "components/Tag";
+import TagsIcon from "components/icons/TagsIcon";
 
 export const UploadForm = ({
   handleFormSubmit,
@@ -78,17 +78,15 @@ export const UploadForm = ({
           </div>
           <Button
             fullWidth
-            label="add tags"
-            startIcon={<PlusIcon />}
-            text="uppercase"
+            label="Choose Tags"
+            startIcon={<TagsIcon />}
             variant="outlined"
             onClick={() => setFilterMenuOpen(true)}
           />
         </div>
         <Button
-          label="submit post"
+          label="Submit Post"
           variant="contained"
-          text="uppercase"
           fullWidth
           type="submit"
         />

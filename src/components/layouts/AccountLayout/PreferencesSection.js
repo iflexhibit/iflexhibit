@@ -51,11 +51,10 @@ export const PreferencesSection = ({
       </div>
       <Button
         type="submit"
-        label="save changes"
+        label="Save Changes"
         variant="contained"
         fullWidth
         onClick={handlePreferencesSubmit}
-        text="uppercase"
       />
     </motion.div>
   );
