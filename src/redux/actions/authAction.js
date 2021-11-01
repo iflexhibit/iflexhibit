@@ -6,6 +6,7 @@ import {
   SET_TOKEN,
   LOGOUT_SUCCESS,
 } from "redux/types/authTypes";
+import { clearUser, setUser } from "./userAction";
 
 function setLoading() {
   return { type: AUTH_LOADING };
@@ -24,9 +25,10 @@ export const authUser = () => (dispatch) => {
   axios
     .get("/api/users/user", { headers: { "x-auth-token": token } })
     .then((response) => {
+      dispatch(setUser(response.data.user));
       return dispatch({
         type: AUTH_SUCCESS,
-        payload: { user: response.data.user },
+        payload: { token },
       });
     })
     .catch(() => {
@@ -37,6 +39,7 @@ export const authUser = () => (dispatch) => {
 export const logout = () => (dispatch) => {
   dispatch(setLoading());
   localStorage.clear("token");
+  dispatch(clearUser());
   dispatch({ type: LOGOUT_SUCCESS });
   window.location.replace("/api/auth/logout");
 };

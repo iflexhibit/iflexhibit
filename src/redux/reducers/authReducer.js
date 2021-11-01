@@ -9,7 +9,6 @@ import {
 const initialState = {
   isAuthLoading: false,
   isAuthenticated: false,
-  user: null,
   token: null,
 };
 
@@ -23,15 +22,14 @@ export const authReducer = (state = initialState, action) => {
     case AUTH_SUCCESS:
       return {
         ...state,
-        user: payload.user,
         isAuthLoading: false,
         isAuthenticated: true,
+        token: payload.token,
       };
     case AUTH_ERROR:
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        user: null,
         isAuthLoading: false,
         isAuthenticated: false,
         token: null,

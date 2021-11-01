@@ -38,7 +38,7 @@ export const CommentsSection = ({
                   <a className={styles["commenter"]}>
                     <div className={styles["avatar"]}>
                       <Image
-                        src={comment?.avatar}
+                        src={comment?.author?.avatar}
                         layout="fill"
                         objectFit="cover"
                         alt=""
@@ -46,10 +46,10 @@ export const CommentsSection = ({
                     </div>
                     <div className={styles["info"]}>
                       <span className={styles["author"]}>
-                        <b>{comment?.author}</b>
+                        <b>{comment?.author?.username}</b>
                       </span>
                       <span className={styles["date"]}>
-                        {new Date(comment?.date).toUTCString()}
+                        {new Date(comment?.createdAt).toUTCString()}
                       </span>
                     </div>
                   </a>
