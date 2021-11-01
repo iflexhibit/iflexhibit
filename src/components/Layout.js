@@ -10,7 +10,7 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authUser());
-  });
+  }, [title]);
   return (
     <>
       <Head>

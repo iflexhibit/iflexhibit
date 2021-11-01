@@ -8,6 +8,8 @@ import CommentIcon from "components/icons/CommentIcon";
 import TimesIcon from "components/icons/TimesIcon";
 import SendIcon from "components/icons/SendIcon";
 import TextArea from "components/TextArea";
+import { useSelector } from "react-redux";
+import Button from "components/Button";
 
 export const CommentsSection = ({
   comments,
@@ -17,6 +19,7 @@ export const CommentsSection = ({
   handleNewCommentSubmit,
   handleNewCommentChange,
 }) => {
+  const { isAuthenticated } = useSelector((state) => state.auth);
   return (
     <>
       <motion.div
@@ -26,6 +29,16 @@ export const CommentsSection = ({
         transition={{ duration: 0.125 }}
       >
         <AnimatePresence>
+          {!isAuthenticated && (
+            <Button
+              variant="outlined"
+              label="sign in to comment"
+              text="uppercase"
+              rounded
+              fullWidth
+              href="/login"
+            />
+          )}
           {comments?.map((comment) => (
             <motion.div
               key={comment.id}
@@ -67,52 +80,53 @@ export const CommentsSection = ({
           ))}
         </AnimatePresence>
       </motion.div>
-      {!isCommentFieldOpen ? (
-        <motion.div
-          key={isCommentFieldOpen}
-          className={`${styles["new-comment"]} ${styles["control"]}`}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1.25 }}
-          exit={{ scale: 0 }}
-          transition={{ duration: 0.125 }}
-        >
-          <IconButton
-            icon={<CommentIcon />}
-            variant="contained"
-            rounded
-            onClick={() => setCommentFieldOpen(true)}
-          />
-        </motion.div>
-      ) : (
-        <motion.form
-          key={isCommentFieldOpen}
-          className={`${styles["new-comment"]} ${styles["field"]}`}
-          initial={{ y: 75 }}
-          animate={{ y: 0 }}
-          exit={{ y: 75 }}
-          transition={{ duration: 0.125 }}
-          onSubmit={handleNewCommentSubmit}
-        >
-          <IconButton
-            icon={<TimesIcon />}
-            onClick={() => setCommentFieldOpen(false)}
-          />
-          <TextArea
-            id="new_comment"
-            value={newComment}
-            onChange={handleNewCommentChange}
-            placeholder="Write a comment..."
-            autoFocus
-          />
-          <IconButton
-            icon={<SendIcon />}
-            variant="contained"
-            rounded
-            type="submit"
-            disabled={newComment === ""}
-          />
-        </motion.form>
-      )}
+      {isAuthenticated &&
+        (!isCommentFieldOpen ? (
+          <motion.div
+            key={isCommentFieldOpen}
+            className={`${styles["new-comment"]} ${styles["control"]}`}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1.25 }}
+            exit={{ scale: 0 }}
+            transition={{ duration: 0.125 }}
+          >
+            <IconButton
+              icon={<CommentIcon />}
+              variant="contained"
+              rounded
+              onClick={() => setCommentFieldOpen(true)}
+            />
+          </motion.div>
+        ) : (
+          <motion.form
+            key={isCommentFieldOpen}
+            className={`${styles["new-comment"]} ${styles["field"]}`}
+            initial={{ y: 75 }}
+            animate={{ y: 0 }}
+            exit={{ y: 75 }}
+            transition={{ duration: 0.125 }}
+            onSubmit={handleNewCommentSubmit}
+          >
+            <IconButton
+              icon={<TimesIcon />}
+              onClick={() => setCommentFieldOpen(false)}
+            />
+            <TextArea
+              id="new_comment"
+              value={newComment}
+              onChange={handleNewCommentChange}
+              placeholder="Write a comment..."
+              autoFocus
+            />
+            <IconButton
+              icon={<SendIcon />}
+              variant="contained"
+              rounded
+              type="submit"
+              disabled={newComment === ""}
+            />
+          </motion.form>
+        ))}
     </>
   );
 };
