@@ -24,7 +24,7 @@ const PostLayout = ({ post }) => {
     e.preventDefault();
     dispatch(postComment(post.id, newComment));
   };
-  useEffect(() => dispatch(fetchComments(post.id)), [post]);
+  useEffect(() => dispatch(fetchComments(post.id)), [dispatch, post]);
   const { comments } = useSelector((state) => state.post);
   return (
     <Layout
