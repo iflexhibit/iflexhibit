@@ -91,7 +91,7 @@ div.post {
     &.description {
       flex-flow: column nowrap;
       padding: 1rem;
-      background: var(--color-dark);
+      background: var(--color-primary-fade);
       border-radius: 0.75rem;
     }
 
@@ -140,7 +140,7 @@ div.post {
           padding: 0.5rem 1rem;
           margin: 0rem 1rem 1rem;
           border-radius: 0 0.75rem 0.75rem 0.75rem;
-          background-color: var(--color-dark);
+          background-color: var(--color-primary-fade);
 
           & > p {
             margin: 0.5rem 0;

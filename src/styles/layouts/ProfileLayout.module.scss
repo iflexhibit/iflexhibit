@@ -59,8 +59,8 @@ div.profile {
       flex-flow: column nowrap;
       gap: 1rem;
 
-      background: var(--color-dark);
-      border-radius: 0.75re;
+      background: var(--color-primary-fade);
+      border-radius: 0.75rem;
 
       & > div.info {
         display: flex;
@@ -68,7 +68,7 @@ div.profile {
         gap: 0.25rem;
 
         & > small {
-          font-weight: $light;
+          font-weight: $bold;
           color: var(--color-primary);
         }
 
