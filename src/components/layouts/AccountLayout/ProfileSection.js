@@ -22,6 +22,20 @@ export const ProfileSection = ({
       transition={{ duration: 0.125 }}
       className={styles["profile"]}
     >
+      <div className={`${styles["row"]} ${styles["default"]}`}>
+        <div className={styles["group"]}>
+          <label>First Name</label>
+          <span>{user?.realName?.firstName}</span>
+        </div>
+        <div className={styles["group"]}>
+          <label>Last Name</label>
+          <span>{user?.realName?.lastName}</span>
+        </div>
+        <div className={styles["group"]}>
+          <label>Email</label>
+          <span>{user?.email}</span>
+        </div>
+      </div>
       <div className={`${styles["row"]} ${styles["avatar"]}`}>
         <label>Profile Photo</label>
         <div className={`${styles["image"]}`}>
@@ -60,20 +74,6 @@ export const ProfileSection = ({
             variant="outlined"
             text="uppercase"
           />
-        </div>
-      </div>
-      <div className={`${styles["row"]} ${styles["default"]}`}>
-        <div className={styles["group"]}>
-          <label>First Name</label>
-          <span>{user?.realName?.firstName}</span>
-        </div>
-        <div className={styles["group"]}>
-          <label>Last Name</label>
-          <span>{user?.realName?.lastName}</span>
-        </div>
-        <div className={styles["group"]}>
-          <label>Email</label>
-          <span>{user?.email}</span>
         </div>
       </div>
       <div className={`${styles["row"]} ${styles["form"]}`}>

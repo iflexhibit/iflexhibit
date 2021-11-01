@@ -122,12 +122,16 @@ div.btn-group {
 
   display: flex;
   overflow: hidden;
+  background: var(--color-dark);
+  border-radius: 0.75rem;
+  padding: 0.25rem;
 
   & > button.btn {
     min-height: 2.625rem;
     width: 100%;
     height: fit-content;
     border-radius: 0.75rem;
+    transition: background 250ms;
 
     &.active {
       background: var(--color-primary-fade);
@@ -139,7 +143,6 @@ div.btn-group {
     }
 
     &.inactive {
-      background: var(--color-background);
       color: var(--color-primary);
 
       path {
