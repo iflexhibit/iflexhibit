@@ -9,11 +9,10 @@ export const setPost = (post) => (dispatch) => {
   dispatch({ type: SET_POST, payload: { post } });
 };
 
-export const fetchComments = () => (dispatch, getState) => {
-  const { post } = getState().post;
-  if (!post) return dispatch({ type: COMMENTS_ERROR });
+export const fetchComments = (postId) => (dispatch) => {
+  if (!postId) return dispatch({ type: COMMENTS_ERROR });
   axios
-    .get("/api/posts/comments/" + post.id)
+    .get("/api/posts/comments/" + postId)
     .then((response) =>
       dispatch({
         type: FETCH_COMMENTS,

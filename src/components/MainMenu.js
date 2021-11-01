@@ -25,7 +25,8 @@ const fetchLinks = (user) => {
 };
 
 const MainMenu = ({ closeMenu }) => {
-  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const links = fetchLinks(user);
   return (
