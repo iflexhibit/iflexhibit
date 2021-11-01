@@ -31,7 +31,7 @@ div.toggle {
         bottom: 0;
 
         background-color: var(--color-primary-fade);
-        border-radius: 18px;
+        border-radius: 0.5rem;
 
         transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
         cursor: pointer;
@@ -51,10 +51,6 @@ div.toggle {
           transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
           transform: translateY(3px);
         }
-      }
-
-      & > input:focus + span.slider {
-        box-shadow: 0 0 1px var(--color-primary-fade);
       }
 
       & > input:checked + span.slider:before {

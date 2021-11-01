@@ -33,12 +33,11 @@ export const ProfileSection = ({
           />
         </div>
         <div className={`${styles["avatar-controls"]}`}>
-          <IconButton icon={<TrashIcon />} variant="warning" rounded />
+          <IconButton icon={<TrashIcon />} variant="warning" />
           <Button
             label="Upload a photo"
             fullWidth
             variant="outlined"
-            rounded
             text="uppercase"
           />
         </div>
@@ -54,12 +53,11 @@ export const ProfileSection = ({
           />
         </div>
         <div className={`${styles["banner-controls"]}`}>
-          <IconButton icon={<TrashIcon />} variant="warning" rounded />
+          <IconButton icon={<TrashIcon />} variant="warning" />
           <Button
             label="Upload a photo"
             fullWidth
             variant="outlined"
-            rounded
             text="uppercase"
           />
         </div>
@@ -109,17 +107,11 @@ export const ProfileSection = ({
             />
           </div>
           <div className={styles["form-controls"]}>
-            <IconButton
-              icon={<RedoIcon />}
-              type="reset"
-              variant="outlined"
-              rounded
-            />
+            <IconButton icon={<RedoIcon />} type="reset" variant="outlined" />
             <Button
               type="submit"
               label="save changes"
               variant="contained"
-              rounded
               fullWidth
               text="uppercase"
             />

@@ -25,7 +25,7 @@ label.container {
     right: 0;
     bottom: 0;
     background: var(--color-background);
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     z-index: -1;
   }
 
@@ -54,7 +54,7 @@ label.container {
     width: 1.5rem;
     background: var(--color-dark);
     border: solid 1px var(--color-primary-fade);
-    border-radius: 5px;
+    border-radius: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;

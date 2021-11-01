@@ -78,7 +78,6 @@ export const UploadForm = ({
           </div>
           <Button
             fullWidth
-            rounded
             label="add tags"
             startIcon={<PlusIcon />}
             text="uppercase"
@@ -91,7 +90,6 @@ export const UploadForm = ({
           variant="contained"
           text="uppercase"
           fullWidth
-          rounded
           type="submit"
         />
       </form>

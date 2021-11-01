@@ -53,7 +53,6 @@ export const PreferencesSection = ({
         type="submit"
         label="save changes"
         variant="contained"
-        rounded
         fullWidth
         onClick={handlePreferencesSubmit}
         text="uppercase"

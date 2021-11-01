@@ -13,7 +13,7 @@ button.btn {
 
   background: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.75rem;
 
   cursor: pointer;
   user-select: none;
@@ -35,7 +35,6 @@ button.btn {
   &.outlined:active {
     background: var(--color-primary);
     border: solid 1px var(--color-primary);
-    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
       fill: var(--color-dark);
     }
@@ -44,7 +43,6 @@ button.btn {
   &.warning {
     background: var(--color-dark);
     border: solid 1px var(--color-secondary-fade);
-    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
       fill: var(--color-secondary);
     }
@@ -61,7 +59,6 @@ button.btn {
   &.text:active {
     background: var(--color-dark);
     border: solid 1px var(--color-primary-fade);
-    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
       fill: var(--color-primary);
     }

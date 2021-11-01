@@ -13,8 +13,7 @@ div.select {
     background: var(--color-dark);
     color: var(--color-text);
     border: solid 1px var(--color-primary-fade);
-    border-radius: 5px;
-    box-shadow: 2px 2px 0 0 var(--color-dark);
+    border-radius: 0.75rem;
 
     text-transform: capitalize;
     font-size: 1rem;
@@ -44,7 +43,7 @@ div.select {
     justify-content: center;
 
     background: var(--color-dark);
-    border-radius: 5px;
+    border-radius: 0.5rem;
     pointer-events: none;
   }
 }

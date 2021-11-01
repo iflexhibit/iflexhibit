@@ -11,5 +11,8 @@ div.stat {
   gap: 0.5rem;
 
   font-size: 0.875rem;
-  white-space: nowrap;
+  color: var(--color-gray);
+  svg > * {
+    fill: currentColor;
+  }
 }

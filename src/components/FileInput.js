@@ -36,7 +36,6 @@ const FileInput = ({
         text="uppercase"
         variant="outlined"
         onClick={() => inputRef.current.click()}
-        rounded
         fullWidth
         startIcon={<UploadIcon />}
       />

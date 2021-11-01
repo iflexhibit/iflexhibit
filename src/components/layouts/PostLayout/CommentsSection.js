@@ -31,10 +31,9 @@ export const CommentsSection = ({
         <AnimatePresence>
           {!isAuthenticated && (
             <Button
-              variant="outlined"
+              variant="contained"
               label="sign in to comment"
               text="uppercase"
-              rounded
               fullWidth
               href="/login"
             />
@@ -93,7 +92,6 @@ export const CommentsSection = ({
             <IconButton
               icon={<CommentIcon />}
               variant="contained"
-              rounded
               onClick={() => setCommentFieldOpen(true)}
             />
           </motion.div>
@@ -121,7 +119,6 @@ export const CommentsSection = ({
             <IconButton
               icon={<SendIcon />}
               variant="contained"
-              rounded
               type="submit"
               disabled={newComment === ""}
             />

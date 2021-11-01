@@ -58,7 +58,6 @@ const MainMenu = ({ closeMenu }) => {
               fullWidth
               onClick={() => dispatch(logout())}
               text="uppercase"
-              rounded
             />
           ) : (
             <Button
@@ -67,7 +66,6 @@ const MainMenu = ({ closeMenu }) => {
               fullWidth
               href="/login"
               text="uppercase"
-              rounded
             />
           )}
         </div>

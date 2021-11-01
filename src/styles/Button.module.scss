@@ -15,7 +15,7 @@ button.btn {
 
   background: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.75rem;
 
   white-space: nowrap;
   cursor: pointer;
@@ -38,7 +38,6 @@ button.btn {
     background: var(--color-primary);
     color: var(--color-dark);
     border: solid 1px var(--color-primary);
-    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
       fill: var(--color-dark);
     }
@@ -48,7 +47,6 @@ button.btn {
     background: var(--color-dark);
     color: var(--color-secondary);
     border: solid 1px var(--color-secondary-fade);
-    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
       fill: var(--color-secondary);
     }
@@ -66,7 +64,6 @@ button.btn {
     background: var(--color-dark);
     color: var(--color-primary);
     border: solid 1px var(--color-primary-fade);
-    box-shadow: 2px 2px 0 0 var(--color-dark);
     path {
       fill: var(--color-primary);
     }
@@ -130,12 +127,11 @@ div.btn-group {
     min-height: 2.625rem;
     width: 100%;
     height: fit-content;
-    border-radius: 0;
+    border-radius: 0.75rem;
 
     &.active {
-      background: var(--color-dark);
+      background: var(--color-primary-fade);
       color: var(--color-primary);
-      border-bottom: solid 2px var(--color-primary);
 
       path {
         fill: var(--color-primary);
@@ -145,7 +141,6 @@ div.btn-group {
     &.inactive {
       background: var(--color-background);
       color: var(--color-primary);
-      border-bottom: solid 1px var(--color-primary-fade);
 
       path {
         fill: var(--color-primary);

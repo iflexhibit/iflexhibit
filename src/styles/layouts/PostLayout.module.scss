@@ -3,7 +3,11 @@
 div.post {
   display: flex;
   flex-flow: column nowrap;
-  gap: 1.5rem;
+  gap: 1rem;
+
+  hr {
+    margin: 0 0 1rem;
+  }
 
   & > div.image-container {
     width: 100%;
@@ -31,7 +35,10 @@ div.post {
       justify-content: flex-start;
     }
 
-    &.stats,
+    &.stats {
+      justify-content: flex-start;
+    }
+
     &.title {
       justify-content: space-between;
     }
@@ -39,6 +46,40 @@ div.post {
     &.user {
       gap: 0.5rem;
       justify-content: space-between;
+
+      & > a.profile {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 0.5rem;
+
+        & > div.avatar {
+          position: relative;
+          width: 2.5rem;
+          height: 2.5rem;
+          min-width: 2.5rem;
+          min-height: 2.5rem;
+          border-radius: 0.75rem;
+          overflow: hidden;
+        }
+
+        & > div.creator {
+          width: 100%;
+
+          display: flex;
+          flex-flow: column nowrap;
+
+          & > div.display-name {
+            font-size: 0.875rem;
+            font-weight: $bold;
+          }
+
+          & > div.real-name {
+            font-size: 0.75rem;
+            font-weight: $regular;
+            color: var(--color-gray);
+          }
+        }
+      }
     }
 
     &.tabs {
@@ -47,113 +88,76 @@ div.post {
       padding: 0.125rem;
     }
 
-    &.description,
-    &.comments {
-      flex-flow: column nowrap;
-    }
-
     &.description {
+      flex-flow: column nowrap;
       padding: 1rem;
       background: var(--color-dark);
-      border-radius: 1rem;
+      border-radius: 0.75rem;
+    }
+
+    &.comments {
+      flex-flow: column nowrap;
+      gap: 2rem;
+      & > div.comment {
+        width: 100%;
+
+        & > div.header {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          gap: 0.5rem;
+
+          & > a.commenter {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+
+            & > div.avatar {
+              position: relative;
+              width: 2rem;
+              height: 2rem;
+              min-width: 2rem;
+              min-height: 2rem;
+
+              border-radius: 0.5rem;
+              overflow: hidden;
+            }
+
+            & > div.info {
+              width: 100%;
+              display: flex;
+              flex-flow: column nowrap;
+
+              & > span {
+                font-size: 0.75rem;
+                color: var(--color-gray);
+              }
+            }
+          }
+        }
+        & > div.body {
+          padding: 0.5rem 1rem;
+          margin: 0rem 1rem 1rem;
+          border-radius: 0 0.75rem 0.75rem 0.75rem;
+          background-color: var(--color-dark);
+
+          & > p {
+            margin: 0.5rem 0;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+          }
+        }
+      }
     }
 
     & > p {
       line-height: 1.5rem;
       letter-spacing: 0.125px;
     }
-
-    & > a.profile {
-      display: flex;
-      flex-flow: row nowrap;
-      gap: 0.5rem;
-
-      & > div.avatar {
-        position: relative;
-        width: 3rem;
-        height: 3rem;
-        min-width: 3rem;
-        min-height: 3rem;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-
-      & > div.creator {
-        width: 100%;
-
-        display: flex;
-        flex-flow: column nowrap;
-        gap: 0.125rem;
-
-        & > div.display-name {
-          font-size: 1.125rem;
-          font-weight: bold;
-          font-family: $heading;
-        }
-
-        & > div.real-name {
-          font-size: 0.75rem;
-        }
-      }
-    }
-
-    & > div.comment {
-      width: 100%;
-
-      & > div.header {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        gap: 0.5rem;
-
-        & > a.commenter {
-          display: flex;
-          flex-flow: row nowrap;
-          justify-content: space-between;
-          gap: 0.5rem;
-
-          & > div.avatar {
-            position: relative;
-            width: 2rem;
-            height: 2rem;
-            min-width: 2rem;
-            min-height: 2rem;
-
-            border-radius: 50%;
-            overflow: hidden;
-          }
-
-          & > div.info {
-            width: 100%;
-            display: flex;
-            flex-flow: column nowrap;
-
-            & > span {
-              font-size: 0.75rem;
-
-              &.date {
-                opacity: 0.75;
-              }
-            }
-          }
-        }
-      }
-      & > div.body {
-        padding: 0.5rem 1rem;
-        margin: 0.5rem 1rem 1rem;
-        border-radius: 0 1rem 1rem 1rem;
-        background-color: var(--color-dark);
-
-        & > p {
-          margin: 0.5rem 0;
-          font-size: 0.875rem;
-          line-height: 1.25rem;
-        }
-      }
-    }
   }
 
-  & > .new-comment {
+  & > div.new-comment {
     position: fixed;
     min-height: 3.75rem;
     height: fit-content;

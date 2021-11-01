@@ -20,7 +20,7 @@ div.profile {
       height: 7rem;
       margin-top: -3.5rem;
 
-      border-radius: 100%;
+      border-radius: 0.75rem;
       overflow: hidden;
     }
 
@@ -60,7 +60,7 @@ div.profile {
       gap: 1rem;
 
       background: var(--color-dark);
-      border-radius: 1rem;
+      border-radius: 0.75re;
 
       & > div.info {
         display: flex;

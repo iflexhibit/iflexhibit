@@ -35,7 +35,6 @@ const FilterMenu = ({
             variant="outlined"
             fullWidth
             onClick={handleFilterReset}
-            rounded
           />
           <IconButton icon={<TimesIcon />} variant="text" onClick={closeMenu} />
         </div>
@@ -56,7 +55,6 @@ const FilterMenu = ({
             text="uppercase"
             variant="contained"
             fullWidth
-            rounded
           />
         </div>
       </motion.div>
