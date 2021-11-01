@@ -15,12 +15,12 @@ const fetchLinks = (user) => {
   const links = [
     { href: "/profile", label: "My Profile", icon: <UserIcon /> },
     { href: "/account", label: "Account Settings", icon: <CogIcon /> },
-    { href: "/", label: "Legal Agreement", icon: <BookIcon /> },
+    { href: "/legal", label: "Legal Agreement", icon: <BookIcon /> },
     { href: "/", label: "System Dashboard", icon: <BlocksIcon /> },
   ];
   if (!user) return null;
   if (user?.usertype === "member" || user?.usertype === "banned")
-    return links.slice(0, 2);
+    return links.slice(0, 3);
   return links;
 };
 
