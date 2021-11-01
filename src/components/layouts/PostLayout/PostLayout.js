@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "styles/layouts/PostLayout.module.scss";
 import Layout from "components/Layout";
 import ButtonGroup from "components/ButtonGroup";
@@ -9,6 +9,8 @@ import { PostTags } from "./PostTags";
 import { PostAuthor } from "./PostAuthor";
 import { DescriptionSection } from "./DescriptionSection";
 import { CommentsSection } from "./CommentsSection";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchComments } from "redux/actions/postAction";
 
 const PostLayout = ({ post }) => {
   const [isCommentFieldOpen, setCommentFieldOpen] = useState(false);
@@ -19,6 +21,9 @@ const PostLayout = ({ post }) => {
   const handleNewCommentSubmit = (e) => {
     e.preventDefault();
   };
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(fetchComments()));
+  const { comments } = useSelector((state) => state.post);
   return (
     <Layout
       title="iFlexhibit"
@@ -50,7 +55,7 @@ const PostLayout = ({ post }) => {
           <DescriptionSection description={post?.body} />
         ) : (
           <CommentsSection
-            comments={[].reverse().map((c) => c)}
+            comments={comments}
             isCommentFieldOpen={isCommentFieldOpen}
             setCommentFieldOpen={setCommentFieldOpen}
             newComment={newComment}

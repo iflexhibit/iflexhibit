@@ -1,7 +1,14 @@
 import PostLayout from "components/layouts/PostLayout/PostLayout";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setPost } from "redux/actions/postAction";
+import { useEffect } from "react";
 
 export default function PostPage(props) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setPost(props.post));
+  });
   return <PostLayout post={props.post} />;
 }
 
