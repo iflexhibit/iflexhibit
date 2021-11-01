@@ -7,14 +7,19 @@ import SearchIcon from "./icons/SearchIcon";
 import MainMenu from "./MainMenu";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
+import ArrowLeftIcon from "./icons/ArrowLeftIcon";
 
 const NavTop = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
   return (
     <nav className={`${styles["nav"]} ${styles["top"]}`}>
       <IconButton
-        icon={<BarsIcon />}
-        onClick={() => setMenuOpen((prev) => !prev)}
+        icon={router.pathname === "/" ? <BarsIcon /> : <ArrowLeftIcon />}
+        onClick={() =>
+          router.pathname === "/" ? setMenuOpen((prev) => !prev) : router.back()
+        }
       />
       <Link href="/">
         <a>
