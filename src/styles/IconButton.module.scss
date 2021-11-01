@@ -18,57 +18,43 @@ button.btn {
   cursor: pointer;
   user-select: none;
   transition: 125ms;
-  svg {
-    min-width: 1rem;
-    min-height: 1rem;
-    width: auto;
-    height: 1rem;
-    path {
-      min-width: 1rem;
-      min-height: 1rem;
-      width: auto;
-      height: 1rem;
-    }
-  }
 
-  &.contained,
-  &.outlined:active {
+  &.contained {
     background: var(--color-primary);
     border: solid 1px var(--color-primary);
-    path {
-      fill: var(--color-dark);
+    color: var(--color-background);
+    &:active {
+      background: var(--color-background);
+      color: var(--color-primary);
     }
   }
 
   &.warning {
     background: var(--color-dark);
     border: solid 1px var(--color-secondary-fade);
-    path {
-      fill: var(--color-secondary);
-    }
+    color: var(--color-secondary);
     &:active {
       background: var(--color-secondary);
-      path {
-        fill: var(--color-text);
-      }
+      color: var(--color-background);
     }
   }
 
-  &.outlined,
-  &.contained:active,
-  &.text:active {
+  &.outlined {
     background: var(--color-dark);
     border: solid 1px var(--color-primary-fade);
-    path {
-      fill: var(--color-primary);
+    color: var(--color-primary);
+    &:active {
+      background: var(--color-primary);
+      color: var(--color-background);
     }
   }
 
   &.text {
     background: var(--color-background);
     border: solid 1px var(--color-background);
-    path {
-      fill: var(--color-text);
+    color: var(--color-text);
+    &:active {
+      color: var(--color-primary);
     }
   }
 
@@ -85,7 +71,9 @@ button.btn {
   }
 
   &.disabled {
-    opacity: 0.25;
+    background: var(--color-primary-fade);
+    border: solid 1px var(--color-primary-fade);
+    color: var(--color-background);
     pointer-events: none;
   }
 }

@@ -88,7 +88,8 @@ label {
 svg {
   width: 1rem;
   height: 1rem;
-  path {
-    fill: var(--color-text);
+  flex-shrink: 0;
+  * {
+    fill: currentColor;
   }
 }
