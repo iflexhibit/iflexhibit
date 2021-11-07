@@ -14,7 +14,7 @@ export default function PostPage(props) {
 
 export async function getServerSideProps({ req, res, params }) {
   const response = await axios.get(
-    process.env.API_URL + "/api/posts/post" + params.id
+    process.env.API_URL + "/api/posts/post/" + params.id
   );
   const data = response.data;
   return { props: { post: data.post } };
