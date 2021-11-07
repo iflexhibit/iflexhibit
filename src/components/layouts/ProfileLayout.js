@@ -10,53 +10,23 @@ import Posts from "components/Posts";
 import Select from "components/Select";
 import { AnimatePresence, motion } from "framer-motion";
 
-const ProfileLayout = () => {
+const ProfileLayout = ({ user }) => {
   const [tabs] = useState(["About", "Works"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const [user] = useState({
-    bannerImg: "/assets/temp/posts/1.jpg",
-    avatarImg: "/assets/temp/hmm.jpg",
-    likes_count: 15,
-    views_count: 300365,
-    date_joined: new Date(),
-    displayName: "nikkieyabs",
-    realName: "Mary Nicole Yabut",
-    email: "address@example.com",
-    contact: "09123456789",
-    bio: `I think johnpaul5202 shows a lot of creativity in my class. I love the effort he puts forth whenever he participates during my lessons.
-    He usually seems to be quite cheerful in class. He loves when he can use new words he learned in class.
-    I always try to encourage him to practice his speaking in class, so he can continue to improve his speaking skills. I am quite happy with the effort he puts into reading in the classroom. He applies the grammar he knows well when he is writing in English.
-    I am cheering johnpaul5202 on to do well in his English studies.`,
-    posts: [
-      { imgSrc: "/assets/temp/posts/1.jpg" },
-      { imgSrc: "/assets/temp/posts/2.jpg" },
-      { imgSrc: "/assets/temp/posts/3.jpg" },
-      { imgSrc: "/assets/temp/posts/4.jpg" },
-      { imgSrc: "/assets/temp/posts/5.jpg" },
-      { imgSrc: "/assets/temp/posts/6.jpg" },
-      { imgSrc: "/assets/temp/posts/7.jpg" },
-      { imgSrc: "/assets/temp/posts/8.jpg" },
-      { imgSrc: "/assets/temp/posts/9.jpg" },
-      { imgSrc: "/assets/temp/posts/10.jpg" },
-    ],
-  });
   const sortOptions = ["most viewed", "newest", "most popular"];
   const [activeSort, setActiveSort] = useState(sortOptions[0]);
   const handleSortChange = (e) => setActiveSort(e.target.value);
   return (
     <Layout
-      title="User | iFlexhibit"
+      title={user.username + " | iFlexhibit"}
       description="A content sharing platform for iACADEMY students"
-      canonical="https://iflexhibit.com/profile"
+      canonical={"https://iflexhibit.com/profile/" + user.id}
     >
       <div className={styles["profile"]}>
-        <ProfileBanner bannerImg={user?.bannerImg} />
-        <ProfileAvatar avatarImg={user?.avatarImg} />
-        <ProfileDisplayName displayName={user?.displayName} />
-        <ProfileStats
-          likes_count={user?.likes_count}
-          views_count={user?.views_count}
-        />
+        <ProfileBanner bannerImg={user?.background} />
+        <ProfileAvatar avatarImg={user?.avatar} />
+        <ProfileDisplayName displayName={user?.username} />
+        <ProfileStats likes_count={0} views_count={0} />
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
           <ButtonGroup
             tabs={tabs}
@@ -67,11 +37,12 @@ const ProfileLayout = () => {
         <AnimatePresence>
           {activeTab === tabs[0] ? (
             <AboutSection
-              realName={user?.realName}
+              givenName={user?.name?.given}
+              familyName={user?.name?.family}
               email={user?.email}
               contact={user?.contact}
               bio={user?.bio}
-              date={user?.date_joined}
+              date={user?.createdAt}
             />
           ) : (
             <WorksSection
@@ -120,7 +91,7 @@ const ProfileStats = ({ likes_count, views_count }) => {
   );
 };
 
-const AboutSection = ({ realName, email, contact, bio, date }) => {
+const AboutSection = ({ givenName, familyName, email, contact, bio, date }) => {
   return (
     <motion.div
       className={`${styles["row"]} ${styles["about"]}`}
@@ -134,22 +105,22 @@ const AboutSection = ({ realName, email, contact, bio, date }) => {
       </div>
       <div className={styles["info"]}>
         <small className={styles["label"]}>Name</small>
-        <span>{realName}</span>
+        <span>
+          {givenName && familyName ? givenName + " " + familyName : "---"}
+        </span>
       </div>
       <div className={styles["info"]}>
         <small className={styles["label"]}>Email</small>
-        <span>{email}</span>
+        <span>{email || "---"}</span>
       </div>
       <div className={styles["info"]}>
         <small className={styles["label"]}>Contact</small>
-        <span>{contact}</span>
+        <span>{contact || "---"}</span>
       </div>
       <div className={styles["info"]}>
         <small className={styles["label"]}>Bio</small>
         <div className={styles["bio"]}>
-          {bio.split("\n").map((b, i) => (
-            <p key={i}>{b}</p>
-          ))}
+          {bio?.split("\n").map((b, i) => <p key={i}>{b}</p>) || "---"}
         </div>
       </div>
     </motion.div>
@@ -169,7 +140,7 @@ const WorksSection = ({ posts, sortOptions, activeSort, handleSortChange }) => {
         options={sortOptions}
         value={activeSort}
       />
-      <Posts posts={posts} />
+      <Posts posts={posts || []} />
     </motion.div>
   );
 };
