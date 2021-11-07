@@ -13,7 +13,7 @@ import { logout } from "redux/actions/authAction";
 
 const fetchLinks = (user) => {
   const links = [
-    { href: "/profile", label: "My Profile", icon: <UserIcon /> },
+    { href: "/profile/" + user?.id, label: "My Profile", icon: <UserIcon /> },
     { href: "/account", label: "Account Settings", icon: <CogIcon /> },
     { href: "/legal", label: "Legal Agreement", icon: <BookIcon /> },
     { href: "/", label: "System Dashboard", icon: <BlocksIcon /> },
