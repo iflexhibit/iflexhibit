@@ -5,7 +5,7 @@ import IconButton from "./IconButton";
 import BarsIcon from "./icons/BarsIcon";
 import SearchIcon from "./icons/SearchIcon";
 import MainMenu from "./MainMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import ArrowLeftIcon from "./icons/ArrowLeftIcon";
@@ -13,6 +13,14 @@ import ArrowLeftIcon from "./icons/ArrowLeftIcon";
 const NavTop = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = () => setMenuOpen(false);
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, []);
   return (
     <nav className={`${styles["nav"]} ${styles["top"]}`}>
       <IconButton

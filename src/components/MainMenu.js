@@ -56,7 +56,10 @@ const MainMenu = ({ closeMenu }) => {
               label="Sign Out"
               variant="outlined"
               fullWidth
-              onClick={() => dispatch(logout())}
+              onClick={() => {
+                closeMenu();
+                dispatch(logout());
+              }}
             />
           ) : (
             <Button
