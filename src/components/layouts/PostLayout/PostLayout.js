@@ -43,9 +43,11 @@ const PostLayout = ({ post }) => {
         <PostTags tags={post?.tags} />
         <hr />
         <PostAuthor
+          userId={post?.author?.id}
           avatar={post?.author?.avatar}
           displayName={post?.author?.username}
-          realName={post?.user?.realName || "John Paul Ong"}
+          givenName={post?.author?.givenName}
+          familyName={post?.author?.familyName}
         />
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
           <ButtonGroup

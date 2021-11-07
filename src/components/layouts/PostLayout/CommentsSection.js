@@ -45,7 +45,7 @@ export const CommentsSection = ({
               animate={{ opacity: 1 }}
             >
               <div className={styles["header"]}>
-                <Link href="/profile">
+                <Link href={"/profile/" + comment?.author?.id}>
                   <a className={styles["commenter"]}>
                     <div className={styles["avatar"]}>
                       <Image
