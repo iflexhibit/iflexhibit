@@ -1,5 +1,5 @@
 import ProfileLayout from "components/layouts/ProfileLayout";
 
-export default function Home() {
+export default function ProfilePage(props) {
   return <ProfileLayout />;
 }
