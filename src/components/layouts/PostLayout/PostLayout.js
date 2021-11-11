@@ -22,6 +22,8 @@ const PostLayout = ({ post }) => {
   const handleNewCommentChange = (e) => setNewComment(e.target.value);
   const handleNewCommentSubmit = (e) => {
     e.preventDefault();
+    setCommentFieldOpen(false);
+    setNewComment("");
     dispatch(postComment(post.id, newComment));
   };
   useEffect(() => dispatch(fetchComments(post.id)), [dispatch, post]);
