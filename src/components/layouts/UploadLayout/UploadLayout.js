@@ -131,6 +131,8 @@ const UploadLayout = () => {
             closeMenu={() => setFilterMenuOpen(false)}
             handleFilterChange={handleFilterChange}
             handleFilterReset={handleFilterReset}
+            resetButtonLabel="Deselect All"
+            hideApplyButton
           />
         )}
       </AnimatePresence>
