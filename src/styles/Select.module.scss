@@ -11,7 +11,7 @@ div.select {
     padding: 0 2rem 0 1.5rem;
 
     background: var(--color-dark);
-    color: var(--color-text);
+    color: var(--color-primary);
     border: solid 1px var(--color-primary-fade);
     border-radius: 0.75rem;
 
@@ -32,18 +32,18 @@ div.select {
 
   & > div.arrow {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 1px;
-    width: 2rem;
-    height: 90%;
+    bottom: 2px;
+    right: 2px;
+    top: 2px;
+    width: 3rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     background: var(--color-dark);
-    border-radius: 0.5rem;
+    color: var(--color-primary);
+    border-radius: 100%;
     pointer-events: none;
   }
 }
