@@ -10,6 +10,9 @@ const FilterMenu = ({
   closeMenu,
   handleFilterChange,
   handleFilterReset,
+  resetButtonLabel,
+  applyButtonLabel,
+  hideApplyButton,
 }) => {
   return (
     <div className={styles["filters"]}>
@@ -30,7 +33,7 @@ const FilterMenu = ({
       >
         <div className={styles["top"]}>
           <Button
-            label="Reset Filters"
+            label={resetButtonLabel || "Reset Filters"}
             variant="outlined"
             fullWidth
             onClick={handleFilterReset}
@@ -48,9 +51,15 @@ const FilterMenu = ({
             />
           ))}
         </div>
-        <div className={styles["bottom"]}>
-          <Button label="Apply Filter" variant="contained" fullWidth />
-        </div>
+        {!hideApplyButton && (
+          <div className={styles["bottom"]}>
+            <Button
+              label={applyButtonLabel || "Apply Filter"}
+              variant="contained"
+              fullWidth
+            />
+          </div>
+        )}
       </motion.div>
     </div>
   );
