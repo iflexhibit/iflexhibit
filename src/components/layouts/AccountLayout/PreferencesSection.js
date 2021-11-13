@@ -20,31 +20,31 @@ export const PreferencesSection = ({
       <div className={`${styles["row"]} ${styles["options"]}`}>
         <Toggle
           right="Full Name"
-          id="show_fullname"
+          id="showName"
           checked={
-            newPreferences?.show_fullname !== null
-              ? newPreferences?.show_fullname
-              : currentPreferences?.show_fullname
+            newPreferences?.showName !== null
+              ? newPreferences?.showName
+              : currentPreferences?.showName
           }
           onChange={handlePreferencesChange}
         />
         <Toggle
           right="Email"
-          id="show_email"
+          id="showEmail"
           checked={
-            newPreferences?.show_email !== null
-              ? newPreferences?.show_email
-              : currentPreferences?.show_email
+            newPreferences?.showEmail !== null
+              ? newPreferences?.showEmail
+              : currentPreferences?.showEmail
           }
           onChange={handlePreferencesChange}
         />
         <Toggle
           right="Contact Number"
-          id="show_contact"
+          id="showContact"
           checked={
-            newPreferences?.show_contact !== null
-              ? newPreferences?.show_contact
-              : currentPreferences?.show_contact
+            newPreferences?.showContact !== null
+              ? newPreferences?.showContact
+              : currentPreferences?.showContact
           }
           onChange={handlePreferencesChange}
         />

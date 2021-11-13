@@ -10,8 +10,8 @@ import { motion } from "framer-motion";
 
 export const ProfileSection = ({
   user,
-  handleFormReset,
-  handleFormSubmit,
+  handleProfileReset,
+  handleProfileSubmit,
   newProfile,
   handleProfileChange,
 }) => {
@@ -25,11 +25,11 @@ export const ProfileSection = ({
       <div className={`${styles["row"]} ${styles["default"]}`}>
         <div className={styles["group"]}>
           <label>First Name</label>
-          <span>{user?.realName?.firstName}</span>
+          <span>{user?.name?.given}</span>
         </div>
         <div className={styles["group"]}>
           <label>Last Name</label>
-          <span>{user?.realName?.lastName}</span>
+          <span>{user?.name?.family}</span>
         </div>
         <div className={styles["group"]}>
           <label>Email</label>
@@ -40,7 +40,7 @@ export const ProfileSection = ({
         <label>Profile Photo</label>
         <div className={`${styles["image"]}`}>
           <Image
-            src={user?.avatarImg}
+            src={user?.avatar || "/assets/noavatar.jpg"}
             layout="fill"
             objectFit="cover"
             alt="avatar image"
@@ -55,7 +55,7 @@ export const ProfileSection = ({
         <label>Profile Banner</label>
         <div className={`${styles["image"]}`}>
           <Image
-            src={user?.bannerImg}
+            src={user?.background || "/assets/nobg.jpg"}
             layout="fill"
             objectFit="cover"
             alt="profile background"
@@ -67,14 +67,14 @@ export const ProfileSection = ({
         </div>
       </div>
       <div className={`${styles["row"]} ${styles["form"]}`}>
-        <form onReset={handleFormReset} onSubmit={handleFormSubmit}>
+        <form onReset={handleProfileReset} onSubmit={handleProfileSubmit}>
           <div className={styles["group"]}>
-            <label>Display Name</label>
+            <label>Username</label>
             <TextInput
-              id="displayName"
-              value={newProfile?.displayName}
+              id="username"
+              value={newProfile?.username}
               onChange={handleProfileChange}
-              placeholder={user?.displayName}
+              placeholder={user?.username}
             />
           </div>
           <div className={styles["group"]}>
