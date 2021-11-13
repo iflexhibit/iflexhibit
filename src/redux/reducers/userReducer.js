@@ -7,6 +7,9 @@ import {
   PROFILE_UPDATE_LOADING,
   PROFILE_UPDATE_SUCCESS,
   PROFILE_UPDATE_ERROR,
+  PREFERENCES_UPDATE_LOADING,
+  PREFERENCES_UPDATE_SUCCESS,
+  PREFERENCES_UPDATE_ERROR,
 } from "redux/types/userTypes";
 
 const initialState = {
@@ -20,6 +23,11 @@ const initialState = {
     isNewProfileLoading: false,
     isNewProfileSuccess: null,
     profileError: null,
+  },
+  preferences: {
+    isNewPreferencesLoading: false,
+    isNewPreferencesSuccess: null,
+    preferencesError: null,
   },
 };
 
@@ -79,6 +87,33 @@ export const userReducer = (state = initialState, action) => {
           isNewProfileLoading: false,
           isNewProfileSuccess: false,
           profileError: payload.error,
+        },
+      };
+    case PREFERENCES_UPDATE_LOADING:
+      return {
+        ...state,
+        preferences: {
+          ...state.preferences,
+          isNewPreferencesLoading: true,
+        },
+      };
+    case PREFERENCES_UPDATE_SUCCESS:
+      return {
+        ...state,
+        preferences: {
+          ...state.preferences,
+          isNewPreferencesLoading: false,
+          isNewPreferencesSuccess: true,
+        },
+      };
+    case PREFERENCES_UPDATE_ERROR:
+      return {
+        ...state,
+        preferences: {
+          ...state.preferences,
+          isNewPreferencesLoading: false,
+          isNewPreferencesSuccess: false,
+          preferencesError: payload.error,
         },
       };
     default:

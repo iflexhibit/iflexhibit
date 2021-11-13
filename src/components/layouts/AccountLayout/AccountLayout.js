@@ -5,7 +5,7 @@ import Layout from "components/Layout.js";
 import { PreferencesSection } from "./PreferencesSection";
 import { ProfileSection } from "./ProfileSection";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProfile } from "redux/actions/userAction";
+import { updatePreferences, updateProfile } from "redux/actions/userAction";
 
 const AccountLayout = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,9 @@ const AccountLayout = () => {
     }));
   };
 
-  const handlePreferencesSubmit = () => {};
+  const handlePreferencesSubmit = () => {
+    dispatch(updatePreferences(newPreferences));
+  };
 
   const handleProfileSubmit = (e) => {
     e.preventDefault();

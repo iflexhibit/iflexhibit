@@ -8,6 +8,9 @@ import {
   PROFILE_UPDATE_LOADING,
   PROFILE_UPDATE_SUCCESS,
   PROFILE_UPDATE_ERROR,
+  PREFERENCES_UPDATE_LOADING,
+  PREFERENCES_UPDATE_SUCCESS,
+  PREFERENCES_UPDATE_ERROR,
 } from "../types/userTypes";
 import { fetchComments } from "./postAction";
 import { authUser } from "./authAction";
@@ -18,6 +21,10 @@ function setNewCommentLoading() {
 
 function setNewProfileLoading() {
   return { type: PROFILE_UPDATE_LOADING };
+}
+
+function setNewPreferencesLoading() {
+  return { type: PREFERENCES_UPDATE_LOADING };
 }
 
 export const setUser = (user) => (dispatch) => {
@@ -82,6 +89,46 @@ export const updateProfile = (newProfile) => (dispatch, getState) => {
     .catch((error) => {
       dispatch({
         type: PROFILE_UPDATE_ERROR,
+        payload: { error: error.response.data.msg },
+      });
+    });
+};
+
+export const updatePreferences = (newPreferences) => (dispatch, getState) => {
+  const { token } = getState().auth;
+  const { user } = getState().user;
+  dispatch(setNewPreferencesLoading());
+  axios
+    .post(
+      "/api/users/preferences",
+      {
+        showName:
+          newPreferences.showName === null
+            ? user.preferences.showName
+            : newPreferences.showName,
+        showEmail:
+          newPreferences.showEmail === null
+            ? user.preferences.showEmail
+            : newPreferences.showEmail,
+        showContact:
+          newPreferences.showContact === null
+            ? user.preferences.showContact
+            : newPreferences.showContact,
+      },
+      {
+        headers: {
+          "x-auth-token": token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then(() => {
+      dispatch({ type: PREFERENCES_UPDATE_SUCCESS });
+      dispatch(authUser());
+    })
+    .catch((error) => {
+      dispatch({
+        type: PREFERENCES_UPDATE_ERROR,
         payload: { error: error.response.data.msg },
       });
     });
