@@ -4,6 +4,9 @@ import {
   POST_COMMENT_SUCCESS,
   POST_COMMENT_ERROR,
   POST_COMMENT_LOADING,
+  PROFILE_UPDATE_LOADING,
+  PROFILE_UPDATE_SUCCESS,
+  PROFILE_UPDATE_ERROR,
 } from "redux/types/userTypes";
 
 const initialState = {
@@ -12,6 +15,11 @@ const initialState = {
     isNewCommentLoading: false,
     isNewCommentSuccess: null,
     commentError: null,
+  },
+  profile: {
+    isNewProfileLoading: false,
+    isNewProfileSuccess: null,
+    profileError: null,
   },
 };
 
@@ -44,6 +52,33 @@ export const userReducer = (state = initialState, action) => {
           isNewCommentLoading: false,
           isNewCommentSuccess: false,
           commentError: payload.error,
+        },
+      };
+    case PROFILE_UPDATE_LOADING:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          isNewProfileLoading: true,
+        },
+      };
+    case PROFILE_UPDATE_SUCCESS:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          isNewProfileLoading: false,
+          isNewProfileSuccess: true,
+        },
+      };
+    case PROFILE_UPDATE_ERROR:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          isNewProfileLoading: false,
+          isNewProfileSuccess: false,
+          profileError: payload.error,
         },
       };
     default:
