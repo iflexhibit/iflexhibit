@@ -117,10 +117,9 @@ export const CommentsSection = ({
             />
             <IconButton
               icon={<SendIcon />}
-              variant="contained"
               type="submit"
               disabled={newComment === ""}
-              variant="secondary"
+              variant="primary"
             />
           </motion.form>
         ))}
