@@ -52,7 +52,7 @@ export const PreferencesSection = ({
       <Button
         type="submit"
         label="Save Changes"
-        variant="contained"
+        variant="primary"
         fullWidth
         onClick={handlePreferencesSubmit}
       />

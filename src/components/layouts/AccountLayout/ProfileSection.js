@@ -101,7 +101,7 @@ export const ProfileSection = ({
             <Button
               type="submit"
               label="Save Changes"
-              variant="contained"
+              variant="primary"
               fullWidth
             />
           </div>
