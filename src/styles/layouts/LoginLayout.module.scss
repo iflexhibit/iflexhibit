@@ -10,7 +10,7 @@ div.login {
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--color-text);
 
   gap: 5rem;
   overflow: hidden;
@@ -57,7 +57,7 @@ div.login {
         text-align: center;
         font-size: 0.875rem;
         & > b {
-          color: var(--color-primary);
+          color: var(--color-primary-text);
         }
       }
 
@@ -70,11 +70,11 @@ div.login {
           align-items: center;
           grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
           gap: 1rem;
-          color: var(--color-primary);
+          color: var(--color-gray);
           &::before,
           &::after {
             content: "";
-            border-top: solid 1px var(--color-primary-fade);
+            border-top: solid 1px var(--color-gray);
           }
         }
       }
@@ -90,14 +90,14 @@ div.login {
       padding: 0 1rem;
       text-transform: uppercase;
       text-align: center;
-      font-family: $heading;
+      font-family: $rubik;
       font-size: 1rem;
       font-weight: $regular;
       & > span {
         font-weight: $bold;
         text-transform: uppercase;
-        color: var(--color-primary);
-        border-right: solid 2px var(--color-primary);
+        color: var(--color-primary-text);
+        border-right: solid 2px var(--color-primary-text);
         animation: blinking infinite 1s;
       }
     }

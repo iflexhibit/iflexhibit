@@ -54,7 +54,7 @@ const MainMenu = ({ closeMenu }) => {
           {isAuthenticated ? (
             <Button
               label="Sign Out"
-              variant="outlined"
+              variant="secondary"
               fullWidth
               onClick={() => {
                 closeMenu();
@@ -64,7 +64,7 @@ const MainMenu = ({ closeMenu }) => {
           ) : (
             <Button
               label="Sign In to iFlexhibit"
-              variant="contained"
+              variant="primary"
               fullWidth
               href="/login"
             />

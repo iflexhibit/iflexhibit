@@ -30,7 +30,7 @@ const LegalLayout = () => {
         <TermsSection />
         <PrivacySection />
         <div className={styles["controls"]}>
-          <Button href="/" label="Back to Home" variant="contained" fullWidth />
+          <Button href="/" label="Back to Home" variant="primary" fullWidth />
         </div>
       </div>
     </Layout>

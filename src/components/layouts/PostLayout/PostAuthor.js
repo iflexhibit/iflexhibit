@@ -4,13 +4,7 @@ import styles from "styles/layouts/PostLayout.module.scss";
 import IconButton from "components/IconButton";
 import EllipsisVIcon from "components/icons/EllipsisVIcon";
 
-export const PostAuthor = ({
-  userId,
-  avatar,
-  displayName,
-  givenName,
-  familyName,
-}) => {
+export const PostAuthor = ({ userId, avatar, displayName, date }) => {
   return (
     <div className={`${styles["row"]} ${styles["user"]}`}>
       <Link href={"/profile/" + userId}>
@@ -20,9 +14,7 @@ export const PostAuthor = ({
           </div>
           <div className={styles["creator"]}>
             <div className={styles["display-name"]}>{displayName}</div>
-            <div className={styles["real-name"]}>
-              {givenName && familyName && givenName + " " + familyName}
-            </div>
+            <div className={styles["upload-date"]}>{date}</div>
           </div>
         </a>
       </Link>

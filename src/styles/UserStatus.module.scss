@@ -8,29 +8,29 @@ div.status {
   align-items: center;
   justify-content: center;
 
-  border-radius: 0.5rem;
-  border: solid 1px var(--color-primary-fade);
-  color: var(--color-primary);
+  border-radius: 5px;
+  border: solid 1px var(--color-primary);
+  color: var(--color-primary-text);
 
   font-size: 0.75rem;
   font-weight: $bold;
-  text-transform: uppercase;
+  text-transform: capitalize;
   white-space: nowrap;
 
   &.member {
-    border-color: var(--color-purple-fade);
+    border-color: var(--color-purple-alt);
     color: var(--color-purple);
   }
   &.moderator {
-    border-color: var(--color-orange-fade);
+    border-color: var(--color-orange-alt);
     color: var(--color-orange);
   }
   &.administrator {
-    border-color: var(--color-green-fade);
+    border-color: var(--color-green-alt);
     color: var(--color-green);
   }
   &.banned {
-    border-color: var(--color-secondary-fade);
-    color: var(--color-secondary);
+    border-color: var(--color-red-alt);
+    color: var(--color-red);
   }
 }

@@ -43,13 +43,11 @@ const PostLayout = ({ post }) => {
         />
         <PostTitle title={post?.title} />
         <PostTags tags={post?.tags} />
-        <hr />
         <PostAuthor
           userId={post?.author?.id}
           avatar={post?.author?.avatar}
           displayName={post?.author?.username}
-          givenName={post?.author?.givenName}
-          familyName={post?.author?.familyName}
+          date={new Date(post?.createdAt).toJSON().split("T")[0]}
         />
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
           <ButtonGroup

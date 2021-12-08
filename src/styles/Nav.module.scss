@@ -16,7 +16,7 @@ nav.nav {
     top: 0;
 
     padding: 0 1rem;
-    border-bottom: solid 1px var(--color-primary-fade);
+    border-bottom: solid 1px var(--color-secondary);
     justify-content: space-between;
   }
 
@@ -27,6 +27,6 @@ nav.nav {
     justify-content: space-between;
     gap: 1rem;
 
-    border-top: solid 1px var(--color-primary-fade);
+    border-top: solid 1px var(--color-secondary);
   }
 }

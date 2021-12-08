@@ -3,13 +3,13 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "styles/layouts/PostLayout.module.scss";
 import IconButton from "components/IconButton";
-import EllipsisHIcon from "components/icons/EllipsisHIcon";
 import CommentIcon from "components/icons/CommentIcon";
 import TimesIcon from "components/icons/TimesIcon";
 import SendIcon from "components/icons/SendIcon";
 import TextArea from "components/TextArea";
 import { useSelector } from "react-redux";
 import Button from "components/Button";
+import EllipsisVIcon from "components/icons/EllipsisVIcon";
 
 export const CommentsSection = ({
   comments,
@@ -31,7 +31,7 @@ export const CommentsSection = ({
         <AnimatePresence>
           {!isAuthenticated && (
             <Button
-              variant="contained"
+              variant="primary"
               label="Sign In to Comment"
               fullWidth
               href="/login"
@@ -60,13 +60,13 @@ export const CommentsSection = ({
                         <b>{comment?.author?.username}</b>
                       </span>
                       <span className={styles["date"]}>
-                        {new Date(comment?.createdAt).toUTCString()}
+                        {new Date(comment?.createdAt).toJSON().split("T")[0]}
                       </span>
                     </div>
                   </a>
                 </Link>
                 <div className={styles["controls"]}>
-                  <IconButton icon={<EllipsisHIcon />} />
+                  <IconButton icon={<EllipsisVIcon />} />
                 </div>
               </div>
               <div className={styles["body"]}>
@@ -90,7 +90,7 @@ export const CommentsSection = ({
           >
             <IconButton
               icon={<CommentIcon />}
-              variant="contained"
+              variant="primary"
               onClick={() => setCommentFieldOpen(true)}
             />
           </motion.div>
@@ -120,6 +120,7 @@ export const CommentsSection = ({
               variant="contained"
               type="submit"
               disabled={newComment === ""}
+              variant="secondary"
             />
           </motion.form>
         ))}

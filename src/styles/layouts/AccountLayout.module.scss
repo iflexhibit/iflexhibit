@@ -31,7 +31,7 @@ div.account {
         width: 12rem;
         height: 12rem;
 
-        border-radius: 0.75rem;
+        border-radius: 5px;
         overflow: hidden;
       }
 
@@ -63,8 +63,8 @@ div.account {
       display: flex;
       flex-flow: column nowrap;
       gap: 1rem;
-      background: var(--color-primary-fade);
-      border-radius: 0.75rem;
+      background: var(--color-secondary);
+      border-radius: 5px;
       padding: 1rem;
 
       & > div.group {
@@ -102,8 +102,8 @@ div.account {
       padding: 2rem;
       margin: 1rem 0;
 
-      background: var(--color-primary-fade);
-      border-radius: 0.75rem;
+      background: var(--color-secondary);
+      border-radius: 5px;
     }
   }
 }

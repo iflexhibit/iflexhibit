@@ -22,17 +22,13 @@ html {
 }
 
 body {
-  @include light;
-
-  &.dark {
-    @include dark;
-  }
+  @include colors;
 
   background-color: var(--color-background);
   color: var(--color-text);
   font-size: 1rem;
   font-weight: $regular;
-  font-family: $body;
+  font-family: $inter;
 }
 
 a {
@@ -40,7 +36,7 @@ a {
   color: var(--color-text);
   &:hover,
   &:focus {
-    color: var(--color-primary);
+    color: var(--color-primary-text);
   }
 }
 
@@ -54,11 +50,11 @@ main {
 h1,
 h2,
 h3 {
-  font-family: $heading;
+  font-family: $rubik;
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
 }
 
 h2 {
@@ -69,18 +65,13 @@ h3 {
   font-size: 1rem;
 }
 
-hr {
-  background: var(--color-primary-fade);
-  border: solid 0.5px var(--color-primary-fade);
-}
-
 small {
   font-size: 0.75rem;
   font-weight: $light;
 }
 
 label {
-  color: var(--color-primary);
+  color: var(--color-gray);
   font-weight: $bold;
   font-size: 0.875rem;
 }

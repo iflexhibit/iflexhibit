@@ -30,7 +30,7 @@ div.toggle {
         right: 0;
         bottom: 0;
 
-        background-color: var(--color-dark);
+        background: var(--color-gray);
         border-radius: 0.5rem;
 
         transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
@@ -45,7 +45,7 @@ div.toggle {
           width: 20px;
           height: 20px;
 
-          background-color: var(--color-gray);
+          background-color: var(--color-text);
           border-radius: 50%;
 
           transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
@@ -54,8 +54,11 @@ div.toggle {
       }
 
       & > input:checked + span.slider:before {
-        background-color: var(--color-primary);
+        background-color: var(--color-primary-text);
         transform: translate(16px, 2.5px);
+      }
+      & > input:checked + span.slider {
+        background: var(--color-primary);
       }
     }
   }

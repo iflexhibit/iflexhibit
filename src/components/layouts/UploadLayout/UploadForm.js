@@ -80,16 +80,11 @@ export const UploadForm = ({
             fullWidth
             label="Choose Tags"
             startIcon={<TagsIcon />}
-            variant="outlined"
+            variant="secondary"
             onClick={() => setFilterMenuOpen(true)}
           />
         </div>
-        <Button
-          label="Submit Post"
-          variant="contained"
-          fullWidth
-          type="submit"
-        />
+        <Button label="Submit Post" variant="primary" fullWidth type="submit" />
       </form>
     </div>
   );
