@@ -12,7 +12,7 @@ export const LoginControls = () => {
       <div className={styles["choice"]}>
         <span>or skip and</span>
       </div>
-      <Button href="/" label="Continue as Guest" variant="outlined" fullWidth />
+      <Button href="/" label="Continue as Guest" variant="primary" fullWidth />
     </div>
   );
 };

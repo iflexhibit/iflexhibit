@@ -3,25 +3,25 @@
 div.select {
   position: relative;
   width: 100%;
-  height: 2.625rem;
+  height: 2.25rem;
 
   & > select {
     width: 100%;
     height: 100%;
-    padding: 0 2rem 0 1.5rem;
+    padding: 0 2rem 0 0.75rem;
 
-    background: var(--color-dark);
-    color: var(--color-primary);
-    border: solid 1px var(--color-primary-fade);
-    border-radius: 0.75rem;
+    background: var(--color-secondary);
+    color: var(--color-text);
+    border: solid 1px var(--color-secondary);
+    border-radius: 5px;
 
     text-transform: capitalize;
     font-size: 0.875rem;
-    font-family: $body;
-    font-weight: bold;
+    font-family: $rubik;
+    font-weight: $bold;
 
     & > option {
-      background: var(--color-background);
+      background: var(--color-secondary);
       color: var(--color-text);
     }
 
@@ -35,15 +35,14 @@ div.select {
     bottom: 2px;
     right: 2px;
     top: 2px;
-    width: 3rem;
+    padding-right: 0.75rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: var(--color-dark);
-    color: var(--color-primary);
-    border-radius: 100%;
+    background: var(--color-secondary);
+    color: var(--color-gray);
     pointer-events: none;
   }
 }

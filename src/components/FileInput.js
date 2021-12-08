@@ -34,7 +34,7 @@ const FileInput = ({
       <Button
         label={label}
         text="uppercase"
-        variant="outlined"
+        variant="secondary"
         onClick={() => inputRef.current.click()}
         fullWidth
         startIcon={<UploadIcon />}

@@ -1,4 +1,4 @@
-import styles from "styles/Button.module.scss";
+import styles from "styles/ButtonGroup.module.scss";
 import PropTypes from "prop-types";
 
 const ButtonGroup = ({ tabs, active, setActiveTab }) => {

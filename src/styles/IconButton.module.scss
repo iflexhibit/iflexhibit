@@ -2,64 +2,55 @@
 
 a.btn,
 button.btn {
-  min-width: 2.625rem;
-  min-height: 2.625rem;
-  width: 2.625rem;
-  height: 2.625rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: none;
-  border: none;
-  border-radius: 0.75rem;
+  color: var(--color-text);
+  border-radius: 5px;
 
   cursor: pointer;
   user-select: none;
   transition: 125ms;
 
-  &.contained {
-    background: var(--color-primary-alt);
-    border: solid 1px var(--color-primary-alt);
-    color: var(--color-text);
-    &:active {
-      background: var(--color-background);
-      color: var(--color-primary);
-    }
+  &.primary {
+    background: var(--color-primary);
+    border: solid 1px var(--color-primary);
+  }
+
+  &.secondary {
+    background: var(--color-secondary);
+    border: solid 1px var(--color-secondary);
+  }
+
+  &.default {
+    background: none;
+    border: none;
   }
 
   &.warning {
-    background: var(--color-dark);
-    border: solid 1px var(--color-secondary-fade);
-    color: var(--color-secondary);
+    background: var(--color-red-alt);
+    border: solid 1px var(--color-red-alt);
     &:active {
-      background: var(--color-secondary);
-      color: var(--color-background);
+      background: var(--color-red);
+      border: solid 1px var(--color-red);
     }
   }
 
-  &.outlined {
-    background: var(--color-dark);
-    border: solid 1px var(--color-primary-fade);
-    color: var(--color-primary);
-    &:active {
-      background: var(--color-primary);
-      color: var(--color-background);
-    }
+  &:active {
+    background: var(--color-secondary);
+    border: solid 1px var(--color-primary);
   }
 
-  &.text {
-    background: var(--color-background);
-    border: solid 1px var(--color-background);
-    color: var(--color-text);
-    &:active {
-      color: var(--color-primary);
-    }
-  }
-
-  &.rounded {
-    border-radius: 50%;
+  &.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
   &.fullWidth {
@@ -68,12 +59,5 @@ button.btn {
 
   &.fullHeight {
     height: 100%;
-  }
-
-  &.disabled {
-    background: var(--color-primary-fade);
-    border: solid 1px var(--color-primary-fade);
-    color: var(--color-background);
-    pointer-events: none;
   }
 }

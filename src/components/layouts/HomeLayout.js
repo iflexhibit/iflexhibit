@@ -7,6 +7,7 @@ import Select from "components/Select";
 import FilterIcon from "components/icons/FilterIcon";
 import FilterMenu from "components/FilterMenu";
 import { AnimatePresence } from "framer-motion";
+import Button from "components/Button";
 
 const HomeLayout = ({ posts }) => {
   const sortOptions = ["most viewed", "newest", "most popular"];
@@ -48,9 +49,10 @@ const HomeLayout = ({ posts }) => {
       canonical="https://iflexhibit.com/"
     >
       <div className={`${styles["controls"]}`}>
-        <IconButton
-          icon={<FilterIcon />}
-          variant="outlined"
+        <Button
+          startIcon={<FilterIcon />}
+          label="Filters"
+          variant="secondary"
           onClick={() => setFilterMenuOpen(true)}
         />
         <Select

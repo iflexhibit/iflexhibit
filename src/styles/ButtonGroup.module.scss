@@ -1,0 +1,34 @@
+@import "./config";
+
+div.btn-group {
+  min-width: fit-content;
+  min-height: 2.25rem;
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  overflow: hidden;
+  background: var(--color-background);
+
+  & > button.btn {
+    min-height: 2.25rem;
+    width: 100%;
+    height: fit-content;
+
+    border: none;
+    border-radius: 5px;
+    font-weight: $bold;
+
+    transition: background 250ms;
+
+    &.active {
+      background: var(--color-secondary);
+      color: var(--color-text);
+    }
+
+    &.inactive {
+      background: var(--color-background);
+      color: var(--color-gray);
+    }
+  }
+}

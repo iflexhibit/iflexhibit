@@ -73,7 +73,7 @@ div.post {
             font-weight: $bold;
           }
 
-          & > div.real-name {
+          & > div.upload-date {
             font-size: 0.75rem;
             font-weight: $regular;
             color: var(--color-gray);
@@ -89,16 +89,21 @@ div.post {
 
     &.description {
       flex-flow: column nowrap;
-      padding: 1rem;
-      background: var(--color-primary-fade);
-      border-radius: 0.75rem;
+      padding: 0.5rem;
+      background: var(--color-secondary);
+      border-radius: 5px;
     }
 
     &.comments {
       flex-flow: column nowrap;
-      gap: 2rem;
+      gap: 0.5rem;
+
       & > div.comment {
         width: 100%;
+        padding: 0.5rem;
+
+        background: var(--color-secondary);
+        border-radius: 5px;
 
         & > div.header {
           display: flex;
@@ -114,10 +119,10 @@ div.post {
 
             & > div.avatar {
               position: relative;
-              width: 2rem;
-              height: 2rem;
-              min-width: 2rem;
-              min-height: 2rem;
+              width: 2.25rem;
+              height: 2.25rem;
+              min-width: 2.25rem;
+              min-height: 2.25rem;
 
               border-radius: 0.5rem;
               overflow: hidden;
@@ -136,13 +141,8 @@ div.post {
           }
         }
         & > div.body {
-          padding: 0.5rem 1rem;
-          margin: 0rem 1rem 1rem;
-          border-radius: 0 0.75rem 0.75rem 0.75rem;
-          background-color: var(--color-primary-fade);
-
           & > p {
-            margin: 0.5rem 0;
+            margin-top: 0.5rem;
             font-size: 0.875rem;
             line-height: 1.25rem;
           }
@@ -181,7 +181,7 @@ div.post {
       padding: 0.5rem;
 
       background: var(--color-background);
-      border-top: solid 1px var(--color-primary-fade);
+      border-top: solid 1px var(--color-secondary);
     }
   }
 }

@@ -34,11 +34,11 @@ const FilterMenu = ({
         <div className={styles["top"]}>
           <Button
             label={resetButtonLabel || "Reset Filters"}
-            variant="outlined"
+            variant="secondary"
             fullWidth
             onClick={handleFilterReset}
           />
-          <IconButton icon={<TimesIcon />} variant="text" onClick={closeMenu} />
+          <IconButton icon={<TimesIcon />} onClick={closeMenu} />
         </div>
         <div className={styles["tags"]}>
           {Object.entries(tags).map((tag) => (
@@ -55,7 +55,7 @@ const FilterMenu = ({
           <div className={styles["bottom"]}>
             <Button
               label={applyButtonLabel || "Apply Filter"}
-              variant="contained"
+              variant="primary"
               fullWidth
             />
           </div>

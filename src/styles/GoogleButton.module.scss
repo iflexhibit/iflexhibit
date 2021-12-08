@@ -3,12 +3,12 @@
 a.google {
   position: relative;
   width: 15rem;
-  height: 2.625rem;
+  height: 2.25rem;
 
   background: white;
 
   display: flex;
-  border-radius: 0.75rem;
+  border-radius: 5px;
   overflow: hidden;
 
   &.fullWidth {
