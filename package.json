@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^0.23.0",
@@ -25,7 +26,8 @@
   },
   "devDependencies": {
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.0"
+    "eslint-config-next": "11.1.0",
+    "husky": "^7.0.4"
   },
   "description": "iFLEXHIBIT is a content-sharing platform for iACADEMY students. This web application is powered by Next.js.",
   "repository": {
