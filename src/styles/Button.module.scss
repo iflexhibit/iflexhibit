@@ -42,6 +42,16 @@ button.btn {
     border: solid 1px var(--color-background);
   }
 
+  &.warning {
+    background: none;
+    color: var(--color-red);
+    &:active {
+      color: var(--text);
+      background: var(--color-red-alt);
+      border: solid 1px var(--color-red);
+    }
+  }
+
   &.disabled {
     pointer-events: none;
     cursor: not-allowed;

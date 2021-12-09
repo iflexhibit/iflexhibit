@@ -11,12 +11,14 @@ button.btn {
   align-items: center;
   justify-content: center;
 
+  background: none;
+  border: none;
   color: var(--color-text);
   border-radius: 5px;
 
   cursor: pointer;
   user-select: none;
-  transition: 125ms;
+  transition: 125ms background;
 
   &.primary {
     background: var(--color-primary);
@@ -34,10 +36,11 @@ button.btn {
   }
 
   &.warning {
-    background: var(--color-red-alt);
-    border: solid 1px var(--color-red-alt);
+    background: none;
+    color: var(--color-red);
     &:active {
-      background: var(--color-red);
+      color: var(--text);
+      background: var(--color-red-alt);
       border: solid 1px var(--color-red);
     }
   }

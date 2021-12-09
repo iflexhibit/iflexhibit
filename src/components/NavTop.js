@@ -9,13 +9,18 @@ import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import ArrowLeftIcon from "./icons/ArrowLeftIcon";
+import { SearchModal } from "./SearchModal";
 
 const NavTop = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isSearchOpen, setSearchOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = () => setMenuOpen(false);
+    const handleRouteChange = () => {
+      setMenuOpen(false);
+      setSearchOpen(false);
+    };
     router.events.on("routeChangeStart", handleRouteChange);
     return () => {
       router.events.off("routeChangeStart", handleRouteChange);
@@ -40,10 +45,19 @@ const NavTop = () => {
           />
         </a>
       </Link>
-      <IconButton icon={<SearchIcon />} />
+      <IconButton
+        icon={<SearchIcon />}
+        onClick={() => setSearchOpen((prev) => !prev)}
+      />
       <AnimatePresence>
         {isMenuOpen && (
           <MainMenu key={isMenuOpen} closeMenu={() => setMenuOpen(false)} />
+        )}
+        {isSearchOpen && (
+          <SearchModal
+            key={isSearchOpen}
+            closeMenu={() => setSearchOpen(false)}
+          />
         )}
       </AnimatePresence>
     </nav>

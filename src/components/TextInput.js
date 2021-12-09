@@ -1,7 +1,7 @@
 import styles from "styles/TextInput.module.scss";
 import PropTypes from "prop-types";
 
-const TextInput = ({ type, value, onChange, id, placeholder }) => {
+const TextInput = ({ type, value, onChange, id, placeholder, autoFocus }) => {
   return (
     <input
       className={styles["textinput"]}
@@ -11,6 +11,7 @@ const TextInput = ({ type, value, onChange, id, placeholder }) => {
       id={id}
       name={id}
       placeholder={placeholder}
+      autoFocus={autoFocus}
     />
   );
 };
@@ -21,6 +22,7 @@ TextInput.propTypes = {
   onChange: PropTypes.func,
   id: PropTypes.string,
   placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  autoFocus: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
@@ -29,6 +31,7 @@ TextInput.defaultProps = {
   id: "",
   placeholder: "",
   onChange: () => {},
+  autoFocus: false,
 };
 
 export default TextInput;

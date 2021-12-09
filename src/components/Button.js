@@ -19,7 +19,6 @@ const Button = ({
     `${styles["btn"]} ${styles[variant]}` +
     (fullWidth ? ` ${styles["fullWidth"]}` : "") +
     (fullHeight ? ` ${styles["fullHeight"]}` : "") +
-    (rounded ? ` ${styles["rounded"]}` : "") +
     (disabled ? ` ${styles["disabled"]}` : "");
   return href ? (
     <Link href={href}>
@@ -47,7 +46,6 @@ Button.propTypes = {
   onClick: PropTypes.func,
   fullWidth: PropTypes.bool,
   fullHeight: PropTypes.bool,
-  rounded: PropTypes.bool,
   type: PropTypes.oneOf(["submit", "button", "reset"]),
   disabled: PropTypes.bool,
 };
@@ -56,7 +54,6 @@ Button.defaultProps = {
   variant: "default",
   fullWidth: false,
   fullHeight: false,
-  rounded: false,
   onClick: () => {},
   type: "button",
   disabled: false,
