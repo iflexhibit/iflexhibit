@@ -6,9 +6,9 @@ textarea.textarea {
   height: 2.25rem;
   padding: 0.5rem;
 
-  background: var(--color-background);
-  border: solid 1px var(--color-secondary);
+  background: var(--color-secondary);
   color: var(--color-text);
+  border: solid 1px var(--color-primary-alt);
   border-radius: 5px;
 
   font-size: 0.875rem;

@@ -30,7 +30,7 @@ div.toggle {
         right: 0;
         bottom: 0;
 
-        background: var(--color-gray);
+        background: var(--color-primary-alt);
         border-radius: 0.5rem;
 
         transition: 0.4s cubic-bezier(0, 0.75, 0.25, 1);
@@ -56,9 +56,6 @@ div.toggle {
       & > input:checked + span.slider:before {
         background-color: var(--color-primary-text);
         transform: translate(16px, 2.5px);
-      }
-      & > input:checked + span.slider {
-        background: var(--color-primary);
       }
     }
   }
