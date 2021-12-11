@@ -7,7 +7,7 @@ export default function ProfilePage(props) {
 
 export async function getServerSideProps({ req, res, params }) {
   const response = await axios.get(
-    process.env.API_URL + "/api/users/user/" + params.id
+    process.env.NEXT_PUBLIC_API_URL + "/api/users/user/" + params.id
   );
   const data = response.data;
   return { props: { user: data.user } };

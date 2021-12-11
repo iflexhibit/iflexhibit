@@ -8,6 +8,6 @@ module.exports = withPWA({
     skipWaiting: true,
   },
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", "res.cloudinary.com"],
   },
 });

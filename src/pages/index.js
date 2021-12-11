@@ -16,7 +16,9 @@ export default function HomePage(props) {
 export async function getServerSideProps({ req, res }) {
   const cookies = new Cookies(req, res);
   const token = cookies.get("token") || null;
-  const response = await axios.get(process.env.API_URL + "/api/posts");
+  const response = await axios.get(
+    process.env.NEXT_PUBLIC_API_URL + "/api/posts"
+  );
   const data = response.data;
   return { props: { token, posts: data.posts } };
 }

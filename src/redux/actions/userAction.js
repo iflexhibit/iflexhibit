@@ -133,3 +133,32 @@ export const updatePreferences = (newPreferences) => (dispatch, getState) => {
       });
     });
 };
+
+export const submitPost = (post) => (dispatch, getState) => {
+  const { token } = getState().auth;
+  const formData = new FormData();
+
+  const data = {
+    image: post.image,
+    title: post.title,
+    description: post.description,
+    tags: post.tags,
+  };
+
+  formData.append("file", data.image);
+  formData.append("title", data.title);
+  formData.append("description", data.description);
+  formData.append("tags", data.tags);
+
+  axios
+    .post(process.env.NEXT_PUBLIC_API_URL + "/api/posts", formData, {
+      headers: {
+        "x-auth-token": token,
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) =>
+      window.location.replace("/post/" + response.data.post.id)
+    )
+    .catch((error) => console.log(error.response.data));
+};

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "styles/layouts/HomeLayout.module.scss";
 import Posts from "components/Posts";
-import IconButton from "components/IconButton";
 import Layout from "components/Layout";
 import Select from "components/Select";
 import FilterIcon from "components/icons/FilterIcon";
