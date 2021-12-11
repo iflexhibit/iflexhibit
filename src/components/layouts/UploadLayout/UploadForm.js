@@ -13,6 +13,7 @@ export const UploadForm = ({
   activeTab,
   newUpload,
   setFilterMenuOpen,
+  isUploading,
 }) => {
   return (
     <div className={`${styles["row"]} ${styles["form"]}`}>
@@ -22,7 +23,7 @@ export const UploadForm = ({
             <FileInput
               id="image"
               inputFile={newUpload.image}
-              accept="image/png"
+              accept="image/png, image/jpeg"
               onChange={(e) => handleUploadChange(e, true)}
               label="Upload Image"
             />
@@ -84,7 +85,13 @@ export const UploadForm = ({
             onClick={() => setFilterMenuOpen(true)}
           />
         </div>
-        <Button label="Submit Post" variant="primary" fullWidth type="submit" />
+        <Button
+          label="Submit Post"
+          variant="primary"
+          fullWidth
+          type="submit"
+          disabled={isUploading}
+        />
       </form>
     </div>
   );

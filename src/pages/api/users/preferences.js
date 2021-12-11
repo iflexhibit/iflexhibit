@@ -7,7 +7,7 @@ export default function handler(req, res) {
   return new Promise((resolve, reject) => {
     axios
       .post(
-        process.env.API_URL + "/api/users/preferences",
+        process.env.NEXT_PUBLIC_API_URL + "/api/users/preferences",
         { showName, showEmail, showContact },
         {
           headers: {

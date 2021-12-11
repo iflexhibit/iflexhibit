@@ -5,11 +5,15 @@ import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import FilterMenu from "components/FilterMenu";
 import { UploadForm } from "./UploadForm";
+import { useDispatch } from "react-redux";
+import { submitPost } from "redux/actions/userAction";
 
 const UploadLayout = () => {
   const [tabs] = useState(["Image", "Video"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
+  const [isUploading, setUploading] = useState(false);
+  const dispatch = useDispatch();
 
   const [newUpload, setNewUpload] = useState({
     image: "",
@@ -73,15 +77,10 @@ const UploadLayout = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setNewUpload((prev) => ({
-      ...prev,
-      image: "",
-      video: "",
-      title: "",
-      description: "",
-      tags: [],
-    }));
-    handleFilterReset();
+    if (isUploading) return;
+    setUploading(true);
+
+    dispatch(submitPost(newUpload));
   };
 
   useEffect(() => {
@@ -121,6 +120,7 @@ const UploadLayout = () => {
           activeTab={activeTab}
           newUpload={newUpload}
           setFilterMenuOpen={setFilterMenuOpen}
+          isUploading={isUploading}
         />
       </div>
       <AnimatePresence>
