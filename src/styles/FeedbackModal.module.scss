@@ -1,0 +1,49 @@
+@import "./config";
+
+div.feedback {
+  position: fixed;
+  top: 4.25rem;
+  left: 1rem;
+  right: 1rem;
+  padding: 0.5rem;
+
+  background: var(--color-primary-alt);
+  border: solid 2px var(--color-primary);
+  color: var(--color-text);
+  border-radius: 5px;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0.5rem;
+
+  z-index: 99;
+
+  & > div.icon {
+    display: flex;
+    align-items: center;
+    & > svg {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+  }
+  & > div.info {
+    font-size: 0.875rem;
+    font-weight: $bold;
+  }
+
+  &.success {
+    background: var(--color-green-alt);
+    border: solid 2px var(--color-green);
+  }
+
+  &.warning {
+    background: var(--color-orange-alt);
+    border: solid 2px var(--color-orange);
+  }
+
+  &.error {
+    background: var(--color-red-alt);
+    border: solid 2px var(--color-red);
+  }
+}
