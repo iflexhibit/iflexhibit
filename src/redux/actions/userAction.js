@@ -11,6 +11,10 @@ import {
   PREFERENCES_UPDATE_LOADING,
   PREFERENCES_UPDATE_SUCCESS,
   PREFERENCES_UPDATE_ERROR,
+  UPLOAD_LOADING,
+  UPLOAD_ERROR,
+  UPLOAD_SUCCESS,
+  UPLOAD_MESSAGE,
 } from "../types/userTypes";
 import { fetchComments } from "./postAction";
 import { authUser } from "./authAction";
@@ -150,6 +154,14 @@ export const submitPost = (post) => (dispatch, getState) => {
   formData.append("description", data.description);
   formData.append("tags", data.tags);
 
+  dispatch({ type: UPLOAD_LOADING });
+  dispatch({
+    type: UPLOAD_MESSAGE,
+    payload: {
+      msg: "Please wait...",
+      type: "warning",
+    },
+  });
   axios
     .post(process.env.NEXT_PUBLIC_API_URL + "/api/posts", formData, {
       headers: {
@@ -157,8 +169,38 @@ export const submitPost = (post) => (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     })
-    .then((response) =>
-      window.location.replace("/post/" + response.data.post.id)
-    )
-    .catch((error) => console.log(error.response.data));
+    .then((response) => {
+      dispatch({ type: UPLOAD_SUCCESS });
+      dispatch({
+        type: UPLOAD_MESSAGE,
+        payload: {
+          msg: "Post submitted for approval",
+          type: "success",
+        },
+      });
+      setTimeout(() => {
+        dispatch({
+          type: UPLOAD_MESSAGE,
+          payload: { msg: null, type: null },
+        });
+        window.location.replace("/post/" + response.data.post.id);
+      }, 5000);
+    })
+    .catch((error) => {
+      dispatch({
+        type: UPLOAD_ERROR,
+      });
+      dispatch({
+        type: UPLOAD_MESSAGE,
+        payload: { msg: error.response.data.msg, type: "error" },
+      });
+      setTimeout(
+        () =>
+          dispatch({
+            type: UPLOAD_MESSAGE,
+            payload: { msg: null, type: null },
+          }),
+        5000
+      );
+    });
 };

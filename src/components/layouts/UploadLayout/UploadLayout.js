@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import FilterMenu from "components/FilterMenu";
 import { UploadForm } from "./UploadForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { submitPost } from "redux/actions/userAction";
+import FeedbackModal from "components/FeedbackModal";
 
 const UploadLayout = () => {
   const [tabs] = useState(["Image", "Video"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
-  const [isUploading, setUploading] = useState(false);
   const dispatch = useDispatch();
 
   const [newUpload, setNewUpload] = useState({
@@ -78,7 +78,6 @@ const UploadLayout = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (isUploading) return;
-    setUploading(true);
 
     dispatch(submitPost(newUpload));
   };
@@ -96,12 +95,17 @@ const UploadLayout = () => {
     });
   }, [tags]);
 
+  const { isUploading, uploadMsg, msgType } = useSelector(
+    (state) => state.user.upload
+  );
+
   return (
     <Layout
       title="Upload | iFlexhibit"
       description="A content-sharing platform for iACADEMY students"
       canonical="https://iflexhibit.com/upload"
     >
+      {uploadMsg && <FeedbackModal variant={msgType} info={uploadMsg} />}
       <div className={styles["upload"]}>
         <div className={`${styles["row"]} ${styles["header"]}`}>
           <h1>Upload your work</h1>

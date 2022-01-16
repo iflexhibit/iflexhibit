@@ -10,6 +10,10 @@ import {
   PREFERENCES_UPDATE_LOADING,
   PREFERENCES_UPDATE_SUCCESS,
   PREFERENCES_UPDATE_ERROR,
+  UPLOAD_LOADING,
+  UPLOAD_ERROR,
+  UPLOAD_SUCCESS,
+  UPLOAD_MESSAGE,
 } from "redux/types/userTypes";
 
 const initialState = {
@@ -28,6 +32,11 @@ const initialState = {
     isNewPreferencesLoading: false,
     isNewPreferencesSuccess: null,
     preferencesError: null,
+  },
+  upload: {
+    isUploading: false,
+    uploadMsg: null,
+    msgType: null,
   },
 };
 
@@ -114,6 +123,26 @@ export const userReducer = (state = initialState, action) => {
           isNewPreferencesLoading: false,
           isNewPreferencesSuccess: false,
           preferencesError: payload.error,
+        },
+      };
+    case UPLOAD_LOADING:
+    case UPLOAD_SUCCESS:
+      return {
+        ...state,
+        upload: { ...state.upload, isUploading: true },
+      };
+    case UPLOAD_ERROR:
+      return {
+        ...state,
+        upload: { ...state.upload, isUploading: false },
+      };
+    case UPLOAD_MESSAGE:
+      return {
+        ...state,
+        upload: {
+          ...state.upload,
+          uploadMsg: payload.msg,
+          msgType: payload.type,
         },
       };
     default:
