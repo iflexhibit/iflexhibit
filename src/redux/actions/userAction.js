@@ -154,6 +154,44 @@ export const submitPost = (post) => (dispatch, getState) => {
   formData.append("description", data.description);
   formData.append("tags", data.tags);
 
+  if (!data.image) {
+    dispatch({
+      type: UPLOAD_ERROR,
+    });
+    dispatch({
+      type: UPLOAD_MESSAGE,
+      payload: { msg: "Image required", type: "error" },
+    });
+    setTimeout(
+      () =>
+        dispatch({
+          type: UPLOAD_MESSAGE,
+          payload: { msg: null, type: null },
+        }),
+      5000
+    );
+    return;
+  }
+
+  if (!data.title) {
+    dispatch({
+      type: UPLOAD_ERROR,
+    });
+    dispatch({
+      type: UPLOAD_MESSAGE,
+      payload: { msg: "Title required", type: "error" },
+    });
+    setTimeout(
+      () =>
+        dispatch({
+          type: UPLOAD_MESSAGE,
+          payload: { msg: null, type: null },
+        }),
+      5000
+    );
+    return;
+  }
+
   dispatch({ type: UPLOAD_LOADING });
   dispatch({
     type: UPLOAD_MESSAGE,
