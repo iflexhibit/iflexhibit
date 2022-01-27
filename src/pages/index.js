@@ -10,15 +10,22 @@ export default function HomePage(props) {
   useEffect(() => {
     dispatch(setToken(props.token));
   });
-  return <HomeLayout posts={props.posts} />;
+  return <HomeLayout posts={props.posts} results={props.results} />;
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps({ req, res, query }) {
+  const params = {
+    title: query.title,
+    tags: query.tags,
+    sort: query.sort,
+    page: query.page,
+  };
   const cookies = new Cookies(req, res);
   const token = cookies.get("token") || null;
   const response = await axios.get(
-    process.env.NEXT_PUBLIC_API_URL + "/api/posts"
+    process.env.NEXT_PUBLIC_API_URL + "/api/posts",
+    { params }
   );
   const data = response.data;
-  return { props: { token, posts: data.posts } };
+  return { props: { token, posts: data.posts, results: data.results } };
 }

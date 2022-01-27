@@ -10,7 +10,12 @@ export const PostAuthor = ({ userId, avatar, displayName, date }) => {
       <Link href={"/profile/" + userId}>
         <a className={styles["profile"]}>
           <div className={styles["avatar"]}>
-            <Image src={avatar} layout="fill" objectFit="cover" alt="" />
+            <Image
+              src={avatar || "/assets/noavatar.jpg"}
+              layout="fill"
+              objectFit="cover"
+              alt=""
+            />
           </div>
           <div className={styles["creator"]}>
             <div className={styles["display-name"]}>{displayName}</div>

@@ -9,24 +9,40 @@ import ButtonGroup from "components/ButtonGroup";
 import Posts from "components/Posts";
 import Select from "components/Select";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 
-const ProfileLayout = ({ user }) => {
+const ProfileLayout = ({ user, posts, results }) => {
+  const router = useRouter();
   const [tabs] = useState(["About", "Works"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const sortOptions = ["most viewed", "newest", "most popular"];
-  const [activeSort, setActiveSort] = useState(sortOptions[0]);
-  const handleSortChange = (e) => setActiveSort(e.target.value);
+  const sortOptions = [
+    { value: "date", label: "Most Recent" },
+    { value: "views", label: "Most Views" },
+    { value: "likes", label: "Top Rated" },
+    { value: "comments", label: "Most Discussed" },
+  ];
+  const [activeSort, setActiveSort] = useState(router.query.sort);
+  const handleSortChange = (e) => {
+    setActiveSort(e.target.value);
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, sort: e.target.value },
+    });
+  };
   return (
     <Layout
       title={user.username + " | iFlexhibit"}
-      description="A content sharing platform for iACADEMY students"
-      canonical={"https://iflexhibit.com/profile/" + user.id}
+      description={user.bio}
+      canonical={`https://iflexhibit.com/profile/${user.id}/${user.username}`}
     >
       <div className={styles["profile"]}>
         <ProfileBanner bannerImg={user?.background} />
         <ProfileAvatar avatarImg={user?.avatar} />
         <ProfileDisplayName displayName={user?.username} />
-        <ProfileStats likes_count={0} views_count={0} />
+        <ProfileStats
+          likes_count={parseInt(user?.statistics?.likes)}
+          views_count={parseInt(user?.statistics?.views)}
+        />
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
           <ButtonGroup
             tabs={tabs}
@@ -46,7 +62,8 @@ const ProfileLayout = ({ user }) => {
             />
           ) : (
             <WorksSection
-              posts={user?.posts}
+              results={results}
+              posts={posts}
               activeSort={activeSort}
               sortOptions={sortOptions}
               handleSortChange={handleSortChange}
@@ -61,7 +78,12 @@ const ProfileLayout = ({ user }) => {
 const ProfileBanner = ({ bannerImg }) => {
   return (
     <div className={`${styles["row"]} ${styles["banner"]}`}>
-      <Image src={bannerImg} layout="fill" objectFit="cover" alt="" />
+      <Image
+        src={bannerImg || "/assets/nobg.jpg"}
+        layout="fill"
+        objectFit="cover"
+        alt=""
+      />
     </div>
   );
 };
@@ -69,7 +91,12 @@ const ProfileBanner = ({ bannerImg }) => {
 const ProfileAvatar = ({ avatarImg }) => {
   return (
     <div className={`${styles["row"]} ${styles["avatar"]}`}>
-      <Image src={avatarImg} layout="fill" objectFit="cover" alt="" />
+      <Image
+        src={avatarImg || "/assets/noavatar.jpg"}
+        layout="fill"
+        objectFit="cover"
+        alt=""
+      />
     </div>
   );
 };
@@ -127,7 +154,13 @@ const AboutSection = ({ givenName, familyName, email, contact, bio, date }) => {
   );
 };
 
-const WorksSection = ({ posts, sortOptions, activeSort, handleSortChange }) => {
+const WorksSection = ({
+  results,
+  posts,
+  sortOptions,
+  activeSort,
+  handleSortChange,
+}) => {
   return (
     <motion.div
       className={`${styles["row"]} ${styles["works"]}`}
@@ -140,7 +173,7 @@ const WorksSection = ({ posts, sortOptions, activeSort, handleSortChange }) => {
         options={sortOptions}
         value={activeSort}
       />
-      <Posts posts={posts || []} />
+      <Posts posts={posts || []} results={results} />
     </motion.div>
   );
 };

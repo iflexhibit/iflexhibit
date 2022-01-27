@@ -5,9 +5,17 @@ import { useState } from "react";
 import Button from "./Button";
 import IconButton from "./IconButton";
 import TimesIcon from "./icons/TimesIcon";
+import { useRouter } from "next/router";
 
 export const SearchModal = ({ closeMenu }) => {
+  const router = useRouter();
   const [search, setSearch] = useState("");
+  const handleSearch = () => {
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, title: search },
+    });
+  };
   return (
     <div className={styles.search}>
       <motion.button
@@ -42,7 +50,7 @@ export const SearchModal = ({ closeMenu }) => {
         <Button
           label="Search"
           fullWidth
-          onClick={closeMenu}
+          onClick={handleSearch}
           variant="primary"
         />
       </motion.div>

@@ -3,6 +3,7 @@
 div.post {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
   gap: 1rem;
 
   hr {
@@ -25,6 +26,7 @@ div.post {
   }
 
   & > div.row {
+    width: 100%;
     display: flex;
     flex-flow: row nowrap;
     gap: 1rem;
@@ -182,6 +184,20 @@ div.post {
 
       background: var(--color-background);
       border-top: solid 1px var(--color-secondary);
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  div.post {
+    & > div.image-container {
+      .image {
+        height: 80vh !important;
+      }
+    }
+
+    & > div.row {
+      width: 70ch;
     }
   }
 }

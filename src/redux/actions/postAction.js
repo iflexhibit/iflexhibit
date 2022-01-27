@@ -3,6 +3,7 @@ import {
   SET_POST,
   FETCH_COMMENTS,
   COMMENTS_ERROR,
+  FETCH_IS_LIKED,
 } from "redux/types/postTypes";
 
 export const setPost = (post) => (dispatch) => {
@@ -22,6 +23,25 @@ export const fetchComments = (postId) => (dispatch) => {
     .catch(() =>
       dispatch({
         type: COMMENTS_ERROR,
+      })
+    );
+};
+
+export const fetchUserPostInteraction = (postId) => (dispatch, getState) => {
+  const { token } = getState().auth;
+  if (!token) return;
+  axios
+    .post(
+      process.env.NEXT_PUBLIC_API_URL + "/api/posts/isliked/" + postId,
+      null,
+      {
+        headers: { "x-auth-token": token },
+      }
+    )
+    .then((response) =>
+      dispatch({
+        type: FETCH_IS_LIKED,
+        payload: { isLiked: response.data.isLiked },
       })
     );
 };

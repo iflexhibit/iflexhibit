@@ -32,6 +32,7 @@ export const authUser = () => (dispatch) => {
       });
     })
     .catch(() => {
+      if (token !== null) localStorage.clear("token");
       return dispatch({ type: AUTH_ERROR });
     });
 };

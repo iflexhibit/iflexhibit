@@ -11,7 +11,7 @@ import { DescriptionSection } from "./DescriptionSection";
 import { CommentsSection } from "./CommentsSection";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchComments } from "redux/actions/postAction";
-import { postComment } from "redux/actions/userAction";
+import { likePost, postComment } from "redux/actions/userAction";
 
 const PostLayout = ({ post }) => {
   const dispatch = useDispatch();
@@ -26,13 +26,15 @@ const PostLayout = ({ post }) => {
     setNewComment("");
     dispatch(postComment(post.id, newComment));
   };
-  useEffect(() => dispatch(fetchComments(post.id)), [dispatch, post]);
+  useEffect(() => {
+    dispatch(fetchComments(post.id));
+  }, [dispatch, post]);
   const { comments } = useSelector((state) => state.post);
   return (
     <Layout
-      title="iFlexhibit"
-      description="A content sharing platform for iACADEMY students"
-      canonical="https://iflexhibit.com/post"
+      title={`${post.title} by ${post.author.username} | iFlexhibit`}
+      description={post.body}
+      canonical={`https://iflexhibit.com/post/${post.id}/${post.title}`}
     >
       <div className={styles["post"]}>
         <PostImage imgSrc={post?.image} alt={post?.title} />
@@ -41,7 +43,11 @@ const PostLayout = ({ post }) => {
           comments_count={post?.statistics.comments}
           views_count={post?.statistics.views}
         />
-        <PostTitle title={post?.title} />
+        <PostTitle
+          postId={post?.id}
+          title={post?.title}
+          handleLike={() => dispatch(likePost(post?.id))}
+        />
         <PostTags tags={post?.tags} />
         <PostAuthor
           userId={post?.author?.id}

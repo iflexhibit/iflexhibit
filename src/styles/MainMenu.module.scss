@@ -9,7 +9,7 @@ div.mainmenu {
   margin: 1px auto 0;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 
   & > div.menu {
     position: relative;
@@ -113,6 +113,36 @@ div.mainmenu {
     border: none;
     &:focus {
       outline: none;
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  div.mainmenu {
+    & > div.menu {
+      width: 20rem;
+
+      & > div.top {
+        & > div.avatar {
+          display: none;
+        }
+      }
+
+      & > div.links {
+        & > div.link {
+          a {
+            &:hover {
+              background: var(--color-secondary);
+            }
+          }
+        }
+      }
+    }
+    & > button.underlay {
+      &:focus {
+        outline: none;
+      }
+      background: none;
     }
   }
 }

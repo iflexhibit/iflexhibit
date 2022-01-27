@@ -11,7 +11,8 @@ nav.nav {
 
   z-index: 90;
 
-  &.top {
+  &.top,
+  &.desktop {
     position: sticky;
     top: 0;
 
@@ -28,5 +29,29 @@ nav.nav {
     gap: 1rem;
 
     border-top: solid 1px var(--color-secondary);
+  }
+
+  &.desktop {
+    display: none;
+
+    & > div.controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  nav.nav {
+    &.top {
+      display: none;
+    }
+    &.bottom {
+      display: none;
+    }
+    &.desktop {
+      display: flex;
+    }
   }
 }
