@@ -1,6 +1,7 @@
 @import "../config";
 
 div.legal {
+  margin: 0 auto;
   display: flex;
   flex-flow: column nowrap;
   gap: 2rem;
@@ -54,5 +55,11 @@ div.legal {
         font-size: 0.875rem;
       }
     }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  div.legal {
+    width: 70ch;
   }
 }

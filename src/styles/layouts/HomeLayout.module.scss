@@ -2,3 +2,25 @@ div.controls {
   display: flex;
   gap: 1rem;
 }
+
+div.search {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  & > div.results {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+    column-gap: 1rem;
+    color: var(--color-gray);
+    b {
+      color: var(--color-text);
+    }
+    & > div {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.125rem;
+    }
+  }
+}

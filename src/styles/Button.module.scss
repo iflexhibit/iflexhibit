@@ -38,15 +38,16 @@ button.btn {
   }
 
   &.default {
-    background: var(--color-background);
-    border: solid 1px var(--color-background);
+    background: var(--color-none);
+    border: solid 1px var(--color-none);
   }
 
   &.warning {
-    background: none;
+    background: var(--color-none);
     color: var(--color-red);
+    border: solid 1px var(--color-none);
     &:active {
-      color: var(--text);
+      color: var(--color-text);
       background: var(--color-red-alt);
       border: solid 1px var(--color-red);
     }
@@ -69,5 +70,27 @@ button.btn {
 
   &.fullHeight {
     height: 100%;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  a.btn,
+  button.btn {
+    & > span {
+      font-size: 0.875rem;
+    }
+
+    &.warning {
+      &:hover {
+        color: var(--color-text);
+        background: var(--color-red-alt);
+        border: solid 1px var(--color-red);
+      }
+    }
+
+    &:hover {
+      background: var(--color-secondary);
+      border: solid 1px var(--color-primary);
+    }
   }
 }

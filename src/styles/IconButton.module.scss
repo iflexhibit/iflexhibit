@@ -18,7 +18,7 @@ button.btn {
 
   cursor: pointer;
   user-select: none;
-  transition: 125ms background;
+  transition: 125ms ease-in-out;
 
   &.primary {
     background: var(--color-primary);
@@ -31,15 +31,15 @@ button.btn {
   }
 
   &.default {
-    background: none;
-    border: none;
+    background: var(--color-none);
+    border: solid 1px var(--color-none);
   }
 
   &.warning {
-    background: none;
+    background: var(--color-none);
     color: var(--color-red);
     &:active {
-      color: var(--text);
+      color: var(--color-text);
       background: var(--color-red-alt);
       border: solid 1px var(--color-red);
     }
@@ -62,5 +62,23 @@ button.btn {
 
   &.fullHeight {
     height: 100%;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  a.btn,
+  button.btn {
+    &.warning {
+      &:hover {
+        color: var(--color-text);
+        background: var(--color-red-alt);
+        border: solid 1px var(--color-red);
+      }
+    }
+
+    &:hover {
+      background: var(--color-secondary);
+      border: solid 1px var(--color-primary);
+    }
   }
 }

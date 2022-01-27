@@ -1,6 +1,8 @@
 @import "../config";
 
 div.upload {
+  margin: 0 auto;
+
   display: flex;
   flex-flow: column nowrap;
   gap: 1.5rem;
@@ -28,5 +30,11 @@ div.upload {
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  div.upload {
+    width: 70ch;
   }
 }

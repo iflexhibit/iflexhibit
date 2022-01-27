@@ -4,9 +4,7 @@ import Tag from "components/Tag";
 export const PostTags = ({ tags }) => {
   return (
     <div className={`${styles["row"]} ${styles["tags"]}`}>
-      {tags.map((tag) => (
-        <Tag key={tag} tag={tag} />
-      ))}
+      {tags.map((tag) => tag && <Tag key={tag} tag={tag} />)}
     </div>
   );
 };

@@ -49,7 +49,7 @@ export const CommentsSection = ({
                   <a className={styles["commenter"]}>
                     <div className={styles["avatar"]}>
                       <Image
-                        src={comment?.author?.avatar}
+                        src={comment?.author?.avatar || "/assets/noavatar.jpg"}
                         layout="fill"
                         objectFit="cover"
                         alt=""

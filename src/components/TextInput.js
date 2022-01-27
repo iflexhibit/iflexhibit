@@ -1,7 +1,15 @@
 import styles from "styles/TextInput.module.scss";
 import PropTypes from "prop-types";
 
-const TextInput = ({ type, value, onChange, id, placeholder, autoFocus }) => {
+const TextInput = ({
+  type,
+  value,
+  onChange,
+  id,
+  placeholder,
+  autoFocus,
+  onEnterKey,
+}) => {
   return (
     <input
       className={styles["textinput"]}
@@ -12,6 +20,7 @@ const TextInput = ({ type, value, onChange, id, placeholder, autoFocus }) => {
       name={id}
       placeholder={placeholder}
       autoFocus={autoFocus}
+      onKeyDown={(e) => e.key === "Enter" && onEnterKey && onEnterKey()}
     />
   );
 };

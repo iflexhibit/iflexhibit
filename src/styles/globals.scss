@@ -84,3 +84,9 @@ svg {
     fill: currentColor;
   }
 }
+
+@media screen and (min-width: $desktop) {
+  html {
+    font-size: 17px;
+  }
+}

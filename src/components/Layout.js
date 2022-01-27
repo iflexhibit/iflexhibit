@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import NavBottom from "./NavBottom";
 import NavTop from "./NavTop";
+import NavDesktop from "./NavDesktop";
 import { useDispatch } from "react-redux";
 import { authUser } from "redux/actions/authAction";
 
@@ -21,6 +22,7 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
         <link rel="canonical" href={canonical} />
       </Head>
       {!fullscreen && <NavTop />}
+      {!fullscreen && <NavDesktop />}
       <main className={fullscreen ? "fullscreen" : ""}>{children}</main>
       {!fullscreen && <NavBottom />}
     </>
@@ -29,9 +31,13 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
 
 Layout.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   canonical: PropTypes.string.isRequired,
   fullscreen: PropTypes.bool,
+};
+
+Layout.defaultProps = {
+  description: "",
 };
 
 export default Layout;

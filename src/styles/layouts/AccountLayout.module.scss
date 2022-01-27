@@ -107,3 +107,12 @@ div.account {
     }
   }
 }
+
+@media screen and (min-width: $desktop) {
+  div.account {
+    align-items: center;
+    div.row {
+      width: 70ch;
+    }
+  }
+}

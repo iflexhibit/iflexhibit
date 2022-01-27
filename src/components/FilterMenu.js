@@ -13,6 +13,7 @@ const FilterMenu = ({
   resetButtonLabel,
   applyButtonLabel,
   hideApplyButton,
+  handleApply,
 }) => {
   return (
     <div className={styles["filters"]}>
@@ -57,6 +58,7 @@ const FilterMenu = ({
               label={applyButtonLabel || "Apply Filter"}
               variant="primary"
               fullWidth
+              onClick={handleApply}
             />
           </div>
         )}

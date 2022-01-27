@@ -3,12 +3,23 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setPost } from "redux/actions/postAction";
 import { useEffect } from "react";
+import { viewPost } from "redux/actions/userAction";
+import { useRouter } from "next/router";
 
 export default function PostPage(props) {
   const dispatch = useDispatch();
+  const router = useRouter();
   useEffect(() => {
     dispatch(setPost(props.post));
-  });
+    dispatch(viewPost(props.post.id));
+    router.push(
+      { pathname: `/post/${props.post.id}/${props.post.title}` },
+      undefined,
+      {
+        shallow: true,
+      }
+    );
+  }, [props.post]);
   return <PostLayout post={props.post} />;
 }
 

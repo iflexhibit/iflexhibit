@@ -2,8 +2,9 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "styles/Posts.module.scss";
+import Pagination from "./Pagination";
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts, results }) => {
   return (
     <div className={styles["posts"]}>
       {posts.map((post) => (
@@ -21,6 +22,7 @@ const Posts = ({ posts }) => {
           </a>
         </Link>
       ))}
+      <Pagination totalCount={results} itemsPerPage={15} />
     </div>
   );
 };

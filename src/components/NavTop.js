@@ -25,13 +25,15 @@ const NavTop = () => {
     return () => {
       router.events.off("routeChangeStart", handleRouteChange);
     };
-  }, []);
+  }, [router.events]);
   return (
     <nav className={`${styles["nav"]} ${styles["top"]}`}>
       <IconButton
         icon={router.pathname === "/" ? <BarsIcon /> : <ArrowLeftIcon />}
         onClick={() =>
-          router.pathname === "/" ? setMenuOpen((prev) => !prev) : router.back()
+          router.pathname === "/"
+            ? setMenuOpen((prev) => !prev)
+            : router.replace("/")
         }
       />
       <Link href="/">

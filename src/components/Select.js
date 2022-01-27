@@ -6,9 +6,9 @@ const Select = ({ options, onChange, value }) => {
   return (
     <div className={styles["select"]}>
       <select value={value} onChange={onChange}>
-        {options.map((o, index) => (
-          <option key={index} value={o}>
-            {o}
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.label}
           </option>
         ))}
       </select>

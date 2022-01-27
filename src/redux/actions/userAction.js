@@ -140,6 +140,7 @@ export const updatePreferences = (newPreferences) => (dispatch, getState) => {
 
 export const submitPost = (post) => (dispatch, getState) => {
   const { token } = getState().auth;
+  const { user } = getState().user;
   const formData = new FormData();
 
   const data = {
@@ -221,7 +222,7 @@ export const submitPost = (post) => (dispatch, getState) => {
           type: UPLOAD_MESSAGE,
           payload: { msg: null, type: null },
         });
-        window.location.replace("/post/" + response.data.post.id);
+        window.location.replace("/profile/" + user.id);
       }, 5000);
     })
     .catch((error) => {
@@ -241,4 +242,26 @@ export const submitPost = (post) => (dispatch, getState) => {
         5000
       );
     });
+};
+
+export const viewPost = (postId) => (dispatch, getState) => {
+  const { token } = getState().auth;
+  if (!token) return;
+
+  axios.post(
+    process.env.NEXT_PUBLIC_API_URL + "/api/posts/view/" + postId,
+    null,
+    { headers: { "x-auth-token": token } }
+  );
+};
+
+export const likePost = (postId) => (dispatch, getState) => {
+  const { token } = getState().auth;
+  if (!token) return (window.location.href = "/login");
+
+  axios
+    .post(process.env.NEXT_PUBLIC_API_URL + "/api/posts/like/" + postId, null, {
+      headers: { "x-auth-token": token },
+    })
+    .then(() => window.location.reload());
 };
