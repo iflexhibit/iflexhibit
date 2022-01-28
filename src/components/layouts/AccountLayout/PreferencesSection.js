@@ -2,6 +2,8 @@ import styles from "styles/layouts/AccountLayout.module.scss";
 import Button from "components/Button";
 import Toggle from "components/Toggle";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import FeedbackModal from "components/FeedbackModal";
 
 export const PreferencesSection = ({
   currentPreferences,
@@ -9,6 +11,7 @@ export const PreferencesSection = ({
   handlePreferencesChange,
   handlePreferencesSubmit,
 }) => {
+  const { preferences } = useSelector((state) => state.user);
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -16,6 +19,12 @@ export const PreferencesSection = ({
       transition={{ duration: 0.125 }}
       className={styles["preferences"]}
     >
+      {preferences.feedbackMsg && (
+        <FeedbackModal
+          variant={preferences.msgType}
+          info={preferences.feedbackMsg}
+        />
+      )}
       <h2>Choose which profile information you want others to see.</h2>
       <div className={`${styles["row"]} ${styles["options"]}`}>
         <Toggle
@@ -55,6 +64,10 @@ export const PreferencesSection = ({
         variant="primary"
         fullWidth
         onClick={handlePreferencesSubmit}
+        disabled={
+          preferences.feedbackMsg !== null ||
+          preferences.isNewPreferencesLoading
+        }
       />
     </motion.div>
   );

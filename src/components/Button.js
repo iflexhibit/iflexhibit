@@ -11,7 +11,6 @@ const Button = ({
   onClick,
   fullWidth,
   fullHeight,
-  rounded,
   type,
   disabled,
 }) => {

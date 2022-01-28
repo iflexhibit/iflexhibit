@@ -6,19 +6,25 @@ import UploadIcon from "./icons/UploadIcon";
 const FileInput = ({
   id,
   inputFile,
+  oldFile,
   multiple,
   accept,
   onChange,
   label,
+  buttonLabel,
   required,
+  variant,
 }) => {
   const inputRef = useRef(null);
   return (
     <label htmlFor={id} className={styles["container"]}>
       {label}
-      {inputFile && (
-        <div className={styles["preview"]}>
-          <img src={URL.createObjectURL(inputFile)} alt="image preview" />
+      {(oldFile || inputFile) && (
+        <div className={`${styles["preview"]} ${styles[variant || "default"]}`}>
+          {inputFile && (
+            <img src={URL.createObjectURL(inputFile)} alt="image preview" />
+          )}
+          {!inputFile && oldFile && <img src={oldFile} alt="image preview" />}
         </div>
       )}
       <input
@@ -32,8 +38,7 @@ const FileInput = ({
         required={required}
       />
       <Button
-        label={label}
-        text="uppercase"
+        label={buttonLabel || label}
         variant="secondary"
         onClick={() => inputRef.current.click()}
         fullWidth

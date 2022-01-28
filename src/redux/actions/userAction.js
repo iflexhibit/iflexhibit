@@ -8,6 +8,7 @@ import {
   PROFILE_UPDATE_LOADING,
   PROFILE_UPDATE_SUCCESS,
   PROFILE_UPDATE_ERROR,
+  PROFILE_UPDATE_MESSAGE,
   PREFERENCES_UPDATE_LOADING,
   PREFERENCES_UPDATE_SUCCESS,
   PREFERENCES_UPDATE_ERROR,
@@ -15,6 +16,7 @@ import {
   UPLOAD_ERROR,
   UPLOAD_SUCCESS,
   UPLOAD_MESSAGE,
+  PREFERENCES_UPDATE_MESSAGE,
 } from "../types/userTypes";
 import { fetchComments } from "./postAction";
 import { authUser } from "./authAction";
@@ -67,6 +69,110 @@ export const postComment = (postId, commentBody) => (dispatch, getState) => {
     });
 };
 
+export const updateAvatar = (image) => (dispatch, getState) => {
+  if (!image) return;
+  const { token } = getState().auth;
+
+  dispatch(setNewProfileLoading());
+  dispatch({
+    type: PROFILE_UPDATE_MESSAGE,
+    payload: { feedbackMsg: "Saving changes", msgType: "warning" },
+  });
+
+  const formData = new FormData();
+  formData.append("file", image);
+
+  axios
+    .post(process.env.NEXT_PUBLIC_API_URL + "/api/users/avatar", formData, {
+      headers: {
+        "x-auth-token": token,
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      dispatch({ type: PROFILE_UPDATE_SUCCESS });
+      dispatch({
+        type: PROFILE_UPDATE_MESSAGE,
+        payload: { feedbackMsg: response.data.msg, msgType: "success" },
+      });
+      setTimeout(() => {
+        dispatch({
+          type: PROFILE_UPDATE_MESSAGE,
+          payload: { feedbackMsg: null, msgType: null },
+        });
+        window.location.reload();
+      }, 5000);
+    })
+    .catch((error) => {
+      dispatch({
+        type: PROFILE_UPDATE_ERROR,
+      });
+      dispatch({
+        type: PROFILE_UPDATE_MESSAGE,
+        payload: { feedbackMsg: error.response.data.msg, msgType: "error" },
+      });
+      dispatch(authUser());
+      setTimeout(() => {
+        dispatch({
+          type: PROFILE_UPDATE_MESSAGE,
+          payload: { feedbackMsg: null, msgType: null },
+        });
+      }, 5000);
+    });
+};
+
+export const updateBackground = (image) => (dispatch, getState) => {
+  if (!image) return;
+  const { token } = getState().auth;
+
+  dispatch(setNewProfileLoading());
+  dispatch({
+    type: PROFILE_UPDATE_MESSAGE,
+    payload: { feedbackMsg: "Saving changes", msgType: "warning" },
+  });
+
+  const formData = new FormData();
+  formData.append("file", image);
+
+  axios
+    .post(process.env.NEXT_PUBLIC_API_URL + "/api/users/background", formData, {
+      headers: {
+        "x-auth-token": token,
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      dispatch({ type: PROFILE_UPDATE_SUCCESS });
+      dispatch({
+        type: PROFILE_UPDATE_MESSAGE,
+        payload: { feedbackMsg: response.data.msg, msgType: "success" },
+      });
+      setTimeout(() => {
+        dispatch({
+          type: PROFILE_UPDATE_MESSAGE,
+          payload: { feedbackMsg: null, msgType: null },
+        });
+        window.location.reload();
+      }, 5000);
+    })
+    .catch((error) => {
+      dispatch({
+        type: PROFILE_UPDATE_ERROR,
+      });
+      dispatch({
+        type: PROFILE_UPDATE_MESSAGE,
+        payload: { feedbackMsg: error.response.data.msg, msgType: "error" },
+      });
+      dispatch(authUser());
+      setTimeout(() => {
+        dispatch({
+          type: PROFILE_UPDATE_MESSAGE,
+          payload: { feedbackMsg: null, msgType: null },
+        });
+      }, 5000);
+    });
+};
+
 export const updateProfile = (newProfile) => (dispatch, getState) => {
   const { token } = getState().auth;
   const { user } = getState().user;
@@ -86,15 +192,35 @@ export const updateProfile = (newProfile) => (dispatch, getState) => {
         },
       }
     )
-    .then(() => {
+    .then((response) => {
       dispatch({ type: PROFILE_UPDATE_SUCCESS });
+      dispatch({
+        type: PROFILE_UPDATE_MESSAGE,
+        payload: { feedbackMsg: response.data.msg, msgType: "success" },
+      });
       dispatch(authUser());
+      setTimeout(() => {
+        dispatch({
+          type: PROFILE_UPDATE_MESSAGE,
+          payload: { feedbackMsg: null, msgType: null },
+        });
+      }, 5000);
     })
     .catch((error) => {
       dispatch({
         type: PROFILE_UPDATE_ERROR,
-        payload: { error: error.response.data.msg },
       });
+      dispatch({
+        type: PROFILE_UPDATE_MESSAGE,
+        payload: { feedbackMsg: error.response.data.msg, msgType: "error" },
+      });
+      dispatch(authUser());
+      setTimeout(() => {
+        dispatch({
+          type: PROFILE_UPDATE_MESSAGE,
+          payload: { feedbackMsg: null, msgType: null },
+        });
+      }, 5000);
     });
 };
 
@@ -102,6 +228,10 @@ export const updatePreferences = (newPreferences) => (dispatch, getState) => {
   const { token } = getState().auth;
   const { user } = getState().user;
   dispatch(setNewPreferencesLoading());
+  dispatch({
+    type: PREFERENCES_UPDATE_MESSAGE,
+    payload: { feedbackMsg: "Saving changes", msgType: "warning" },
+  });
   axios
     .post(
       "/api/users/preferences",
@@ -126,15 +256,37 @@ export const updatePreferences = (newPreferences) => (dispatch, getState) => {
         },
       }
     )
-    .then(() => {
+    .then((response) => {
       dispatch({ type: PREFERENCES_UPDATE_SUCCESS });
-      dispatch(authUser());
+      dispatch({
+        type: PREFERENCES_UPDATE_MESSAGE,
+        payload: { feedbackMsg: response.data.msg, msgType: "success" },
+      });
+      setTimeout(
+        () =>
+          dispatch({
+            type: PREFERENCES_UPDATE_MESSAGE,
+            payload: { feedbackMsg: null, msgType: null },
+          }),
+        5000
+      );
     })
     .catch((error) => {
       dispatch({
         type: PREFERENCES_UPDATE_ERROR,
-        payload: { error: error.response.data.msg },
       });
+      dispatch({
+        type: PREFERENCES_UPDATE_MESSAGE,
+        payload: { feedbackMsg: error.response.data.msg, msgType: "error" },
+      });
+      setTimeout(
+        () =>
+          dispatch({
+            type: PREFERENCES_UPDATE_MESSAGE,
+            payload: { feedbackMsg: null, msgType: null },
+          }),
+        5000
+      );
     });
 };
 
