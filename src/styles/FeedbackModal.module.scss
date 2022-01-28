@@ -34,16 +34,16 @@ div.feedback {
 
   &.success {
     background: var(--color-green-alt);
-    border: solid 2px var(--color-green);
+    border: solid 2px var(--color-green-alt);
   }
 
   &.warning {
     background: var(--color-orange-alt);
-    border: solid 2px var(--color-orange);
+    border: solid 2px var(--color-orange-alt);
   }
 
   &.error {
     background: var(--color-red-alt);
-    border: solid 2px var(--color-red);
+    border: solid 2px var(--color-red-alt);
   }
 }

@@ -7,6 +7,11 @@ import TextArea from "components/TextArea";
 import TrashIcon from "components/icons/TrashIcon";
 import RedoIcon from "components/icons/RedoIcon";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import FeedbackModal from "components/FeedbackModal";
+import FileInput from "components/FileInput";
+import { useState } from "react";
+import { updateAvatar, updateBackground } from "redux/actions/userAction";
 
 export const ProfileSection = ({
   user,
@@ -15,6 +20,16 @@ export const ProfileSection = ({
   newProfile,
   handleProfileChange,
 }) => {
+  const dispatch = useDispatch();
+  const { profile } = useSelector((state) => state.user);
+  const [newAvatar, setNewAvatar] = useState("");
+  const [newBackground, setNewBackground] = useState("");
+  const handleAvatarSubmit = () => {
+    dispatch(updateAvatar(newAvatar));
+  };
+  const handleBackgroundSubmit = () => {
+    dispatch(updateBackground(newBackground));
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -22,6 +37,9 @@ export const ProfileSection = ({
       transition={{ duration: 0.125 }}
       className={styles["profile"]}
     >
+      {profile.feedbackMsg && (
+        <FeedbackModal variant={profile.msgType} info={profile.feedbackMsg} />
+      )}
       <div className={`${styles["row"]} ${styles["default"]}`}>
         <div className={styles["group"]}>
           <label>First Name</label>
@@ -37,34 +55,70 @@ export const ProfileSection = ({
         </div>
       </div>
       <div className={`${styles["row"]} ${styles["avatar"]}`}>
-        <label>Profile Photo</label>
-        <div className={`${styles["image"]}`}>
-          <Image
-            src={user?.avatar || "/assets/noavatar.jpg"}
-            layout="fill"
-            objectFit="cover"
-            alt="avatar image"
-          />
-        </div>
-        <div className={`${styles["avatar-controls"]}`}>
-          <IconButton icon={<TrashIcon />} variant="warning" />
-          <Button label="Upload a Photo" fullWidth variant="secondary" />
-        </div>
+        <FileInput
+          id="newAvatar"
+          oldFile={user?.avatar || "/assets/noavatar.jpg"}
+          inputFile={newAvatar}
+          accept="image/png, image/jpeg"
+          onChange={(e) => setNewAvatar(e.target.files[0])}
+          label="Profile Avatar"
+          buttonLabel="Choose an image"
+          variant="avatar"
+        />
+        {newAvatar && (
+          <div className={`${styles["avatar-controls"]}`}>
+            <IconButton
+              variant="warning"
+              icon={<TrashIcon />}
+              onClick={() => setNewAvatar("")}
+              disabled={
+                profile.feedbackMsg !== null || profile.isNewProfileLoading
+              }
+            />
+            <Button
+              label="Upload avatar"
+              variant="primary"
+              fullWidth
+              onClick={handleAvatarSubmit}
+              disabled={
+                profile.feedbackMsg !== null || profile.isNewProfileLoading
+              }
+            />
+          </div>
+        )}
       </div>
       <div className={`${styles["row"]} ${styles["banner"]}`}>
-        <label>Profile Banner</label>
-        <div className={`${styles["image"]}`}>
-          <Image
-            src={user?.background || "/assets/nobg.jpg"}
-            layout="fill"
-            objectFit="cover"
-            alt="profile background"
-          />
-        </div>
-        <div className={`${styles["banner-controls"]}`}>
-          <IconButton icon={<TrashIcon />} variant="warning" />
-          <Button label="Upload a Photo" fullWidth variant="secondary" />
-        </div>
+        <FileInput
+          id="newBackground"
+          oldFile={user?.background || "/assets/nobg.jpg"}
+          inputFile={newBackground}
+          accept="image/png, image/jpeg"
+          onChange={(e) => setNewBackground(e.target.files[0])}
+          label="Profile Background"
+          buttonLabel="Choose an image"
+          variant="background"
+        />
+        {newBackground && (
+          <div className={`${styles["banner-controls"]}`}>
+            <IconButton
+              variant="warning"
+              icon={<TrashIcon />}
+              onClick={() => setNewBackground("")}
+              disabled={
+                profile.feedbackMsg !== null || profile.isNewProfileLoading
+              }
+            />
+            <Button
+              label="Upload background"
+              variant="primary"
+              fullWidth
+              onClick={handleBackgroundSubmit}
+              disabled={
+                profile.feedbackMsg !== null || profile.isNewProfileLoading
+              }
+            />
+          </div>
+        )}
       </div>
       <div className={`${styles["row"]} ${styles["form"]}`}>
         <form onReset={handleProfileReset} onSubmit={handleProfileSubmit}>
@@ -103,6 +157,9 @@ export const ProfileSection = ({
               label="Save Changes"
               variant="primary"
               fullWidth
+              disabled={
+                profile.feedbackMsg !== null || profile.isNewProfileLoading
+              }
             />
           </div>
         </form>

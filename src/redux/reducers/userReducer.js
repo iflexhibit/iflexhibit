@@ -7,9 +7,11 @@ import {
   PROFILE_UPDATE_LOADING,
   PROFILE_UPDATE_SUCCESS,
   PROFILE_UPDATE_ERROR,
+  PROFILE_UPDATE_MESSAGE,
   PREFERENCES_UPDATE_LOADING,
   PREFERENCES_UPDATE_SUCCESS,
   PREFERENCES_UPDATE_ERROR,
+  PREFERENCES_UPDATE_MESSAGE,
   UPLOAD_LOADING,
   UPLOAD_ERROR,
   UPLOAD_SUCCESS,
@@ -25,13 +27,13 @@ const initialState = {
   },
   profile: {
     isNewProfileLoading: false,
-    isNewProfileSuccess: null,
-    profileError: null,
+    feedbackMsg: null,
+    msgType: null,
   },
   preferences: {
     isNewPreferencesLoading: false,
-    isNewPreferencesSuccess: null,
-    preferencesError: null,
+    feedbackMsg: null,
+    msgType: null,
   },
   upload: {
     isUploading: false,
@@ -80,22 +82,21 @@ export const userReducer = (state = initialState, action) => {
         },
       };
     case PROFILE_UPDATE_SUCCESS:
-      return {
-        ...state,
-        profile: {
-          ...state.profile,
-          isNewProfileLoading: false,
-          isNewProfileSuccess: true,
-        },
-      };
     case PROFILE_UPDATE_ERROR:
       return {
         ...state,
         profile: {
           ...state.profile,
           isNewProfileLoading: false,
-          isNewProfileSuccess: false,
-          profileError: payload.error,
+        },
+      };
+    case PROFILE_UPDATE_MESSAGE:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          feedbackMsg: payload.feedbackMsg,
+          msgType: payload.msgType,
         },
       };
     case PREFERENCES_UPDATE_LOADING:
@@ -107,22 +108,21 @@ export const userReducer = (state = initialState, action) => {
         },
       };
     case PREFERENCES_UPDATE_SUCCESS:
-      return {
-        ...state,
-        preferences: {
-          ...state.preferences,
-          isNewPreferencesLoading: false,
-          isNewPreferencesSuccess: true,
-        },
-      };
     case PREFERENCES_UPDATE_ERROR:
       return {
         ...state,
         preferences: {
           ...state.preferences,
           isNewPreferencesLoading: false,
-          isNewPreferencesSuccess: false,
-          preferencesError: payload.error,
+        },
+      };
+    case PREFERENCES_UPDATE_MESSAGE:
+      return {
+        ...state,
+        preferences: {
+          ...state.preferences,
+          feedbackMsg: payload.feedbackMsg,
+          msgType: payload.msgType,
         },
       };
     case UPLOAD_LOADING:
