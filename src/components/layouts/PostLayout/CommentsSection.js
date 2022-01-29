@@ -9,7 +9,9 @@ import SendIcon from "components/icons/SendIcon";
 import TextArea from "components/TextArea";
 import { useSelector } from "react-redux";
 import Button from "components/Button";
-import EllipsisVIcon from "components/icons/EllipsisVIcon";
+import FlagIcon from "components/icons/FlagIcon";
+import ReportModal from "components/ReportModal";
+import { useState } from "react";
 
 export const CommentsSection = ({
   comments,
@@ -20,6 +22,7 @@ export const CommentsSection = ({
   handleNewCommentChange,
 }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const [isReportOpen, setReportOpen] = useState(false);
   return (
     <>
       <motion.div
@@ -44,6 +47,13 @@ export const CommentsSection = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
+              {isReportOpen && (
+                <ReportModal
+                  closeModal={() => setReportOpen(false)}
+                  reportType="COMMENT"
+                  targetId={comment.id}
+                />
+              )}
               <div className={styles["header"]}>
                 <Link href={"/profile/" + comment?.author?.id}>
                   <a className={styles["commenter"]}>
@@ -66,7 +76,10 @@ export const CommentsSection = ({
                   </a>
                 </Link>
                 <div className={styles["controls"]}>
-                  <IconButton icon={<EllipsisVIcon />} />
+                  <IconButton
+                    icon={<FlagIcon />}
+                    onClick={() => setReportOpen(true)}
+                  />
                 </div>
               </div>
               <div className={styles["body"]}>

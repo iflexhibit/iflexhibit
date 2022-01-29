@@ -50,6 +50,7 @@ const PostLayout = ({ post }) => {
         />
         <PostTags tags={post?.tags} />
         <PostAuthor
+          postId={post?.id}
           userId={post?.author?.id}
           avatar={post?.author?.avatar}
           displayName={post?.author?.username}

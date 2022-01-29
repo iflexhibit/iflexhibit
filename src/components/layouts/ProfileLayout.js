@@ -10,6 +10,9 @@ import Posts from "components/Posts";
 import Select from "components/Select";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import IconButton from "components/IconButton";
+import FlagIcon from "components/icons/FlagIcon";
+import ReportModal from "components/ReportModal";
 
 const ProfileLayout = ({ user, posts, results }) => {
   const router = useRouter();
@@ -29,6 +32,8 @@ const ProfileLayout = ({ user, posts, results }) => {
       query: { ...router.query, sort: e.target.value },
     });
   };
+
+  const [isReportOpen, setReportOpen] = useState(false);
   return (
     <Layout
       title={user.username + " | iFlexhibit"}
@@ -36,7 +41,17 @@ const ProfileLayout = ({ user, posts, results }) => {
       canonical={`https://iflexhibit.com/profile/${user.id}/${user.username}`}
     >
       <div className={styles["profile"]}>
-        <ProfileBanner bannerImg={user?.background} />
+        <div className={styles.controls}>
+          <IconButton icon={<FlagIcon />} onClick={() => setReportOpen(true)} />
+          {isReportOpen && (
+            <ReportModal
+              closeModal={() => setReportOpen(false)}
+              reportType="USER"
+              targetId={user.id}
+            />
+          )}
+        </div>
+        <ProfileBanner bannerImg={user?.background} userId={user?.id} />
         <ProfileAvatar avatarImg={user?.avatar} />
         <ProfileDisplayName displayName={user?.username} />
         <ProfileStats

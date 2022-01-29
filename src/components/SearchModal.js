@@ -12,7 +12,7 @@ export const SearchModal = ({ closeMenu }) => {
   const [search, setSearch] = useState("");
   const handleSearch = () => {
     router.push({
-      pathname: router.pathname,
+      pathname: "/",
       query: { ...router.query, title: search },
     });
   };

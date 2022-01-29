@@ -4,14 +4,24 @@ import { useEffect } from "react";
 import NavBottom from "./NavBottom";
 import NavTop from "./NavTop";
 import NavDesktop from "./NavDesktop";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authUser } from "redux/actions/authAction";
+import {
+  fetchCommentOffenses,
+  fetchPostOffenses,
+  fetchUserOffenses,
+} from "redux/actions/reportAction";
+import FeedbackModal from "./FeedbackModal";
 
 const Layout = ({ title, description, canonical, children, fullscreen }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authUser());
+    dispatch(fetchCommentOffenses());
+    dispatch(fetchPostOffenses());
+    dispatch(fetchUserOffenses());
   }, [dispatch, title]);
+  const { feedbackMsg, msgType } = useSelector((state) => state.report);
   return (
     <>
       <Head>
@@ -25,6 +35,7 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
       {!fullscreen && <NavDesktop />}
       <main className={fullscreen ? "fullscreen" : ""}>{children}</main>
       {!fullscreen && <NavBottom />}
+      {feedbackMsg && <FeedbackModal info={feedbackMsg} variant={msgType} />}
     </>
   );
 };
