@@ -1,8 +1,16 @@
 @import "../config";
 
 div.profile {
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
+
+  & > div.controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
 
   & > div.row {
     &.banner {
