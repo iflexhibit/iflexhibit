@@ -21,6 +21,7 @@ import {
   DELETE_MESSAGE,
   DELETE_SUCCESS,
   DELETE_ERROR,
+  FETCH_MY_POSTS,
 } from "../types/userTypes";
 import { fetchComments } from "./postAction";
 import { authUser } from "./authAction";
@@ -71,6 +72,29 @@ export const postComment = (postId, commentBody) => (dispatch, getState) => {
         payload: { error: error.response.data.msg },
       });
     });
+};
+
+export const fetchMyPosts = () => (dispatch, getState) => {
+  const { token } = getState().auth;
+
+  if (!token) return;
+
+  axios
+    .post(process.env.NEXT_PUBLIC_API_URL + "/api/users/posts", null, {
+      headers: { "x-auth-token": token },
+    })
+    .then((response) => {
+      dispatch({
+        type: FETCH_MY_POSTS,
+        payload: { posts: response.data.posts, results: response.data.results },
+      });
+    })
+    .catch(() =>
+      dispatch({
+        type: FETCH_MY_POSTS,
+        payload: { posts: [], results: null },
+      })
+    );
 };
 
 export const updateAvatar = (image) => (dispatch, getState) => {
