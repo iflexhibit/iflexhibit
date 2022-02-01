@@ -5,9 +5,19 @@ import IconButton from "components/IconButton";
 import ReportModal from "components/ReportModal";
 import { useState } from "react";
 import FlagIcon from "components/icons/FlagIcon";
+import { useSelector } from "react-redux";
+import TrashIcon from "components/icons/TrashIcon";
 
-export const PostAuthor = ({ userId, postId, avatar, displayName, date }) => {
+export const PostAuthor = ({
+  authorId,
+  postId,
+  avatar,
+  displayName,
+  date,
+  handlePostDelete,
+}) => {
   const [isReportOpen, setReportOpen] = useState(false);
+  const { user } = useSelector((state) => state.user);
   return (
     <div className={`${styles["row"]} ${styles["user"]}`}>
       {isReportOpen && (
@@ -17,7 +27,7 @@ export const PostAuthor = ({ userId, postId, avatar, displayName, date }) => {
           targetId={postId}
         />
       )}
-      <Link href={"/profile/" + userId}>
+      <Link href={"/profile/" + authorId}>
         <a className={styles["profile"]}>
           <div className={styles["avatar"]}>
             <Image
@@ -33,7 +43,15 @@ export const PostAuthor = ({ userId, postId, avatar, displayName, date }) => {
           </div>
         </a>
       </Link>
-      <IconButton icon={<FlagIcon />} onClick={() => setReportOpen(true)} />
+      {authorId === user?.id ? (
+        <IconButton
+          icon={<TrashIcon />}
+          onClick={handlePostDelete}
+          variant="warning"
+        />
+      ) : (
+        <IconButton icon={<FlagIcon />} onClick={() => setReportOpen(true)} />
+      )}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { fetchUserPostInteraction } from "redux/actions/postAction";
 import { viewPost } from "redux/actions/userAction";
 
-export const PostTitle = ({ postId, title, handleLike }) => {
+export const PostTitle = ({ postId, title, handlePostLike }) => {
   const dispatch = useDispatch();
   const { isLiked } = useSelector((state) => state.post);
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -23,7 +23,7 @@ export const PostTitle = ({ postId, title, handleLike }) => {
         startIcon={<StarOutlineIcon />}
         variant="primary"
         label="Like"
-        onClick={handleLike}
+        onClick={handlePostLike}
         disabled={isLiked !== null ? isLiked : false}
       />
     </div>

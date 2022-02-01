@@ -17,6 +17,10 @@ import {
   UPLOAD_SUCCESS,
   UPLOAD_MESSAGE,
   PREFERENCES_UPDATE_MESSAGE,
+  DELETE_LOADING,
+  DELETE_MESSAGE,
+  DELETE_SUCCESS,
+  DELETE_ERROR,
 } from "../types/userTypes";
 import { fetchComments } from "./postAction";
 import { authUser } from "./authAction";
@@ -416,4 +420,50 @@ export const likePost = (postId) => (dispatch, getState) => {
       headers: { "x-auth-token": token },
     })
     .then(() => window.location.reload());
+};
+
+export const deletePost = (postId) => (dispatch, getState) => {
+  const { token } = getState().auth;
+  const { user } = getState().user;
+  if (!token) return window.location.reload();
+
+  dispatch({ type: DELETE_LOADING });
+  dispatch({
+    type: DELETE_MESSAGE,
+    payload: { feedbackMsg: "Deleting post", msgType: "warning" },
+  });
+  axios
+    .post(
+      process.env.NEXT_PUBLIC_API_URL + "/api/posts/delete/" + postId,
+      null,
+      { headers: { "x-auth-token": token } }
+    )
+    .then((response) => {
+      dispatch({ type: DELETE_SUCCESS });
+      dispatch({
+        type: DELETE_MESSAGE,
+        payload: { feedbackMsg: response.data.msg, msgType: "success" },
+      });
+      setTimeout(() => {
+        dispatch({
+          type: DELETE_MESSAGE,
+          payload: { msg: null, type: null },
+        });
+        window.location.replace("/profile/" + user.id);
+      }, 5000);
+    })
+    .catch((error) => {
+      dispatch({ type: DELETE_ERROR });
+      dispatch({
+        type: DELETE_MESSAGE,
+        payload: { feedbackMsg: error.response.data.msg, msgType: "error" },
+      });
+      setTimeout(() => {
+        dispatch({
+          type: DELETE_MESSAGE,
+          payload: { msg: null, type: null },
+        });
+        window.location.reload();
+      }, 5000);
+    });
 };
