@@ -13,6 +13,9 @@ import { useRouter } from "next/router";
 import IconButton from "components/IconButton";
 import FlagIcon from "components/icons/FlagIcon";
 import ReportModal from "components/ReportModal";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMyPosts } from "redux/actions/userAction";
+import { useEffect } from "react";
 
 const ProfileLayout = ({ user, posts, results }) => {
   const router = useRouter();
@@ -34,6 +37,16 @@ const ProfileLayout = ({ user, posts, results }) => {
   };
 
   const [isReportOpen, setReportOpen] = useState(false);
+  const {
+    user: currentUser,
+    posts: myPosts,
+    results: myResults,
+  } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (currentUser?.id === user?.id) dispatch(fetchMyPosts());
+  }, [user, currentUser]);
+
   return (
     <Layout
       title={user.username + " | iFlexhibit"}
@@ -77,8 +90,8 @@ const ProfileLayout = ({ user, posts, results }) => {
             />
           ) : (
             <WorksSection
-              results={results}
-              posts={posts}
+              results={currentUser?.id === user?.id ? myResults : results}
+              posts={currentUser?.id === user?.id ? myPosts : posts}
               activeSort={activeSort}
               sortOptions={sortOptions}
               handleSortChange={handleSortChange}

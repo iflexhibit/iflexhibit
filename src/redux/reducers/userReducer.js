@@ -1,6 +1,7 @@
 import {
   SET_USER,
   CLEAR_USER,
+  FETCH_MY_POSTS,
   POST_COMMENT_SUCCESS,
   POST_COMMENT_ERROR,
   POST_COMMENT_LOADING,
@@ -24,6 +25,8 @@ import {
 
 const initialState = {
   user: null,
+  posts: [],
+  results: null,
   comment: {
     isNewCommentLoading: false,
     isNewCommentSuccess: null,
@@ -56,6 +59,8 @@ export const userReducer = (state = initialState, action) => {
   switch (type) {
     case SET_USER:
       return { ...state, user: payload.user };
+    case FETCH_MY_POSTS:
+      return { ...state, posts: payload.posts, results: payload.results };
     case CLEAR_USER:
       return { ...state, user: null };
     case POST_COMMENT_LOADING:
