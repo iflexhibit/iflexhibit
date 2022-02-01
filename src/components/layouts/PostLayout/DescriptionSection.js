@@ -9,9 +9,15 @@ export const DescriptionSection = ({ description }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.125 }}
     >
-      {description.split("\n").map((p, index) => (
-        <p key={index}>{p}</p>
-      ))}
+      {description ? (
+        description.split("\n").map((p, index) => <p key={index}>{p}</p>)
+      ) : (
+        <p>
+          <small>
+            <i>No description provided.</i>
+          </small>
+        </p>
+      )}
     </motion.div>
   );
 };
