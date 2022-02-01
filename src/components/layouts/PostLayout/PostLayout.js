@@ -41,7 +41,9 @@ const PostLayout = ({ post }) => {
     <Layout
       title={`${post.title} by ${post.author.username} | iFlexhibit`}
       description={post.body}
-      canonical={`https://iflexhibit.com/post/${post.id}/${post.title}`}
+      canonical={`https://iflexhibit.com/post/${post.id}/${post.title
+        .split(" ")
+        .join("-")}`}
     >
       {deleteAction.feedbackMsg && (
         <FeedbackModal
