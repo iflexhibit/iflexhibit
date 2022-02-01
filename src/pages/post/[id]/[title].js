@@ -24,9 +24,17 @@ export default function PostPage(props) {
 }
 
 export async function getServerSideProps({ req, res, params }) {
-  const response = await axios.get(
-    process.env.NEXT_PUBLIC_API_URL + "/api/posts/post/" + params.id
-  );
-  const data = response.data;
-  return { props: { post: data.post } };
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_API_URL + "/api/posts/post/" + params.id
+    );
+    const data = response.data;
+    return { props: { post: data.post } };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/",
+      },
+    };
+  }
 }
