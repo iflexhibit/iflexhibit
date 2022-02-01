@@ -16,6 +16,10 @@ import {
   UPLOAD_ERROR,
   UPLOAD_SUCCESS,
   UPLOAD_MESSAGE,
+  DELETE_MESSAGE,
+  DELETE_ERROR,
+  DELETE_SUCCESS,
+  DELETE_LOADING,
 } from "redux/types/userTypes";
 
 const initialState = {
@@ -38,6 +42,11 @@ const initialState = {
   upload: {
     isUploading: false,
     uploadMsg: null,
+    msgType: null,
+  },
+  deleteAction: {
+    isDeleting: false,
+    feedbackMsg: null,
     msgType: null,
   },
 };
@@ -143,6 +152,32 @@ export const userReducer = (state = initialState, action) => {
           ...state.upload,
           uploadMsg: payload.msg,
           msgType: payload.type,
+        },
+      };
+    case DELETE_LOADING:
+      return {
+        ...state,
+        deleteAction: {
+          ...state.deleteAction,
+          isDeleting: true,
+        },
+      };
+    case DELETE_SUCCESS:
+    case DELETE_ERROR:
+      return {
+        ...state,
+        deleteAction: {
+          ...state.deleteAction,
+          isDeleting: false,
+        },
+      };
+    case DELETE_MESSAGE:
+      return {
+        ...state,
+        deleteAction: {
+          ...state.deleteAction,
+          feedbackMsg: payload.feedbackMsg,
+          msgType: payload.msgType,
         },
       };
     default:

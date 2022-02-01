@@ -11,7 +11,8 @@ import { DescriptionSection } from "./DescriptionSection";
 import { CommentsSection } from "./CommentsSection";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchComments } from "redux/actions/postAction";
-import { likePost, postComment } from "redux/actions/userAction";
+import { deletePost, likePost, postComment } from "redux/actions/userAction";
+import FeedbackModal from "components/FeedbackModal";
 
 const PostLayout = ({ post }) => {
   const dispatch = useDispatch();
@@ -30,12 +31,24 @@ const PostLayout = ({ post }) => {
     dispatch(fetchComments(post.id));
   }, [dispatch, post]);
   const { comments } = useSelector((state) => state.post);
+  const handlePostLike = () => dispatch(likePost(post?.id));
+  const handlePostDelete = () => {
+    if (confirm(`Delete \'${post?.title}\'?`))
+      return dispatch(deletePost(post?.id));
+  };
+  const { deleteAction } = useSelector((state) => state.user);
   return (
     <Layout
       title={`${post.title} by ${post.author.username} | iFlexhibit`}
       description={post.body}
       canonical={`https://iflexhibit.com/post/${post.id}/${post.title}`}
     >
+      {deleteAction.feedbackMsg && (
+        <FeedbackModal
+          info={deleteAction.feedbackMsg}
+          variant={deleteAction.msgType}
+        />
+      )}
       <div className={styles["post"]}>
         <PostImage imgSrc={post?.image} alt={post?.title} />
         <PostStats
@@ -44,17 +57,20 @@ const PostLayout = ({ post }) => {
           views_count={post?.statistics.views}
         />
         <PostTitle
+          authorId={post?.author?.id}
           postId={post?.id}
           title={post?.title}
-          handleLike={() => dispatch(likePost(post?.id))}
+          handlePostLike={handlePostLike}
+          handlePostDelete={handlePostDelete}
         />
         <PostTags tags={post?.tags} />
         <PostAuthor
           postId={post?.id}
-          userId={post?.author?.id}
+          authorId={post?.author?.id}
           avatar={post?.author?.avatar}
           displayName={post?.author?.username}
           date={new Date(post?.createdAt).toJSON().split("T")[0]}
+          handlePostDelete={handlePostDelete}
         />
         <div className={`${styles["row"]} ${styles["tabs"]}`}>
           <ButtonGroup
