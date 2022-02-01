@@ -28,12 +28,26 @@ export async function getServerSideProps({ req, res, params, query }) {
     sort: query.sort,
     page: query.page,
   };
-  const response = await axios.get(
-    process.env.NEXT_PUBLIC_API_URL + "/api/users/user/" + params.id,
-    { params: searchParams }
-  );
-  const data = response.data;
-  return {
-    props: { user: data.user, posts: data.posts, results: data.results },
-  };
+  try {
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_API_URL + "/api/users/user/" + params.id,
+      { params: searchParams }
+    );
+    const data = response.data;
+    if (data.user.username !== params.username)
+      return {
+        redirect: {
+          destination: `/profile/${data.user.id}/${data.user.username}`,
+        },
+      };
+    return {
+      props: { user: data.user, posts: data.posts, results: data.results },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/",
+      },
+    };
+  }
 }
