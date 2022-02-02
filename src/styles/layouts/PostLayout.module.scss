@@ -189,6 +189,10 @@ div.post {
   }
 }
 
+form.new-comment.field.desktop {
+  display: none;
+}
+
 @media screen and (min-width: $desktop) {
   div.post {
     & > div.image-container {
@@ -200,5 +204,26 @@ div.post {
     & > div.row {
       width: 70ch;
     }
+
+    & > .new-comment {
+      display: none;
+    }
+  }
+
+  form.new-comment.field.desktop {
+    & > div {
+      width: 100%;
+      display: flex;
+      gap: 0.5rem;
+      & > div.avatar {
+        position: relative;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    gap: 0.5rem;
   }
 }
