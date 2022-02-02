@@ -45,3 +45,9 @@ div.select {
     pointer-events: none;
   }
 }
+
+@media screen and (min-width: $desktop) {
+  div.select {
+    max-width: 12rem;
+  }
+}
