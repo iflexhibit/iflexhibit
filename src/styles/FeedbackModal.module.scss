@@ -47,3 +47,12 @@ div.feedback {
     border: solid 2px var(--color-red-alt);
   }
 }
+
+@media screen and (min-width: $desktop) {
+  div.feedback {
+    top: unset;
+    bottom: 1rem;
+    max-width: 70ch;
+    margin: 0 auto;
+  }
+}
