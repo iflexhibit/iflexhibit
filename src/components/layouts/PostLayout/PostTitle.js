@@ -24,7 +24,7 @@ export const PostTitle = ({ postId, title, handlePostLike }) => {
         variant="primary"
         label="Like"
         onClick={handlePostLike}
-        disabled={isLiked !== null ? isLiked : false}
+        disabled={isLiked !== null ? isLiked : true}
       />
     </div>
   );

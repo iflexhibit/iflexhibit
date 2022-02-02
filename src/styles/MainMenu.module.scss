@@ -119,6 +119,7 @@ div.mainmenu {
 
 @media screen and (min-width: $desktop) {
   div.mainmenu {
+    height: unset;
     & > div.menu {
       width: 20rem;
 

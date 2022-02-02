@@ -73,3 +73,12 @@ div.filters {
     }
   }
 }
+
+@media screen and (min-width: $desktop) {
+  div.filters {
+    bottom: 0;
+    & > div.menu {
+      max-width: 70ch;
+    }
+  }
+}

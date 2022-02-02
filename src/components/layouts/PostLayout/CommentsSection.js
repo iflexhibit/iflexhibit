@@ -22,6 +22,7 @@ export const CommentsSection = ({
   handleNewCommentChange,
 }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
   const [isReportOpen, setReportOpen] = useState(false);
   return (
     <>
@@ -32,13 +33,43 @@ export const CommentsSection = ({
         transition={{ duration: 0.125 }}
       >
         <AnimatePresence>
-          {!isAuthenticated && (
+          {!isAuthenticated ? (
             <Button
               variant="primary"
               label="Sign In to Comment"
               fullWidth
               href="/login"
             />
+          ) : (
+            <form
+              key={isCommentFieldOpen}
+              className={`${styles["new-comment"]} ${styles["field"]} ${styles["desktop"]}`}
+              onSubmit={handleNewCommentSubmit}
+            >
+              <div>
+                <div className={styles.avatar}>
+                  <Image
+                    src={user?.avatar || "/assets/noavatar.jpg"}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <TextArea
+                  id="new_comment"
+                  value={newComment}
+                  onChange={handleNewCommentChange}
+                  placeholder="Write a comment..."
+                  autoFocus
+                />
+              </div>
+              <Button
+                startIcon={<SendIcon />}
+                type="submit"
+                disabled={newComment === ""}
+                variant="primary"
+                label="Comment"
+              />
+            </form>
           )}
           {comments?.map((comment) => (
             <motion.div

@@ -96,3 +96,22 @@ div.profile {
     }
   }
 }
+
+@media screen and (min-width: $desktop) {
+  div.works {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+  }
+  div.profile {
+    & > div.row {
+      &.about,
+      &.stats,
+      &.tabs {
+        width: 70ch;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
