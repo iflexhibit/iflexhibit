@@ -5,6 +5,7 @@ import TextInput from "components/TextInput";
 import TextArea from "components/TextArea";
 import Tag from "components/Tag";
 import TagsIcon from "components/icons/TagsIcon";
+import Toggle from "components/Toggle";
 
 export const UploadForm = ({
   handleFormSubmit,
@@ -83,6 +84,17 @@ export const UploadForm = ({
             startIcon={<TagsIcon />}
             variant="secondary"
             onClick={() => setFilterMenuOpen(true)}
+          />
+        </div>
+        <div className={styles["group"]}>
+          <label>
+            Add watermark? <small>(Optional)</small>
+          </label>
+          <Toggle
+            id="watermark"
+            checked={newUpload.watermark}
+            right="Yes"
+            onChange={handleUploadChange}
           />
         </div>
         <Button
