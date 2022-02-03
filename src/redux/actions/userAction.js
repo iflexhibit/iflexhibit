@@ -457,11 +457,9 @@ export const deletePost = (postId) => (dispatch, getState) => {
     payload: { feedbackMsg: "Deleting post", msgType: "warning" },
   });
   axios
-    .post(
-      process.env.NEXT_PUBLIC_API_URL + "/api/posts/delete/" + postId,
-      null,
-      { headers: { "x-auth-token": token } }
-    )
+    .delete(process.env.NEXT_PUBLIC_API_URL + "/api/posts/" + postId, {
+      headers: { "x-auth-token": token },
+    })
     .then((response) => {
       dispatch({ type: DELETE_SUCCESS });
       dispatch({
