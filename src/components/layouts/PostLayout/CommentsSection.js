@@ -75,17 +75,17 @@ export const CommentsSection = ({
           )}
           {comments?.map((comment) => (
             <motion.div
-              key={comment.id}
+              key={comment?.id}
               className={styles["comment"]}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              id={comment.id}
+              id={comment?.id}
             >
               {isReportOpen && (
                 <ReportModal
                   closeModal={() => setReportOpen(false)}
                   reportType="COMMENT"
-                  targetId={comment.id}
+                  targetId={comment?.id}
                 />
               )}
               <div className={styles["header"]}>
@@ -110,10 +110,10 @@ export const CommentsSection = ({
                   </a>
                 </Link>
                 <div className={styles["controls"]}>
-                  {comment?.author?.id === user.id ? (
+                  {comment?.author?.id === user?.id ? (
                     <IconButton
                       icon={<TrashIcon />}
-                      onClick={() => handleDeleteComment(comment.id)}
+                      onClick={() => handleDeleteComment(comment?.id)}
                       variant="warning"
                     />
                   ) : (
