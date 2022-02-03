@@ -79,6 +79,7 @@ export const CommentsSection = ({
               className={styles["comment"]}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              id={comment.id}
             >
               {isReportOpen && (
                 <ReportModal
