@@ -20,7 +20,7 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
     dispatch(fetchCommentOffenses());
     dispatch(fetchPostOffenses());
     dispatch(fetchUserOffenses());
-  }, [dispatch, title]);
+  }, []);
   const { feedbackMsg, msgType } = useSelector((state) => state.report);
   return (
     <>

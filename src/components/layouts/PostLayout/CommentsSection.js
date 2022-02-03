@@ -12,6 +12,7 @@ import Button from "components/Button";
 import FlagIcon from "components/icons/FlagIcon";
 import ReportModal from "components/ReportModal";
 import { useState } from "react";
+import TrashIcon from "components/icons/TrashIcon";
 
 export const CommentsSection = ({
   comments,
@@ -20,6 +21,7 @@ export const CommentsSection = ({
   newComment,
   handleNewCommentSubmit,
   handleNewCommentChange,
+  handleDeleteComment,
 }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
@@ -77,6 +79,7 @@ export const CommentsSection = ({
               className={styles["comment"]}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              id={comment.id}
             >
               {isReportOpen && (
                 <ReportModal
@@ -107,10 +110,18 @@ export const CommentsSection = ({
                   </a>
                 </Link>
                 <div className={styles["controls"]}>
-                  <IconButton
-                    icon={<FlagIcon />}
-                    onClick={() => setReportOpen(true)}
-                  />
+                  {comment?.author?.id === user.id ? (
+                    <IconButton
+                      icon={<TrashIcon />}
+                      onClick={() => handleDeleteComment(comment.id)}
+                      variant="warning"
+                    />
+                  ) : (
+                    <IconButton
+                      icon={<FlagIcon />}
+                      onClick={() => setReportOpen(true)}
+                    />
+                  )}
                 </div>
               </div>
               <div className={styles["body"]}>
