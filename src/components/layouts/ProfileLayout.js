@@ -44,7 +44,10 @@ const ProfileLayout = ({ user, posts, results }) => {
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (currentUser?.id === user?.id) dispatch(fetchMyPosts());
+    if (currentUser?.id === user?.id)
+      dispatch(
+        fetchMyPosts({ page: router.query.page, sort: router.query.sort })
+      );
   }, [user, currentUser]);
 
   return (

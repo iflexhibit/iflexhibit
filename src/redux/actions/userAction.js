@@ -74,7 +74,7 @@ export const postComment = (postId, commentBody) => (dispatch, getState) => {
     });
 };
 
-export const fetchMyPosts = () => (dispatch, getState) => {
+export const fetchMyPosts = (params) => (dispatch, getState) => {
   const { token } = getState().auth;
 
   if (!token) return;
@@ -82,6 +82,7 @@ export const fetchMyPosts = () => (dispatch, getState) => {
   axios
     .post(process.env.NEXT_PUBLIC_API_URL + "/api/users/posts", null, {
       headers: { "x-auth-token": token },
+      params,
     })
     .then((response) => {
       dispatch({
