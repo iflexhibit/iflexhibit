@@ -489,3 +489,45 @@ export const deletePost = (postId) => (dispatch, getState) => {
       }, 5000);
     });
 };
+
+export const deleteComment = (commentId, postId) => (dispatch, getState) => {
+  const { token } = getState().auth;
+  const { user } = getState().user;
+  if (!token) return window.location.reload();
+
+  dispatch({ type: DELETE_LOADING });
+  dispatch({
+    type: DELETE_MESSAGE,
+    payload: { feedbackMsg: "Deleting comment", msgType: "warning" },
+  });
+  axios
+    .delete(
+      process.env.NEXT_PUBLIC_API_URL + "/api/users/comment/" + commentId,
+      {
+        headers: { "x-auth-token": token },
+      }
+    )
+    .then((response) => {
+      dispatch({ type: DELETE_SUCCESS });
+      dispatch({
+        type: DELETE_MESSAGE,
+        payload: { feedbackMsg: response.data.msg, msgType: "success" },
+      });
+      dispatch(fetchComments(postId));
+    })
+    .catch((error) => {
+      dispatch({ type: DELETE_ERROR });
+      dispatch({
+        type: DELETE_MESSAGE,
+        payload: { feedbackMsg: error.response.data.msg, msgType: "error" },
+      });
+    })
+    .finally(() => {
+      setTimeout(() => {
+        dispatch({
+          type: DELETE_MESSAGE,
+          payload: { msg: null, type: null },
+        });
+      }, 5000);
+    });
+};

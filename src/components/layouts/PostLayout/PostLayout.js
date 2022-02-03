@@ -11,7 +11,12 @@ import { DescriptionSection } from "./DescriptionSection";
 import { CommentsSection } from "./CommentsSection";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchComments } from "redux/actions/postAction";
-import { deletePost, likePost, postComment } from "redux/actions/userAction";
+import {
+  deleteComment,
+  deletePost,
+  likePost,
+  postComment,
+} from "redux/actions/userAction";
 import FeedbackModal from "components/FeedbackModal";
 
 const PostLayout = ({ post }) => {
@@ -37,6 +42,10 @@ const PostLayout = ({ post }) => {
       return dispatch(deletePost(post?.id));
   };
   const { deleteAction } = useSelector((state) => state.user);
+  const handleDeleteComment = (commentId) => {
+    if (confirm("Delete this comment?"))
+      dispatch(deleteComment(commentId, post.id));
+  };
   return (
     <Layout
       title={`${post.title} by ${post.author.username} | iFlexhibit`}
@@ -91,6 +100,7 @@ const PostLayout = ({ post }) => {
             newComment={newComment}
             handleNewCommentSubmit={handleNewCommentSubmit}
             handleNewCommentChange={handleNewCommentChange}
+            handleDeleteComment={handleDeleteComment}
           />
         )}
       </div>
