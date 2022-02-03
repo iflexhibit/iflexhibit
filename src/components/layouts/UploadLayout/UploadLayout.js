@@ -22,6 +22,7 @@ const UploadLayout = () => {
     thumbnail: "",
     description: "",
     tags: [],
+    watermark: false,
   });
 
   const [tags, setTags] = useState({
@@ -42,6 +43,11 @@ const UploadLayout = () => {
   });
 
   const handleUploadChange = (e, isFile) => {
+    if (e.target.name === "watermark")
+      return setNewUpload((prev) => ({
+        ...prev,
+        watermark: !prev.watermark,
+      }));
     setNewUpload((prev) => ({
       ...prev,
       [e.target.name]: isFile ? e.target.files[0] : e.target.value,
@@ -71,6 +77,7 @@ const UploadLayout = () => {
       title: "",
       description: "",
       tags: [],
+      watermark: false,
     }));
     handleFilterReset();
   };

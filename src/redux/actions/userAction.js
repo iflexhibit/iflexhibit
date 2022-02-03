@@ -328,12 +328,14 @@ export const submitPost = (post) => (dispatch, getState) => {
     title: post.title,
     description: post.description,
     tags: post.tags,
+    watermark: post.watermark,
   };
 
   formData.append("file", data.image);
   formData.append("title", data.title);
   formData.append("description", data.description);
   formData.append("tags", data.tags);
+  formData.append("watermark", data.watermark);
 
   if (!data.image) {
     dispatch({
