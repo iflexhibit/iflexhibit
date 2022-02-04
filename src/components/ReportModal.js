@@ -73,6 +73,7 @@ const ReportModal = ({ closeModal, reportType, targetId }) => {
               }))}
               value={offense}
               onChange={(e) => setOffense(e.target.value)}
+              fullWidth
             />
           )}
           <TextArea

@@ -2,9 +2,11 @@ import styles from "styles/Select.module.scss";
 import PropTypes from "prop-types";
 import { CaretDownIcon } from "./icons/CaretDownIcon";
 
-const Select = ({ options, onChange, value }) => {
+const Select = ({ options, onChange, value, fullWidth }) => {
   return (
-    <div className={styles["select"]}>
+    <div
+      className={`${styles["select"]} ${fullWidth ? styles["fullWidth"] : ""}`}
+    >
       <select value={value} onChange={onChange}>
         {options.map((o) => (
           <option key={o.value} value={o.value}>
