@@ -7,7 +7,7 @@ import {
 } from "redux/types/authTypes";
 
 const initialState = {
-  isAuthLoading: false,
+  isAuthLoading: true,
   isAuthenticated: false,
   token: null,
 };
