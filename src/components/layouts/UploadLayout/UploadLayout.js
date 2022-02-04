@@ -8,12 +8,14 @@ import { UploadForm } from "./UploadForm";
 import { useDispatch, useSelector } from "react-redux";
 import { submitPost } from "redux/actions/userAction";
 import FeedbackModal from "components/FeedbackModal";
+import { useRouter } from "next/router";
 
 const UploadLayout = () => {
   const [tabs] = useState(["Image", "Video"]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [newUpload, setNewUpload] = useState({
     image: "",
@@ -89,6 +91,8 @@ const UploadLayout = () => {
     dispatch(submitPost(newUpload));
   };
 
+  const { isAuthLoading, isAuthenticated } = useSelector((state) => state.auth);
+
   useEffect(() => {
     setNewUpload((prev) => {
       return {
@@ -100,7 +104,8 @@ const UploadLayout = () => {
           .map((tag) => tag[0]),
       };
     });
-  }, [tags]);
+    if (!isAuthLoading && !isAuthenticated) router.push("/login");
+  }, [tags, isAuthLoading, isAuthenticated]);
 
   const { isUploading, uploadMsg, msgType } = useSelector(
     (state) => state.user.upload

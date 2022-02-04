@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "styles/layouts/AccountLayout.module.scss";
 import ButtonGroup from "components/ButtonGroup";
 import Layout from "components/Layout.js";
@@ -6,6 +6,7 @@ import { PreferencesSection } from "./PreferencesSection";
 import { ProfileSection } from "./ProfileSection";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePreferences, updateProfile } from "redux/actions/userAction";
+import { useRouter } from "next/router";
 
 const AccountLayout = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,11 @@ const AccountLayout = () => {
   };
 
   const { user } = useSelector((state) => state.user);
+  const { isAuthLoading, isAuthenticated } = useSelector((state) => state.auth);
+  const router = useRouter();
+  useEffect(() => {
+    if (!isAuthLoading && !isAuthenticated) router.push("/login");
+  }, [isAuthLoading, isAuthenticated]);
 
   return (
     <Layout
