@@ -376,6 +376,25 @@ export const submitPost = (post) => (dispatch, getState) => {
     return;
   }
 
+  if (!data.title.trim().length > 0) {
+    dispatch({
+      type: UPLOAD_ERROR,
+    });
+    dispatch({
+      type: UPLOAD_MESSAGE,
+      payload: { msg: "Title required", type: "error" },
+    });
+    setTimeout(
+      () =>
+        dispatch({
+          type: UPLOAD_MESSAGE,
+          payload: { msg: null, type: null },
+        }),
+      5000
+    );
+    return;
+  }
+
   dispatch({ type: UPLOAD_LOADING });
   dispatch({
     type: UPLOAD_MESSAGE,
