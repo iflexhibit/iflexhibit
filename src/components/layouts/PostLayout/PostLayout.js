@@ -18,12 +18,21 @@ import {
   postComment,
 } from "redux/actions/userAction";
 import FeedbackModal from "components/FeedbackModal";
+import { useRouter } from "next/router";
 
 const PostLayout = ({ post }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [isCommentFieldOpen, setCommentFieldOpen] = useState(false);
-  const [tabs] = useState(["Description", "Comments"]);
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const tabs = ["Description", "Comments"];
+  const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
+  const handleTabSwitch = (tab) => {
+    setActiveTab(tab);
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, tab },
+    });
+  };
   const [newComment, setNewComment] = useState("");
   const handleNewCommentChange = (e) => setNewComment(e.target.value);
   const handleNewCommentSubmit = (e) => {
@@ -87,7 +96,7 @@ const PostLayout = ({ post }) => {
           <ButtonGroup
             tabs={tabs}
             active={activeTab}
-            setActiveTab={setActiveTab}
+            setActiveTab={handleTabSwitch}
           />
         </div>
         {activeTab === tabs[0] ? (

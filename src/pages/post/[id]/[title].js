@@ -14,7 +14,7 @@ export default function PostPage(props) {
   return <PostLayout post={props.post} />;
 }
 
-export async function getServerSideProps({ req, res, params }) {
+export async function getServerSideProps({ req, res, params, query }) {
   try {
     const response = await axios.get(
       process.env.NEXT_PUBLIC_API_URL + "/api/posts/post/" + params.id
@@ -24,7 +24,9 @@ export async function getServerSideProps({ req, res, params }) {
     if (formatTitle !== params.title)
       return {
         redirect: {
-          destination: `/post/${data.post.id}/${formatTitle}`,
+          destination: `/post/${data.post.id}/${formatTitle}${
+            query.tab ? `?tab=${query.tab}` : ""
+          }`,
         },
       };
     return { props: { post: data.post } };

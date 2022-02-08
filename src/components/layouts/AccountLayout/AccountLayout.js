@@ -9,9 +9,17 @@ import { updatePreferences, updateProfile } from "redux/actions/userAction";
 import { useRouter } from "next/router";
 
 const AccountLayout = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [tabs] = useState(["Profile", "Preferences"]);
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
+  const handleTabSwitch = (tab) => {
+    setActiveTab(tab);
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, tab },
+    });
+  };
 
   const [newProfile, setNewProfile] = useState({
     username: "",
@@ -63,7 +71,6 @@ const AccountLayout = () => {
 
   const { user } = useSelector((state) => state.user);
   const { isAuthLoading, isAuthenticated } = useSelector((state) => state.auth);
-  const router = useRouter();
   useEffect(() => {
     if (!isAuthLoading && !isAuthenticated) router.push("/login");
   }, [isAuthLoading, isAuthenticated]);
@@ -88,7 +95,7 @@ const AccountLayout = () => {
           <ButtonGroup
             tabs={tabs}
             active={activeTab}
-            setActiveTab={setActiveTab}
+            setActiveTab={handleTabSwitch}
           />
         </div>
         {activeTab === tabs[0] ? (

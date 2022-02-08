@@ -37,7 +37,9 @@ export async function getServerSideProps({ req, res, params, query }) {
     if (data.user.username !== params.username)
       return {
         redirect: {
-          destination: `/profile/${data.user.id}/${data.user.username}`,
+          destination: `/profile/${data.user.id}/${data.user.username}${
+            query.tab ? `?tab=${query.tab}` : ""
+          }`,
         },
       };
     return {

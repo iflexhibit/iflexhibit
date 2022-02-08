@@ -20,7 +20,14 @@ import { useEffect } from "react";
 const ProfileLayout = ({ user, posts, results }) => {
   const router = useRouter();
   const [tabs] = useState(["About", "Works"]);
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
+  const handleTabSwitch = (tab) => {
+    setActiveTab(tab);
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, tab },
+    });
+  };
   const sortOptions = [
     { value: "date", label: "Most Recent" },
     { value: "views", label: "Most Views" },
@@ -78,7 +85,7 @@ const ProfileLayout = ({ user, posts, results }) => {
           <ButtonGroup
             tabs={tabs}
             active={activeTab}
-            setActiveTab={setActiveTab}
+            setActiveTab={handleTabSwitch}
           />
         </div>
         <AnimatePresence>
