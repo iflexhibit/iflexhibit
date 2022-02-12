@@ -45,7 +45,7 @@ export const UploadForm = ({
               <FileInput
                 id="image"
                 inputFile={newUpload.image}
-                accept="image/png"
+                accept="image/png, image/jpeg"
                 onChange={(e) => handleUploadChange(e, true)}
                 label="Upload Video Thumbnail"
               />
