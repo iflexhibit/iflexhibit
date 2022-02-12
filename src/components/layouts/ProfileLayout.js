@@ -16,6 +16,7 @@ import ReportModal from "components/ReportModal";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMyPosts } from "redux/actions/userAction";
 import { useEffect } from "react";
+import Toggle from "components/Toggle";
 
 const ProfileLayout = ({ user, posts, results }) => {
   const router = useRouter();
@@ -61,6 +62,8 @@ const ProfileLayout = ({ user, posts, results }) => {
       );
   }, [user, currentUser]);
 
+  const [hideNonApproved, setHideNonApproved] = useState(true);
+
   return (
     <Layout
       title={user.username + " | iFlexhibit"}
@@ -105,10 +108,19 @@ const ProfileLayout = ({ user, posts, results }) => {
           ) : (
             <WorksSection
               results={currentUser?.id === user?.id ? myResults : results}
-              posts={currentUser?.id === user?.id ? myPosts : posts}
+              posts={
+                currentUser?.id === user?.id
+                  ? hideNonApproved
+                    ? myPosts.filter((post) => post.status === "approved")
+                    : myPosts
+                  : posts
+              }
+              personal={currentUser?.id === user?.id}
               activeSort={activeSort}
               sortOptions={sortOptions}
               handleSortChange={handleSortChange}
+              hideNonApproved={hideNonApproved}
+              setHideNonApproved={setHideNonApproved}
             />
           )}
         </AnimatePresence>
@@ -202,6 +214,9 @@ const WorksSection = ({
   sortOptions,
   activeSort,
   handleSortChange,
+  personal,
+  hideNonApproved,
+  setHideNonApproved,
 }) => {
   return (
     <motion.div
@@ -210,11 +225,20 @@ const WorksSection = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.125 }}
     >
-      <Select
-        onChange={handleSortChange}
-        options={sortOptions}
-        value={activeSort}
-      />
+      <div className={styles.controls}>
+        {personal && (
+          <Toggle
+            checked={hideNonApproved}
+            right="Show approved only"
+            onChange={(e) => setHideNonApproved(e.target.checked)}
+          />
+        )}
+        <Select
+          onChange={handleSortChange}
+          options={sortOptions}
+          value={activeSort}
+        />
+      </div>
       <Posts posts={posts || []} results={results} />
     </motion.div>
   );

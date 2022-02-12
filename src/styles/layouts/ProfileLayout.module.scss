@@ -97,6 +97,16 @@ div.profile {
   }
 }
 
+div.works {
+  div.controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-end;
+    flex-flow: row wrap;
+  }
+}
+
 @media screen and (min-width: $desktop) {
   div.works {
     display: flex;
