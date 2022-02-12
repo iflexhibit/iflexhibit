@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "styles/layouts/PostLayout.module.scss";
 import Layout from "components/Layout";
 import ButtonGroup from "components/ButtonGroup";
-import { PostImage } from "./PostImage";
+import { PostMedia } from "./PostMedia";
 import { PostStats } from "./PostStats";
 import { PostTitle } from "./PostTitle";
 import { PostTags } from "./PostTags";
@@ -70,7 +70,8 @@ const PostLayout = ({ post }) => {
         />
       )}
       <div className={styles["post"]}>
-        <PostImage imgSrc={post?.image} alt={post?.title} />
+        <PostMedia vidSrc={post?.video} alt={post?.title} />
+        <PostMedia imgSrc={post?.image} alt={post?.title} />
         <PostStats
           likes_count={post?.statistics.likes}
           comments_count={post?.statistics.comments}

@@ -38,12 +38,13 @@ export const UploadForm = ({
                 accept="video/mp4"
                 onChange={(e) => handleUploadChange(e, true)}
                 label="Upload Video"
+                video
               />
             </div>
             <div className={styles["group"]}>
               <FileInput
-                id="thumbnail"
-                inputFile={newUpload.thumbnail}
+                id="image"
+                inputFile={newUpload.image}
                 accept="image/png"
                 onChange={(e) => handleUploadChange(e, true)}
                 label="Upload Video Thumbnail"

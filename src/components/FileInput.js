@@ -14,6 +14,7 @@ const FileInput = ({
   buttonLabel,
   required,
   variant,
+  video,
 }) => {
   const inputRef = useRef(null);
   return (
@@ -21,9 +22,14 @@ const FileInput = ({
       {label}
       {(oldFile || inputFile) && (
         <div className={`${styles["preview"]} ${styles[variant || "default"]}`}>
-          {inputFile && (
-            <img src={URL.createObjectURL(inputFile)} alt="image preview" />
-          )}
+          {inputFile &&
+            (video ? (
+              <video width="100%" height="auto" controls>
+                <source src={URL.createObjectURL(inputFile)} type="video/mp4" />
+              </video>
+            ) : (
+              <img src={URL.createObjectURL(inputFile)} alt="image preview" />
+            ))}
           {!inputFile && oldFile && <img src={oldFile} alt="image preview" />}
         </div>
       )}
