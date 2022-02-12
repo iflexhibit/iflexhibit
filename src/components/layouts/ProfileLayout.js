@@ -62,7 +62,7 @@ const ProfileLayout = ({ user, posts, results }) => {
       );
   }, [user, currentUser]);
 
-  const [hideNonApproved, setHideNonApproved] = useState(true);
+  const [hideNonApproved, setHideNonApproved] = useState(false);
 
   return (
     <Layout
@@ -107,11 +107,17 @@ const ProfileLayout = ({ user, posts, results }) => {
             />
           ) : (
             <WorksSection
-              results={currentUser?.id === user?.id ? myResults : results}
+              results={
+                currentUser?.id === user?.id
+                  ? hideNonApproved
+                    ? results
+                    : myResults
+                  : results
+              }
               posts={
                 currentUser?.id === user?.id
                   ? hideNonApproved
-                    ? myPosts.filter((post) => post.status === "approved")
+                    ? posts
                     : myPosts
                   : posts
               }
