@@ -340,6 +340,25 @@ export const submitPost = (post) => (dispatch, getState) => {
   formData.append("tags", data.tags);
   formData.append("watermark", data.watermark);
 
+  if (!user.permissions.submitPost) {
+    dispatch({
+      type: UPLOAD_ERROR,
+    });
+    dispatch({
+      type: UPLOAD_MESSAGE,
+      payload: { msg: "You are currently banned", type: "error" },
+    });
+    setTimeout(
+      () =>
+        dispatch({
+          type: UPLOAD_MESSAGE,
+          payload: { msg: null, type: null },
+        }),
+      5000
+    );
+    return;
+  }
+
   if (!data.image && !data.video) {
     dispatch({
       type: UPLOAD_ERROR,
