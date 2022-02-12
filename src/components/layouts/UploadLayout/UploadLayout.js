@@ -109,6 +109,7 @@ const UploadLayout = () => {
   const { isUploading, uploadMsg, msgType } = useSelector(
     (state) => state.user.upload
   );
+  const { user } = useSelector((state) => state.user);
 
   return (
     <Layout
@@ -128,15 +129,23 @@ const UploadLayout = () => {
             setActiveTab={setActiveTab}
           />
         </div>
-        <UploadForm
-          handleFormSubmit={handleFormSubmit}
-          handleFormReset={handleFormReset}
-          handleUploadChange={handleUploadChange}
-          activeTab={activeTab}
-          newUpload={newUpload}
-          setFilterMenuOpen={setFilterMenuOpen}
-          isUploading={isUploading}
-        />
+        {user &&
+          (user.permissions.submitPost ? (
+            <UploadForm
+              handleFormSubmit={handleFormSubmit}
+              handleFormReset={handleFormReset}
+              handleUploadChange={handleUploadChange}
+              activeTab={activeTab}
+              newUpload={newUpload}
+              setFilterMenuOpen={setFilterMenuOpen}
+              isUploading={isUploading}
+            />
+          ) : (
+            <div className={styles.warningmsg}>
+              You are currently <b>banned</b> and prohibited from submitting a
+              post
+            </div>
+          ))}
       </div>
       <AnimatePresence>
         {isFilterMenuOpen && (

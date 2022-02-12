@@ -42,7 +42,7 @@ export const CommentsSection = ({
               fullWidth
               href="/login"
             />
-          ) : (
+          ) : user.permissions.commentPost ? (
             <form
               key={isCommentFieldOpen}
               className={`${styles["new-comment"]} ${styles["field"]} ${styles["desktop"]}`}
@@ -72,6 +72,10 @@ export const CommentsSection = ({
                 label="Comment"
               />
             </form>
+          ) : (
+            <div className={styles.warningmsg}>
+              You are currently <b>banned</b> and prohibited from commenting
+            </div>
           )}
           {comments?.map((comment) => (
             <motion.div
@@ -147,6 +151,7 @@ export const CommentsSection = ({
               icon={<CommentIcon />}
               variant="primary"
               onClick={() => setCommentFieldOpen(true)}
+              disabled={!user.permissions.commentPost}
             />
           </motion.div>
         ) : (

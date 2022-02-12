@@ -38,3 +38,9 @@ div.upload {
     width: 70ch;
   }
 }
+
+div.warningmsg {
+  color: var(--color-red);
+  text-align: center;
+  font-size: 0.75rem;
+}

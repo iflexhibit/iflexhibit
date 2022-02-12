@@ -228,3 +228,9 @@ form.new-comment.field.desktop {
     gap: 0.5rem;
   }
 }
+
+div.warningmsg {
+  color: var(--color-red);
+  text-align: center;
+  font-size: 0.75rem;
+}
