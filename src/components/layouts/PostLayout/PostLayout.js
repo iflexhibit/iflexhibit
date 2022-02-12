@@ -28,10 +28,14 @@ const PostLayout = ({ post }) => {
   const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, tab },
-    });
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { ...router.query, tab },
+      },
+      undefined,
+      { scroll: false }
+    );
   };
   const [newComment, setNewComment] = useState("");
   const handleNewCommentChange = (e) => setNewComment(e.target.value);

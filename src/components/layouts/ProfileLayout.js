@@ -23,10 +23,14 @@ const ProfileLayout = ({ user, posts, results }) => {
   const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, tab },
-    });
+    router.push(
+      {
+        pathname: router.pathname,
+        query: { ...router.query, tab },
+      },
+      undefined,
+      { scroll: false }
+    );
   };
   const sortOptions = [
     { value: "date", label: "Most Recent" },
