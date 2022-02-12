@@ -12,7 +12,11 @@ export const PostMedia = ({ vidSrc, imgSrc, alt }) => {
           alt={alt}
         />
       )}
-      {vidSrc && <video src={vidSrc} controls width="100%" height="auto" />}
+      {vidSrc && (
+        <video controls width="100%" height="auto">
+          <source src={vidSrc} />
+        </video>
+      )}
     </div>
   );
 };
