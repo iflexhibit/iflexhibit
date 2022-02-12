@@ -25,10 +25,10 @@ const FileInput = ({
           {inputFile &&
             (video ? (
               <video width="100%" height="auto" controls>
-                <source src={URL.createObjectURL(inputFile)} type="video/mp4" />
+                <source src={inputFile} type="video/mp4" />
               </video>
             ) : (
-              <img src={URL.createObjectURL(inputFile)} alt="image preview" />
+              <img src={inputFile} alt="image preview" />
             ))}
           {!inputFile && oldFile && <img src={oldFile} alt="image preview" />}
         </div>

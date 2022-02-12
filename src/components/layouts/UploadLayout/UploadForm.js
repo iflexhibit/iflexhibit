@@ -6,6 +6,7 @@ import TextArea from "components/TextArea";
 import Tag from "components/Tag";
 import TagsIcon from "components/icons/TagsIcon";
 import Toggle from "components/Toggle";
+import { useEffect, useState } from "react";
 
 export const UploadForm = ({
   handleFormSubmit,
@@ -16,6 +17,13 @@ export const UploadForm = ({
   setFilterMenuOpen,
   isUploading,
 }) => {
+  const [inputImage, setInputImage] = useState("");
+  const [inputVideo, setInputVideo] = useState("");
+  useEffect(() => {
+    newUpload.image && setInputImage(URL.createObjectURL(newUpload.image));
+    newUpload.video && setInputVideo(URL.createObjectURL(newUpload.video));
+  }, [newUpload.image, newUpload.video]);
+
   return (
     <div className={`${styles["row"]} ${styles["form"]}`}>
       <form onSubmit={handleFormSubmit} onReset={handleFormReset}>
@@ -23,7 +31,7 @@ export const UploadForm = ({
           <div className={styles["group"]}>
             <FileInput
               id="image"
-              inputFile={newUpload.image}
+              inputFile={inputImage}
               accept="image/png, image/jpeg"
               onChange={(e) => handleUploadChange(e, true)}
               label="Upload Image"
@@ -34,7 +42,7 @@ export const UploadForm = ({
             <div className={styles["group"]}>
               <FileInput
                 id="video"
-                inputFile={newUpload.video}
+                inputFile={inputVideo}
                 accept="video/mp4"
                 onChange={(e) => handleUploadChange(e, true)}
                 label="Upload Video"
@@ -44,7 +52,7 @@ export const UploadForm = ({
             <div className={styles["group"]}>
               <FileInput
                 id="image"
-                inputFile={newUpload.image}
+                inputFile={inputImage}
                 accept="image/png, image/jpeg"
                 onChange={(e) => handleUploadChange(e, true)}
                 label="Upload Video Thumbnail"

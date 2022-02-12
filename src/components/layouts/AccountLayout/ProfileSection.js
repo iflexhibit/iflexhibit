@@ -12,6 +12,7 @@ import FeedbackModal from "components/FeedbackModal";
 import FileInput from "components/FileInput";
 import { useState } from "react";
 import { updateAvatar, updateBackground } from "redux/actions/userAction";
+import { useEffect } from "react";
 
 export const ProfileSection = ({
   user,
@@ -30,6 +31,13 @@ export const ProfileSection = ({
   const handleBackgroundSubmit = () => {
     dispatch(updateBackground(newBackground));
   };
+
+  const [inputAvatar, setInputAvatar] = useState("");
+  const [inputBackground, setInputBackground] = useState("");
+  useEffect(() => {
+    newAvatar && setInputAvatar(URL.createObjectURL(newAvatar));
+    newBackground && setInputBackground(URL.createObjectURL(newBackground));
+  }, [newAvatar, newBackground]);
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -58,7 +66,7 @@ export const ProfileSection = ({
         <FileInput
           id="newAvatar"
           oldFile={user?.avatar || "/assets/noavatar.jpg"}
-          inputFile={newAvatar}
+          inputFile={inputAvatar}
           accept="image/png, image/jpeg"
           onChange={(e) => setNewAvatar(e.target.files[0])}
           label="Profile Avatar"
@@ -91,7 +99,7 @@ export const ProfileSection = ({
         <FileInput
           id="newBackground"
           oldFile={user?.background || "/assets/nobg.jpg"}
-          inputFile={newBackground}
+          inputFile={inputBackground}
           accept="image/png, image/jpeg"
           onChange={(e) => setNewBackground(e.target.files[0])}
           label="Profile Background"
