@@ -330,21 +330,42 @@ export const submitPost = (post) => (dispatch, getState) => {
     description: post.description,
     tags: post.tags,
     watermark: post.watermark,
+    video: post.video ? post.video : null,
   };
 
-  formData.append("file", data.image);
+  formData.append("imageFile", data.image);
+  data.video && formData.append("videoFile", data.video);
   formData.append("title", data.title);
   formData.append("description", data.description);
   formData.append("tags", data.tags);
   formData.append("watermark", data.watermark);
 
-  if (!data.image) {
+  if (!data.image && !data.video) {
     dispatch({
       type: UPLOAD_ERROR,
     });
     dispatch({
       type: UPLOAD_MESSAGE,
-      payload: { msg: "Image required", type: "error" },
+      payload: { msg: "Image or Video required", type: "error" },
+    });
+    setTimeout(
+      () =>
+        dispatch({
+          type: UPLOAD_MESSAGE,
+          payload: { msg: null, type: null },
+        }),
+      5000
+    );
+    return;
+  }
+
+  if (data.video && !data.image) {
+    dispatch({
+      type: UPLOAD_ERROR,
+    });
+    dispatch({
+      type: UPLOAD_MESSAGE,
+      payload: { msg: "Video thumbnail required", type: "error" },
     });
     setTimeout(
       () =>
@@ -410,7 +431,7 @@ export const submitPost = (post) => (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     })
-    .then((response) => {
+    .then(() => {
       dispatch({ type: UPLOAD_SUCCESS });
       dispatch({
         type: UPLOAD_MESSAGE,

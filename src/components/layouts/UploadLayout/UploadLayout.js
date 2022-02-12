@@ -21,7 +21,6 @@ const UploadLayout = () => {
     image: "",
     video: "",
     title: "",
-    thumbnail: "",
     description: "",
     tags: [],
     watermark: false,
