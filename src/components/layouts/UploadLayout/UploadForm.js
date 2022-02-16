@@ -19,10 +19,14 @@ export const UploadForm = ({
 }) => {
   const [inputImage, setInputImage] = useState("");
   const [inputVideo, setInputVideo] = useState("");
+
   useEffect(() => {
     newUpload.image && setInputImage(URL.createObjectURL(newUpload.image));
+  }, [newUpload.image]);
+
+  useEffect(() => {
     newUpload.video && setInputVideo(URL.createObjectURL(newUpload.video));
-  }, [newUpload.image, newUpload.video]);
+  }, [newUpload.video]);
 
   return (
     <div className={`${styles["row"]} ${styles["form"]}`}>

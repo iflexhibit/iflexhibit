@@ -340,6 +340,9 @@ export const submitPost = (post) => (dispatch, getState) => {
   formData.append("tags", data.tags);
   formData.append("watermark", data.watermark);
 
+  console.log(data.image.size > 10000000);
+  console.log(data.video.size > 100000000);
+
   if (!user.permissions.submitPost) {
     dispatch({
       type: UPLOAD_ERROR,
@@ -385,6 +388,44 @@ export const submitPost = (post) => (dispatch, getState) => {
     dispatch({
       type: UPLOAD_MESSAGE,
       payload: { msg: "Video thumbnail required", type: "error" },
+    });
+    setTimeout(
+      () =>
+        dispatch({
+          type: UPLOAD_MESSAGE,
+          payload: { msg: null, type: null },
+        }),
+      5000
+    );
+    return;
+  }
+
+  if (data.image && data.image.size > 10000000) {
+    dispatch({
+      type: UPLOAD_ERROR,
+    });
+    dispatch({
+      type: UPLOAD_MESSAGE,
+      payload: { msg: "Image must not exceed 10 MB", type: "error" },
+    });
+    setTimeout(
+      () =>
+        dispatch({
+          type: UPLOAD_MESSAGE,
+          payload: { msg: null, type: null },
+        }),
+      5000
+    );
+    return;
+  }
+
+  if (data.video && data.video.size > 100000000) {
+    dispatch({
+      type: UPLOAD_ERROR,
+    });
+    dispatch({
+      type: UPLOAD_MESSAGE,
+      payload: { msg: "Video must not exceed 100 MB", type: "error" },
     });
     setTimeout(
       () =>

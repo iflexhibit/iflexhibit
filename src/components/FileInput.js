@@ -24,7 +24,7 @@ const FileInput = ({
         <div className={`${styles["preview"]} ${styles[variant || "default"]}`}>
           {inputFile &&
             (video ? (
-              <video width="100%" height="auto" controls>
+              <video key={inputFile} width="100%" height="auto" controls>
                 <source src={inputFile} type="video/mp4" />
               </video>
             ) : (
