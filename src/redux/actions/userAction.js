@@ -340,9 +340,6 @@ export const submitPost = (post) => (dispatch, getState) => {
   formData.append("tags", data.tags);
   formData.append("watermark", data.watermark);
 
-  console.log(data.image.size > 10000000);
-  console.log(data.video.size > 100000000);
-
   if (!user.permissions.submitPost) {
     dispatch({
       type: UPLOAD_ERROR,
