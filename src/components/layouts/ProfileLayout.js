@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMyPosts } from "redux/actions/userAction";
 import { useEffect } from "react";
 import Toggle from "components/Toggle";
+import PenIcon from "components/icons/PenIcon";
 
 const ProfileLayout = ({ user, posts, results }) => {
   const router = useRouter();
@@ -72,7 +73,14 @@ const ProfileLayout = ({ user, posts, results }) => {
     >
       <div className={styles["profile"]}>
         <div className={styles.controls}>
-          <IconButton icon={<FlagIcon />} onClick={() => setReportOpen(true)} />
+          {currentUser?.id === user?.id ? (
+            <IconButton icon={<PenIcon />} href="/account" />
+          ) : (
+            <IconButton
+              icon={<FlagIcon />}
+              onClick={() => setReportOpen(true)}
+            />
+          )}
           {isReportOpen && (
             <ReportModal
               closeModal={() => setReportOpen(false)}
