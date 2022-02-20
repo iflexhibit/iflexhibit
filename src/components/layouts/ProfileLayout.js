@@ -106,6 +106,7 @@ const ProfileLayout = ({ user, posts, results }) => {
         <AnimatePresence>
           {activeTab === tabs[0] ? (
             <AboutSection
+              user={user}
               givenName={user?.name?.given}
               familyName={user?.name?.family}
               email={user?.email}
@@ -186,7 +187,15 @@ const ProfileStats = ({ likes_count, views_count }) => {
   );
 };
 
-const AboutSection = ({ givenName, familyName, email, contact, bio, date }) => {
+const AboutSection = ({
+  user,
+  givenName,
+  familyName,
+  email,
+  contact,
+  bio,
+  date,
+}) => {
   return (
     <motion.div
       className={`${styles["row"]} ${styles["about"]}`}
@@ -194,6 +203,16 @@ const AboutSection = ({ givenName, familyName, email, contact, bio, date }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.125 }}
     >
+      {user?.bans && (
+        <div className={`${styles["info"]} ${styles["warning"]}`}>
+          <small className={styles["label"]}>
+            Banned until {new Date(user?.banExpire).toLocaleDateString()} for
+          </small>
+          {user?.bans.map((b, i) => (
+            <span key={i}>{b}</span>
+          ))}
+        </div>
+      )}
       <div className={styles["info"]}>
         <small className={styles["label"]}>Date Joined</small>
         <span>{new Date(date).toJSON().split("T")[0]}</span>

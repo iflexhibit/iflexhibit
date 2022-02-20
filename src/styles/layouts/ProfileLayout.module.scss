@@ -74,6 +74,12 @@ div.profile {
         flex-flow: column nowrap;
         gap: 0.25rem;
 
+        &.warning {
+          & > small {
+            color: var(--color-red);
+          }
+        }
+
         & > small {
           font-weight: $bold;
           color: var(--color-primary-text);
