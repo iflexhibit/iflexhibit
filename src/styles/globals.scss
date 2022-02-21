@@ -89,6 +89,14 @@ video {
   max-width: 1024px;
 }
 
+div.partner {
+  position: fixed;
+  bottom: 1rem;
+  margin: 0 auto;
+  font-size: 0.75rem;
+  color: var(--color-gray);
+}
+
 @media screen and (min-width: $desktop) {
   html {
     font-size: 17px;
