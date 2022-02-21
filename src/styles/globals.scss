@@ -92,7 +92,9 @@ video {
 div.partner {
   position: fixed;
   bottom: 1rem;
-  margin: 0 auto;
+  left: 0;
+  right: 0;
+  text-align: center;
   font-size: 0.75rem;
   color: var(--color-gray);
 }
