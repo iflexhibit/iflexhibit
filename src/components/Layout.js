@@ -33,12 +33,16 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
       </Head>
       {!fullscreen && <NavTop />}
       {!fullscreen && <NavDesktop />}
-      <main className={fullscreen ? "fullscreen" : ""}>{children}</main>
+      <main className={fullscreen ? "fullscreen" : ""}>
+        {children}
+        {fullscreen && (
+          <div className="partner">
+            In partnership with <b>iACADEMY</b>
+          </div>
+        )}
+      </main>
       {!fullscreen && <NavBottom />}
       {feedbackMsg && <FeedbackModal info={feedbackMsg} variant={msgType} />}
-      <div className="partner">
-        In partnership with <b>iACADEMY</b>
-      </div>
     </>
   );
 };
