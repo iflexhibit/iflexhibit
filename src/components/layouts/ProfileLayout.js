@@ -284,7 +284,11 @@ const WorksSection = ({
           value={activeSort}
         />
       </div>
-      <Posts posts={[]} results={results} handlePostDelete={handlePostDelete} />
+      <Posts
+        posts={posts || []}
+        results={results}
+        handlePostDelete={handlePostDelete}
+      />
     </motion.div>
   );
 };
