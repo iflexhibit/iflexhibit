@@ -49,7 +49,7 @@ export async function getServerSideProps({ req, res, params, query }) {
   } catch (error) {
     return {
       redirect: {
-        destination: "/",
+        destination: `/profile/not-found?q=${params.id}`,
       },
     };
   }

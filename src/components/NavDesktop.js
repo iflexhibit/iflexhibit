@@ -24,16 +24,17 @@ const NavDesktop = () => {
   const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState(searchOptions[0].value);
   const handleSearch = () => {
-    if (searchOption === "user") {
-      return router.push({
-        pathname: `/profile/${search}`,
-        query: { type: "username" },
-      });
-    }
-    router.push({
-      pathname: "/",
-      query: { ...router.query, title: search },
-    });
+    searchOption === "user"
+      ? router.push({
+          pathname: `/profile/${search}`,
+          query: { type: "username" },
+        })
+      : router.push({
+          pathname: "/",
+          query: { ...router.query, title: search },
+        });
+
+    setSearch("");
   };
   const [isMenuOpen, setMenuOpen] = useState(false);
 
