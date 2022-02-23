@@ -9,6 +9,10 @@ div.select {
     max-width: unset;
   }
 
+  &.small {
+    width: 10rem;
+  }
+
   & > select {
     width: 100%;
     height: 100%;

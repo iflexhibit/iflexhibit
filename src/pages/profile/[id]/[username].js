@@ -27,6 +27,7 @@ export async function getServerSideProps({ req, res, params, query }) {
   const searchParams = {
     sort: query.sort,
     page: query.page,
+    type: query.type,
   };
   try {
     const response = await axios.get(

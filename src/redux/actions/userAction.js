@@ -528,11 +528,12 @@ export const viewPost = (postId) => (dispatch, getState) => {
   const { token } = getState().auth;
   if (!token) return;
 
-  axios.post(
-    process.env.NEXT_PUBLIC_API_URL + "/api/posts/view/" + postId,
-    null,
-    { headers: { "x-auth-token": token } }
-  );
+  axios
+    .post(process.env.NEXT_PUBLIC_API_URL + "/api/posts/view/" + postId, null, {
+      headers: { "x-auth-token": token },
+    })
+    .then(() => {})
+    .catch(() => {});
 };
 
 export const likePost = (postId) => (dispatch, getState) => {
@@ -543,7 +544,8 @@ export const likePost = (postId) => (dispatch, getState) => {
     .post(process.env.NEXT_PUBLIC_API_URL + "/api/posts/like/" + postId, null, {
       headers: { "x-auth-token": token },
     })
-    .then(() => window.location.reload());
+    .then(() => window.location.reload())
+    .catch(() => {});
 };
 
 export const deletePost = (postId) => (dispatch, getState) => {

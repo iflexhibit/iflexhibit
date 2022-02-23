@@ -19,6 +19,11 @@ nav.nav {
     padding: 0 1rem;
     border-bottom: solid 1px var(--color-secondary);
     justify-content: space-between;
+
+    div.search {
+      display: flex;
+      gap: 0.125rem;
+    }
   }
 
   &.bottom {

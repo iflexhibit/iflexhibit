@@ -12,11 +12,24 @@ import HomeIcon from "./icons/HomeIcon";
 import TextInput from "./TextInput";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import SearchIcon from "./icons/SearchIcon";
+import Select from "./Select";
 
 const NavDesktop = () => {
+  const searchOptions = [
+    { value: "post", label: "Post" },
+    { value: "user", label: "User" },
+  ];
   const router = useRouter();
   const [search, setSearch] = useState("");
+  const [searchOption, setSearchOption] = useState(searchOptions[0].value);
   const handleSearch = () => {
+    if (searchOption === "user") {
+      return router.push({
+        pathname: `/profile/${search}`,
+        query: { type: "username" },
+      });
+    }
     router.push({
       pathname: "/",
       query: { ...router.query, title: search },
@@ -43,13 +56,26 @@ const NavDesktop = () => {
         </Link>
       </div>
       <div className={styles["controls"]}>
-        <TextInput
-          id="title"
-          placeholder="Search by post title..."
-          onChange={(e) => setSearch(e.target.value)}
-          value={search}
-          onEnterKey={handleSearch}
-        />
+        <div className={styles["search"]}>
+          <Select
+            options={searchOptions}
+            value={searchOption}
+            onChange={(e) => setSearchOption(e.target.value)}
+            small
+          />
+          <TextInput
+            id="title"
+            placeholder={
+              searchOption === searchOptions[0].value
+                ? "Search by post title"
+                : "Search by username"
+            }
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            onEnterKey={handleSearch}
+          />
+          <IconButton icon={<SearchIcon />} onClick={handleSearch} />
+        </div>
         <Button
           startIcon={<PlusIcon />}
           href="/upload"
