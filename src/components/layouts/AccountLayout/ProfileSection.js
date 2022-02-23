@@ -140,7 +140,7 @@ export const ProfileSection = ({
             />
           </div>
           <div className={styles["group"]}>
-            <label>Mobile Number</label>
+            <label>Contact Number</label>
             <TextInput
               id="contact"
               value={newProfile?.contact}
