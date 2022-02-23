@@ -13,33 +13,42 @@ import TrashIcon from "./icons/TrashIcon";
 const Posts = ({ posts, results, handlePostDelete }) => {
   return (
     <div className={styles["posts"]}>
-      {posts.map((post) => (
-        <Link href={`/post/${post.id}`} key={post.id}>
-          <a className={styles.post}>
-            {post.status && post.status !== "approved" && (
-              <div className={styles.header}>
-                <IconButton
-                  icon={<TrashIcon />}
-                  onClick={() => handlePostDelete(post.id, post.title)}
-                  variant="warning"
-                />
-                <div className={`${styles.status} ${styles[post.status]}`}>
-                  {post.status}
-                </div>
+      {posts.length === 0 && (
+        <div>
+          <strong>No posts found</strong>
+        </div>
+      )}
+      {posts.map((post, i) => (
+        <div className={styles.post} key={i}>
+          {post.status && post.status !== "approved" && (
+            <div className={styles.header}>
+              <IconButton
+                icon={<TrashIcon />}
+                onClick={() => handlePostDelete(post.id, post.title)}
+                variant="warning"
+              />
+              <div className={`${styles.status} ${styles[post.status]}`}>
+                {post.status}
               </div>
-            )}
-            <Image
-              src={post.image}
-              layout="responsive"
-              width="150"
-              height="100"
-              objectFit="cover"
-              alt={post.title}
-            />
-            <div className={styles.overlay}>
-              <div className={styles.title}>{post?.title}</div>
-              <div className={styles.info}>
-                <div className={styles.author}>
+            </div>
+          )}
+          <Link href={`/post/${post.id}`} key={post.id}>
+            <a className={styles.post}>
+              <Image
+                src={post.image}
+                layout="responsive"
+                width="150"
+                height="100"
+                objectFit="cover"
+                alt={post.title}
+              />
+            </a>
+          </Link>
+          <div className={styles.overlay}>
+            <div className={styles.title}>{post?.title}</div>
+            <div className={styles.info}>
+              <Link href={`/profile/${post.author.id}/${post.author.username}`}>
+                <a className={styles.author}>
                   <div className={styles.avatar}>
                     <Image
                       src={post.author.avatar || "/assets/noavatar.jpg"}
@@ -48,25 +57,25 @@ const Posts = ({ posts, results, handlePostDelete }) => {
                     />
                   </div>
                   <div className={styles.username}>{post.author.username}</div>
-                </div>
-                <div className={styles.stats}>
-                  <Stat
-                    icon={<StarIcon />}
-                    value={post.statistics.likes.toLocaleString()}
-                  />
-                  <Stat
-                    icon={<CommentIcon />}
-                    value={post.statistics.comments.toLocaleString()}
-                  />
-                  <Stat
-                    icon={<EyeIcon />}
-                    value={post.statistics.views.toLocaleString()}
-                  />
-                </div>
+                </a>
+              </Link>
+              <div className={styles.stats}>
+                <Stat
+                  icon={<StarIcon />}
+                  value={post.statistics.likes.toLocaleString()}
+                />
+                <Stat
+                  icon={<CommentIcon />}
+                  value={post.statistics.comments.toLocaleString()}
+                />
+                <Stat
+                  icon={<EyeIcon />}
+                  value={post.statistics.views.toLocaleString()}
+                />
               </div>
             </div>
-          </a>
-        </Link>
+          </div>
+        </div>
       ))}
       <Pagination totalCount={results} itemsPerPage={15} />
     </div>

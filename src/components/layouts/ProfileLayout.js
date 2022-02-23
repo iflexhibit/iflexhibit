@@ -18,6 +18,7 @@ import { deletePost, fetchMyPosts } from "redux/actions/userAction";
 import { useEffect } from "react";
 import Toggle from "components/Toggle";
 import PenIcon from "components/icons/PenIcon";
+import FeedbackModal from "components/FeedbackModal";
 
 const ProfileLayout = ({ user, posts, results }) => {
   const router = useRouter();
@@ -63,16 +64,23 @@ const ProfileLayout = ({ user, posts, results }) => {
       );
   }, [user, currentUser]);
 
-  const [hideNonApproved, setHideNonApproved] = useState(false);
+  const [hideNonApproved, setHideNonApproved] = useState(true);
   const handlePostDelete = (id, title) => {
     if (confirm(`Delete \'${title}\'?`)) return dispatch(deletePost(id));
   };
+  const { deleteAction } = useSelector((state) => state.user);
   return (
     <Layout
       title={user.username + " | iFlexhibit"}
       description={user.bio}
       canonical={`https://iflexhibit.com/profile/${user.id}/${user.username}`}
     >
+      {deleteAction.feedbackMsg && (
+        <FeedbackModal
+          info={deleteAction.feedbackMsg}
+          variant={deleteAction.msgType}
+        />
+      )}
       <div className={styles["profile"]}>
         <div className={styles.controls}>
           {currentUser?.id === user?.id ? (
@@ -276,11 +284,7 @@ const WorksSection = ({
           value={activeSort}
         />
       </div>
-      <Posts
-        posts={posts || []}
-        results={results}
-        handlePostDelete={handlePostDelete}
-      />
+      <Posts posts={[]} results={results} handlePostDelete={handlePostDelete} />
     </motion.div>
   );
 };
