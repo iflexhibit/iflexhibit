@@ -14,32 +14,38 @@ div.posts {
 
 a.post {
   position: relative;
-  & > div.status {
+  & > div.header {
     position: absolute;
     top: 0rem;
+    left: 0;
     right: 0rem;
-    padding: 0.125rem 0.75rem;
-    border-bottom-left-radius: 5px;
-    font-size: 0.75rem;
-    font-weight: $bold;
-    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
     z-index: 1;
-    &.pending {
-      background: var(--color-orange);
-      color: var(--color-background);
-      box-shadow: 0 0 1rem -0.4rem var(--color-underlay);
+    & > div.status {
+      height: min-content;
+      padding: 0.125rem 0.75rem;
+      border-bottom-left-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: $bold;
+      text-transform: capitalize;
+      &.pending {
+        background: var(--color-orange);
+        color: var(--color-background);
+        box-shadow: 0 0 1rem -0.4rem var(--color-underlay);
+      }
+      &.rejected,
+      &.disabled {
+        background: var(--color-red);
+        color: var(--color-background);
+        box-shadow: 0 0 1rem -0.4rem var(--color-underlay);
+      }
     }
-    &.rejected,
-    &.disabled {
-      background: var(--color-red);
-      color: var(--color-background);
-      box-shadow: 0 0 1rem -0.4rem var(--color-underlay);
-    }
-  }
-  &:hover div.overlay {
-    opacity: 1;
+    &:hover div.overlay {
+      opacity: 1;
 
-    pointer-events: unset;
+      pointer-events: unset;
+    }
   }
 }
 

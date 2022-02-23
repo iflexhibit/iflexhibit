@@ -7,16 +7,25 @@ import StarIcon from "./icons/StarIcon";
 import EyeIcon from "./icons/EyeIcon";
 import CommentIcon from "./icons/CommentIcon";
 import Stat from "./Stat";
+import IconButton from "./IconButton";
+import TrashIcon from "./icons/TrashIcon";
 
-const Posts = ({ posts, results }) => {
+const Posts = ({ posts, results, handlePostDelete }) => {
   return (
     <div className={styles["posts"]}>
       {posts.map((post) => (
         <Link href={`/post/${post.id}`} key={post.id}>
           <a className={styles.post}>
             {post.status && post.status !== "approved" && (
-              <div className={`${styles.status} ${styles[post.status]}`}>
-                {post.status}
+              <div className={styles.header}>
+                <IconButton
+                  icon={<TrashIcon />}
+                  onClick={() => handlePostDelete(post.id, post.title)}
+                  variant="warning"
+                />
+                <div className={`${styles.status} ${styles[post.status]}`}>
+                  {post.status}
+                </div>
               </div>
             )}
             <Image

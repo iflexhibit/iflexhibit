@@ -14,7 +14,7 @@ import IconButton from "components/IconButton";
 import FlagIcon from "components/icons/FlagIcon";
 import ReportModal from "components/ReportModal";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMyPosts } from "redux/actions/userAction";
+import { deletePost, fetchMyPosts } from "redux/actions/userAction";
 import { useEffect } from "react";
 import Toggle from "components/Toggle";
 import PenIcon from "components/icons/PenIcon";
@@ -64,7 +64,9 @@ const ProfileLayout = ({ user, posts, results }) => {
   }, [user, currentUser]);
 
   const [hideNonApproved, setHideNonApproved] = useState(false);
-
+  const handlePostDelete = (id, title) => {
+    if (confirm(`Delete \'${title}\'?`)) return dispatch(deletePost(id));
+  };
   return (
     <Layout
       title={user.username + " | iFlexhibit"}
@@ -116,6 +118,7 @@ const ProfileLayout = ({ user, posts, results }) => {
             />
           ) : (
             <WorksSection
+              handlePostDelete={handlePostDelete}
               results={
                 currentUser?.id === user?.id
                   ? hideNonApproved
@@ -250,6 +253,7 @@ const WorksSection = ({
   personal,
   hideNonApproved,
   setHideNonApproved,
+  handlePostDelete,
 }) => {
   return (
     <motion.div
@@ -272,7 +276,11 @@ const WorksSection = ({
           value={activeSort}
         />
       </div>
-      <Posts posts={posts || []} results={results} />
+      <Posts
+        posts={posts || []}
+        results={results}
+        handlePostDelete={handlePostDelete}
+      />
     </motion.div>
   );
 };
