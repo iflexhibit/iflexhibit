@@ -38,7 +38,12 @@ export const UploadForm = ({
               inputFile={inputImage}
               accept="image/png, image/jpeg"
               onChange={(e) => handleUploadChange(e, true)}
-              label="Upload Image"
+              label={
+                <p>
+                  <span>Upload Image</span> <small>(up to 10 MB)</small>
+                </p>
+              }
+              buttonLabel="Upload Image"
             />
           </div>
         ) : (
@@ -49,7 +54,12 @@ export const UploadForm = ({
                 inputFile={inputVideo}
                 accept="video/mp4"
                 onChange={(e) => handleUploadChange(e, true)}
-                label="Upload Video"
+                label={
+                  <p>
+                    <span>Upload Video</span> <small>(up to 100 MB)</small>
+                  </p>
+                }
+                buttonLabel="Upload Video"
                 video
               />
             </div>
@@ -59,7 +69,13 @@ export const UploadForm = ({
                 inputFile={inputImage}
                 accept="image/png, image/jpeg"
                 onChange={(e) => handleUploadChange(e, true)}
-                label="Upload Video Thumbnail"
+                label={
+                  <p>
+                    <span>Upload Video Thumbnail</span>{" "}
+                    <small>(up to 10 MB)</small>
+                  </p>
+                }
+                buttonLabel="Upload Video Thumbnail"
               />
             </div>
           </>
