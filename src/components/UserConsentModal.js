@@ -21,7 +21,7 @@ const UserConsentModal = ({ closeModal }) => {
             <a>Terms and Conditions</a>
           </Link>{" "}
         </b>
-        and acknowledge you've read our{" "}
+        and acknowledge you&apos;ve read our{" "}
         <b>
           <Link href="/legal">
             <a>Privacy Policy</a>

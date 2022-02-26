@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "styles/Nav.module.scss";
 import IconButton from "./IconButton";
 import MainMenu from "./MainMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Button from "./Button";
 import PlusIcon from "./icons/PlusIcon";
@@ -40,6 +40,16 @@ const NavDesktop = () => {
 
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
+  useEffect(() => {
+    const recentSearch = sessionStorage.getItem("recent-search");
+    if (recentSearch && ["post", "user"].includes(recentSearch)) {
+      setSearchOption(recentSearch);
+    }
+  }, []);
+  const handleSearchChange = (value) => {
+    setSearchOption(value);
+    sessionStorage.setItem("recent-search", value);
+  };
   return (
     <nav className={`${styles["nav"]} ${styles["desktop"]}`}>
       <div className={styles["controls"]}>
@@ -61,7 +71,7 @@ const NavDesktop = () => {
           <Select
             options={searchOptions}
             value={searchOption}
-            onChange={(e) => setSearchOption(e.target.value)}
+            onChange={(e) => handleSearchChange(e.target.value)}
             small
           />
           <TextInput

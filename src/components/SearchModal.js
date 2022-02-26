@@ -1,7 +1,7 @@
 import styles from "styles/SearchModal.module.scss";
 import { motion } from "framer-motion";
 import TextInput from "./TextInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 import IconButton from "./IconButton";
 import TimesIcon from "./icons/TimesIcon";
@@ -28,6 +28,17 @@ export const SearchModal = ({ closeMenu }) => {
         });
 
     setSearch("");
+  };
+
+  useEffect(() => {
+    const recentSearch = sessionStorage.getItem("recent-search");
+    if (recentSearch && ["post", "user"].includes(recentSearch)) {
+      setSearchOption(recentSearch);
+    }
+  }, []);
+  const handleSearchChange = (value) => {
+    setSearchOption(value);
+    sessionStorage.setItem("recent-search", value);
   };
   return (
     <div className={styles.search}>
@@ -56,7 +67,7 @@ export const SearchModal = ({ closeMenu }) => {
         <Select
           options={searchOptions}
           value={searchOption}
-          onChange={(e) => setSearchOption(e.target.value)}
+          onChange={(e) => handleSearchChange(e.target.value)}
           fullWidth
         />
         <TextInput
