@@ -29,7 +29,7 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
     dispatch(fetchUserOffenses());
   }, []);
   useEffect(() => {
-    if (router.pathname === "/login" || (!isAuthLoading && !isAuthenticated)) {
+    if (router.pathname === "/login" || !isAuthenticated) {
       return setShowConsent(false);
     }
     const sessionConsent = sessionStorage.getItem("user-consent");
