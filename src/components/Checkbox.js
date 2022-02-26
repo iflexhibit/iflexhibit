@@ -1,9 +1,11 @@
 import styles from "styles/Checkbox.module.scss";
 import PropTypes from "prop-types";
 
-const Checkbox = ({ id, label, checked, onChange }) => {
+const Checkbox = ({ id, label, checked, onChange, nowrap }) => {
   return (
-    <label className={styles["container"]}>
+    <label
+      className={`${styles["container"]} ${nowrap ? styles["nowrap"] : ""}`}
+    >
       <input
         id={id}
         name={id}

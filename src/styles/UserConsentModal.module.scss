@@ -1,0 +1,30 @@
+@import "./config";
+
+div.consent {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-background);
+  border-top: solid 1px var(--color-primary);
+  z-index: 99;
+  padding: 1rem;
+  div.controls {
+    padding-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  b a {
+    color: var(--color-primary-text);
+  }
+}
+
+@media screen and (max-width: $desktop) {
+  div.consent {
+    div.controls {
+      flex-flow: wrap;
+      justify-content: center;
+    }
+  }
+}

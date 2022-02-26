@@ -1,6 +1,6 @@
 import Head from "next/head";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import NavBottom from "./NavBottom";
 import NavTop from "./NavTop";
 import NavDesktop from "./NavDesktop";
@@ -12,16 +12,37 @@ import {
   fetchUserOffenses,
 } from "redux/actions/reportAction";
 import FeedbackModal from "./FeedbackModal";
+import UserConsentModal from "./UserConsentModal";
+import { useRouter } from "next/router";
 
 const Layout = ({ title, description, canonical, children, fullscreen }) => {
   const dispatch = useDispatch();
+  const { feedbackMsg, msgType } = useSelector((state) => state.report);
+  const [showConsent, setShowConsent] = useState(true);
+  const { isAuthLoading, isAuthenticated } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
+  const router = useRouter();
   useEffect(() => {
     dispatch(authUser());
     dispatch(fetchCommentOffenses());
     dispatch(fetchPostOffenses());
     dispatch(fetchUserOffenses());
   }, []);
-  const { feedbackMsg, msgType } = useSelector((state) => state.report);
+  useEffect(() => {
+    if (router.pathname === "/login") {
+      return setShowConsent(false);
+    }
+    const sessionConsent = sessionStorage.getItem("user-consent");
+    const persistentConsent = localStorage.getItem("user-consent");
+    if (!isAuthLoading && isAuthenticated) {
+      setShowConsent(true);
+      if (sessionConsent === "yes" || persistentConsent === "yes") {
+        return setShowConsent(false);
+      }
+    } else {
+      setShowConsent(false);
+    }
+  }, [user, isAuthLoading, isAuthenticated, router.pathname]);
   return (
     <>
       <Head>
@@ -34,6 +55,9 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
       {!fullscreen && <NavTop />}
       {!fullscreen && <NavDesktop />}
       <main className={fullscreen ? "fullscreen" : ""}>
+        {showConsent && (
+          <UserConsentModal closeModal={() => setShowConsent(false)} />
+        )}
         {children}
         {fullscreen && (
           <div className="partner">

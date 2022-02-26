@@ -15,7 +15,6 @@ import {
 } from "redux/actions/reportAction";
 import { useEffect } from "react";
 import { useState } from "react";
-import FeedbackModal from "./FeedbackModal";
 
 const ReportModal = ({ closeModal, reportType, targetId }) => {
   const dispatch = useDispatch();
