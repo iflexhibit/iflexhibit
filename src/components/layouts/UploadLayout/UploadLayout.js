@@ -35,6 +35,7 @@ const UploadLayout = () => {
     "fan art": false,
     film: false,
     "mural art": false,
+    others: false,
     photography: false,
     portrait: false,
     sculpture: false,

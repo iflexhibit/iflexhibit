@@ -37,6 +37,7 @@ const HomeLayout = ({ results, posts }) => {
     "fan art": false,
     film: false,
     "mural art": false,
+    others: false,
     photography: false,
     portrait: false,
     sculpture: false,
