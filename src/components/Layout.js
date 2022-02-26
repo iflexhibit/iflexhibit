@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 const Layout = ({ title, description, canonical, children, fullscreen }) => {
   const dispatch = useDispatch();
   const { feedbackMsg, msgType } = useSelector((state) => state.report);
-  const [showConsent, setShowConsent] = useState(true);
+  const [showConsent, setShowConsent] = useState(false);
   const { isAuthLoading, isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
   const router = useRouter();
@@ -29,18 +29,15 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
     dispatch(fetchUserOffenses());
   }, []);
   useEffect(() => {
-    if (router.pathname === "/login") {
+    if (router.pathname === "/login" || (!isAuthLoading && !isAuthenticated)) {
       return setShowConsent(false);
     }
     const sessionConsent = sessionStorage.getItem("user-consent");
     const persistentConsent = localStorage.getItem("user-consent");
-    if (!isAuthLoading && isAuthenticated) {
-      setShowConsent(true);
-      if (sessionConsent === "yes" || persistentConsent === "yes") {
-        return setShowConsent(false);
-      }
-    } else {
+    if (sessionConsent === "yes" || persistentConsent === "yes") {
       setShowConsent(false);
+    } else {
+      setShowConsent(true);
     }
   }, [user, isAuthLoading, isAuthenticated, router.pathname]);
   return (
