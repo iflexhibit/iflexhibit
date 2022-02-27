@@ -23,7 +23,9 @@ export const authUser = () => (dispatch) => {
   dispatch(setLoading());
   const token = localStorage.getItem("token");
   axios
-    .get("/api/users/user", { headers: { "x-auth-token": token } })
+    .get(process.env.NEXT_PUBLIC_API_URL + "/api/users/user", {
+      headers: { "x-auth-token": token },
+    })
     .then((response) => {
       dispatch(setUser(response.data.user));
       return dispatch({
