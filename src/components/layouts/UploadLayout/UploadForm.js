@@ -106,7 +106,7 @@ export const UploadForm = ({
           <Toggle
             id="watermark"
             checked={newUpload.watermark}
-            right="Yes"
+            right={newUpload.watermark ? "Yes" : "No"}
             onChange={handleUploadChange}
           />
         </div>

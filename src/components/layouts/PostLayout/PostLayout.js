@@ -34,7 +34,7 @@ const PostLayout = ({ post }) => {
         query: { ...router.query, tab },
       },
       undefined,
-      { scroll: false }
+      { scroll: false, shallow: true }
     );
   };
   const [newComment, setNewComment] = useState("");
