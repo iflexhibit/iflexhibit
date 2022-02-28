@@ -26,13 +26,13 @@ const ProfileLayout = ({ user, posts, results }) => {
   const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
-    router.push(
+    router.replace(
       {
         pathname: router.pathname,
         query: { ...router.query, tab },
       },
       undefined,
-      { scroll: false }
+      { scroll: false, shallow: true }
     );
   };
   const sortOptions = [
@@ -44,7 +44,7 @@ const ProfileLayout = ({ user, posts, results }) => {
   const [activeSort, setActiveSort] = useState(router.query.sort);
   const handleSortChange = (e) => {
     setActiveSort(e.target.value);
-    router.push({
+    router.replace({
       pathname: router.pathname,
       query: { ...router.query, sort: e.target.value },
     });

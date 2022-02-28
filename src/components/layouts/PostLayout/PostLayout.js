@@ -29,7 +29,7 @@ const PostLayout = ({ post }) => {
   const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
-    router.push(
+    router.replace(
       {
         pathname: router.pathname,
         query: { ...router.query, tab },
