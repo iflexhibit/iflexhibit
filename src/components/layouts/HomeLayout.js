@@ -84,8 +84,8 @@ const HomeLayout = ({ results, posts }) => {
 
   return (
     <Layout
-      title="iFlexhibit"
-      description="A content sharing platform for iACADEMY students"
+      title="iFlexhibit | A content sharing platform for students of iACADEMY"
+      description="A content sharing platform for students of iACADEMY"
       canonical="https://iflexhibit.com/"
     >
       <div className={`${styles["controls"]}`}>

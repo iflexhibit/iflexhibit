@@ -115,7 +115,7 @@ const UploadLayout = () => {
   return (
     <Layout
       title="Upload | iFlexhibit"
-      description="A content-sharing platform for iACADEMY students"
+      description="A content sharing platform for students of iACADEMY"
       canonical="https://iflexhibit.com/upload"
     >
       {uploadMsg && <FeedbackModal variant={msgType} info={uploadMsg} />}

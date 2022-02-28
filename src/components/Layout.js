@@ -15,7 +15,14 @@ import FeedbackModal from "./FeedbackModal";
 import UserConsentModal from "./UserConsentModal";
 import { useRouter } from "next/router";
 
-const Layout = ({ title, description, canonical, children, fullscreen }) => {
+const Layout = ({
+  title,
+  description,
+  canonical,
+  children,
+  fullscreen,
+  image,
+}) => {
   const dispatch = useDispatch();
   const { feedbackMsg, msgType } = useSelector((state) => state.report);
   const [showConsent, setShowConsent] = useState(false);
@@ -46,6 +53,13 @@ const Layout = ({ title, description, canonical, children, fullscreen }) => {
         <title>{title}</title>
         <meta name="keywords" content="iflexhibit" />
         <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content={canonical} />
+        <meta
+          property="og:image"
+          content={image || "https://iflexhibit.com/assets/ogimage.jpg"}
+        />
+        <meta property="og:description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href={canonical} />
       </Head>

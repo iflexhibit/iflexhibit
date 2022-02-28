@@ -66,6 +66,7 @@ const PostLayout = ({ post }) => {
       canonical={`https://iflexhibit.com/post/${post.id}/${post.title
         .split(" ")
         .join("-")}`}
+      image={post?.image}
     >
       {deleteAction.feedbackMsg && (
         <FeedbackModal

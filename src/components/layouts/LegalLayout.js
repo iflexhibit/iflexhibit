@@ -7,7 +7,7 @@ const LegalLayout = () => {
   return (
     <Layout
       title="Legal Agreement | iFlexhibit"
-      description="A content sharing platform for iACADEMY students"
+      description="A content sharing platform for students of iACADEMY"
       canonical="https://iflexhibit.com/legal"
     >
       <div className={styles["legal"]}>

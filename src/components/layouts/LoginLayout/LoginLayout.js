@@ -30,7 +30,7 @@ const LoginLayout = () => {
     <Layout
       title="Join the Community | iFlexhibit"
       canonical="https://iflexhibit.com/login"
-      description="A content-sharing platform made for game changers"
+      description="A content sharing platform for students of iACADEMY"
       fullscreen
     >
       <div className={styles["login"]}>
