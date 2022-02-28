@@ -4,11 +4,15 @@ import CopyIcon from "components/icons/CopyIcon";
 import FacebookIcon from "components/icons/FacebookIcon";
 import RedditIcon from "components/icons/RedditIcon";
 import TwitterIcon from "components/icons/TwitterIcon";
+import { useState } from "react";
 import styles from "styles/layouts/PostLayout.module.scss";
 
 export const PostShare = ({ shareUrl, shareText }) => {
+  const [isCopyDisabled, setCopyDisabled] = useState(false);
   const handleCopyClipboard = () => {
+    setCopyDisabled(true);
     navigator.clipboard.writeText(shareUrl);
+    setTimeout(() => setCopyDisabled(false), 2000);
   };
   return (
     <div className={styles.share}>
@@ -42,7 +46,11 @@ export const PostShare = ({ shareUrl, shareText }) => {
           >
             <RedditIcon />
           </a>
-          <IconButton icon={<CopyIcon />} onClick={handleCopyClipboard} />
+          <IconButton
+            icon={<CopyIcon />}
+            onClick={handleCopyClipboard}
+            disabled={isCopyDisabled}
+          />
         </div>
       </div>
     </div>
