@@ -7,6 +7,7 @@ import { PostStats } from "./PostStats";
 import { PostTitle } from "./PostTitle";
 import { PostTags } from "./PostTags";
 import { PostAuthor } from "./PostAuthor";
+import { PostShare } from "./PostShare";
 import { DescriptionSection } from "./DescriptionSection";
 import { CommentsSection } from "./CommentsSection";
 import { useDispatch, useSelector } from "react-redux";
@@ -81,6 +82,10 @@ const PostLayout = ({ post }) => {
           likes_count={post?.statistics.likes}
           comments_count={post?.statistics.comments}
           views_count={post?.statistics.views}
+        />
+        <PostShare
+          shareText={post?.title}
+          shareUrl={`https://iflexhibit.com${router.asPath.split("?")[0]}`}
         />
         <PostTitle
           authorId={post?.author?.id}

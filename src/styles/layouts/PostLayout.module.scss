@@ -194,7 +194,56 @@ form.new-comment.field.desktop {
   display: none;
 }
 
+div.share {
+  max-width: 70ch;
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+
+  div.row {
+    display: flex;
+    align-items: center;
+  }
+
+  span {
+    font-size: 0.75rem;
+    opacity: 0.5;
+  }
+
+  div.icons {
+    display: flex;
+  }
+
+  a.icon {
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    &:active {
+      background: var(--color-secondary);
+      border: solid 1px var(--color-primary);
+    }
+  }
+}
+
 @media screen and (min-width: $desktop) {
+  div.share {
+    a.icon {
+      &:hover {
+        background: var(--color-secondary);
+        border: solid 1px var(--color-primary);
+      }
+    }
+  }
+
   div.post {
     & > div.image-container {
       .image {
