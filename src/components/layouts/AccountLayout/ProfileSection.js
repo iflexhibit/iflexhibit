@@ -69,7 +69,11 @@ export const ProfileSection = ({
           inputFile={inputAvatar}
           accept="image/png, image/jpeg"
           onChange={(e) => setNewAvatar(e.target.files[0])}
-          label="Profile Avatar"
+          label={
+            <p>
+              <span>Profile Avatar</span> <small>(up to 5 MB)</small>
+            </p>
+          }
           buttonLabel="Choose an image"
           variant="avatar"
         />
@@ -102,7 +106,11 @@ export const ProfileSection = ({
           inputFile={inputBackground}
           accept="image/png, image/jpeg"
           onChange={(e) => setNewBackground(e.target.files[0])}
-          label="Profile Background"
+          label={
+            <p>
+              <span>Profile Background</span> <small>(up to 5 MB)</small>
+            </p>
+          }
           buttonLabel="Choose an image"
           variant="background"
         />
