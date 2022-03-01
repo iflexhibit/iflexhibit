@@ -22,6 +22,7 @@ div.btn-group {
     font-size: 0.875rem;
 
     transition: background 250ms;
+    cursor: pointer;
 
     &.active {
       background: var(--color-secondary);
