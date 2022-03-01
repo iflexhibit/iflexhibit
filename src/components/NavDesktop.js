@@ -24,15 +24,16 @@ const NavDesktop = () => {
   const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState(searchOptions[0].value);
   const handleSearch = () => {
-    searchOption === "user"
-      ? router.push({
-          pathname: `/profile/${search}`,
-          query: { type: "username" },
-        })
-      : router.push({
-          pathname: "/",
-          query: { ...router.query, title: search },
-        });
+    if (search.trim().length > 0)
+      searchOption === "user"
+        ? router.push({
+            pathname: `/profile/${search.trim()}`,
+            query: { type: "username" },
+          })
+        : router.push({
+            pathname: "/",
+            query: { ...router.query, title: search },
+          });
 
     setSearch("");
   };
@@ -85,7 +86,12 @@ const NavDesktop = () => {
             value={search}
             onEnterKey={handleSearch}
           />
-          <IconButton icon={<SearchIcon />} onClick={handleSearch} />
+          <IconButton
+            icon={<SearchIcon />}
+            onClick={handleSearch}
+            disabled={!search.trim().length > 0}
+            variant={!search.trim().length > 0 ? null : "primary"}
+          />
         </div>
         <Button
           startIcon={<PlusIcon />}

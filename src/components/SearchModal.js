@@ -17,15 +17,16 @@ export const SearchModal = ({ closeMenu }) => {
   const [search, setSearch] = useState("");
   const [searchOption, setSearchOption] = useState(searchOptions[0].value);
   const handleSearch = () => {
-    searchOption === "user"
-      ? router.push({
-          pathname: `/profile/${search}`,
-          query: { type: "username" },
-        })
-      : router.push({
-          pathname: "/",
-          query: { ...router.query, title: search },
-        });
+    if (search.trim().length > 0)
+      searchOption === "user"
+        ? router.push({
+            pathname: `/profile/${search.trim()}`,
+            query: { type: "username" },
+          })
+        : router.push({
+            pathname: "/",
+            query: { ...router.query, title: search },
+          });
 
     setSearch("");
   };
@@ -87,6 +88,7 @@ export const SearchModal = ({ closeMenu }) => {
           fullWidth
           onClick={handleSearch}
           variant="primary"
+          disabled={!search.trim().length > 0}
         />
       </motion.div>
     </div>
