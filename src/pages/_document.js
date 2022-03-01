@@ -13,6 +13,10 @@ class MyDocument extends Document {
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <link rel="manifest" href="/manifest.json" />
+          <meta
+            name="google-site-verification"
+            content="W_xoToQDMC4UZiJFFlBc4_FT52HaLuMw5SBSCoH7LrQ"
+          />
           <link
             rel="apple-touch-icon"
             href="/assets/logos/brandmark192.png"
