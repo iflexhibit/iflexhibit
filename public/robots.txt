@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /upload
+Disallow: /account
+
+Sitemap: https://iflexhibit.com/sitemap.xml
