@@ -111,6 +111,26 @@ export const updateAvatar = (image) => (dispatch, getState) => {
   const formData = new FormData();
   formData.append("file", image);
 
+  if (image && image.size > 5000000) {
+    dispatch({
+      type: PROFILE_UPDATE_ERROR,
+    });
+    dispatch({
+      type: PROFILE_UPDATE_MESSAGE,
+      payload: {
+        feedbackMsg: "Avatar image must not exceed 5 MB",
+        msgType: "error",
+      },
+    });
+    dispatch(authUser());
+    setTimeout(() => {
+      dispatch({
+        type: PROFILE_UPDATE_MESSAGE,
+        payload: { feedbackMsg: null, msgType: null },
+      });
+    }, 5000);
+  }
+
   axios
     .post(process.env.NEXT_PUBLIC_API_URL + "/api/users/avatar", formData, {
       headers: {
@@ -162,6 +182,26 @@ export const updateBackground = (image) => (dispatch, getState) => {
 
   const formData = new FormData();
   formData.append("file", image);
+
+  if (image && image.size > 5000000) {
+    dispatch({
+      type: PROFILE_UPDATE_ERROR,
+    });
+    dispatch({
+      type: PROFILE_UPDATE_MESSAGE,
+      payload: {
+        feedbackMsg: "Background image must not exceed 5 MB",
+        msgType: "error",
+      },
+    });
+    dispatch(authUser());
+    setTimeout(() => {
+      dispatch({
+        type: PROFILE_UPDATE_MESSAGE,
+        payload: { feedbackMsg: null, msgType: null },
+      });
+    }, 5000);
+  }
 
   axios
     .post(process.env.NEXT_PUBLIC_API_URL + "/api/users/background", formData, {
