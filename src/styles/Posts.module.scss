@@ -42,9 +42,13 @@ div.post {
       }
     }
   }
-  & a.post {
+  a.post {
     position: relative;
+    &.pressed img {
+      opacity: 0.5;
+    }
   }
+
   &:hover div.overlay {
     opacity: 1;
 

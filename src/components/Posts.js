@@ -9,8 +9,14 @@ import CommentIcon from "./icons/CommentIcon";
 import Stat from "./Stat";
 import IconButton from "./IconButton";
 import TrashIcon from "./icons/TrashIcon";
+import { useState } from "react";
 
 const Posts = ({ posts, results, handlePostDelete }) => {
+  const [postSelected, setPostSelected] = useState("");
+  const handlePostSelected = (id) => {
+    setPostSelected(id);
+    setTimeout(() => setPostSelected(""), 5000);
+  };
   return (
     <div className={styles["posts"]}>
       {posts.length === 0 && (
@@ -33,7 +39,12 @@ const Posts = ({ posts, results, handlePostDelete }) => {
             </div>
           )}
           <Link href={`/post/${post.id}`} key={post.id}>
-            <a className={styles.post}>
+            <a
+              className={`${styles.post} ${
+                post.id === postSelected ? styles.pressed : ""
+              }`}
+              onClick={() => handlePostSelected(post.id)}
+            >
               <Image
                 src={post.image}
                 layout="responsive"
