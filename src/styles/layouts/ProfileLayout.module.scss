@@ -121,6 +121,10 @@ div.works {
   }
   div.profile {
     & > div.row {
+      &.banner {
+        height: 15rem;
+      }
+
       &.about,
       &.stats,
       &.tabs {
