@@ -7,7 +7,6 @@ import UserIcon from "./icons/UserIcon";
 
 const NavBottom = () => {
   const { user } = useSelector((state) => state.user);
-  const { isAuthenticated } = useSelector((state) => state.auth);
   return (
     <nav className={`${styles["nav"]} ${styles["bottom"]}`}>
       <IconButton icon={<HomeIcon />} fullWidth fullHeight href="/" />
@@ -16,7 +15,7 @@ const NavBottom = () => {
         icon={<UserIcon />}
         fullWidth
         fullHeight
-        href={isAuthenticated ? "/profile/" + user.id : "/login"}
+        href={user ? "/profile/" + user.id : "/login"}
       />
     </nav>
   );

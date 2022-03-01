@@ -16,7 +16,11 @@ const fetchLinks = (user) => {
     { href: "/profile/" + user?.id, label: "My Profile", icon: <UserIcon /> },
     { href: "/account", label: "Account Settings", icon: <CogIcon /> },
     { href: "/legal", label: "Legal Agreement", icon: <BookIcon /> },
-    { href: "/", label: "System Dashboard", icon: <BlocksIcon /> },
+    {
+      href: "https://iflexhibit-api.herokuapp.com/",
+      label: "System Dashboard",
+      icon: <BlocksIcon />,
+    },
   ];
   if (!user) return null;
   if (user?.usertype === "member" || user?.usertype === "banned")
@@ -51,7 +55,7 @@ const MainMenu = ({ closeMenu }) => {
         <UserInfo user={user} />
         {links && <MenuLinks links={links} />}
         <div className={styles["bottom"]}>
-          {isAuthenticated ? (
+          {user ? (
             <Button
               label="Sign Out"
               variant="secondary"

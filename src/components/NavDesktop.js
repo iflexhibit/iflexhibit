@@ -39,7 +39,6 @@ const NavDesktop = () => {
   };
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
   useEffect(() => {
     const recentSearch = sessionStorage.getItem("recent-search");
@@ -51,6 +50,7 @@ const NavDesktop = () => {
     setSearchOption(value);
     sessionStorage.setItem("recent-search", value);
   };
+  console.log(user?.avatar);
   return (
     <nav className={`${styles["nav"]} ${styles["desktop"]}`}>
       <div className={styles["controls"]}>
@@ -100,8 +100,24 @@ const NavDesktop = () => {
           variant="secondary"
         />
         <Button
-          startIcon={<UserIcon />}
-          label={isAuthenticated ? user.username : "Account"}
+          startIcon={
+            <div
+              style={{
+                width: "1.25rem",
+                height: "1.25rem",
+                borderRadius: "5px",
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+              <Image
+                src={user ? user.avatar : "/assets/noavatar.jpg"}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          }
+          label={user ? user.username : "Account"}
           onClick={() => setMenuOpen((prev) => !prev)}
         />
       </div>
