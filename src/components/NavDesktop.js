@@ -50,7 +50,6 @@ const NavDesktop = () => {
     setSearchOption(value);
     sessionStorage.setItem("recent-search", value);
   };
-  console.log(user?.avatar);
   return (
     <nav className={`${styles["nav"]} ${styles["desktop"]}`}>
       <div className={styles["controls"]}>
@@ -111,7 +110,7 @@ const NavDesktop = () => {
               }}
             >
               <Image
-                src={user ? user.avatar : "/assets/noavatar.jpg"}
+                src={user?.avatar || "/assets/noavatar.jpg"}
                 layout="fill"
                 objectFit="cover"
               />
