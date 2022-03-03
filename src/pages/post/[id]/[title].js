@@ -20,8 +20,8 @@ export async function getServerSideProps({ req, res, params, query }) {
       process.env.NEXT_PUBLIC_API_URL + "/api/posts/post/" + params.id
     );
     const data = response.data;
-    const splitTitle = data.post.title.split(" ");
-    const formatTitle = splitTitle.map((t) => encodeURIComponent(t)).join("-");
+    const splitTitle = data.post.title.replace(/[^a-zA-Z0-9 ]/g, "").split(" ");
+    const formatTitle = splitTitle.join("-");
     if (formatTitle !== params.title)
       return {
         redirect: {
