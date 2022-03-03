@@ -23,22 +23,26 @@ export async function getServerSideProps({ req, res, params, query }) {
     const splitTitle = data.post.title.replace(/[^a-zA-Z0-9 ]/g, "").split(" ");
     const formatTitle = splitTitle.join("-");
     const altTitle = `post${data.post.id}-by-${data.post.author.username}`;
-    if (!/^[a-z0-9]+$/i.test(formatTitle.split("-").join("")))
-      return {
-        redirect: {
-          destination: `/post/${data.post.id}/${altTitle}${
-            query.tab ? `?tab=${query.tab}` : ""
-          }`,
-        },
-      };
-    if (formatTitle !== params.title && altTitle !== params.title)
-      return {
-        redirect: {
-          destination: `/post/${data.post.id}/${formatTitle}${
-            query.tab ? `?tab=${query.tab}` : ""
-          }`,
-        },
-      };
+
+    if (formatTitle !== params.title && altTitle !== params.title) {
+      if (!/^[a-z0-9]+$/i.test(formatTitle.split("-").join(""))) {
+        return {
+          redirect: {
+            destination: `/post/${data.post.id}/${altTitle}${
+              query.tab ? `?tab=${query.tab}` : ""
+            }`,
+          },
+        };
+      } else {
+        return {
+          redirect: {
+            destination: `/post/${data.post.id}/${formatTitle}${
+              query.tab ? `?tab=${query.tab}` : ""
+            }`,
+          },
+        };
+      }
+    }
     return { props: { post: data.post } };
   } catch (error) {
     return {
