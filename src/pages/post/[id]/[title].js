@@ -22,6 +22,14 @@ export async function getServerSideProps({ req, res, params, query }) {
     const data = response.data;
     const splitTitle = data.post.title.replace(/[^a-zA-Z0-9 ]/g, "").split(" ");
     const formatTitle = splitTitle.join("-");
+    if (!/^[a-z0-9]+$/i.test(formatTitle.split("-").join("")))
+      return {
+        redirect: {
+          destination: `/post/${data.post.id}/post${data.post.id}-by-${
+            data.post.author.username
+          }${query.tab ? `?tab=${query.tab}` : ""}`,
+        },
+      };
     if (formatTitle !== params.title)
       return {
         redirect: {
