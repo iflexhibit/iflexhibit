@@ -400,6 +400,7 @@ const PrivacySection = () => {
                 <ol>
                   <li>
                     Session Cookies: We use Session Cookies to operate our
+                    Service, and to authenticate and authorize your usage of our
                     Service.
                   </li>
                 </ol>
@@ -533,6 +534,70 @@ const PrivacySection = () => {
               storage is 100% secure. While we strive to use commercially
               acceptable means to protect your Personal Data, we cannot
               guarantee its absolute security.
+            </p>
+          </li>
+          <li>
+            <h2>
+              Your Data Protection Rights Under Data Privacy Act of 2012
+              (Republic Act 10173)
+            </h2>
+            <p>
+              If you are a citizen of the Philippines, you have certain data
+              protection rights covered by the Data Privacy Act of 2012. In
+              certain circumstances, you have the following rights:
+            </p>
+            <ol>
+              <li>
+                right to be informed - you may request the details as to how
+                your personal information is being processed or have been
+                processed by us;
+              </li>
+              <li>
+                right to access - you may ask for a written description on
+                information we have about you as well as our purpose for holding
+                them;
+              </li>
+              <li>
+                right to object - you may suspend, withdraw, and remove your
+                personal information in certain further processing, upon demand;
+              </li>
+              <li>
+                right to erasure or blocking - based on reasonable grounds, you
+                have the right to suspend, withdraw or order the blocking,
+                removal, or destruction of your personal data from our filing
+                system;
+              </li>
+              <li>
+                right to damages - you may claim compensation if you suffered
+                damages due to inaccurate, incomplete, outdated, false,
+                unlawfully obtained, or unauthorized use of personal data,
+                considering any violation of your rights and freedoms as data
+                subject;
+              </li>
+              <li>
+                right to file a complaint - you have a right to file a complaint
+                with the National Privacy Commission;
+              </li>
+              <li>
+                right to rectify - you have the right to dispute and have
+                corrected any inaccuracy or error in the data we hold about you;
+              </li>
+              <li>
+                right to data portability - you have the right to obtain from us
+                your personal information in an electronic or structured format
+                that is commonly used and allows for further use;
+              </li>
+            </ol>
+            <p>
+              Please note that we may ask you to verify your identity before
+              responding to such requests. Please note, we may not be able to
+              provide Service without some necessary data.
+            </p>
+            <p>
+              You have the right to complain to a Data Protection Authority
+              about our collection and use of your Personal Data. For more
+              information, please contact your local data protection authority
+              in the European Economic Area (EEA).
             </p>
           </li>
           <li>
