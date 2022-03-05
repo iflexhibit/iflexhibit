@@ -14,6 +14,7 @@ import {
 import FeedbackModal from "./FeedbackModal";
 import UserConsentModal from "./UserConsentModal";
 import { useRouter } from "next/router";
+import Footer from "./Footer";
 
 const Layout = ({
   title,
@@ -78,6 +79,7 @@ const Layout = ({
       </main>
       {!fullscreen && <NavBottom />}
       {feedbackMsg && <FeedbackModal info={feedbackMsg} variant={msgType} />}
+      {router.pathname === "/" && <Footer />}
     </>
   );
 };

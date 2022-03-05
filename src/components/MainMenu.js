@@ -15,7 +15,6 @@ const fetchLinks = (user) => {
   const links = [
     { href: "/profile/" + user?.id, label: "My Profile", icon: <UserIcon /> },
     { href: "/account", label: "Account Settings", icon: <CogIcon /> },
-    { href: "/legal", label: "Legal Agreement", icon: <BookIcon /> },
     {
       href: "https://iflexhibit-api.herokuapp.com/",
       label: "System Dashboard",
@@ -24,7 +23,7 @@ const fetchLinks = (user) => {
   ];
   if (!user) return null;
   if (user?.usertype === "member" || user?.usertype === "banned")
-    return links.slice(0, 3);
+    return links.slice(0, 2);
   return links;
 };
 
