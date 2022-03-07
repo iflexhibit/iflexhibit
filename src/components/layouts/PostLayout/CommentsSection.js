@@ -26,6 +26,7 @@ export const CommentsSection = ({
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
   const [isReportOpen, setReportOpen] = useState(false);
+  const [reportComment, setReportComment] = useState();
   return (
     <>
       <motion.div
@@ -85,7 +86,7 @@ export const CommentsSection = ({
               animate={{ opacity: 1 }}
               id={comment?.id}
             >
-              {isReportOpen && (
+              {isReportOpen && reportComment === comment?.id && (
                 <ReportModal
                   closeModal={() => setReportOpen(false)}
                   reportType="COMMENT"
@@ -114,7 +115,7 @@ export const CommentsSection = ({
                   </a>
                 </Link>
                 <div className={styles["controls"]}>
-                  {comment?.author?.id === user?.id ? (
+                  {comment?.author?.id !== user?.id ? (
                     <IconButton
                       icon={<TrashIcon />}
                       onClick={() => handleDeleteComment(comment?.id)}
@@ -123,7 +124,10 @@ export const CommentsSection = ({
                   ) : (
                     <IconButton
                       icon={<FlagIcon />}
-                      onClick={() => setReportOpen(true)}
+                      onClick={() => {
+                        setReportOpen(true);
+                        setReportComment(comment?.id);
+                      }}
                     />
                   )}
                 </div>
