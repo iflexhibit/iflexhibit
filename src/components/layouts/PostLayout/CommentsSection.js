@@ -115,7 +115,7 @@ export const CommentsSection = ({
                   </a>
                 </Link>
                 <div className={styles["controls"]}>
-                  {comment?.author?.id !== user?.id ? (
+                  {comment?.author?.id === user?.id ? (
                     <IconButton
                       icon={<TrashIcon />}
                       onClick={() => handleDeleteComment(comment?.id)}
