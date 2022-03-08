@@ -10,7 +10,9 @@ export const DescriptionSection = ({ description }) => {
       transition={{ duration: 0.125 }}
     >
       {description ? (
-        description.split("\n").map((p, index) => <p key={index}>{p}</p>)
+        description.split("\n").map((p, index) => {
+          p?.trim().length !== 0 && <p key={index}>{p}</p>;
+        })
       ) : (
         <p>
           <small>
