@@ -74,7 +74,7 @@ export const PreferencesSection = ({
       <h2>Device settings</h2>
       <div className={`${styles["row"]} ${styles["options"]}`}>
         <Toggle
-          right="Remember this device"
+          right="Remember this device (7 days)"
           id="rememberDevice"
           checked={rememberDevice}
           onChange={() => setRememberDevice((prev) => !prev)}
