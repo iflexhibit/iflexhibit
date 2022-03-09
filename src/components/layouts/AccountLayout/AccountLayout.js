@@ -11,16 +11,19 @@ import { useRouter } from "next/router";
 const AccountLayout = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [tabs] = useState(["Profile", "Preferences"]);
+  const tabs = ["Profile", "Preferences"];
   const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, tab },
-    });
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: { ...router.query, tab },
+      },
+      undefined,
+      { scroll: false, shallow: true }
+    );
   };
-
   const [newProfile, setNewProfile] = useState({
     username: "",
     contact: "",
@@ -74,6 +77,13 @@ const AccountLayout = () => {
   useEffect(() => {
     if (!isAuthLoading && !isAuthenticated) router.push("/login");
   }, [isAuthLoading, isAuthenticated]);
+  useEffect(() => {
+    if (router.query.tab) {
+      if (tabs.includes(router.query.tab)) {
+        setActiveTab(router.query.tab);
+      } else handleTabSwitch(tabs[0]);
+    }
+  }, [router.query.tab]);
 
   return (
     <Layout
