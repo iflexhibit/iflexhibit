@@ -4,6 +4,7 @@ import Toggle from "components/Toggle";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import FeedbackModal from "components/FeedbackModal";
+import { useEffect, useState } from "react";
 
 export const PreferencesSection = ({
   currentPreferences,
@@ -12,6 +13,18 @@ export const PreferencesSection = ({
   handlePreferencesSubmit,
 }) => {
   const { preferences } = useSelector((state) => state.user);
+  const [rememberDevice, setRememberDevice] = useState(false);
+  useEffect(() => {
+    let q = localStorage.getItem("remember-device");
+    if (q === "yes") setRememberDevice(true);
+    else setRememberDevice(false);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("remember-device", rememberDevice ? "yes" : "no");
+    if (rememberDevice)
+      localStorage.setItem("token", sessionStorage.getItem("token"));
+    else localStorage.removeItem("token");
+  }, [rememberDevice]);
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -56,6 +69,15 @@ export const PreferencesSection = ({
               : currentPreferences?.showContact
           }
           onChange={handlePreferencesChange}
+        />
+      </div>
+      <h2>Device settings</h2>
+      <div className={`${styles["row"]} ${styles["options"]}`}>
+        <Toggle
+          right="Remember this device"
+          id="rememberDevice"
+          checked={rememberDevice}
+          onChange={() => setRememberDevice((prev) => !prev)}
         />
       </div>
       <Button
