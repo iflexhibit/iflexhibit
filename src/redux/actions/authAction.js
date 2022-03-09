@@ -40,8 +40,8 @@ export const authUser = () => (dispatch) => {
     .catch(() => {
       dispatch(clearUser());
       if (token !== null) {
-        localStorage.clear("token");
-        sessionStorage.clear("token");
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
       }
       return dispatch({ type: AUTH_ERROR });
     });
@@ -49,8 +49,8 @@ export const authUser = () => (dispatch) => {
 
 export const logout = () => (dispatch) => {
   dispatch(setLoading());
-  localStorage.clear("token");
-  sessionStorage.clear("token");
+  localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
   dispatch(clearUser());
   dispatch({ type: LOGOUT_SUCCESS });
   window.location.replace("/api/auth/logout");
