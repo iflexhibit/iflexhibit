@@ -114,7 +114,7 @@ const ProfileLayout = ({ user, posts, results }) => {
         });
         if (p.video) {
           const video = await fetchMedia(p.video);
-          works.file(p.video.split("/uploads/"[1], video, { base64: true }));
+          works.file(p.video.split("/uploads/")[1], video, { base64: true });
         }
       })
     );
