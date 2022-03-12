@@ -17,15 +17,6 @@ const UploadLayout = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [newUpload, setNewUpload] = useState({
-    image: "",
-    video: "",
-    title: "",
-    description: "",
-    tags: [],
-    watermark: false,
-  });
-
   const [tags, setTags] = useState({
     "2d art": false,
     "3d art": false,
@@ -44,11 +35,53 @@ const UploadLayout = () => {
     video: false,
   });
 
+  const degreePrograms = [
+    { value: "se", label: "BSCS Software Engineering" },
+    { value: "ds", label: "BSCS Data Science" },
+    { value: "ne", label: "BSCS Cloud Computing and Netwrok Engineering" },
+    { value: "gd", label: "BSEMC Game Development" },
+    { value: "wd", label: "BSIT Web Development" },
+    { value: "me", label: "BSBA Marketing Management" },
+    { value: "re", label: "BS Real Estate Management" },
+    { value: "ac", label: "BS Accountancy" },
+    { value: "ps", label: "BA Psychology" },
+    { value: "an", label: "BS Animation" },
+    { value: "ma", label: "BA Multimedia Arts and Design" },
+    { value: "fs", label: "BA Fashion Design and Technology" },
+    { value: "fx", label: "BA Film and Visual Effects" },
+    { value: "sd", label: "BA Music Production and Sound Design" },
+    { value: "shs1", label: "HUMSS (SHS)" },
+    { value: "shs2", label: "ABM (SHS)" },
+    { value: "shs3", label: "Audio Production Strand (SHS)" },
+    { value: "shs4", label: "Media and Visual Arts Strand (SHS)" },
+    { value: "shs5", label: "Animation Strand (SHS)" },
+    { value: "shs6", label: "Software Development Strand (SHS)" },
+    { value: "shs7", label: "Graphic Illustration Strand (SHS)" },
+    { value: "shs8", label: "Fashin Design Strand (SHS)" },
+    { value: "shs9", label: "Robotics Strand (SHS)" },
+  ];
+
+  const [newUpload, setNewUpload] = useState({
+    image: "",
+    video: "",
+    title: "",
+    description: "",
+    tags: [],
+    watermark: false,
+    schoolwork: false,
+    program: degreePrograms[0].value,
+  });
+
   const handleUploadChange = (e, isFile) => {
     if (e.target.name === "watermark")
       return setNewUpload((prev) => ({
         ...prev,
         watermark: !prev.watermark,
+      }));
+    if (e.target.name === "schoolwork")
+      return setNewUpload((prev) => ({
+        ...prev,
+        schoolwork: !prev.schoolwork,
       }));
     setNewUpload((prev) => ({
       ...prev,
@@ -80,6 +113,8 @@ const UploadLayout = () => {
       description: "",
       tags: [],
       watermark: false,
+      schoolwork: false,
+      program: degreePrograms[0].value,
     }));
     handleFilterReset();
   };
@@ -140,6 +175,7 @@ const UploadLayout = () => {
               newUpload={newUpload}
               setFilterMenuOpen={setFilterMenuOpen}
               isUploading={isUploading}
+              degreePrograms={degreePrograms}
             />
           ) : (
             <div className={styles.warningmsg}>

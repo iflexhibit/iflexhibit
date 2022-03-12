@@ -10,12 +10,20 @@ import Stat from "./Stat";
 import IconButton from "./IconButton";
 import TrashIcon from "./icons/TrashIcon";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Posts = ({ posts, results, handlePostDelete }) => {
   const [postSelected, setPostSelected] = useState("");
   const handlePostSelected = (id) => {
     setPostSelected(id);
     setTimeout(() => setPostSelected(""), 5000);
+  };
+  const router = useRouter();
+  const postBadge = (post) => {
+    if (post.status && post.status !== "approved") return post.status;
+    else if (post.tags.includes("schoolwork") && router.pathname !== "/")
+      return "schoolwork";
+    else return "";
   };
   return (
     <div className={styles["posts"]}>
@@ -26,18 +34,20 @@ const Posts = ({ posts, results, handlePostDelete }) => {
       )}
       {posts.map((post, i) => (
         <div className={styles.post} key={i}>
-          {post.status && post.status !== "approved" && (
-            <div className={styles.header}>
+          <div className={styles.header}>
+            {post.status && post.status !== "approved" ? (
               <IconButton
                 icon={<TrashIcon />}
                 onClick={() => handlePostDelete(post.id, post.title)}
                 variant="warning"
               />
-              <div className={`${styles.status} ${styles[post.status]}`}>
-                {post.status}
-              </div>
+            ) : (
+              <span></span>
+            )}
+            <div className={`${styles.status} ${styles[postBadge(post)]}`}>
+              {postBadge(post)}
             </div>
-          )}
+          </div>
           <Link href={`/post/${post.id}`} key={post.id}>
             <a
               className={`${styles.post} ${

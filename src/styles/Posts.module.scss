@@ -29,6 +29,11 @@ div.post {
       font-size: 0.75rem;
       font-weight: $bold;
       text-transform: capitalize;
+      &.schoolwork {
+        background: var(--color-primary-text);
+        color: var(--color-background);
+        box-shadow: 0 0 1rem -0.4rem var(--color-underlay);
+      }
       &.pending {
         background: var(--color-orange);
         color: var(--color-background);

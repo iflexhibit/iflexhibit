@@ -40,6 +40,7 @@ const HomeLayout = ({ results, posts }) => {
     others: false,
     photography: false,
     portrait: false,
+    schoolwork: false,
     sculpture: false,
     traditional: false,
     typography: false,

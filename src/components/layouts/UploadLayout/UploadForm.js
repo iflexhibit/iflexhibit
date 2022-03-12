@@ -7,6 +7,7 @@ import Tag from "components/Tag";
 import TagsIcon from "components/icons/TagsIcon";
 import Toggle from "components/Toggle";
 import { useEffect, useState } from "react";
+import Select from "components/Select";
 
 export const UploadForm = ({
   handleFormSubmit,
@@ -16,6 +17,7 @@ export const UploadForm = ({
   newUpload,
   setFilterMenuOpen,
   isUploading,
+  degreePrograms,
 }) => {
   const [inputImage, setInputImage] = useState("");
   const [inputVideo, setInputVideo] = useState("");
@@ -99,10 +101,41 @@ export const UploadForm = ({
           />
         </div>
         <div className={styles["group"]}>
+          <label>Is this a schoolwork?</label>
+          <Toggle
+            id="schoolwork"
+            checked={newUpload.schoolwork}
+            right={newUpload.schoolwork ? "Yes" : "No"}
+            onChange={handleUploadChange}
+          />
+        </div>
+        {newUpload.schoolwork && (
+          <div className={styles["group"]}>
+            <label>Degree Program</label>
+            <Select
+              id="program"
+              options={degreePrograms}
+              value={newUpload.program}
+              onChange={handleUploadChange}
+              fullWidth
+            />
+          </div>
+        )}
+        <div className={styles["group"]}>
           <label htmlFor="tags">
             Tags <small>(Optional)</small>
           </label>
           <div className={styles["tags"]}>
+            {newUpload.schoolwork && <Tag key="schoolwork" tag="schoolwork" />}
+            {newUpload.schoolwork && newUpload.program && (
+              <Tag
+                key={newUpload.program}
+                tag={
+                  degreePrograms.find((p) => p.value === newUpload.program)
+                    .label
+                }
+              />
+            )}
             {newUpload.tags.map((tag) => (
               <Tag key={tag} tag={tag} />
             ))}
@@ -117,7 +150,7 @@ export const UploadForm = ({
         </div>
         <div className={styles["group"]}>
           <label>
-            Add watermark? <small>(Optional)</small>
+            Add watermark to image? <small>(Optional)</small>
           </label>
           <Toggle
             id="watermark"
