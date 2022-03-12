@@ -364,6 +364,32 @@ export const submitPost = (post) => (dispatch, getState) => {
   const { user } = getState().user;
   const formData = new FormData();
 
+  const degreePrograms = [
+    { value: "se", label: "BSCS Software Engineering" },
+    { value: "ds", label: "BSCS Data Science" },
+    { value: "ne", label: "BSCS Cloud Computing and Netwrok Engineering" },
+    { value: "gd", label: "BSEMC Game Development" },
+    { value: "wd", label: "BSIT Web Development" },
+    { value: "me", label: "BSBA Marketing Management" },
+    { value: "re", label: "BS Real Estate Management" },
+    { value: "ac", label: "BS Accountancy" },
+    { value: "ps", label: "BA Psychology" },
+    { value: "an", label: "BS Animation" },
+    { value: "ma", label: "BA Multimedia Arts and Design" },
+    { value: "fs", label: "BA Fashion Design and Technology" },
+    { value: "fx", label: "BA Film and Visual Effects" },
+    { value: "sd", label: "BA Music Production and Sound Design" },
+    { value: "shs1", label: "HUMSS (SHS)" },
+    { value: "shs2", label: "ABM (SHS)" },
+    { value: "shs3", label: "Audio Production Strand (SHS)" },
+    { value: "shs4", label: "Media and Visual Arts Strand (SHS)" },
+    { value: "shs5", label: "Animation Strand (SHS)" },
+    { value: "shs6", label: "Software Development Strand (SHS)" },
+    { value: "shs7", label: "Graphic Illustration Strand (SHS)" },
+    { value: "shs8", label: "Fashin Design Strand (SHS)" },
+    { value: "shs9", label: "Robotics Strand (SHS)" },
+  ];
+
   const data = {
     image: post.image,
     title: post.title,
@@ -372,6 +398,14 @@ export const submitPost = (post) => (dispatch, getState) => {
     watermark: post.watermark,
     video: post.video ? post.video : null,
   };
+
+  if (post.schoolwork) {
+    data.tags = [
+      "schoolwork",
+      degreePrograms.find((p) => p.value === post.program).label,
+      ...data.tags,
+    ];
+  }
 
   formData.append("imageFile", data.image);
   data.video && formData.append("videoFile", data.video);
