@@ -19,11 +19,17 @@ import { useEffect } from "react";
 import Toggle from "components/Toggle";
 import PenIcon from "components/icons/PenIcon";
 import FeedbackModal from "components/FeedbackModal";
+import Button from "components/Button";
+import DownloadIcon from "components/icons/DownloadIcon";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
+import axios from "axios";
 
 const ProfileLayout = ({ user, posts, results }) => {
   const router = useRouter();
   const [tabs] = useState(["About", "Works"]);
   const [activeTab, setActiveTab] = useState(router.query.tab || tabs[0]);
+
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
     router.replace(
@@ -68,6 +74,58 @@ const ProfileLayout = ({ user, posts, results }) => {
   const handlePostDelete = (id, title) => {
     if (confirm(`Delete \'${title}\'?`)) return dispatch(deletePost(id));
   };
+
+  const handleExport = async () => {
+    function fetchMedia(url) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(url, { responseType: "arraybuffer" })
+          .then((response) => resolve(response.data))
+          .catch(() => reject("No data"));
+      });
+    }
+
+    function generateMetadata() {
+      let metadata = "";
+      myPosts.forEach((p) => {
+        const imageFilename = p?.image?.split("/uploads/")[1];
+        const videoFilename = p?.video?.split("/uploads/")[1];
+
+        metadata += `Title: ${p.title}\n`;
+        metadata += `Image: ${imageFilename}\n`;
+        videoFilename && (metadata += `Video: ${videoFilename}\n`);
+        p.description &&
+          (metadata += `Description: ${p.description || '""'}\n`);
+        p.tags.join(", ").length > 0 &&
+          (metadata += `Tags: ${p.tags.join(", ")}\n`);
+        metadata += `Posted at: ${new Date(p.createdAt).toLocaleString()}\n\n`;
+      });
+      return metadata;
+    }
+
+    const zip = new JSZip();
+    const works = zip.folder("works");
+
+    await Promise.all(
+      myPosts.map(async (p) => {
+        const image = await fetchMedia(p.image);
+        works.file(p.image.split("/uploads/")[1], image, {
+          base64: true,
+        });
+        if (p.video) {
+          const video = await fetchMedia(p.video);
+          works.file(p.video.split("/uploads/"[1], video, { base64: true }));
+        }
+      })
+    );
+
+    zip.file("metadata.txt", generateMetadata());
+
+    zip.generateAsync({ type: "blob" }).then((content) => {
+      saveAs(content, `${new Date().toJSON()}.zip`);
+    });
+  };
+
   const { deleteAction } = useSelector((state) => state.user);
   return (
     <Layout
@@ -141,6 +199,7 @@ const ProfileLayout = ({ user, posts, results }) => {
                     : myPosts
                   : posts
               }
+              handleExport={handleExport}
               personal={currentUser?.id === user?.id}
               activeSort={activeSort}
               sortOptions={sortOptions}
@@ -262,6 +321,7 @@ const WorksSection = ({
   hideNonApproved,
   setHideNonApproved,
   handlePostDelete,
+  handleExport,
 }) => {
   return (
     <motion.div
@@ -272,11 +332,20 @@ const WorksSection = ({
     >
       <div className={styles.controls}>
         {personal && (
-          <Toggle
-            checked={hideNonApproved}
-            right="Show approved only"
-            onChange={(e) => setHideNonApproved(e.target.checked)}
-          />
+          <>
+            <Toggle
+              checked={hideNonApproved}
+              right="Show approved only"
+              onChange={(e) => setHideNonApproved(e.target.checked)}
+            />
+            <Button
+              label="Export Works"
+              variant="secondary"
+              startIcon={<DownloadIcon />}
+              onClick={handleExport}
+              disabled={posts.length === 0}
+            />
+          </>
         )}
         <Select
           onChange={handleSortChange}
