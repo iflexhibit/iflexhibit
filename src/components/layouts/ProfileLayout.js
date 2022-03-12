@@ -71,11 +71,13 @@ const ProfileLayout = ({ user, posts, results }) => {
   }, [user, currentUser]);
 
   const [hideNonApproved, setHideNonApproved] = useState(true);
+  const [isDownloading, setDownloading] = useState(false);
   const handlePostDelete = (id, title) => {
     if (confirm(`Delete \'${title}\'?`)) return dispatch(deletePost(id));
   };
 
   const handleExport = async () => {
+    setDownloading(true);
     function fetchMedia(url) {
       return new Promise((resolve, reject) => {
         axios
@@ -123,6 +125,7 @@ const ProfileLayout = ({ user, posts, results }) => {
 
     zip.generateAsync({ type: "blob" }).then((content) => {
       saveAs(content, `${new Date().toJSON()}.zip`);
+      setDownloading(false);
     });
   };
 
@@ -206,6 +209,7 @@ const ProfileLayout = ({ user, posts, results }) => {
               handleSortChange={handleSortChange}
               hideNonApproved={hideNonApproved}
               setHideNonApproved={setHideNonApproved}
+              isDownloading={isDownloading}
             />
           )}
         </AnimatePresence>
@@ -322,6 +326,7 @@ const WorksSection = ({
   setHideNonApproved,
   handlePostDelete,
   handleExport,
+  isDownloading,
 }) => {
   return (
     <motion.div
@@ -343,7 +348,7 @@ const WorksSection = ({
               variant="secondary"
               startIcon={<DownloadIcon />}
               onClick={handleExport}
-              disabled={posts.length === 0}
+              disabled={posts.length === 0 || isDownloading}
             />
           </>
         )}
