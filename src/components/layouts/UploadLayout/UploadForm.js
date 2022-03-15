@@ -131,8 +131,8 @@ export const UploadForm = ({
               <Tag
                 key={newUpload.program}
                 tag={
-                  degreePrograms.find((p) => p.value === newUpload.program)
-                    .label
+                  degreePrograms.find((p) => p.value == newUpload.program)
+                    ?.label
                 }
               />
             )}

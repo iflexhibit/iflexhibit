@@ -51,7 +51,7 @@ const HomeLayout = ({ results, posts }) => {
   };
   const checkedTags = Object.entries(tags)
     .filter((tag) => tag[1])
-    .map((tag) => tag[0]);
+    .map((tag) => encodeURIComponent(tag[0]));
   const handleApply = () => {
     router.push({
       pathname: router.pathname,

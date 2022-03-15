@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { submitPost } from "redux/actions/userAction";
 import FeedbackModal from "components/FeedbackModal";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const UploadLayout = () => {
   const [tabs] = useState(["Image", "Video"]);
@@ -35,31 +36,7 @@ const UploadLayout = () => {
     video: false,
   });
 
-  const degreePrograms = [
-    { value: "se", label: "BSCS Software Engineering" },
-    { value: "ds", label: "BSCS Data Science" },
-    { value: "ne", label: "BSCS Cloud Computing and Netwrok Engineering" },
-    { value: "gd", label: "BSEMC Game Development" },
-    { value: "wd", label: "BSIT Web Development" },
-    { value: "me", label: "BSBA Marketing Management" },
-    { value: "re", label: "BS Real Estate Management" },
-    { value: "ac", label: "BS Accountancy" },
-    { value: "ps", label: "BA Psychology" },
-    { value: "an", label: "BS Animation" },
-    { value: "ma", label: "BA Multimedia Arts and Design" },
-    { value: "fs", label: "BA Fashion Design and Technology" },
-    { value: "fx", label: "BA Film and Visual Effects" },
-    { value: "sd", label: "BA Music Production and Sound Design" },
-    { value: "shs1", label: "HUMSS (SHS)" },
-    { value: "shs2", label: "ABM (SHS)" },
-    { value: "shs3", label: "Audio Production Strand (SHS)" },
-    { value: "shs4", label: "Media and Visual Arts Strand (SHS)" },
-    { value: "shs5", label: "Animation Strand (SHS)" },
-    { value: "shs6", label: "Software Development Strand (SHS)" },
-    { value: "shs7", label: "Graphic Illustration Strand (SHS)" },
-    { value: "shs8", label: "Fashin Design Strand (SHS)" },
-    { value: "shs9", label: "Robotics Strand (SHS)" },
-  ];
+  const [degreePrograms, setDegreePrograms] = useState([]);
 
   const [newUpload, setNewUpload] = useState({
     image: "",
@@ -69,7 +46,7 @@ const UploadLayout = () => {
     tags: [],
     watermark: false,
     schoolwork: false,
-    program: degreePrograms[0].value,
+    program: degreePrograms[0]?.value,
   });
 
   const handleUploadChange = (e, isFile) => {
@@ -82,6 +59,7 @@ const UploadLayout = () => {
       return setNewUpload((prev) => ({
         ...prev,
         schoolwork: !prev.schoolwork,
+        program: degreePrograms[0].value,
       }));
     setNewUpload((prev) => ({
       ...prev,
@@ -114,7 +92,7 @@ const UploadLayout = () => {
       tags: [],
       watermark: false,
       schoolwork: false,
-      program: degreePrograms[0].value,
+      program: degreePrograms[0]?.value,
     }));
     handleFilterReset();
   };
@@ -123,7 +101,7 @@ const UploadLayout = () => {
     e.preventDefault();
     if (isUploading) return;
 
-    dispatch(submitPost(newUpload));
+    dispatch(submitPost(newUpload, degreePrograms));
   };
 
   const { isAuthLoading, isAuthenticated } = useSelector((state) => state.auth);
@@ -147,6 +125,18 @@ const UploadLayout = () => {
   );
   const { user } = useSelector((state) => state.user);
 
+  const fetchDegreePrograms = () => {
+    axios
+      .get(process.env.NEXT_PUBLIC_API_URL + "/api/configs/programs")
+      .then((response) =>
+        setDegreePrograms(
+          response.data.programs.map((p, i) => ({ label: p, value: i + 1 }))
+        )
+      );
+  };
+  useEffect(() => {
+    fetchDegreePrograms();
+  }, []);
   return (
     <Layout
       title="Upload | iFlexhibit"
