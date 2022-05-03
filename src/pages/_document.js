@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <meta
             name="google-site-verification"
-            content="W_xoToQDMC4UZiJFFlBc4_FT52HaLuMw5SBSCoH7LrQ"
+            content="Ko7JRa6KsWM3DVrs4CYEQx6xPa8Uaksj9UnIzaRKonw"
           />
           <link
             rel="apple-touch-icon"
