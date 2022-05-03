@@ -134,7 +134,7 @@ const ProfileLayout = ({ user, posts, results }) => {
     <Layout
       title={user.username + " | iFlexhibit"}
       description={user.bio}
-      canonical={`https://iflexhibit.com/profile/${user.id}/${user.username}`}
+      canonical={`https://iflexhibit.vercel.app/profile/${user.id}/${user.username}`}
     >
       {deleteAction.feedbackMsg && (
         <FeedbackModal

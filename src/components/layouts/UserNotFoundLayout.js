@@ -7,7 +7,7 @@ const UserNotFoundLayout = ({ search }) => {
     <Layout
       title={"User not found | iFlexhibit"}
       description={""}
-      canonical={`https://iflexhibit.com/profile/not-found`}
+      canonical={`https://iflexhibit.vercel.app/profile/not-found`}
     >
       <div className={styles["message"]}>
         <div>

@@ -1,4 +1,4 @@
-**Production**: [https://iflexhibit.com](https://iflexhibit.com)
+**Production**: [https://iflexhibit.vercel.app](https://iflexhibit.vercel.app)
 
 **Development**: [https://iflexhibit.vercel.app](https://iflexhibit.vercel.app)
 

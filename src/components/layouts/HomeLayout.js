@@ -87,7 +87,7 @@ const HomeLayout = ({ results, posts }) => {
     <Layout
       title="iFlexhibit | A content sharing platform for students of iACADEMY"
       description="A content sharing platform for students of iACADEMY"
-      canonical="https://iflexhibit.com/"
+      canonical="https://iflexhibit.vercel.app/"
     >
       <div className={`${styles["controls"]}`}>
         <Button

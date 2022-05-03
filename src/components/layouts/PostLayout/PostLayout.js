@@ -64,7 +64,7 @@ const PostLayout = ({ post }) => {
     <Layout
       title={`${post.title} by ${post.author.username} | iFlexhibit`}
       description={post.body}
-      canonical={`https://iflexhibit.com/post/${post.id}/${post.title
+      canonical={`https://iflexhibit.vercel.app/post/${post.id}/${post.title
         .split(" ")
         .join("-")}`}
       image={post?.image}
@@ -85,7 +85,9 @@ const PostLayout = ({ post }) => {
         />
         <PostShare
           shareText={post?.title}
-          shareUrl={`https://iflexhibit.com${router.asPath.split("?")[0]}`}
+          shareUrl={`https://iflexhibit.vercel.app${
+            router.asPath.split("?")[0]
+          }`}
         />
         <PostTitle
           authorId={post?.author?.id}

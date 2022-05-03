@@ -29,7 +29,7 @@ const LoginLayout = () => {
   return (
     <Layout
       title="Join the Community | iFlexhibit"
-      canonical="https://iflexhibit.com/login"
+      canonical="https://iflexhibit.vercel.app/login"
       description="A content sharing platform for students of iACADEMY"
       fullscreen
     >

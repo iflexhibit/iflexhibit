@@ -58,7 +58,7 @@ const Layout = ({
         <meta property="og:url" content={canonical} />
         <meta
           property="og:image"
-          content={image || "https://iflexhibit.com/assets/ogimage.jpg"}
+          content={image || "https://iflexhibit.vercel.app/assets/ogimage.jpg"}
         />
         <meta property="og:description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

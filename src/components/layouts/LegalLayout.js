@@ -8,7 +8,7 @@ const LegalLayout = () => {
     <Layout
       title="Legal Agreement | iFlexhibit"
       description="A content sharing platform for students of iACADEMY"
-      canonical="https://iflexhibit.com/legal"
+      canonical="https://iflexhibit.vercel.app/legal"
     >
       <div className={styles["legal"]}>
         <div className={styles["logos"]}>
@@ -48,8 +48,8 @@ const TermsSection = () => {
             <h2>Terms</h2>
             <p>
               By accessing this Website, accessible from
-              https://iflexhibit.com/, you are agreeing to be bound by these
-              Website Terms and Conditions of Use and agree that you are
+              https://iflexhibit.vercel.app/, you are agreeing to be bound by
+              these Website Terms and Conditions of Use and agree that you are
               responsible for the agreement with any applicable local laws. If
               you disagree with any of these terms, you are prohibited from
               accessing this site. The materials contained in this Website are
@@ -264,13 +264,13 @@ const PrivacySection = () => {
             <h2>Introduction</h2>
             <p>Welcome to iFLEXHIBIT.</p>
             <p>
-              iFLEXHIBIT (“us”, “we”, or “our”) operates iflexhibit.com
+              iFLEXHIBIT (“us”, “we”, or “our”) operates iflexhibit.vercel.app
               (hereinafter referred to as “Service”).
             </p>
             <p>
-              Our Privacy Policy governs your visit to iflexhibit.com, and
-              explains how we collect, safeguard, and disclose information that
-              results from your use of our Service.
+              Our Privacy Policy governs your visit to iflexhibit.vercel.app,
+              and explains how we collect, safeguard, and disclose information
+              that results from your use of our Service.
             </p>
             <p>
               We use your data to provide and improve Service. By using Service,
@@ -288,7 +288,8 @@ const PrivacySection = () => {
           <li>
             <h2>Definitions</h2>
             <p>
-              SERVICE means the iflexhibit.com website operated by iFLEXHIBIT.
+              SERVICE means the iflexhibit.vercel.app website operated by
+              iFLEXHIBIT.
             </p>
             <p>
               PERSONAL DATA means data about a living individual who can be

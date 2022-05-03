@@ -89,7 +89,7 @@ const AccountLayout = () => {
     <Layout
       title="Account | iFlexhibit"
       description="A content sharing platform for students of iACADEMY"
-      canonical="https://iflexhibit.com/account"
+      canonical="https://iflexhibit.vercel.app/account"
     >
       <div className={styles["account"]}>
         <div className={`${styles["row"]} ${styles["header"]}`}>

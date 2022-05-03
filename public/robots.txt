@@ -3,4 +3,4 @@ Allow: /
 Disallow: /upload
 Disallow: /account
 
-Sitemap: https://iflexhibit.com/sitemap.xml
+Sitemap: https://iflexhibit.vercel.app/sitemap.xml

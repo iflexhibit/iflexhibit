@@ -141,7 +141,7 @@ const UploadLayout = () => {
     <Layout
       title="Upload | iFlexhibit"
       description="A content sharing platform for students of iACADEMY"
-      canonical="https://iflexhibit.com/upload"
+      canonical="https://iflexhibit.vercel.app/upload"
     >
       {uploadMsg && <FeedbackModal variant={msgType} info={uploadMsg} />}
       <div className={styles["upload"]}>
